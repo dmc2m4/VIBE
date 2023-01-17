@@ -32,7 +32,7 @@ module.exports = (sequelize) => {
     },
     address: {
       type: DataTypes.STRING,
-    },
+    }
   },{
     timestamps: true,
     createdAt: false,
