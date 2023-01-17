@@ -4,7 +4,7 @@ import "./Favorites.css";
 
 const Favorites = () => {
   const [favorites, setFavorites] = useState(false);
-  const arr = [1, 2, 3, 4, 5];
+  const arr = [1, 2, 3, 4, 5, 6, 7];
   return (
     <div className="favorites_content">
       <button
