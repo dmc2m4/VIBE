@@ -56,6 +56,10 @@ module.exports = (sequelize) => {
         type: DataTypes.ENUM('summer', 'spring', 'winter', 'autumn','all seasons'),
         allowNull: false
       },
+    stock: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    }
   },{
     timestamps: true,
     createdAt: false,
