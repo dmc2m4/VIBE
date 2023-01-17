@@ -51,7 +51,11 @@ module.exports = (sequelize) => {
                 if(value < 1|| value > 5) throw new Error ("the rating must be a value between 1 and 5")
             },
           }
-    }
+    },
+    season: {
+        type: DataTypes.ENUM('summer', 'spring', 'winter', 'autumn','all seasons'),
+        allowNull: false
+      },
   },{
     timestamps: true,
     createdAt: false,
