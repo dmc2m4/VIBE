@@ -7,7 +7,7 @@ import DetailCard from "./Componentes/DetailCard/DetailCard";
 function App() {
   return (
     <div className='App'>
-      <Landing />
+      <Landing/>
       <Formulariolanding/>
       <Card/>
       <DetailCard/>
