@@ -15,6 +15,11 @@ module.exports = (sequelize) => {
       allowNull: false,
       primaryKey: true,
     },
+    mail: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    }
   },{
     timestamps: true,
     createdAt: false,
