@@ -53,23 +53,12 @@ ShoppingCar.belongsTo(User, { through: "User_ShoppingCar", timestamps: false });
 User.hasOne(Favorites, { through: "User_Favorites", timestamps: false });
 Favorites.belongsTo(User, { through: "User_Favorites", timestamps: false });
 Purchases.hasMany(Product, { through: "Purchases_Product", timestamps: false });
-Product.belongsTo(Purchases, {
-  through: "Purchases_Product",
-  timestamps: false,
-});
-ShoppingCar.hasMany(Product, {
-  through: "ShoppingCar_Product",
-  timestamps: false,
-});
-Product.belongsTo(ShoppingCar, {
-  through: "ShoppingCar_Product",
-  timestamps: false,
-});
+Product.belongsTo(Purchases, { through: "Purchases_Product", timestamps: false });
+ShoppingCar.hasMany(Product, { through: "ShoppingCar_Product", timestamps: false });
+Product.belongsTo(ShoppingCar, { through: "ShoppingCar_Product", timestamps: false });
 Favorites.hasMany(Product, { through: "Favorites_Product", timestamps: false });
-Product.belongsTo(Favorites, {
-  through: "Favorites_Product",
-  timestamps: false,
-});
+Product.belongsTo(Favorites, { through: "Favorites_Product", timestamps: false });
+
 
 module.exports = {
   ...sequelize.models,
