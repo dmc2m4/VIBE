@@ -15,12 +15,13 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       img: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT(100000),
         allowNull: false,
       },
       size: {
         type: DataTypes.STRING,
         allowNull: false,
+        //deberia ser un array o ver como lo conectamos con stock
       },
       color: {
         type: DataTypes.STRING,
@@ -54,6 +55,7 @@ module.exports = (sequelize) => {
           isEven(value) {
             if (value < 1 || value > 5)
               throw new Error("the rating must be a value between 1 and 5");
+              //capaz le mandamos un enum del 1 al 5, para que elija el puntaje
           },
         },
       },
