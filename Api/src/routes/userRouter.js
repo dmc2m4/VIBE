@@ -14,7 +14,7 @@ userRouter.get("/", async (req, res) => {
   }
 });
 
-userRouter.post("/login", PUM, async (req, res) => {
+userRouter.post("/", PUM, async (req, res) => {
   try {
     const newUser = await postUsers(req.body);
     res.status(201).send(newUser);

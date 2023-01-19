@@ -22,6 +22,9 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
+        set(value) {
+          this.setDataValue("email", value.toLowerCase());
+        },
       },
       img: {
         type: DataTypes.STRING,
@@ -30,9 +33,9 @@ module.exports = (sequelize) => {
     {
       timestamps: true,
       createdAt: false,
+      updatedAt: "actualizado",
       paranoid: true,
       deletedAt: false,
-      updatedAt: "actualizado",
     }
   );
 };
