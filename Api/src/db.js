@@ -44,8 +44,8 @@ const { User, Product, ShoppingCar, Purchases, Adress, Favorites } =
 
 User.belongsToMany(Adress, { through: "User_Adress", timestamps: false });
 Adress.belongsTo(User, { through: "User_Adress", timestamps: false });
-User.belongsToMany(Product, { through: "User_Product", timestamps: false });
-Product.belongsTo(User, { through: "User_Product", timestamps: false });
+// User.belongsToMany(Product, { through: "User_Product", timestamps: false });
+// Product.belongsTo(User, { through: "User_Product", timestamps: false });
 User.belongsToMany(Purchases, { through: "User_Purchases", timestamps: false });
 Purchases.belongsTo(User, { through: "User_Purchases", timestamps: false });
 User.hasOne(ShoppingCar, { through: "User_ShoppingCar", timestamps: false });
