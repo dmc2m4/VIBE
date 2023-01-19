@@ -1,15 +1,26 @@
 .footerContainer{
     margin: 0;
     height: 200px;
-    background-color: blue;
+    background-color: #b2a99c;
 }
 .containerSection{
     display: flex;
     justify-content: space-around;
     align-items: center;
+    height: 100%;
 }
 
 .socialImg{
-    height: 45px;
-    width: 45px;
+    height: 35px;
+    width: 35px;
+    margin: 1rem;
+}
+
+.textContainer {
+    
+    align-items: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.textContainer p {
+    margin-bottom: 8px;
 }

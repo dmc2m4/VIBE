@@ -14,7 +14,7 @@ const Footer = () => {
             <section>
             <img src="" alt="Logo" />
             </section>
-            <section>
+            <section className={style.textContainer}>
                 <p>Terminos y condiciones</p>
                 <p>Defensa al consumidor</p>
                 <p>About us</p>
