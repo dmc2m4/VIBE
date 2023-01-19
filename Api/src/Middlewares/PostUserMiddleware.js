@@ -1,3 +1,5 @@
+const { User } = require("../db");
+
 const PUM = async function (req, res, next) {
   const searchingUser = await User.findAll({
     where: {
