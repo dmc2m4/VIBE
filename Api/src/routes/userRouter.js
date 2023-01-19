@@ -3,6 +3,7 @@ const {
   getAllUsers,
   postUsers,
   deleteUsers,
+  putUsers
 } = require("../Controllers/UserControllers");
 const PUM = require("../Middlewares/PostUserMiddleware");
 const { User } = require("../db");
@@ -32,6 +33,17 @@ userRouter.delete("/delete", async (req, res) => {
   try {
     deleteUsers(id);
     res.status(200).send("Deleted successfully");
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
+userRouter.put("/updateUser/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    putUsers(id, req.body);
+    res.status(201).send("User updated successfully");
   } catch (error) {
     res.status(400).send(error.message);
   }

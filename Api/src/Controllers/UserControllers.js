@@ -18,8 +18,19 @@ const deleteUsers = async (value) => {
   });
 };
 
+const putUsers = async (value, req) => {
+const { name, password, email, img } = req
+  const update = await User.findByPk(value);
+  if (name) update.name = name;
+  if (password) update.password = password;
+  if (email) update.email = email;
+  if (img) update.img = img;
+  await update.save();
+};
+
 module.exports = {
   getAllUsers,
   postUsers,
   deleteUsers,
+  putUsers
 };
