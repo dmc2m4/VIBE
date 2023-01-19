@@ -84,8 +84,6 @@ module.exports = (sequelize) => {
     {
       timestamps: true,
       createdAt: true,
-      paranoid: true,
-      deletedAt: false,
     }
   );
 };

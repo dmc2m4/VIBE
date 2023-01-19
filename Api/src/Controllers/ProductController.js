@@ -17,7 +17,16 @@ const postProduct = async (value) => {
   return newProduct;
 };
 
+const deleteProduct = async (value) => {
+  await Product.destroy({
+    where: {
+      id: value,
+    },
+  });
+};
+
 module.exports = {
   getAllProduct,
   postProduct,
+  deleteProduct,
 };

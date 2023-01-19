@@ -1,5 +1,9 @@
 const { Router } = require("express");
-const { getAllUsers, postUsers } = require("../Controllers/UserControllers");
+const {
+  getAllUsers,
+  postUsers,
+  deleteUsers,
+} = require("../Controllers/UserControllers");
 const PUM = require("../Middlewares/PostUserMiddleware");
 const { User } = require("../db");
 
@@ -24,15 +28,10 @@ userRouter.post("/", PUM, async (req, res) => {
 });
 
 userRouter.delete("/delete", async (req, res) => {
-  const { email } = req.body;
+  const { id } = req.body;
   try {
-    await User.destroy({
-      where: {
-        email: email,
-      },
-      force: true,
-    });
-    res.status(200).send("Deleted successfully")
+    deleteUsers(id);
+    res.status(200).send("Deleted successfully");
   } catch (error) {
     res.status(400).send(error.message);
   }

@@ -34,8 +34,6 @@ module.exports = (sequelize) => {
       timestamps: true,
       createdAt: false,
       updatedAt: "actualizado",
-      paranoid: true,
-      deletedAt: false,
     }
   );
 };

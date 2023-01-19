@@ -10,9 +10,16 @@ const postUsers = async (value) => {
   return newUser;
 };
 
-
+const deleteUsers = async (value) => {
+  await User.destroy({
+    where: {
+      id: value,
+    },
+  });
+};
 
 module.exports = {
   getAllUsers,
   postUsers,
+  deleteUsers,
 };
