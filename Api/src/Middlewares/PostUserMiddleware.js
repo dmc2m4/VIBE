@@ -1,14 +1,20 @@
+const { User } = require("../db");
+
 const PUM = async function (req, res, next) {
+  const { email } = req.body;
+  const regexEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i;
   const searchingUser = await User.findAll({
     where: {
-      email: value.email.toUpperCase(),
+      email: email.toLowerCase(),
     },
   });
-  if (searchingUser.length) throw new Error("this user already exist");
-  const regexEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i;
-  if (!regexEmail.test(value.email)) throw new Error("this is not an email");
-
-  next();
+  if (searchingUser.length) {
+    res.status(400).send("this user already exist");
+  } else if (!regexEmail.test(email)) {
+    res.status(400).send("this is not an email");
+  } else {
+    next();
+  }
 };
 
 module.exports = PUM;
