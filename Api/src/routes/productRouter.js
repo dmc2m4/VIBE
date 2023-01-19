@@ -18,7 +18,7 @@ productRouter.get("/", async (req, res) => {
   }
 });
 
-productRouter.post("/sell", MPP, async (req, res) => {
+productRouter.post("/", MPP, async (req, res) => {
   try {
     const newProduct = await postProduct(req.body);
     res.status(201).send(newProduct);
@@ -27,8 +27,8 @@ productRouter.post("/sell", MPP, async (req, res) => {
   }
 });
 
-productRouter.delete("/delete", async (req, res) => {
-  const { id } = req.body;
+productRouter.delete("/delete/:id", async (req, res) => {
+  const { id } = req.params;
   try {
     deleteProduct(id);
     res.status(200).send("Deleted successfully");
