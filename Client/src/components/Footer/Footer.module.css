@@ -1,0 +1,15 @@
+.footerContainer{
+    margin: 0;
+    height: 200px;
+    background-color: blue;
+}
+.containerSection{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.socialImg{
+    height: 45px;
+    width: 45px;
+}
