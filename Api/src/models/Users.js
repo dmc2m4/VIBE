@@ -19,7 +19,10 @@ module.exports = (sequelize) => {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true
+      unique: true,
+      set (value){
+        this.setDataValue('email', value.toLowerCase())
+      }
     },
     img: {
       type: DataTypes.STRING,
