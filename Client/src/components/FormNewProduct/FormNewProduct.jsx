@@ -169,7 +169,7 @@ const FormNewProduct = () => {
                     onChange={handleChange}
                 />
                 </div>
-                <button type='submit'>Create Product</button> */
+                <button type='submit'>Create Product</button> 
             </form>
         </div>
     );

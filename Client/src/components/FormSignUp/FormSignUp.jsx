@@ -55,7 +55,7 @@ const FormSignUp = () => {
   return (
     <div className={style.containerPrimary}>
       <h2 className={style.titleSignup}>Register</h2>
-      <form onSubmit={(e) => handleSubmit} className={style.formSignup(e)}>
+      <form onSubmit={(e) => handleSubmit} className={style.formSignup}>
         <label className={style.labelSignup}>Username:</label>
         <input
           type="text"

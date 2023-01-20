@@ -6,8 +6,9 @@ import Landing from "./components/Landing/Landing";
 import FormNewProduct from "./components/FormNewProduct/FormNewProduct";
 import Products from "./components/Products/Products";
 import Register from "./views/Register/Register";
-import Login from "./components/Login/Login";
+import Login from './views/Login/Login'
 // import Login from "./components/Login/Login";
+
 
 const App = () => {
   return (
