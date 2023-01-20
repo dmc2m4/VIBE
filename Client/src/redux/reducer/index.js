@@ -1,5 +1,5 @@
 import types from "../actions/types";
-import { GET_ALL_PRODUCTS} from "../actions/getAllChlotes.action";
+import { GET_ALL_PRODUCTS} from "../actions/getAllChlotes";
 import { DELETE_PRODUCT } from "../actions/deleteProduct";
 
 const initialState = {
