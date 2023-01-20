@@ -18,6 +18,10 @@ export default function Products() {
     dispatch(deleteProducts(product));
   }
 
+  function deleteProduct(product) {
+    dispatch(deleteProducts(product));
+  }
+
   return (
     <div className={styles.container}>
       {!allProducts[0] ? (
@@ -35,6 +39,7 @@ export default function Products() {
             season={product.season}
             stock={product.stock}
             rating={product.rating}
+            id={product.id}
             deleteProduct={deleteProduct}
           />
         ))

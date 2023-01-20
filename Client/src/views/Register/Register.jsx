@@ -1,8 +1,14 @@
 import React from 'react'
+import ContainerSignUp from '../../containers/containerSignUp/containerSignUp'
+import style from './Register.module.css'
 
 const Register = () => {
   return (
-    <div>Register</div>
+    <div className={style.containerPrimary}>
+      <section className={style.containerForm}>
+        <ContainerSignUp/>
+      </section>
+    </div>
   )
 }
 
