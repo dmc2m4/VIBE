@@ -4,8 +4,8 @@ const {
   postUsers,
   deleteUsers,
   putUsers
-} = require("../Controllers/UserControllers");
-const PUM = require("../Middlewares/PostUserMiddleware");
+} = require("../controllers/UserControllers");
+const PUM = require("../middlewares/PostUserMiddleware");
 const { User } = require("../db");
 
 const userRouter = Router();
@@ -28,15 +28,16 @@ userRouter.post("/", PUM, async (req, res) => {
   }
 });
 
-userRouter.delete("/delete", async (req, res) => {
-  const { id } = req.body;
+userRouter.delete('/delete/:email', async (req, res)=>{
   try {
-    deleteUsers(id);
-    res.status(200).send("Deleted successfully");
-  } catch (error) {
-    res.status(400).send(error.message);
+      // console.log(req.params);
+      const {email} = req.params;
+      await deleteUsers(email)
+      res.status(200).send('User deleted')
+  }catch(error){
+      res.status(400).send(error.message)
   }
-});
+})
 
 userRouter.put("/updateUser/:id", async (req, res) => {
   const { id } = req.params;
