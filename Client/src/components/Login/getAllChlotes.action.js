@@ -1,15 +1,18 @@
 import types from "../../redux/actions/types";
 import axios from "axios";
+export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS"
 
-function getAllChlotes() {
-  return async function (dispatch) {
-    return await axios
-      .get("http://localhost:3001/products")
-      .then((res) => {
-        dispatch({ type: types.GET_ALL_CHLOTHES, payload: res.data });
-      })
-      .catch((e) => e.message);
-  };
+function getAllClothes() {
+  return function (dispatch) {
+    return fetch(`http://localhost:3001/product`)
+        .then(response => response.json())
+        .then((data) => {
+            dispatch({
+                type: GET_ALL_PRODUCTS,
+                payload: data
+            })
+        })
+}
 }
 
-export default getAllChlotes;
+export default getAllClothes;

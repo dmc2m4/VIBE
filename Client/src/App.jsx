@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Landing from "./components/Landing/Landing";
 import FormSignUp from "./components/FormSignUp/FormSignUp";
 import FormNewProduct from "./components/FormNewProduct/FormNewProduct";
+import Products from "./components/Products/Products";
 // import Login from "./components/Login/Login";
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/signup" element={<FormSignUp />} />
         {/* <Route exact path="/login" element={Login} /> */}
         <Route path="/createProduct" element={<FormNewProduct />} />
+        <Route path="/products" element={<Products />} />
       </Routes>
     </div>
   );
