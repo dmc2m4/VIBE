@@ -1,9 +1,8 @@
 import types from "../actions/types";
-import { GET_ALL_PRODUCTS} from "../actions/getAllChlotes.action";
-import { DELETE_PRODUCT } from "../actions/deleteProduct";
+// import { GET_ALL_PRODUCTS, DELETE_PRODUCT } from "../actions/types";
 
 const initialState = {
-  allProducts: [],
+  Products: [],
   Filters: [],
   Detail: {},
   Favorites: [],
@@ -11,19 +10,20 @@ const initialState = {
 };
 
 export default function rootReducer(state = initialState, action) {
-  switch (action.type) {
-    case GET_ALL_PRODUCTS:
-      return {
-        ...state,
-        allProducts: action.payload,
-        filters: action.payload
-      }
-    case DELETE_PRODUCT:
-      return {
-        ...state,
-        allProducts: [...state.allProducts].filter(product => product.id !== action.payload)
-      }
-    default:
-      return { ...state }
+  if (action.type === types.GET_ALL_PRODUCTS) {
+    return {
+      ...state,
+      Products: action.payload,
+      Filters: action.payload,
+    };
   }
+  if (action.type === types.DELETE_PRODUCT) {
+    return {
+      ...state,
+      Products: [...state.Products].filter(
+        (product) => product.id !== action.payload
+      ),
+    };
+  }
+  return { ...state };
 }

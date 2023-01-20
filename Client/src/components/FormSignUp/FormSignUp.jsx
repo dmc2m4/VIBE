@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import createUser from "../../redux/actions/createUser.action";
+import createUser from "../../redux/actions/createUser";
 
 const FormSignUp = () => {
   const dispatch = useDispatch();
@@ -89,13 +89,13 @@ const FormSignUp = () => {
         {/* <label>Accept the terms and conditions</label>
         <input type='checkbox' id='accptterms' name='acceptterms' value='si' /> */}
         <button type="submit">Create Acount</button>
-        {error ? (
+        {/* {error ? (
           <div>
             {error.forEach((e) => {
               return <div>{e}</div>;
             })}
           </div>
-        ) : null}
+        ) : null} */}
       </form>
     </div>
   );
