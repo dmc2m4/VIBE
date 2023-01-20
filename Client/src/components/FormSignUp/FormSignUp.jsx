@@ -1,9 +1,11 @@
 import React from "react";
-import { useEffect } from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import createUser from "../../redux/actions/createUser.action";
 
 const FormSignUp = () => {
-  const [error, setError] = useState({});
+  const dispatch = useDispatch();
+  const [error, setError] = useState([]);
   const [newUser, setNewUser] = useState({
     username: "",
     pastword: "",
@@ -11,32 +13,38 @@ const FormSignUp = () => {
     email: "",
   });
   function handleChange(e) {
-    setError(
-      validate({
-        ...newUser,
-        [e.target.name]: e.target.value,
-      })
-    );
-    setNewUser({ ...newUser, [e.target.name]: e.target.value });
+    validate(newUser);
+    if (!setError) {
+      setNewUser({ ...newUser, [e.target.name]: e.target.value });
+    }
   }
-  function validate() {
+  function validate(user) {
     const regExpEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i;
-    if (!regExpEmail.test(input.email)) {
-      error.email = "El email es inválido";
+    if (!regExpEmail.test(user.email)) {
+      setError([...error], "El email es inválido");
     }
-    if (!input.username) {
-      error.username = "Introduzca un nombre de usuario";
+    if (!user.username) {
+      setError([...error], "Introduzca un nombre de usuario");
     }
-    if (input.pastword !== input.confirmPastword) {
-      error.password = "Las contraseñas no coinciden";
+    if (user.pastword !== user.confirmPastword) {
+      setError([...error], "Las contraseñas no coinciden");
     }
+    if (
+      !(user.pastword && user.email && user.username && user.confirmPastword)
+    ) {
+      setError([...error], "Rellenar todos los campos");
+    }
+    setError([]);
   }
-  function handleSubmit(){
-    
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log(error);
+    dispatch(createUser(newUser));
   }
   return (
     <div className="container">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <label>Username:</label>
         <input
           type="text"
@@ -48,7 +56,7 @@ const FormSignUp = () => {
         <label>Mail</label>
         <input
           type="email"
-          id="mail"
+          id="email"
           name="email"
           placeholder="enter your mail"
           onChange={handleChange}
@@ -69,9 +77,16 @@ const FormSignUp = () => {
           placeholder="confirm your password"
           onChange={handleChange}
         />
-        {/* /* <label>Accept the terms and conditions</label>
+        {/* <label>Accept the terms and conditions</label>
         <input type='checkbox' id='accptterms' name='acceptterms' value='si' /> */}
-        <button type='submit'>Create Acount</button> */
+        <button type="submit">Create Acount</button>
+        {error ? (
+          <div>
+            {error.forEach((e) => {
+              return <div>{e}</div>;
+            })}
+          </div>
+        ) : null}
       </form>
     </div>
   );

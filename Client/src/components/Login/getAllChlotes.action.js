@@ -1,4 +1,4 @@
-import types from "./types";
+import types from "../../redux/actions/types";
 import axios from "axios";
 
 function getAllChlotes() {
