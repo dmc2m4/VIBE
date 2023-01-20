@@ -1,0 +1,80 @@
+import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+
+const FormSignUp = () => {
+  const [error, setError] = useState({});
+  const [newUser, setNewUser] = useState({
+    username: "",
+    pastword: "",
+    confirmPastword: "",
+    email: "",
+  });
+  function handleChange(e) {
+    setError(
+      validate({
+        ...newUser,
+        [e.target.name]: e.target.value,
+      })
+    );
+    setNewUser({ ...newUser, [e.target.name]: e.target.value });
+  }
+  function validate() {
+    const regExpEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i;
+    if (!regExpEmail.test(input.email)) {
+      error.email = "El email es inválido";
+    }
+    if (!input.username) {
+      error.username = "Introduzca un nombre de usuario";
+    }
+    if (input.pastword !== input.confirmPastword) {
+      error.password = "Las contraseñas no coinciden";
+    }
+  }
+  function handleSubmit(){
+    
+  }
+  return (
+    <div className="container">
+      <form onSubmit={handleSubmit}>
+        <label>Username:</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="enter your username"
+          onChange={handleChange}
+        />
+        <label>Mail</label>
+        <input
+          type="email"
+          id="mail"
+          name="email"
+          placeholder="enter your mail"
+          onChange={handleChange}
+        />
+        <label>Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="enter your password"
+          onChange={handleChange}
+        />
+        <label>Confirm Password</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          placeholder="confirm your password"
+          onChange={handleChange}
+        />
+        {/* /* <label>Accept the terms and conditions</label>
+        <input type='checkbox' id='accptterms' name='acceptterms' value='si' /> */}
+        <button type='submit'>Create Acount</button> */
+      </form>
+    </div>
+  );
+};
+
+export default FormSignUp;
