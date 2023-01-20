@@ -12,10 +12,11 @@ const App = () => {
   return (
     <div className="App">
       <Routes>
-        <Route exact path="/" element={<ShoppingCart />} />
+        <Route exact path="/" element={<Landing />} />
         {/* <Route exact path="/home" component={Home}/> */}
         <Route path="/signup" element={<FormSignUp />} />
         {/* <Route exact path="/login" element={Login} /> */}
+        <Route path="/shopping-cart" element={<ShoppingCart/>}/>
       </Routes>
     </div>
   );
