@@ -5,7 +5,8 @@ import Navbar from "./components/Navbar/Navbar";
 import Landing from "./components/Landing/Landing";
 import FormNewProduct from "./components/FormNewProduct/FormNewProduct";
 import Products from "./components/Products/Products";
-// import Login from "./components/Login/Login";
+import Register from "./views/Register/Register";
+import Login from './views/Login/Login'
 
 const App = () => {
   return (
@@ -16,7 +17,7 @@ const App = () => {
         <Route path="/signup" element={<Register/>} />
         <Route exact path="/login" element={<Login/>} /> 
         <Route path="/createProduct" element={<FormNewProduct />} />
-    
+        <Route path="/products" element={<Products />} />
       </Routes>
     </div>
   );
