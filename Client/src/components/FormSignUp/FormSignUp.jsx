@@ -3,18 +3,23 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import createUser from "../../redux/actions/createUser";
 =======
 import createUser from "../../redux/actions/createUser.action";
 import style from './FormSingUp.module.css'
 >>>>>>> 5413fb6b06cb525fa9847915796b3b2482af9aa2
 =======
+=======
+import { useNavigate } from "react-router-dom";
+>>>>>>> 9fb371b4643620b2116a1d7b47808e77f4b9dbe0
 import createUser from "../../redux/actions/createUser";
 import style from './FormSingUp.module.css'
 >>>>>>> cbb4d1834418de493230df0649f7173fd17b1a86
 
 const FormSignUp = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const [error, setError] = useState({});
   const [newUser, setNewUser] = useState({
     name: "",
@@ -45,9 +50,14 @@ const FormSignUp = () => {
   }
 
   function handleSubmit() {
+    if (!newUser.name || !newUser.password || !newUser.email || newUser.confirmPassword) {
+      alert('datos incompletos')
+    }else {
     dispatch(createUser(newUser));
     console.log(newUser);
     alert("usuario creado correctamente");
+    navigate("/products")
+    }
   }
 
   return (
