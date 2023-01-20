@@ -1,4 +1,4 @@
-import types from "./types";
+import types from "../../redux/actions/types";
 import axios from "axios";
 export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS"
 
