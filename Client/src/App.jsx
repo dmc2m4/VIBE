@@ -2,7 +2,6 @@ import React from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
-import Login from "./components/Login/Login";
 import Landing from "./components/Landing/Landing";
 import FormSignUp from "./components/FormSignUp/FormSignUp";
 import FormNewProduct from "./components/FormNewProduct/FormNewProduct";
