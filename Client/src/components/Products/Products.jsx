@@ -3,7 +3,7 @@ import Loading from "../Loading/Loading";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import styles from "./Products.module.css";
-import { deleteProducts } from "../../redux/actions/deleteProduct";
+import { deleteProducts } from "../../redux/actions/deleteProducts";
 import getAllClothes from "../../redux/actions/getAllChlotes";
 
 export default function Products() {
