@@ -9,7 +9,7 @@ const Landing = () => {
   return (
     <div className={style.container}>
       <div className={style.containerLogo}>
-    <img src="https://cdn.discordapp.com/attachments/1065781982342164480/1065845744872980480/Sin_titulo-1.png" alt="" className={style.logo} />
+    <img src="https://media.discordapp.net/attachments/1065781982342164480/1065864756742869072/DALLE_2023-01-20_01.52.14_-logocopia.png?width=580&height=580" alt="" className={style.logo} />
       </div>
       <section className={style.sectionButton}>
         <div>
