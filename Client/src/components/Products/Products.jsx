@@ -2,9 +2,9 @@ import Card from "../Card/Card";
 import Loading from "../Loading/Loading";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import getAllClothes from "../../redux/actions/getAllChlotes.action";
-import styles from "./Products.module.css"
-import {deleteProducts} from "../../redux/actions/deleteProduct"
+import styles from "./Products.module.css";
+import {deleteProducts} from "../../redux/actions/deleteProduct";
+import getAllClothes from "../../redux/actions/getAllChlotes";
 
 
 export default function Products () {
@@ -34,6 +34,7 @@ export default function Products () {
                 stock ={product.stock}
                 rating ={product.rating}
                 id={product.id}
+                key={product.id}
                 deleteProduct={deleteProduct}
             />
         ))}
