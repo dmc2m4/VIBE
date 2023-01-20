@@ -1,6 +1,7 @@
 import React from 'react'
 import s from "./Card.module.css"
 const Card = () => {
+  console.log('hola')
   return (
     <div className={s.container}>
       <img src="" alt="" />

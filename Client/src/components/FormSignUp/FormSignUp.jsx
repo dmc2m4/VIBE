@@ -5,51 +5,60 @@ import createUser from "../../redux/actions/createUser.action";
 
 const FormSignUp = () => {
   const dispatch = useDispatch();
-  const [error, setError] = useState([]);
+  const [error, setError] = useState({});
   const [newUser, setNewUser] = useState({
-    username: "",
-    pastword: "",
-    confirmPastword: "",
+    name: "",
+    password: "",
+    confirmPassword: "",
     email: "",
   });
+
   function handleChange(e) {
-    validate(newUser);
-    if (!setError) {
-      setNewUser({ ...newUser, [e.target.name]: e.target.value });
-    }
-  }
-  function validate(user) {
-    const regExpEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i;
-    if (!regExpEmail.test(user.email)) {
-      setError([...error], "El email es inválido");
-    }
-    if (!user.username) {
-      setError([...error], "Introduzca un nombre de usuario");
-    }
-    if (user.pastword !== user.confirmPastword) {
-      setError([...error], "Las contraseñas no coinciden");
-    }
-    if (
-      !(user.pastword && user.email && user.username && user.confirmPastword)
-    ) {
-      setError([...error], "Rellenar todos los campos");
-    }
-    setError([]);
+    setError(
+      validate({
+        ...newUser,
+        [e.target.name]: e.target.value,
+      })
+    );
+    setNewUser({
+      ...newUser,
+      [e.target.name]: e.target.value,
+    });
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    console.log(error);
-    dispatch(createUser(newUser));
+  function validate(input) {
+    const regExpEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i;
+    if (!regExpEmail.test(input.email)) error.email = "El email es inválido";
+    if (!input.name) error.name = "Introduzca un nombre de usuario";
+    if (input.password !== input.confirmPassword)
+      error.password = "Las contraseñas no coinciden";
+    return error;
   }
+
+  function handleSubmit() {
+    if (
+      !(
+        newUser.name &&
+        newUser.email &&
+        newUser.password &&
+        newUser.confirmPassword
+      )
+    ) {
+      return alert("Por favor completar todos los campos");
+    }
+    dispatch(createUser(newUser));
+    console.log(newUser);
+    // alert("usuario creado correctamente");
+  }
+
   return (
     <div className="container">
       <form onSubmit={(e) => handleSubmit(e)}>
         <label>Username:</label>
         <input
           type="text"
-          id="username"
-          name="username"
+          id="name"
+          name="name"
           placeholder="enter your username"
           onChange={handleChange}
         />

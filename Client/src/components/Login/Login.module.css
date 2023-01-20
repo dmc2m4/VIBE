@@ -1,0 +1,43 @@
+.containerLogin{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.titleForm{
+    margin-bottom: 3rem;
+    font-family: 'Kalam', cursive;
+    font-weight: 700;
+}
+
+.containerForm{
+    display: flex;
+    flex-direction: column;
+}
+
+.inputLogin{
+    width: 16rem;
+    height: 2.3rem;
+    border-radius: 4px;
+    border: 0.5px solid rgb(199, 194, 194);
+    margin-bottom: 1rem;
+    font-family: 'Kalam', cursive;
+    color: rgb(239, 228, 228);;
+
+}
+
+.buttonLogin{
+    width: 16rem;
+    height: 2.3rem;
+    border-radius: 4px;
+    border: none;
+    background-color: #98906c;
+    margin-top: 3rem;
+    font-family: 'Kalam', cursive;
+    cursor: pointer;
+}
+
+.labelForm{
+    margin-bottom: 4px;
+    font-family: 'Kalam', cursive;
+}
