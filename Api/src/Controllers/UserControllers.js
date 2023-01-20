@@ -6,13 +6,11 @@ const getAllUsers = async () => {
   return allUsers;
 };
 
-const postUsers = async ({ name, password, password2, img, email }) => {
+const postUsers = async ({ name, password,  img, email }) => {
     const cryptPassword = bcrypt.hashSync(password, 10);
-    const cryptPassword2 = bcrypt.hashSync(password2, 10);
     const newUser = await User.create({
       name: name,
       password: cryptPassword,
-      password2:cryptPassword2,
       email,
       img,
     })
