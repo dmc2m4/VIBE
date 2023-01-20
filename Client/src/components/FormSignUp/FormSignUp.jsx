@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import createUser from "../../redux/actions/createUser.action";
+import style from './FormSingUp.module.css'
 
 const FormSignUp = () => {
   const dispatch = useDispatch();
@@ -52,50 +53,48 @@ const FormSignUp = () => {
   }
 
   return (
-    <div className="container">
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <label>Username:</label>
+    <div className={style.containerPrimary}>
+      <h2 className={style.titleSignup}>Register</h2>
+      <form onSubmit={(e) => handleSubmit} className={style.formSignup(e)}>
+        <label className={style.labelSignup}>Username:</label>
         <input
           type="text"
           id="name"
           name="name"
-          placeholder="enter your username"
+          placeholder="Enter your username"
           onChange={handleChange}
+          className={style.inputSignup}
         />
-        <label>Mail</label>
+        <label className={style.labelSignup}>Email</label>
         <input
           type="email"
           id="email"
           name="email"
-          placeholder="enter your mail"
+          placeholder="Enter your mail"
           onChange={handleChange}
+          className={style.inputSignup}
         />
-        <label>Password</label>
+        <label className={style.labelSignup}>Password</label>
         <input
           type="password"
           id="password"
           name="password"
-          placeholder="enter your password"
+          placeholder="Enter your password"
           onChange={handleChange}
+          className={style.inputSignup}
         />
-        <label>Confirm Password</label>
+        <label className={style.labelSignup}>Confirm Password</label>
         <input
           type="password"
           id="confirmPassword"
           name="confirmPassword"
-          placeholder="confirm your password"
+          placeholder="Confirm your password"
           onChange={handleChange}
+          className={style.inputSignup}
         />
         {/* <label>Accept the terms and conditions</label>
         <input type='checkbox' id='accptterms' name='acceptterms' value='si' /> */}
-        <button type="submit">Create Acount</button>
-        {error ? (
-          <div>
-            {error.forEach((e) => {
-              return <div>{e}</div>;
-            })}
-          </div>
-        ) : null}
+        <button type='submit' className={style.buttonSignup}>Create Acount</button> 
       </form>
     </div>
   );
