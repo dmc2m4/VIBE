@@ -1,5 +1,6 @@
 import types from "./types";
 import axios from "axios";
+export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS";
 
 function getAllClothes() {
   return function (dispatch) {

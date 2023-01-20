@@ -62,6 +62,7 @@
     margin-bottom: 4px;
     color: white;
     background-color: black;
+    cursor: pointer;
 }
 .textSign{
     color: #7aa5ae;

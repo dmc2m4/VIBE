@@ -2,9 +2,9 @@ import Card from "../Card/Card";
 import Loading from "../Loading/Loading";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import getAllChlotes from "../../redux/actions/getAllChlotes";
 import styles from "./Products.module.css";
-import deleteProducts from "../../redux/actions/deleteProducts";
+import { deleteProducts } from "../../redux/actions/deleteProduct";
+import getAllClothes from "../../redux/actions/getAllChlotes";
 
 export default function Products() {
   const allProducts = useSelector((state) => state.Products);
@@ -40,6 +40,7 @@ export default function Products() {
             stock={product.stock}
             rating={product.rating}
             id={product.id}
+            key={product.id}
             deleteProduct={deleteProduct}
           />
         ))
