@@ -33,6 +33,7 @@ export default function Products () {
                 season ={product.season}
                 stock ={product.stock}
                 rating ={product.rating}
+                id={product.id}
                 deleteProduct={deleteProduct}
             />
         ))}
