@@ -1,18 +1,29 @@
 import types from "../actions/types";
+import { GET_ALL_PRODUCTS} from "../actions/getAllChlotes.action";
+import { DELETE_PRODUCT } from "../actions/deleteProduct";
 
 const initialState = {
-  Chlotes: [],
+  allProducts: [],
   Filters: [],
   Detail: {},
   Favorites: [],
   ShoppingCart: [],
 };
 
-function rootReducer(state = initialState, action) {
-  if (action.type === types.GET_ALL_CHLOTHES) {
-    return { ...state, Chlotes: action.payload };
+export default function rootReducer(state = initialState, action) {
+  switch (action.type) {
+    case GET_ALL_PRODUCTS:
+      return {
+        ...state,
+        allProducts: action.payload,
+        filters: action.payload
+      }
+    case DELETE_PRODUCT:
+      return {
+        ...state,
+        allProducts: [...state.allProducts].filter(product => product.id !== action.payload)
+      }
+    default:
+      return { ...state }
   }
-  return { ...state };
 }
-
-export default rootReducer;
