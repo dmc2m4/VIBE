@@ -1,11 +1,13 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import createUser from "../../redux/actions/createUser";
 import style from './FormSingUp.module.css'
 
 const FormSignUp = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const [error, setError] = useState({});
   const [newUser, setNewUser] = useState({
     name: "",
@@ -36,9 +38,14 @@ const FormSignUp = () => {
   }
 
   function handleSubmit() {
+    if (!newUser.name || !newUser.password || !newUser.email || newUser.confirmPassword) {
+      alert('datos incompletos')
+    }else {
     dispatch(createUser(newUser));
     console.log(newUser);
     alert("usuario creado correctamente");
+    navigate("/products")
+    }
   }
 
   return (
