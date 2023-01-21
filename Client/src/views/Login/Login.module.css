@@ -1,0 +1,21 @@
+.containerPrimary{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right,
+                #98906c 0%,
+                #98906c 45%,
+                white 0%,
+                white 100%);
+}
+
+.containerForm{
+    -webkit-box-shadow: 5px 5px 15px 5px #343333;
+    box-shadow: 5px 5px 15px 5px #494949;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 2rem;
+}

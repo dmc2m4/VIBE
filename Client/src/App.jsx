@@ -2,9 +2,11 @@ import React from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
-import Login from "./components/Login/Login";
 import Landing from "./components/Landing/Landing";
-import FormSignUp from "./components/FormSignUp/FormSignUp";
+import FormNewProduct from "./components/FormNewProduct/FormNewProduct";
+import Products from "./components/Products/Products";
+import Register from "./views/Register/Register";
+import Login from "./components/Login/Login";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 // import Login from "./components/Login/Login";
 
@@ -14,9 +16,11 @@ const App = () => {
       <Routes>
         <Route exact path="/" element={<Landing />} />
         {/* <Route exact path="/home" component={Home}/> */}
-        <Route path="/signup" element={<FormSignUp />} />
-        {/* <Route exact path="/login" element={Login} /> */}
-        <Route path="/shopping-cart" element={<ShoppingCart/>}/>
+        <Route path="/signup" element={<Register/>} />
+        <Route exact path="/login" element={<Login/>} /> 
+        <Route path="/createProduct" element={<FormNewProduct />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/shopping-cart" element={<ShoppingCart />} />
       </Routes>
     </div>
   );

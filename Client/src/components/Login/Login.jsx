@@ -1,20 +1,18 @@
 import React from "react";
+import style from './Login.module.css'
 
 const Login = () => {
   return (
-    <div>
-      {" "}
-      <form>
-        <label>Username:</label>
-        <input type='text' id='username' name='username' />
-        <label>Password:</label>
-        <input type='password' id='password' name='password' />
-        <button type='submit'>Login</button>
+    <div className={style.containerLogin}>
+      <h3 className={style.titleForm}>Log in</h3>
+      <form className={style.containerForm}>
+        <label className={style.labelForm}>Email</label>
+        <input type='text' id='username' name='username'  className={style.inputLogin} placeholder="example@gmail.com"/>
+        <label className={style.labelForm}>Password</label>
+        <input type='password' id='password' name='password' className={style.inputLogin} placeholder="Enter your Password" />
+        <button type='submit' className={style.buttonLogin}>Login</button>
       </form>
-      <p>Crear Cuenta</p>
-      <p>
-        Vincula cuanta con <span>Google</span>
-      </p>
+
     </div>
   );
 };
