@@ -1,7 +1,10 @@
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 const Filters = () => {
+  const dispatch = useDispatch();
   const colorList = [
     "red",
     "blue",
@@ -16,39 +19,39 @@ const Filters = () => {
   const sizeList = ["XS", "S", "XL", "L"];
   const typeList = ["Jacket", "T-Shirt", "Pants", "Hat", "Sneakers"];
   const [filtreds, setFiltreds] = useState({
-    color: [],
-    size: [],
-    type: [],
+    color: "",
+    size: "",
+    type: "",
   });
-  function handleClick(e) {
-    const selected = e.target.name;
+  function handleChange(e) {
+    setFiltreds({ ...filtreds, [e.target.name]: e.target.value });
     console.log(filtreds);
-    if (!filtreds.selected.includes(e.target.value)) {
-      setFiltreds({ ...filtreds, [e.target.name]: e.target.value });
-    }
   }
+  useEffect(() => {
+    // dispatch(getPage());
+  }, [filtreds]);
   return (
     <div>
       <span>Colors</span>
-      <select multiple name="color" id="color">
-        {colorList.map((color) => (
-          <option value={color} onClick={(e) => handleClick(e)}>
+      <select name="color" id="color" onChange={handleChange}>
+        {colorList.map((color, i) => (
+          <option name="color" value={color} key={i}>
             {color}
           </option>
         ))}
       </select>
       <span>Size</span>
-      <select multiple name="size" id="size">
-        {sizeList.map((size) => (
-          <option value={size} onClick={(e) => handleClick(e)}>
+      <select name="size" id="size" onChange={handleChange}>
+        {sizeList.map((size, i) => (
+          <option name="size" value={size} key={i}>
             {size}
           </option>
         ))}
       </select>
       <span>Type</span>
-      <select multiple name="type" id="type">
-        {typeList.map((type) => (
-          <option value={type} onClick={(e) => handleClick(e)}>
+      <select name="type" id="type" onChange={handleChange}>
+        {typeList.map((type, i) => (
+          <option name="type" value={type} key={i}>
             {type}
           </option>
         ))}

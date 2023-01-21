@@ -1,11 +1,13 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import createUser from "../../redux/actions/createUser.action";
-import style from './FormSingUp.module.css'
+import { useNavigate } from "react-router-dom";
+import createUser from "../../redux/actions/createUser";
+import style from "./FormSingUp.module.css";
 
 const FormSignUp = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [error, setError] = useState({});
   const [newUser, setNewUser] = useState({
     name: "",
@@ -29,33 +31,33 @@ const FormSignUp = () => {
 
   function validate(input) {
     const regExpEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i;
-    if (!regExpEmail.test(input.email)) error.email = "El email es inválido";
-    if (!input.name) error.name = "Introduzca un nombre de usuario";
+    if (!regExpEmail.test(input.email)) error.email = "The email is invalid";
+    if (!input.name) error.name = "enter a username";
     if (input.password !== input.confirmPassword)
-      error.password = "Las contraseñas no coinciden";
+      error.password = "Passwords don't match";
     return error;
   }
 
   function handleSubmit() {
     if (
-      !(
-        newUser.name &&
-        newUser.email &&
-        newUser.password &&
-        newUser.confirmPassword
-      )
+      !newUser.name ||
+      !newUser.password ||
+      !newUser.email ||
+      !newUser.confirmPassword
     ) {
-      return alert("Por favor completar todos los campos");
+      alert("Incomplete data");
+    } else {
+      dispatch(createUser(newUser));
+      console.log(newUser);
+      alert("user created successfully");
+      navigate("/products");
     }
-    dispatch(createUser(newUser));
-    console.log(newUser);
-    // alert("usuario creado correctamente");
   }
 
   return (
     <div className={style.containerPrimary}>
       <h2 className={style.titleSignup}>Register</h2>
-      <form onSubmit={(e) => handleSubmit} className={style.formSignup(e)}>
+      <form onSubmit={handleSubmit} className={style.formSignup}>
         <label className={style.labelSignup}>Username:</label>
         <input
           type="text"
@@ -94,7 +96,9 @@ const FormSignUp = () => {
         />
         {/* <label>Accept the terms and conditions</label>
         <input type='checkbox' id='accptterms' name='acceptterms' value='si' /> */}
-        <button type='submit' className={style.buttonSignup}>Create Acount</button> 
+        <button type="submit" className={style.buttonSignup}>
+          Create Acount
+        </button>
       </form>
     </div>
   );
