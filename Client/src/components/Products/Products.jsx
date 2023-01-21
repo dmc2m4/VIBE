@@ -7,23 +7,20 @@ import { deleteProduct } from "../../redux/actions/deleteProduct";
 import { getAllClothes } from "../../redux/actions/getAllClothes";
 
 export default function Products() {
-  const allProducts = useSelector((state) => state.allProducts);
+  const Products = useSelector((state) => state.Products);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAllClothes());
   }, [dispatch]);
 
-  function deleteProduct(product) {
+  function deleteProducts(product) {
     dispatch(deleteProduct(product));
   }
 
   return (
     <div className={styles.container}>
-      {!allProducts[0] ? (
-        <Loading />
-      ) : (
-        allProducts.map((product) => (
+      {!Products[0] ? <Loading /> : (Products.map(product => 
           <Card
             name={product.name}
             img={product.img}
@@ -37,9 +34,9 @@ export default function Products() {
             rating={product.rating}
             id={product.id}
             key={product.id}
-            deleteProduct={deleteProduct}
+            deleteProduct={deleteProducts}
           />
-        ))
+        )
       )}
     </div>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import clothes from "../../assets/clothes.jpg";
 import Login from "../Login/Login";
 import style from "./Landing.module.css";
@@ -10,6 +10,7 @@ const Landing = () => {
   function signUpBotton (){
     navigate("/signup")
   }
+
 
   return (
     <div className={style.container}>
@@ -38,7 +39,9 @@ const Landing = () => {
           </p>
           <button className={style.buttonLanding} onClick={(e => signUpBotton(e))}>Sign up</button>
           <p className={style.textAccount}>Do you have an acoount?</p>
+          <Link to ="/login">
           <p className={style.textSign}>Sign In</p>
+          </Link>
         </div>
       </section>
       <section className={style.welcome}>
