@@ -11,7 +11,7 @@ const initialState = {
 };
 
 export default function rootReducer(state = initialState, action) {
-  if (action.type === types.GET_ALL_PRODUCTS) {
+  if (action.type === types.GET_ALL_CLOTHES) {
     return {
       ...state,
       Products: action.payload,

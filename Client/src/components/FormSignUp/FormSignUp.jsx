@@ -31,10 +31,10 @@ const FormSignUp = () => {
 
   function validate(input) {
     const regExpEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i;
-    if (!regExpEmail.test(input.email)) error.email = "El email es inválido";
-    if (!input.name) error.name = "Introduzca un nombre de usuario";
+    if (!regExpEmail.test(input.email)) error.email = "The email is invalid";
+    if (!input.name) error.name = "enter a username";
     if (input.password !== input.confirmPassword)
-      error.password = "Las contraseñas no coinciden";
+      error.password = "Passwords don't match";
     return error;
   }
 
@@ -45,11 +45,11 @@ const FormSignUp = () => {
       !newUser.email ||
       !newUser.confirmPassword
     ) {
-      alert("datos incompletos");
+      alert("Incomplete data");
     } else {
       dispatch(createUser(newUser));
       console.log(newUser);
-      alert("usuario creado correctamente");
+      alert("user created successfully");
       navigate("/products");
     }
   }
