@@ -6,8 +6,8 @@ import Landing from "./components/Landing/Landing";
 import FormNewProduct from "./components/FormNewProduct/FormNewProduct";
 import Products from "./components/Products/Products";
 import Register from "./views/Register/Register";
-import Login from "./views/Login/Login"
-
+import Login from "./views/Login/Login";
+import Home from "./components/Home/Home";
 // import Login from "./components/Login/Login";
 
 const App = () => {
@@ -15,9 +15,9 @@ const App = () => {
     <div className="App">
       <Routes>
         <Route exact path="/" element={<Landing />} />
-        {/* <Route exact path="/home" component={Home}/> */}
-        <Route path="/signup" element={<Register/>} />
-        <Route exact path="/login" element={<Login/>} /> 
+        <Route path="/home" element={<Home />} />
+        <Route path="/signup" element={<Register />} />
+        <Route exact path="/login" element={<Login />} />
         <Route path="/createProduct" element={<FormNewProduct />} />
         <Route path="/products" element={<Products />} />
       </Routes>
