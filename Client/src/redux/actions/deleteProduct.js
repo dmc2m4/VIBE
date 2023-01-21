@@ -1,7 +1,7 @@
+// export const DELETE_PRODUCT = "DELETE_PRODUCT";
 import types from "./types";
-import axios from "axios";
 
-const deleteProducts = (product) => {
+export const deleteProduct = (product) => {
   return async function (dispatch) {
     try {
       await axios.delete(`http://localhost:3001/product/delete/${product}`);
@@ -14,5 +14,3 @@ const deleteProducts = (product) => {
     }
   };
 };
-
-export default deleteProducts;

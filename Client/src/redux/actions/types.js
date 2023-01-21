@@ -1,6 +1,7 @@
 const types = {
   GET_ALL_CHLOTHES: "GET_ALL_CHLOTHES",
   DELETE_PRODUCT: "DELETE_PRODUCT",
+  SEND_FILTERS: "SEND_FILTERS",
 };
 
 export default types;

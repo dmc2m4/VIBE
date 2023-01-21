@@ -3,11 +3,11 @@ import Loading from "../Loading/Loading";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import styles from "./Products.module.css";
-import { deleteProducts } from "../../redux/actions/deleteProducts";
-import getAllClothes from "../../redux/actions/getAllChlotes";
+import { deleteProduct } from "../../redux/actions/deleteProduct";
+import { getAllChlotes } from "../../redux/actions/getAllChlotes";
 
 export default function Products() {
-  const allProducts = useSelector((state) => state.Products);
+  const allProducts = useSelector((state) => state.allProducts);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -15,11 +15,7 @@ export default function Products() {
   }, [dispatch]);
 
   function deleteProduct(product) {
-    dispatch(deleteProducts(product));
-  }
-
-  function deleteProduct(product) {
-    dispatch(deleteProducts(product));
+    dispatch(deleteProduct(product));
   }
 
   return (
