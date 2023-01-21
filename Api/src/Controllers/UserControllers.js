@@ -1,5 +1,6 @@
 const { User } = require("../db.js");
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const getAllUsers = async () => {
   const allUsers = await User.findAll();
@@ -13,10 +14,30 @@ const postUsers = async ({ name, password,  img, email }) => {
       password: cryptPassword,
       email,
       img,
-    })
-    return newUser;
+    });
+
+    let token = jwt.sign({user: newUser}, "secret", {expiresIn: "7d"})
+
+    return {user: newUser, token: token};
   }
 
+const loginUser = async (value) => {
+  const findingUser = await User.findOne(
+    {where: {
+      email: value.email
+    }});
+    if(!findingUser) {
+      throw new Error ('User not found');
+    }else{
+      if (bcrypt.compareSync(value.password, findingUser.password)){
+        let token = jwt.sign({user: findingUser}, "secret", {expiresIn: "7d"});
+        return {user: findingUser, token: token}
+      }else {
+        throw new Error ('Incorrect password');
+      }
+    }
+
+}
 
   const deleteUsers = async function (email){
      await User.destroy({where: {email}})
@@ -36,5 +57,6 @@ module.exports = {
   getAllUsers,
   postUsers,
   deleteUsers,
-  putUsers
+  putUsers,
+  loginUser
 };
