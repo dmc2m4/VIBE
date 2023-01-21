@@ -4,7 +4,8 @@ const jwt = require('jsonwebtoken');
 
 const getAllUsers = async () => {
   const allUsers = await User.findAll();
-  return allUsers;
+  console.log(allUsers);
+  return allUsers
 };
 
 const postUsers = async ({ name, password,  img, email }) => {
@@ -22,16 +23,17 @@ const postUsers = async ({ name, password,  img, email }) => {
   }
 
 const loginUser = async (value) => {
-  const findingUser = await User.findOne(
+  const user = await User.findOne(
     {where: {
       email: value.email
     }});
-    if(!findingUser) {
-      throw new Error ('User not found');
+    if(!user) {
+      // throw new Error ('User not found');
+      return null;
     }else{
-      if (bcrypt.compareSync(value.password, findingUser.password)){
-        let token = jwt.sign({user: findingUser}, "secret", {expiresIn: "7d"});
-        return {user: findingUser, token: token}
+      if (bcrypt.compareSync(value.password, user.password)){
+        let token = jwt.sign({user: user}, "secret", {expiresIn: "7d"});
+        return {user: user, token: token}
       }else {
         throw new Error ('Incorrect password');
       }

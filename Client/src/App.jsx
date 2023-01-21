@@ -8,7 +8,7 @@ import Products from "./components/Products/Products";
 import Register from "./views/Register/Register";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import Login from "./views/Login/Login";
-import Home from "./components/Home/Home";
+import Home from "../src/views/Home/Home";
 // import Login from "./components/Login/Login";
 
 const App = () => {
