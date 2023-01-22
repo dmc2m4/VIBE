@@ -73,5 +73,11 @@ export default function rootReducer(state = initialState, action) {
       },
     };
   }
+  if(action.type === types.PRODUCT_DETAIL){
+    return{
+      ...state,
+      Detail: action.payload
+    }
+  }
   return { ...state };
 }
