@@ -1,5 +1,6 @@
 // export const DELETE_PRODUCT = "DELETE_PRODUCT";
 import types from "./types";
+import axios from "axios";
 
 export const deleteProduct = (product) => {
   return async function (dispatch) {

@@ -28,8 +28,7 @@ const loginUser = async (value) => {
       email: value.email
     }});
     if(!user) {
-      // throw new Error ('User not found');
-      return null;
+      throw new Error ('User not found');
     }else{
       if (bcrypt.compareSync(value.password, user.password)){
         let token = jwt.sign({user: user}, "secret", {expiresIn: "7d"});

@@ -14,7 +14,7 @@ const Login = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  function validations (input) {
+  function validations(input) {
     const regExpEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i;
     if (!regExpEmail.test(input.email)) error.email = "The email is invalid";
     return error
@@ -40,14 +40,8 @@ const Login = () => {
     ) {
       alert("Incomplete data");
     } else {
-      const hola = dispatch(loginUser(login));
-      if (hola){
-        hola()
-        navigate("/home")
-      }else{
-        alert('datos incorrectos')
-      }
-      
+      dispatch(loginUser(login));
+      navigate("/home");
     }
   }
 
