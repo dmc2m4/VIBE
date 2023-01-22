@@ -12,6 +12,7 @@ import Home from "../src/views/Home/Home";
 import DetailCard from "./components/DetailCard/DetailCard";
 // import Login from "./components/Login/Login";
 
+
 const App = () => {
   return (
     <div className="App">

@@ -1,0 +1,68 @@
+.liNav{
+  list-style: none;
+  margin: 2rem;
+}
+.icon{
+  width: 10rem;
+  height: 3rem;
+  margin-top: -0.5rem;
+
+}
+.container{
+  display: grid;
+  grid-template-columns: auto 2fr 1fr auto;
+}
+.selectCategories{
+  width: 8rem;
+  height: 2.5rem;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  font-family: 'Kalam', cursive;
+}
+.containerIcon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1rem;
+}
+.liImg{
+  list-style: none;
+  cursor: pointer;
+  margin-right: 8px;
+}
+.titleSelect{
+  font-size: 20px;
+    font-family: 'Kalam', cursive;
+}
+
+.containerImg{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.containerUl{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.containerLi{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.imgNav{
+  width: 25px;
+  height: 25px;
+  margin-right: 1.5rem;
+}
+
+.links{
+  font-size: 20px;
+    font-weight: bold;
+    border: none;
+    font-family: 'Kalam', cursive;
+}
