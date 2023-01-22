@@ -9,6 +9,7 @@ import Register from "./views/Register/Register";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import Login from "./views/Login/Login";
 import Home from "../src/views/Home/Home";
+import DetailCard from "./components/DetailCard/DetailCard";
 // import Login from "./components/Login/Login";
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/createProduct" element={<FormNewProduct />} />
         <Route path="/products" element={<Products />} />
         <Route path="/shopping-cart" element={<ShoppingCart />} />
+        <Route path="/productDetail/:id" element={<DetailCard/>} />
       </Routes>
     </div>
   );
