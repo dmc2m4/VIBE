@@ -1,15 +1,17 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import loginUser from "../../redux/actions/userLogin";
 import style from "./Login.module.css";
+import axios from "axios";
 
 const Login = () => {
   const [login, setLogin] = useState({
     email: "",
     password: ""
   })
+  const User = useSelector(state => state.User)
   const [error, setError] = useState({})
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -33,7 +35,7 @@ const Login = () => {
     });
   }
 
-  function handleSubmit() {
+  async function handleSubmit() {
     if (
       !login.email ||
       !login.password
@@ -41,7 +43,8 @@ const Login = () => {
       alert("Incomplete data");
     } else {
       dispatch(loginUser(login))
-      navigate("/home");
+      console.log(User);
+      navigate('/home')
     }
   }
 

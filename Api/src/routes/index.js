@@ -7,6 +7,6 @@ const router = Router();
 
 // Configurar los routers
 router.use('/user', userRouter);
-router.use('/product', productRouter)
+router.use('/product', productRouter);git 
 
 module.exports = router;

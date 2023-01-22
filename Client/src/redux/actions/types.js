@@ -7,6 +7,7 @@ const types = {
   REMOVE_ALL_FROM_CART: "REMOVE_ALL_FROM_CART",
   CLEAR_CART: "CLEAR_CART",
   PRODUCT_DETAIL : "PRODUCT_DETAIL",
+  LOGIN_USER: "LOGIN_USER",
 };
 
 export default types;
