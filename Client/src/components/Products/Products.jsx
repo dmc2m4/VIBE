@@ -7,7 +7,7 @@ import { deleteProduct } from "../../redux/actions/deleteProduct";
 import { getAllClothes } from "../../redux/actions/getAllClothes";
 
 export default function Products() {
-  const Products = useSelector((state) => state.Products);
+  const products = useSelector((state) => state.Products);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,7 +20,10 @@ export default function Products() {
 
   return (
     <div className={styles.container}>
-      {!Products[0] ? <Loading /> : (Products.map(product => 
+      {!products.length ? (
+        <Loading />
+      ) : (
+        products.map((product) => (
           <Card
             name={product.name}
             img={product.img}
@@ -36,7 +39,7 @@ export default function Products() {
             key={product.id}
             deleteProduct={deleteProducts}
           />
-        )
+        ))
       )}
     </div>
   );
