@@ -7,6 +7,11 @@ const getAllProduct = async () => {
   return allProduct;
 };
 
+const getProductById = async function (id) {
+  const product = await Product.findByPk(id)
+  return product
+}
+
 const postProduct = async (value) => {
   const newProduct = await Product.create(value);
   return newProduct;
@@ -54,4 +59,5 @@ module.exports = {
   postProduct,
   deleteProduct,
   putProduct,
+  getProductById,
 };
