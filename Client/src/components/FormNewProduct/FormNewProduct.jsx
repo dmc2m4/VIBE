@@ -59,6 +59,14 @@ const FormNewProduct = () => {
         })
     }
 
+    const handleChange5 = (e) => {
+        setNewProduct({
+            ...newProduct,
+            rating: e.target.value
+        })
+        console.log(e.target.value)
+    }
+
     function handleSubmit() {
         if (!newProduct.name || !newProduct.img || !newProduct.size || !newProduct.color || !newProduct.category || !newProduct.gender || !newProduct.cost || !newProduct.rating || !newProduct.season || !newProduct.stock) {
             return alert("Por favor completar todos los campos");
@@ -69,10 +77,10 @@ const FormNewProduct = () => {
     }
 
     return (
-        <div className="container">
+        <div className={style.containerForm}>
             <form onSubmit={handleSubmit}>
                 <div>
-                <label>Product name:</label>
+                <label>Product name</label>
                 <input
                     type="text"
                     id="name"
@@ -113,7 +121,7 @@ const FormNewProduct = () => {
                 </div>
                 <div>
                     <select onChange={handleChange2} name="season">
-                        <option value="" selected disabled hidden>Select season</option>
+                        <option >Select season</option>
                         <option value="all seasons">All seasons</option>
                         <option value="summer">Summer</option>
                         <option value="spring">Spring</option>
@@ -123,7 +131,7 @@ const FormNewProduct = () => {
                 </div>
                 <div>
                     <select onChange={handleChange3} name="category">
-                        <option value="" selected disabled hidden>Select category</option>
+                        <option >Select category</option>
                         <option value="shirts">shirts</option>
                         <option value="t-shirts">t-shirts</option>
                         <option value="pants">pants</option>
@@ -135,7 +143,7 @@ const FormNewProduct = () => {
                 </div>
                 <div>
                     <select onChange={handleChange4} name="gender">
-                        <option value="" selected disabled hidden>Select gender</option>
+                        <option >Select gender</option>
                         <option value="male">male</option>
                         <option value="female">female</option>
                     </select>
@@ -152,13 +160,30 @@ const FormNewProduct = () => {
                 </div>
                 <div>
                 <label>Rating</label>
-                <input
-                    type="number"
-                    id="rating"
-                    name="rating"
-                    placeholder="rating"
-                    onChange={handleChange}
-                />
+                <div>
+            
+    <div>
+      <input type="radio" id="rating1" name="drone" value="1" onChange={handleChange5}/>
+      <label >1</label>
+    </div>
+    <div>
+      <input type="radio" id="rating2" name="drone" value="2"/>
+      <label >2</label>
+    </div>
+    <div>
+      <input type="radio" id="rating3" name="drone" value="3"/>
+      <label>3</label>
+    </div>
+     <div>
+      <input type="radio" id="rating4" name="drone" value="4"/>
+      <label >4</label>
+    </div>
+     <div>
+      <input type="radio" id="rating5" name="drone" value="5"/>
+      <label >5</label>
+    </div>
+
+                </div>
                 </div>
                 <div>
                 <label>Stock</label>
