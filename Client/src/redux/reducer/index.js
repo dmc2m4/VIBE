@@ -23,8 +23,13 @@ export default function rootReducer(state = initialState, action) {
   if (action.type === types.GET_ALL_CLOTHES) {
     return {
       ...state,
-      Products: action.payload,
       Filters: action.payload,
+    };
+  }
+  if (action.type === types.GET_PAGE) {
+    return {
+      ...state,
+      Products: action.payload,
     };
   }
   if (action.type === types.DELETE_PRODUCT) {
@@ -73,11 +78,11 @@ export default function rootReducer(state = initialState, action) {
       },
     };
   }
-  if(action.type === types.PRODUCT_DETAIL){
-    return{
+  if (action.type === types.PRODUCT_DETAIL) {
+    return {
       ...state,
-      Detail: action.payload
-    }
+      Detail: action.payload,
+    };
   }
   return { ...state };
 }
