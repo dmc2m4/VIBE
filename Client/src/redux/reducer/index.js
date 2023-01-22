@@ -8,6 +8,7 @@ const initialState = {
   Filters: [],
   Detail: {},
   Favorites: [],
+  User: {},
   Cart: {
     items: [
       { id: 1, name: "Campera", price: 100, quantity: 0 },
@@ -90,6 +91,12 @@ export default function rootReducer(state = initialState, action) {
       ...state,
       Detail: action.payload,
     };
+  }
+  if(action.type === types.LOGIN_USER){
+    return{
+      ...state,
+      User: action.payload
+    }
   }
   return { ...state };
 }

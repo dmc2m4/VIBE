@@ -130,7 +130,7 @@ const FormNewProduct = () => {
                     </select>
                 </div>
                 <div>
-                    <select onChange={handleChange3} name="category">
+                    <select onChange={handleChange3} name="category" >
                         <option >Select category</option>
                         <option value="shirts">shirts</option>
                         <option value="t-shirts">t-shirts</option>
