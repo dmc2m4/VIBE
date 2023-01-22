@@ -1,11 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styles from "./Card.module.css"
 
 
 const Card = (props) => {
   return (
     <div className={styles.container} >
-      <img src={props.img} alt="" className={styles.img}/>
+      <Link to={`/productDetail/${props.id}`}> <img src={props.img} alt="" className={styles.img}/></Link> 
       <h3>{props.name}</h3>
       <p>Talla: {props.size}</p>
       <p>Cost: {props.cost} USD</p>

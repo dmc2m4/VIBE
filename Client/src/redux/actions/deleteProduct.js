@@ -11,7 +11,7 @@ export const deleteProduct = (product) => {
         payload: product,
       });
     } catch (error) {
-      alert("the activity could not be deleted");
+      alert("the activity couldn`t be deleted"); 
     }
   };
 };

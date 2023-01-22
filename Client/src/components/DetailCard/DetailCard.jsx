@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import createDetail from "../../redux/actions/createDetail";
 
@@ -11,11 +11,14 @@ const DetailCard = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(createDetail(id));
-  }, []);
+  }, [dispatch, id]);
 
   return (
     <div>
-      <button>Back</button>
+      <Link to='/products'>
+        {" "}
+        <button>Back</button>
+      </Link>
       <button>Favorite</button>
       <button>Add car</button>
       <h4>{detail.name}</h4>
