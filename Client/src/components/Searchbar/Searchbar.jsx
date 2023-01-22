@@ -1,12 +1,12 @@
 import React from "react";
-import "./Searchbar.css";
-import iconSearch from "../../assets/search_icon.svg";
+import style from './Searchbar.module.css'
+import lupa from '../../assets/lupas.png'
 
 const Searchbar = () => {
   return (
-    <div className="searchbar_box">
-      <input type="text" className="search_input" />
-      <img src={iconSearch} alt="icon_search" className="icon_search"/>
+    <div className={style.containerSearch}>
+      <input type="text" className={style.search} placeholder="Search..."  /> 
+      <img src={lupa} alt="" className={style.lupa} />
     </div>
   );
 };

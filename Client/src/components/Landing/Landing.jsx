@@ -1,9 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import clothes from "../../assets/clothes.jpg";
 import Login from "../Login/Login";
 import style from "./Landing.module.css";
 
 const Landing = () => {
+  const navigate = useNavigate()
+
+  function signUpBotton (){
+    navigate("/signup")
+  }
+
   return (
     <div className={style.container}>
       <div className={style.containerLogo}>
@@ -27,9 +34,9 @@ const Landing = () => {
             Shop top brands, <br />
             latest styles, great <br />
             deals on fashion <br />
-            for all!
+            for all!a
           </p>
-          <button className={style.buttonLanding}>Sign up</button>
+          <button className={style.buttonLanding} onClick={(e => signUpBotton(e))}>Sign up</button>
           <p className={style.textAccount}>Do you have an acoount?</p>
           <p className={style.textSign}>Sign In</p>
         </div>

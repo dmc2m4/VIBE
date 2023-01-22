@@ -1,6 +1,7 @@
 import { useState, React } from "react";
 import { useDispatch } from "react-redux";
 import createProdcut from "../../redux/actions/createProduct";
+import style from './FormNewProduct.module.css'
 
 
 const FormNewProduct = () => {
