@@ -1,11 +1,14 @@
 import types from "./types";
+import axios from "axios";
 
-const getPage = (type, info, page) => {
-  return async function () {
-    const response = await axios
-      .post("http://localhost:3001/paging", type, info, page)
+const getPage = (page, info) => {
+  return async function (dispatch) {
+    await axios
+      .post("http://localhost:3001/pagination", {
+        body: { page: page, info: info },
+      })
+      .then((res) => dispatch({ type: types.GET_PAGE, payload: res.data.rows }))
       .catch((e) => e.error);
-    return response;
   };
 };
 

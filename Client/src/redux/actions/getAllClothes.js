@@ -1,5 +1,4 @@
 import types from "./types";
-// export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS";
 
 export function getAllClothes() {
   return function (dispatch) {
