@@ -1,7 +1,6 @@
 const { Product } = require("../db");
 
-const getPaging = async (info, page) => {
-
+const getPagination = async (page, info = {}) => {
   function filtered() {
     let filter = {};
     if (info.color) {
@@ -16,7 +15,7 @@ const getPaging = async (info, page) => {
     if (info.season) {
       filter.season = info.season;
     }
-    const response = Object.keys(filter).length === 0 ? null : filter;
+    const response = Object.keys(filter).length > 0 ? filter : null;
     return response;
   }
 
@@ -28,4 +27,4 @@ const getPaging = async (info, page) => {
   return product;
 };
 
-module.exports = { getPaging };
+module.exports = { getPagination };
