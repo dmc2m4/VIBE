@@ -1,11 +1,13 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import createUser from "../../redux/actions/createUser";
-import style from './FormSingUp.module.css'
+import style from "./FormSingUp.module.css";
 
 const FormSignUp = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [error, setError] = useState({});
   const [newUser, setNewUser] = useState({
     name: "",
@@ -29,16 +31,27 @@ const FormSignUp = () => {
 
   function validate(input) {
     const regExpEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i;
-    if (!regExpEmail.test(input.email)) error.email = "El email es inválido";
-    if (!input.name) error.name = "Introduzca un nombre de usuario";
-    if (input.password !== input.confirmPassword) error.password = "Las contraseñas no coinciden";
+    if (!regExpEmail.test(input.email)) error.email = "The email is invalid";
+    if (!input.name) error.name = "enter a username";
+    if (input.password !== input.confirmPassword)
+      error.password = "Passwords don't match";
     return error;
   }
 
   function handleSubmit() {
-    dispatch(createUser(newUser));
-    console.log(newUser);
-    alert("usuario creado correctamente");
+    if (
+      !newUser.name ||
+      !newUser.password ||
+      !newUser.email ||
+      !newUser.confirmPassword
+    ) {
+      alert("Incomplete data");
+    } else {
+      dispatch(createUser(newUser));
+      console.log(newUser);
+      alert("user created successfully");
+      navigate("/products");
+    }
   }
 
   return (
@@ -83,7 +96,9 @@ const FormSignUp = () => {
         />
         {/* <label>Accept the terms and conditions</label>
         <input type='checkbox' id='accptterms' name='acceptterms' value='si' /> */}
-        <button type='submit' className={style.buttonSignup}>Create Acount</button> 
+        <button type="submit" className={style.buttonSignup}>
+          Create Acount
+        </button>
       </form>
     </div>
   );

@@ -3,41 +3,41 @@ import Loading from "../Loading/Loading";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import styles from "./Products.module.css";
-import {deleteProducts} from "../../redux/actions/deleteProduct";
-import getAllClothes from "../../redux/actions/getAllChlotes";
+import { deleteProduct } from "../../redux/actions/deleteProduct";
+import { getAllClothes } from "../../redux/actions/getAllClothes";
 
+export default function Products() {
+  const Products = useSelector((state) => state.Products);
+  const dispatch = useDispatch();
 
-export default function Products () {
-    const allProducts = useSelector(state => state.allProducts)
-    const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getAllClothes());
+  }, [dispatch]);
 
-    useEffect(()=>{
-        dispatch(getAllClothes())
-    },[dispatch])
+  function deleteProducts(product) {
+    dispatch(deleteProduct(product));
+  }
 
-    function deleteProduct (product){
-        dispatch(deleteProducts(product))
-    }
-
-    return(
-        <div className={styles.container}>
-            {!allProducts[0]? <Loading /> : allProducts.map(product => (
-            <Card
-                name={product.name}
-                img={product.img}
-                size={product.size}
-                cost ={product.cost}
-                category ={product.category}
-                color ={product.color}
-                gender ={product.gender}
-                season ={product.season}
-                stock ={product.stock}
-                rating ={product.rating}
-                id={product.id}
-                key={product.id}
-                deleteProduct={deleteProduct}
-            />
-        ))}
-        </div>
-    )
+  return (
+    <div className={styles.container}>
+      {!Products[0] ? <Loading /> : (Products.map(product => 
+          <Card
+            name={product.name}
+            img={product.img}
+            size={product.size}
+            cost={product.cost}
+            category={product.category}
+            color={product.color}
+            gender={product.gender}
+            season={product.season}
+            stock={product.stock}
+            rating={product.rating}
+            id={product.id}
+            key={product.id}
+            deleteProduct={deleteProducts}
+          />
+        )
+      )}
+    </div>
+  );
 }

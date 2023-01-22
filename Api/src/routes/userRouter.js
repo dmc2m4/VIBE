@@ -3,7 +3,8 @@ const {
   getAllUsers,
   postUsers,
   deleteUsers,
-  putUsers
+  putUsers,
+  loginUser
 } = require("../controllers/UserControllers");
 const PUM = require("../middlewares/PostUserMiddleware");
 const { User } = require("../db");
@@ -19,7 +20,7 @@ userRouter.get("/", async (req, res) => {
   }
 });
 
-userRouter.post("/", PUM, async (req, res) => {
+userRouter.post("/signup", PUM, async (req, res) => {
   try {
     const newUser = await postUsers(req.body);
     res.status(201).send(newUser);
@@ -27,6 +28,15 @@ userRouter.post("/", PUM, async (req, res) => {
     res.status(400).send(error.message);
   }
 });
+
+userRouter.post("/login", async (req, res) => {
+  try{
+    const user = await loginUser(req.body);
+    res.status(200).send(user)
+  }catch(error){
+    res.status(401).send(error.message)
+  }
+})
 
 userRouter.delete('/delete/:email', async (req, res)=>{
   try {
@@ -49,5 +59,6 @@ userRouter.put("/updateUser/:id", async (req, res) => {
     res.status(400).send(error.message);
   }
 });
+
 
 module.exports = userRouter;

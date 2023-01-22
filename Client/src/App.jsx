@@ -6,8 +6,10 @@ import Landing from "./components/Landing/Landing";
 import FormNewProduct from "./components/FormNewProduct/FormNewProduct";
 import Products from "./components/Products/Products";
 import Register from "./views/Register/Register";
-import Login from "./views/Login/Login"
-
+import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
+import Login from "./views/Login/Login";
+import Home from "../src/views/Home/Home";
+import DetailCard from "./components/DetailCard/DetailCard";
 // import Login from "./components/Login/Login";
 
 
@@ -16,12 +18,13 @@ const App = () => {
     <div className="App">
       <Routes>
         <Route exact path="/" element={<Landing />} />
-        {/* <Route exact path="/home" component={Home}/> */}
-        <Route path="/signup" element={<Register/>} />
-        <Route exact path="/login" element={<Login/>} /> 
+        <Route path="/home" element={<Home />} />
+        <Route path="/signup" element={<Register />} />
+        <Route exact path="/login" element={<Login />} />
         <Route path="/createProduct" element={<FormNewProduct />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/nav" element={<Navbar />} />
+        <Route path="/shopping-cart" element={<ShoppingCart />} />
+        <Route path="/productDetail/:id" element={<DetailCard/>} />
       </Routes>
     </div>
   );
