@@ -10,6 +10,7 @@ export function getAllClothes() {
           type: types.GET_ALL_CLOTHES,
           payload: data,
         });
-      });
+      })
+      .catch((e) => e.error);
   };
 }
