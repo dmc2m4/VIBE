@@ -7,8 +7,8 @@ import getPage from "../../redux/actions/getPage";
 const Pagination = () => {
   const dispatch = useDispatch();
   const [pages, setPages] = useState(0);
-  const allProducts = useSelector((state) => state.Filters);
-  const firstElement = Math.ceil(allProducts / 5);
+  let allProducts = useSelector((state) => state.Filters);
+  let firstElement = Math.ceil(allProducts.length / 5);
   function pageList(num) {
     const arrPages = [];
     for (let i = num; i > 0; i--) {

@@ -20,7 +20,7 @@ export default function Products() {
 
   return (
     <div className={styles.container}>
-      {!products.legth ? (
+      {!products.length ? (
         <Loading />
       ) : (
         products.map((product) => (
