@@ -4,6 +4,7 @@ import types from "../actions/types";
 
 const initialState = {
   Products: [],
+  Page: 0,
   Filters: [],
   Detail: {},
   Favorites: [],
@@ -24,6 +25,12 @@ export default function rootReducer(state = initialState, action) {
     return {
       ...state,
       Filters: action.payload,
+    };
+  }
+  if (action.type === types.SET_CURRENT_PAGE) {
+    return {
+      ...state,
+      Page: action.payload,
     };
   }
   if (action.type === types.GET_PAGE) {

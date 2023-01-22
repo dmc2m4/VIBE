@@ -1,8 +1,7 @@
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import getPage from "../../redux/actions/getPage";
+import setCurrentPage from "../../redux/actions/setCurrentPage";
 
 const Pagination = () => {
   const dispatch = useDispatch();
@@ -21,14 +20,15 @@ const Pagination = () => {
   }
   useEffect(() => {
     dispatch(getPage(pages));
+    setCurrentPage(pages);
   }, [dispatch, pages]);
   return (
     <div>
-      {pageList(firstElement).map((e, i) => {
-        <button key={i} value={i} onClick={(e) => handleClick(e.target.value)}>
+      {pageList(firstElement).map((e, i) => (
+        <button value={i} key={i} onClick={(e) => handleClick(e.target.value)}>
           {e}
-        </button>;
-      })}
+        </button>
+      ))}
     </div>
   );
 };
