@@ -5,7 +5,7 @@ import types from "../actions/types";
 const initialState = {
   Products: [],
   Page: 0,
-  Filters: [],
+  Filters: {},
   Detail: {},
   Favorites: [],
   User: {},
@@ -22,7 +22,7 @@ const initialState = {
 };
 
 export default function rootReducer(state = initialState, action) {
-  if (action.type === types.GET_ALL_CLOTHES) {
+  if (action.type === types.UPDATE_FILTERS) {
     return {
       ...state,
       Filters: action.payload,
@@ -92,11 +92,11 @@ export default function rootReducer(state = initialState, action) {
       Detail: action.payload,
     };
   }
-  if(action.type === types.LOGIN_USER){
-    return{
+  if (action.type === types.LOGIN_USER) {
+    return {
       ...state,
-      User: action.payload
-    }
+      User: action.payload,
+    };
   }
   return { ...state };
 }
