@@ -121,7 +121,7 @@ const FormNewProduct = () => {
                     </select>
                 </div>
                 <div>
-                    <select onChange={handleChange3} name="category">
+                    <select onChange={handleChange3} name="category" >
                         <option value="" selected disabled hidden>Select category</option>
                         <option value="shirts">shirts</option>
                         <option value="t-shirts">t-shirts</option>

@@ -40,7 +40,7 @@ const Login = () => {
     ) {
       alert("Incomplete data");
     } else {
-      dispatch(loginUser(login));
+      dispatch(loginUser(login))
       navigate("/home");
     }
   }
