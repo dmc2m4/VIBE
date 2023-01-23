@@ -5,9 +5,11 @@ import types from "../actions/types";
 const initialState = {
   Products: [],
   Page: 0,
-  Filters: [],
+  Num: 0,
+  Filters: {},
   Detail: {},
   Favorites: [],
+  User: {},
   Cart: {
     items: [
       { id: 1, name: "Campera", price: 100, quantity: 0 },
@@ -21,7 +23,7 @@ const initialState = {
 };
 
 export default function rootReducer(state = initialState, action) {
-  if (action.type === types.GET_ALL_CLOTHES) {
+  if (action.type === types.UPDATE_FILTERS) {
     return {
       ...state,
       Filters: action.payload,
@@ -34,9 +36,11 @@ export default function rootReducer(state = initialState, action) {
     };
   }
   if (action.type === types.GET_PAGE) {
+    console.log(action.payload);
     return {
       ...state,
-      Products: action.payload,
+      Products: action.payload.products.rows,
+      Num: action.payload.num,
     };
   }
   if (action.type === types.DELETE_PRODUCT) {
@@ -90,6 +94,24 @@ export default function rootReducer(state = initialState, action) {
       ...state,
       Detail: action.payload,
     };
+  }
+  if (action.type === types.LOGIN_USER) {
+    return {
+      ...state,
+      User: action.payload,
+    };
+  }
+  if (action.type === types.CLEAN_PAGE){
+    return {
+      ...state,
+      Page: 0
+    }
+  }
+  if (action.type === types.CLEAN_DETAIL){
+    return {
+      ...state,
+      Detail: {}
+    }
   }
   return { ...state };
 }

@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const MPP = require("./../Middlewares/PostProductMiddleware");
+const MPP = require("../middlewares/PostProductMiddleware");
 const {
   getAllProduct,
   postProduct,

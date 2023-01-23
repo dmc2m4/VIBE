@@ -2,12 +2,13 @@ import React from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Products from "../../components/Products/Products";
 import Pagination from "../../components/Pagination/Pagination";
-import style from './Home.module.css'
+import Filters from "../../components/Filters/Filters";
 
 const Home = () => {
   return (
     <div className={style.container}>
       <Navbar />
+      <Filters />
       <Products />
       <Pagination />
     </div>

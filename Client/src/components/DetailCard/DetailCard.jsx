@@ -3,20 +3,23 @@ import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import createDetail from "../../redux/actions/createDetail";
+import { cleanDetail } from "../../redux/actions/cleanDetail";
 
 const DetailCard = () => {
   const detail = useSelector((state) => state.Detail);
-
   const { id } = useParams();
   const dispatch = useDispatch();
+  
   useEffect(() => {
     dispatch(createDetail(id));
+    return function (){
+      dispatch(cleanDetail())
+    }
   }, [dispatch, id]);
 
   return (
     <div>
-      <Link to='/products'>
-        {" "}
+      <Link to='/home'>
         <button>Back</button>
       </Link>
       <button>Favorite</button>

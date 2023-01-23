@@ -50,7 +50,7 @@ const FormSignUp = () => {
       dispatch(createUser(newUser));
       console.log(newUser);
       alert("user created successfully");
-      navigate("/products");
+      navigate("/home");
     }
   }
 

@@ -1,11 +1,16 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { cleanPage } from "../../redux/actions/cleanPage";
+import getPage from "../../redux/actions/getPage";
+import updateFilters from "../../redux/actions/updateFilters";
 
 const Filters = () => {
   const dispatch = useDispatch();
+  const page = useSelector((state) => state.Page);
   const colorList = [
+    "all",
     "red",
     "blue",
     "green",
@@ -16,20 +21,37 @@ const Filters = () => {
     "green",
     "pink",
   ];
-  const sizeList = ["XS", "S", "XL", "L"];
-  const typeList = ["Jacket", "T-Shirt", "Pants", "Hat", "Sneakers"];
+  const sizeList = ["all", "L", "M", "S", "XS", "XL"];
+
+  const categoryList = [
+    "all",
+    "shirts",
+    "t-shirts",
+    "pants",
+    "shoes",
+    "shorts",
+    "jackets",
+    "sweatshirts",
+  ];
   const [filtreds, setFiltreds] = useState({
     color: "",
     size: "",
-    type: "",
+    category: "",
   });
   function handleChange(e) {
-    setFiltreds({ ...filtreds, [e.target.name]: e.target.value });
+    setFiltreds({
+      ...filtreds,
+      [e.target.name]: e.target.value !== "all" ? e.target.value : null,
+    });
     console.log(filtreds);
+    dispatch(cleanPage());
   }
+
   useEffect(() => {
-    // dispatch(getPage());
+    dispatch(updateFilters(filtreds));
+    dispatch(getPage(page, filtreds));
   }, [filtreds]);
+
   return (
     <div>
       <span>Colors</span>
@@ -48,11 +70,11 @@ const Filters = () => {
           </option>
         ))}
       </select>
-      <span>Type</span>
-      <select name="type" id="type" onChange={handleChange}>
-        {typeList.map((type, i) => (
-          <option name="type" value={type} key={i}>
-            {type}
+      <span>Categories</span>
+      <select name="category" id="category" onChange={handleChange}>
+        {categoryList.map((category, i) => (
+          <option name="category" value={category} key={i}>
+            {category}
           </option>
         ))}
       </select>
