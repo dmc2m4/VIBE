@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import getPage from "../../redux/actions/getPage";
 import setCurrentPage from "../../redux/actions/setCurrentPage";
+import style from './Pagination.module.css'
 
 const Pagination = () => {
   const dispatch = useDispatch();
@@ -23,9 +24,9 @@ const Pagination = () => {
     setCurrentPage(pages);
   }, [dispatch, pages]);
   return (
-    <div>
+    <div className={style.container}>
       {pageList(firstElement).map((e, i) => (
-        <button value={i} key={i} onClick={(e) => handleClick(e.target.value)}>
+        <button value={i} key={i} onClick={(e) => handleClick(e.target.value)} className={style.buttonPa}>
           {e}
         </button>
       ))}
