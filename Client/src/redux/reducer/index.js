@@ -98,5 +98,17 @@ export default function rootReducer(state = initialState, action) {
       User: action.payload,
     };
   }
+  if (action.type === types.CLEAN_PAGE){
+    return {
+      ...state,
+      Page: 0
+    }
+  }
+  if (action.type === types.CLEAN_DETAIL){
+    return {
+      ...state,
+      Detail: {}
+    }
+  }
   return { ...state };
 }

@@ -67,6 +67,8 @@ const FormNewProduct = () => {
         console.log(e.target.value)
     }
 
+    console.log(newProduct);
+
     function handleSubmit() {
         if (!newProduct.name || !newProduct.img || !newProduct.size || !newProduct.color || !newProduct.category || !newProduct.gender || !newProduct.cost || !newProduct.rating || !newProduct.season || !newProduct.stock) {
             return alert("Por favor completar todos los campos");
@@ -167,19 +169,19 @@ const FormNewProduct = () => {
       <label >1</label>
     </div>
     <div>
-      <input type="radio" id="rating2"  value="2"/>
+      <input type="radio" id="rating2"  value="2" onChange={handleChange5}/>
       <label >2</label>
     </div>
     <div>
-      <input type="radio" id="rating3"  value="3"/>
+      <input type="radio" id="rating3"  value="3" onChange={handleChange5}/>
       <label>3</label>
     </div>
      <div>
-      <input type="radio" id="rating4"  value="4"/>
+      <input type="radio" id="rating4"  value="4" onChange={handleChange5}/>
       <label >4</label>
     </div>
      <div>
-      <input type="radio" id="rating5"  value="5"/>
+      <input type="radio" id="rating5"  value="5" onChange={handleChange5}/>
       <label >5</label>
     </div>
 
