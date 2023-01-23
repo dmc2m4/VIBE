@@ -19,12 +19,18 @@ const getPagination = async (page, info = {}) => {
     return response;
   }
 
-  const product = await Product.findAndCountAll({
+  const products = await Product.findAndCountAll({
     where: filtered(),
     offset: page,
     limit: 5,
   });
-  return product;
+
+  const allProducts = await Product.findAll({
+    where: filtered(),
+  });
+  const result = allProducts.length;
+
+  return { products: products, num: result };
 };
 
 module.exports = { getPagination };

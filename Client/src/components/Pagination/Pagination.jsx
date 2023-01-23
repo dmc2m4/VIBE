@@ -7,11 +7,16 @@ const Pagination = () => {
   const dispatch = useDispatch();
   const filtred = useSelector((state) => state.Filters);
   const page = useSelector((state) => state.Page);
+  const maxNum = useSelector((state) => state.Num);
   function handlePrev() {
-    dispatch(setCurrentPage(page - 5));
+    if (page - 5 >= 0) {
+      dispatch(setCurrentPage(page - 5));
+    }
   }
   function handleNext() {
-    dispatch(setCurrentPage(page + 5));
+    if (page + 5 < maxNum) {
+      dispatch(setCurrentPage(page + 5));
+    }
   }
   useEffect(() => {
     dispatch(getPage(page, filtred));
