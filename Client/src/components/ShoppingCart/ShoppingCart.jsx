@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, clearCart, removeFromCart } from '../../redux/actions/shoppingCart.actions'
+import { addOneToCart, clearCart, removeFromCart } from '../../redux/actions/shoppingCart.actions'
 import "./ShoppingCart.css";
 
 const ShoppingCart = () => {
@@ -17,15 +17,15 @@ const ShoppingCart = () => {
       <article className="box">
         {items?.map((i) => (
           <div key={i.id}>
-          <h1>{i.name} ${i.price} cantidad: ({i.quantity})</h1>
-          <button onClick={() => dispatch(addToCart(i))}>+</button>
+          <h1>{i.name} ${i.price} Quantity: ({i.quantity})</h1>
+          <button onClick={() => dispatch(addOneToCart(i))}>+</button>
           <button onClick={() => dispatch(removeFromCart(i))}>-</button>
           
           </div>
         ))}
       </article>
-      <h1>Total a pagar: {total}</h1>
-      <button onClick={() => dispatch(clearCart())}>Limpiar</button>
+      <h1>Total: {total} USD</h1>
+      <button onClick={() => dispatch(clearCart())}>Clear</button>
     </div>
   );
 };

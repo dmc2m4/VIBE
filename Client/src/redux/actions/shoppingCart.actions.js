@@ -1,6 +1,7 @@
 import types from "./types";
+import axios from "axios"; 
 
-export function addToCart(payload){
+export function addOneToCart(payload){
     return {
         type: types.ADD_TO_CART,
         payload,
