@@ -40,7 +40,6 @@ export default function rootReducer(state = initialState, action) {
       Products: action.payload.rows,
       Num: action.payload.count,
     };
-    
   }
   if (action.type === types.DELETE_PRODUCT) {
     return {
@@ -111,18 +110,6 @@ export default function rootReducer(state = initialState, action) {
       ...state,
       Detail: {},
     };
-  }
-  if (action.type === types.SEARCH_PRODUCTS){
-    return {
-      ...state,
-      Products: [...state.backUpProducts].filter(p => p.name.includes(action.payload))
-    }
-  }
-  if (action.type === types.GET_ALL_CLOTHES){
-    return {
-      ...state,
-      backUpProducts: action.payload
-    }
   }
   return { ...state };
 }
