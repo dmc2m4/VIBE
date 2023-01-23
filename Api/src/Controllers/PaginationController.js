@@ -30,7 +30,7 @@ const getPagination = async (page, info = {}) => {
   });
   const result = allProducts.length;
 
-  return { products: products, num: result };
+  return { products: products, num: result , allProducts: allProducts};
 };
 
 module.exports = { getPagination };
