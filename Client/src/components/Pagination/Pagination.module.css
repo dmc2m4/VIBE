@@ -8,12 +8,15 @@
 
 .buttonPa{
     border: none;
-    width: 40px;
-    height: 40px;
+    border-radius: 5px;
+    box-shadow: 2px 3px 3px 3px rgba(0, 0, 0, 0.75);
+    width: 60px;
+    height: 35px;
     background-color: transparent;
     color: #4d4234;
     font-size: 16px;
     font-weight: bold;
     font-family: 'Kalam', cursive;
     cursor: pointer;
+    margin: 8px;
 }

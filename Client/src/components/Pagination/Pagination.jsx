@@ -24,9 +24,9 @@ const Pagination = () => {
     dispatch(getPage(page, filtred));
   }, [dispatch, page, filtred]);
   return (
-    <div>
-      <button onClick={handlePrev}>Prev</button>
-      <button onClick={handleNext}>Next</button>
+    <div className={style.container}>
+      <button onClick={handlePrev} className={style.buttonPa}>Prev</button>
+      <button onClick={handleNext} className={style.buttonPa}>Next</button>
     </div>
   );
 };
