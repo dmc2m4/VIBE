@@ -1,6 +1,7 @@
 const { User } = require("../db.js");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const emailController = require('./EmailController')
 
 const getAllUsers = async () => {
   const allUsers = await User.findAll();
@@ -8,40 +9,46 @@ const getAllUsers = async () => {
   return allUsers
 };
 
-const postUsers = async ({ name, password,  img, email }) => {
-    const cryptPassword = bcrypt.hashSync(password, 10);
-    const newUser = await User.create({
-      name: name,
-      password: cryptPassword,
-      email,
-      img,
-    });
-
-    let token = jwt.sign({user: newUser}, "secret", {expiresIn: "7d"})
-
-    return {token};
+const postUsers = async ({ name, password, img, email }) => {
+  const cryptPassword = bcrypt.hashSync(password, 10);
+  const newUser = await User.create({
+    name: name,
+    password: cryptPassword,
+    email,
+    img,
+  });
+  if (newUser) {
+    emailController.sendEmail(newUser.email,
+      `Hola ${newUser.email} \n tu cuenta ha sigo registrada exitosamente \n Bienvenido!!`)
   }
+
+  let token = jwt.sign({ user: newUser }, "secret", { expiresIn: "7d" })
+
+  return { token };
+}
 
 const loginUser = async (value) => {
   const user = await User.findOne(
-    {where: {
-      email: value.email
-    }});
-    if(!user) {
-      return "hola"
-    }else{
-      if (bcrypt.compareSync(value.password, user.password)){
-        let token = jwt.sign({user: user}, "secret", {expiresIn: "7d"});
-        return {token}
-      }else {
-        return "chao";
+    {
+      where: {
+        email: value.email
       }
+    });
+  if (!user) {
+    return "hola"
+  } else {
+    if (bcrypt.compareSync(value.password, user.password)) {
+      let token = jwt.sign({ user: user }, "secret", { expiresIn: "7d" });
+      return { token }
+    } else {
+      return "chao";
     }
+  }
 
 }
 
-  const deleteUsers = async function (email){
-     await User.destroy({where: {email}})
+const deleteUsers = async function (email) {
+  await User.destroy({ where: { email } })
 }
 
 const putUsers = async (value, req) => {

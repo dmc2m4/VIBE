@@ -15,11 +15,13 @@ const Landing = () => {
   return (
     <div className={style.container}>
       <div className={style.containerLogo}>
+        <Link to ="home">
         <img
           src="https://cdn.discordapp.com/attachments/1065781982342164480/1067134458400088294/DALLE_2023-01-20_01.52.14_-logocopia.png"
           alt=""
           className={style.logo}
-        />
+          />
+          </Link>
       </div>
       <section className={style.sectionButton}>
         <div>

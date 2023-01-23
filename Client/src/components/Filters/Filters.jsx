@@ -35,16 +35,15 @@ const Filters = () => {
     "sweatshirts",
   ];
   const [filtreds, setFiltreds] = useState({
-    color: "",
-    size: "",
-    category: "",
+    color: undefined,
+    size: undefined,
+    category: undefined,
   });
   function handleChange(e) {
     setFiltreds({
       ...filtreds,
       [e.target.name]: e.target.value !== "all" ? e.target.value : null,
     });
-    console.log(filtreds);
     dispatch(cleanPage());
   }
 

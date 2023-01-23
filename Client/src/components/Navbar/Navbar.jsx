@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import updateFilters from "../../redux/actions/updateFilters";
 import getPage from "../../redux/actions/getPage";
 import { cleanPage } from "../../redux/actions/cleanPage";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
@@ -20,9 +21,8 @@ const Navbar = () => {
   const [toggleOrders, setToggleOrders] = useState(false);
   const dispatch = useDispatch();
   const page = useSelector((state) => state.Page);
-  const [category, setCategory] = useState({ category: "" });
+  const [category, setCategory] = useState({ category: undefined });
   useEffect(() => {
-    console.log(category);
     dispatch(updateFilters(category));
   }, [dispatch, category]);
   const categories = [
@@ -52,7 +52,9 @@ const Navbar = () => {
   return (
     <nav className={style.container}>
       <div className={style.containerIcon} onClick={handleToggleAll}>
+        <Link to ="/home">
         <img src={iconVibe} alt="" className={style.icon} />
+        </Link>
       </div>
       <div className={style.containerUl}>
         <ul className={style.containerLi}>
