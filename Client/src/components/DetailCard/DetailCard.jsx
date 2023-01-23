@@ -15,8 +15,7 @@ const DetailCard = () => {
 
   return (
     <div>
-      <Link to='/products'>
-        {" "}
+      <Link to='/home'>
         <button>Back</button>
       </Link>
       <button>Favorite</button>
