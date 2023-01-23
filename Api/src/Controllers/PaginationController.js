@@ -25,7 +25,6 @@ const getPagination = async (page, info = {}) => {
     offset: page,
     limit: 5,
   });
-
   return response;
 };
 

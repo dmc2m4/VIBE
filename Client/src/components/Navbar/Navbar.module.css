@@ -11,7 +11,7 @@
 .container{
   display: grid;
   grid-template-columns: auto 2fr 1fr auto;
-  background-color: #98906c;
+  background-color: #cbc090;
   height: 80px;
   margin-top: -1rem;
 }
