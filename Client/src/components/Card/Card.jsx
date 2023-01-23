@@ -1,16 +1,27 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import styles from "./Card.module.css"
+import style from "./Card.module.css"
+import car from '../../assets/car.png'
 
 
 const Card = (props) => {
   return (
-    <div className={styles.container} >
-      <Link to={`/productDetail/${props.id}`}> <img src={props.img} alt="" className={styles.img}/></Link> 
-      <h3>{props.name}</h3>
-      <p>Talla: {props.size}</p>
-      <p>Cost: {props.cost} USD</p>
-      <button  onClick={()=> props.deleteProduct(props.id)}>Delete</button>
+    <div className={style.container} >
+      <button  onClick={()=> props.deleteProduct(props.id)} className={style.delete}>X</button>
+    <Link to={`/productDetail/${props.id}`} className={style.link}> <img src={props.img} alt="" className={style.img}/></Link> 
+      <h3 className={style.title}>{props.name}</h3>
+      <div className={style.containerDescription}>
+        <div>
+      <p className={style.text}>{props.cost} USD</p>
+      <p className={style.text}>{props.category}</p>
+      </div>
+      <div>
+        <div className={style.containerImg}>
+        <img src={car} alt="" className={style.car} />
+        </div>
+      </div>
+     </div>
+     
     </div>
   )
 }

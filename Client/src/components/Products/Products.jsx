@@ -2,7 +2,7 @@ import Card from "../Card/Card";
 import Loading from "../Loading/Loading";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import styles from "./Products.module.css";
+import style from "./Products.module.css";
 import { deleteProduct } from "../../redux/actions/deleteProduct";
 import { getAllClothes } from "../../redux/actions/getAllClothes";
 
@@ -20,7 +20,8 @@ export default function Products() {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={style.containerPrimary}>
+    <div className={style.container}>
       {!products.length ? (
         <Loading />
       ) : (
@@ -42,6 +43,7 @@ export default function Products() {
           />
         ))
       )}
+    </div>
     </div>
   );
 }

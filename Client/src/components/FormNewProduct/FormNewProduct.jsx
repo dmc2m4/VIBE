@@ -62,9 +62,8 @@ const FormNewProduct = () => {
     const handleChange5 = (e) => {
         setNewProduct({
             ...newProduct,
-            rating: e.target.value
+            rating: parseInt(e.target.value)
         })
-        console.log(e.target.value)
     }
 
     console.log(newProduct);
@@ -165,7 +164,7 @@ const FormNewProduct = () => {
                 <div>
             
     <div>
-      <input type="radio" id="rating1"  value="1" onChange={handleChange5}/>
+      <input type="radio" name="rating" id="rating1"  value="1" onChange={handleChange5}/>
       <label >1</label>
     </div>
     <div>
