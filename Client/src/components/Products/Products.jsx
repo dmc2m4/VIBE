@@ -2,9 +2,10 @@ import Card from "../Card/Card";
 import Loading from "../Loading/Loading";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import styles from "./Products.module.css";
+import style from "./Products.module.css";
 import { deleteProduct } from "../../redux/actions/deleteProduct";
 import { getAllClothes } from "../../redux/actions/getAllClothes";
+
 
 export default function Products() {
   const products = useSelector((state) => state.Products);
@@ -17,12 +18,11 @@ export default function Products() {
   function deleteProducts(product) {
     dispatch(deleteProduct(product));
   }
-
-  return (
-    <div className={styles.container}>
-      {!products.length ? (
-        <Loading />
-      ) : (
+if(products.length > 0){
+  return(
+  <div className={style.containerPrimary}>
+    <div className={style.container}>
+      {
         products.map((product) => (
           <Card
             name={product.name}
@@ -40,7 +40,18 @@ export default function Products() {
             deleteProduct={deleteProducts}
           />
         ))
-      )}
+      }
+    </div>
     </div>
   );
+}else {
+  return (
+    <div className={style.containerLoading}>
+      <Loading/>
+    </div>
+  )
+}
+  
+  
+  
 }

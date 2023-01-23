@@ -11,6 +11,9 @@
 .container{
   display: grid;
   grid-template-columns: auto 2fr 1fr auto;
+  background-color: #cbc090;
+  height: 80px;
+  margin-top: -1rem;
 }
 .selectCategories{
   width: 8rem;
@@ -19,6 +22,7 @@
   font-weight: bold;
   border: none;
   font-family: 'Kalam', cursive;
+  background-color: transparent;
 }
 .containerIcon{
   display: flex;

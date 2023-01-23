@@ -4,7 +4,9 @@ import types from "../actions/types";
 
 const initialState = {
   Products: [],
+  backUpProducts: [],
   Page: 0,
+  Num: 0,
   Filters: {},
   Detail: {},
   Favorites: [],
@@ -35,10 +37,14 @@ export default function rootReducer(state = initialState, action) {
     };
   }
   if (action.type === types.GET_PAGE) {
+    console.log(action.payload.allProducts);
     return {
       ...state,
-      Products: action.payload,
+      Products: action.payload.products.rows,
+      backUpProducts: action.payload.allProducts,
+      Num: action.payload.num,
     };
+    
   }
   if (action.type === types.DELETE_PRODUCT) {
     return {
@@ -97,6 +103,30 @@ export default function rootReducer(state = initialState, action) {
       ...state,
       User: action.payload,
     };
+  }
+  if (action.type === types.CLEAN_PAGE){
+    return {
+      ...state,
+      Page: 0
+    }
+  }
+  if (action.type === types.CLEAN_DETAIL){
+    return {
+      ...state,
+      Detail: {}
+    }
+  }
+  if (action.type === types.SEARCH_PRODUCTS){
+    return {
+      ...state,
+      Products: [...state.backUpProducts].filter(p => p.name.includes(action.payload))
+    }
+  }
+  if (action.type === types.GET_ALL_CLOTHES){
+    return {
+      ...state,
+      backUpProducts: action.payload
+    }
   }
   return { ...state };
 }

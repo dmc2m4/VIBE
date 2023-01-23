@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Kalam', cursive;
+    width: 300px;
+    height: 60vh;
+}
+
+
+.selectFilter{
+    width: 8rem;
+    height: 1.5rem;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 8px;
+    font-family: 'Kalam', cursive;
+    background-color: transparent;
+}
