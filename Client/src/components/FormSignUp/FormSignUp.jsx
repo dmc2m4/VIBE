@@ -48,7 +48,6 @@ const FormSignUp = () => {
       alert("Incomplete data");
     } else {
       dispatch(createUser(newUser));
-      console.log(newUser);
       alert("user created successfully");
       navigate("/home");
     }
