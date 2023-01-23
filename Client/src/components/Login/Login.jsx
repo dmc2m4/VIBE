@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import loginUser from "../../redux/actions/userLogin";
 import style from "./Login.module.css";
-import axios from "axios";
+import GoogleLogin from 'react-google-login';
 
 const Login = () => {
   const [login, setLogin] = useState({
@@ -46,6 +46,9 @@ const Login = () => {
       navigate('/home')
     }
   }
+  const responseGoogle = (response) => {
+    console.log(response);
+  }
 
   return (
     <div className={style.containerLogin}>
@@ -73,6 +76,13 @@ const Login = () => {
           Login
         </button>
       </form>
+      <GoogleLogin
+    clientId="588392350787-kita7pgttuvevqp5kuu8gt02ib39fi92.apps.googleusercontent.com"
+    buttonText="Login"
+    onSuccess={responseGoogle}
+    onFailure={responseGoogle}
+    cookiePolicy={'single_host_origin'}
+  />,
     </div>
   );
 };

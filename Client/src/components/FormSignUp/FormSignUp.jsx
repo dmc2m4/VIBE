@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import createUser from "../../redux/actions/createUser";
 import style from "./FormSingUp.module.css";
+import GoogleLogin from 'react-google-login';
+
 
 const FormSignUp = () => {
   const dispatch = useDispatch();
@@ -52,6 +54,9 @@ const FormSignUp = () => {
       navigate("/home");
     }
   }
+  const responseGoogle = (response) => {
+    console.log(response);
+  }
 
   return (
     <div className={style.containerPrimary}>
@@ -98,6 +103,13 @@ const FormSignUp = () => {
         <button type="submit" className={style.buttonSignup}>
           Create Acount
         </button>
+        <GoogleLogin
+    clientId="588392350787-kita7pgttuvevqp5kuu8gt02ib39fi92.apps.googleusercontent.com"
+    buttonText="Login"
+    onSuccess={responseGoogle}
+    onFailure={responseGoogle}
+    cookiePolicy={'single_host_origin'}
+  />,
       </form>
     </div>
   );
