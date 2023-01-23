@@ -19,7 +19,7 @@ const postUsers = async ({ name, password,  img, email }) => {
 
     let token = jwt.sign({user: newUser}, "secret", {expiresIn: "7d"})
 
-    return {user: newUser, token: token};
+    return {token};
   }
 
 const loginUser = async (value) => {
@@ -28,14 +28,13 @@ const loginUser = async (value) => {
       email: value.email
     }});
     if(!user) {
-      // throw new Error ('User not found');
-      return null;
+      return "hola"
     }else{
       if (bcrypt.compareSync(value.password, user.password)){
         let token = jwt.sign({user: user}, "secret", {expiresIn: "7d"});
-        return {user: user, token: token}
+        return {token}
       }else {
-        throw new Error ('Incorrect password');
+        return "chao";
       }
     }
 

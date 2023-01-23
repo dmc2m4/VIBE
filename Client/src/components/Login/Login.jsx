@@ -1,20 +1,22 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import loginUser from "../../redux/actions/userLogin";
 import style from "./Login.module.css";
+import axios from "axios";
 
 const Login = () => {
   const [login, setLogin] = useState({
     email: "",
     password: ""
   })
+  const User = useSelector(state => state.User)
   const [error, setError] = useState({})
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  function validations (input) {
+  function validations(input) {
     const regExpEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i;
     if (!regExpEmail.test(input.email)) error.email = "The email is invalid";
     return error
@@ -33,21 +35,16 @@ const Login = () => {
     });
   }
 
-  function handleSubmit() {
+  async function handleSubmit() {
     if (
       !login.email ||
       !login.password
     ) {
       alert("Incomplete data");
     } else {
-      const hola = dispatch(loginUser(login));
-      if (hola){
-        hola()
-        navigate("/home")
-      }else{
-        alert('datos incorrectos')
-      }
-      
+      dispatch(loginUser(login))
+      console.log(User);
+      navigate('/home')
     }
   }
 

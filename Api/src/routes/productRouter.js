@@ -5,6 +5,7 @@ const {
   postProduct,
   deleteProduct,
   putProduct,
+  getProductById,
 } = require("../Controllers/ProductController");
 
 const productRouter = Router();
@@ -13,6 +14,16 @@ productRouter.get("/", async (req, res) => {
   try {
     const allProduct = await getAllProduct();
     res.status(200).send(allProduct);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
+productRouter.get("/:id", async (req, res) => {
+  try {
+    const {id} = req.params;
+    const product = await getProductById(id);
+    res.status(200).send(product);
   } catch (error) {
     res.status(400).send(error.message);
   }

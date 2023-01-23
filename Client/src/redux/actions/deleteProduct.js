@@ -1,5 +1,6 @@
 // export const DELETE_PRODUCT = "DELETE_PRODUCT";
 import types from "./types";
+import axios from "axios";
 
 export const deleteProduct = (product) => {
   return async function (dispatch) {
@@ -10,7 +11,7 @@ export const deleteProduct = (product) => {
         payload: product,
       });
     } catch (error) {
-      alert("the activity could not be deleted");
+      alert("the activity couldn`t be deleted"); 
     }
   };
 };

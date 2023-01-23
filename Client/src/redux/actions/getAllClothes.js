@@ -1,5 +1,4 @@
 import types from "./types";
-// export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS";
 
 export function getAllClothes() {
   return function (dispatch) {
@@ -10,6 +9,7 @@ export function getAllClothes() {
           type: types.GET_ALL_CLOTHES,
           payload: data,
         });
-      });
+      })
+      .catch((e) => e.error);
   };
 }
