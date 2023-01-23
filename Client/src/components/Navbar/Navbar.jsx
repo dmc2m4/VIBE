@@ -47,8 +47,7 @@ const Navbar = () => {
 
   const handleToggleAll = () => {
     setToggle(false);
-    setToggleFav(false);
-    setToggleOrders(false);
+ 
   };
   return (
     <nav className={style.container}>
@@ -67,7 +66,7 @@ const Navbar = () => {
               onChange={(e) => handleChange(e)}
             >
               <option value="categories" hidden>
-                categories
+                Categories
               </option>
               {categories.map((category, i) => (
                 <option value={category} key={i} className={style.titleSelect}>
@@ -85,10 +84,10 @@ const Navbar = () => {
         <Searchbar />
       </div>
       <div className={style.containerImg}>
-        <li className={style.liImg} onClick={handleToggle}>
+        <li className={style.liImg} >
           <img src={heart} alt="fav" className={style.imgNav} />
         </li>
-        <li className={style.liImg} onClick={handleToggle}>
+        <li className={style.liImg} >
           <img src={car} alt="car" className={style.imgNav} />
         </li>
         <li onClick={handleToggle} className={style.liImg}>

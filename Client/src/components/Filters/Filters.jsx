@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { cleanPage } from "../../redux/actions/cleanPage";
 import getPage from "../../redux/actions/getPage";
 import updateFilters from "../../redux/actions/updateFilters";
+import style from './Filters.module.css'
 
 const Filters = () => {
   const dispatch = useDispatch();
@@ -53,9 +54,9 @@ const Filters = () => {
   }, [filtreds]);
 
   return (
-    <div>
+    <div className={style.container}>
       <span>Colors</span>
-      <select name="color" id="color" onChange={handleChange}>
+      <select name="color" id="color" onChange={handleChange} className={style.selectFilter}>
         {colorList.map((color, i) => (
           <option name="color" value={color} key={i}>
             {color}
@@ -63,7 +64,7 @@ const Filters = () => {
         ))}
       </select>
       <span>Size</span>
-      <select name="size" id="size" onChange={handleChange}>
+      <select name="size" id="size" onChange={handleChange} className={style.selectFilter}>
         {sizeList.map((size, i) => (
           <option name="size" value={size} key={i}>
             {size}
@@ -71,7 +72,7 @@ const Filters = () => {
         ))}
       </select>
       <span>Categories</span>
-      <select name="category" id="category" onChange={handleChange}>
+      <select name="category" id="category" onChange={handleChange} className={style.selectFilter}>
         {categoryList.map((category, i) => (
           <option name="category" value={category} key={i}>
             {category}

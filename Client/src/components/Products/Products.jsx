@@ -18,13 +18,11 @@ export default function Products() {
   function deleteProducts(product) {
     dispatch(deleteProduct(product));
   }
-
-  return (
-    <div className={style.containerPrimary}>
+if(products.length > 0){
+  return(
+  <div className={style.containerPrimary}>
     <div className={style.container}>
-      {!products.length ? (
-        <Loading />
-      ) : (
+      {
         products.map((product) => (
           <Card
             name={product.name}
@@ -42,8 +40,18 @@ export default function Products() {
             deleteProduct={deleteProducts}
           />
         ))
-      )}
+      }
     </div>
     </div>
   );
+}else {
+  return (
+    <div className={style.containerLoading}>
+      <Loading/>
+    </div>
+  )
+}
+  
+  
+  
 }
