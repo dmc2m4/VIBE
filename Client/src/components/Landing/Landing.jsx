@@ -16,7 +16,7 @@ const Landing = () => {
     <div className={style.container}>
       <div className={style.containerLogo}>
         <img
-          src="https://media.discordapp.net/attachments/1065781982342164480/1065864756742869072/DALLE_2023-01-20_01.52.14_-logocopia.png?width=580&height=580"
+          src="https://cdn.discordapp.com/attachments/1065781982342164480/1067134458400088294/DALLE_2023-01-20_01.52.14_-logocopia.png"
           alt=""
           className={style.logo}
         />
