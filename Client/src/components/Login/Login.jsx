@@ -43,7 +43,6 @@ const Login = () => {
       alert("Incomplete data");
     } else {
       dispatch(loginUser(login))
-      console.log(User);
       navigate('/home')
     }
   }

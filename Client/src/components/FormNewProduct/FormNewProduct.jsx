@@ -66,14 +66,11 @@ const FormNewProduct = () => {
         })
     }
 
-    console.log(newProduct);
-
     function handleSubmit() {
         if (!newProduct.name || !newProduct.img || !newProduct.size || !newProduct.color || !newProduct.category || !newProduct.gender || !newProduct.cost || !newProduct.rating || !newProduct.season || !newProduct.stock) {
             return alert("Por favor completar todos los campos");
         }
         dispatch(createProdcut(newProduct));
-        console.log(newProduct);
         alert("Producto creado correctamente");
     }
 

@@ -15,22 +15,18 @@ const getPagination = async (page, info = {}) => {
     if (info.season) {
       filter.season = info.season;
     }
-    const response = Object.keys(filter).length > 0 ? filter : null;
-    return response;
+    if (info.name) {
+      filter.name = info.name;
+    }
+    return Object.keys(filter).length > 0 ? filter : null;
   }
-
-  const products = await Product.findAndCountAll({
+  const response = await Product.findAndCountAll({
     where: filtered(),
     offset: page,
     limit: 5,
   });
 
-  const allProducts = await Product.findAll({
-    where: filtered(),
-  });
-  const result = allProducts.length;
-
-  return { products: products, num: result };
+  return response;
 };
 
 module.exports = { getPagination };

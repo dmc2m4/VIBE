@@ -20,9 +20,8 @@ const Navbar = () => {
   const [toggleOrders, setToggleOrders] = useState(false);
   const dispatch = useDispatch();
   const page = useSelector((state) => state.Page);
-  const [category, setCategory] = useState({ category: "" });
+  const [category, setCategory] = useState({ category: undefined });
   useEffect(() => {
-    console.log(category);
     dispatch(updateFilters(category));
   }, [dispatch, category]);
   const categories = [

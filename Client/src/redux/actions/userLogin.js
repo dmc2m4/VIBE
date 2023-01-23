@@ -5,7 +5,6 @@ const loginUser = (user) => {
   return async function (dispatch) {
     try {
       const response = await axios.post("http://localhost:3001/user/login", user);
-      console.log(response);
       dispatch({
         type: types.LOGIN_USER,
         payload: user,
