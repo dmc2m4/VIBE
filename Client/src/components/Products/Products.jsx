@@ -6,6 +6,7 @@ import styles from "./Products.module.css";
 import { deleteProduct } from "../../redux/actions/deleteProduct";
 import { getAllClothes } from "../../redux/actions/getAllClothes";
 
+
 export default function Products() {
   const products = useSelector((state) => state.Products);
   const dispatch = useDispatch();

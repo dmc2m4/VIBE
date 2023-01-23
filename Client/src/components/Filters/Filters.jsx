@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { cleanPage } from "../../redux/actions/cleanPage";
 import getPage from "../../redux/actions/getPage";
 import updateFilters from "../../redux/actions/updateFilters";
 
@@ -43,11 +44,14 @@ const Filters = () => {
       [e.target.name]: e.target.value !== "all" ? e.target.value : null,
     });
     console.log(filtreds);
+    dispatch(cleanPage());
   }
+
   useEffect(() => {
     dispatch(updateFilters(filtreds));
     dispatch(getPage(page, filtreds));
   }, [filtreds]);
+
   return (
     <div>
       <span>Colors</span>

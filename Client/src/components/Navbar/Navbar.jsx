@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import updateFilters from "../../redux/actions/updateFilters";
 import getPage from "../../redux/actions/getPage";
+import { cleanPage } from "../../redux/actions/cleanPage";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
@@ -38,8 +39,10 @@ const Navbar = () => {
     setToggle(!toggle);
   };
   const handleChange = (e) => {
-    setCategory({ category: e.target.value });
-    dispatch(getPage(page, category));
+    setCategory({
+      category: e.target.value !== "all" ? e.target.value : null,
+    });
+    dispatch(cleanPage());
   };
 
   const handleToggleAll = () => {
@@ -63,6 +66,9 @@ const Navbar = () => {
               className={style.selectCategories}
               onChange={(e) => handleChange(e)}
             >
+              <option value="categories" hidden>
+                categories
+              </option>
               {categories.map((category, i) => (
                 <option value={category} key={i} className={style.titleSelect}>
                   {category}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import getPage from "../../redux/actions/getPage";
 import setCurrentPage from "../../redux/actions/setCurrentPage";
@@ -13,6 +13,7 @@ const Pagination = () => {
       dispatch(setCurrentPage(page - 5));
     }
   }
+
   function handleNext() {
     if (page + 5 < maxNum) {
       dispatch(setCurrentPage(page + 5));
