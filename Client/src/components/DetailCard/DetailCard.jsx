@@ -16,6 +16,10 @@ const DetailCard = () => {
   return (
     <div>
       <Link to='/home'>
+<<<<<<< HEAD
+=======
+        {" "}
+>>>>>>> 73a19dde628571be3671e2f9e4dbfecdd22f2e21
         <button>Back</button>
       </Link>
       <button>Favorite</button>

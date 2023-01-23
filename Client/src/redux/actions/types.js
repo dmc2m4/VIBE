@@ -8,6 +8,7 @@ const types = {
   CLEAR_CART: "CLEAR_CART",
   PRODUCT_DETAIL: "PRODUCT_DETAIL",
   SET_CURRENT_PAGE: "SET_CURRENT_PAGE",
+  UPDATE_FILTERS: "PDATE_FILTERS",
 };
 
 export default types;
