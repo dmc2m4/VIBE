@@ -10,6 +10,8 @@
     position: absolute;
     top: 80px;
     right: 50px;
+    background-color: #cbc090;
+    z-index: 1000;
 }
 
 .menu ul {
