@@ -27,7 +27,6 @@ const Searchbar = () => {
     }
   }
 
-
   return (
     <div className={style.containerSearch}>
       <input type="text" className={style.search} onChange={handleChange} placeholder="Search..."  /> 
