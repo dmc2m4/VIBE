@@ -37,12 +37,14 @@ export default function rootReducer(state = initialState, action) {
     };
   }
   if (action.type === types.GET_PAGE) {
+    console.log(action.payload.allProducts);
     return {
       ...state,
       Products: action.payload.products.rows,
-      backUpProducts: action.payload.products.rows,
+      backUpProducts: action.payload.allProducts,
       Num: action.payload.num,
     };
+    
   }
   if (action.type === types.DELETE_PRODUCT) {
     return {
@@ -115,11 +117,15 @@ export default function rootReducer(state = initialState, action) {
     }
   }
   if (action.type === types.SEARCH_PRODUCTS){
-    console.log(state.backUpProducts);
     return {
       ...state,
-      Products: [...state.backUpProducts.rows].filter(p => p.name.toUpperCase().includes(action.payload.toUpperCase()))
-
+      Products: [...state.backUpProducts].filter(p => p.name.includes(action.payload))
+    }
+  }
+  if (action.type === types.GET_ALL_CLOTHES){
+    return {
+      ...state,
+      backUpProducts: action.payload
     }
   }
   return { ...state };
