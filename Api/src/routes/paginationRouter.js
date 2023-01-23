@@ -3,7 +3,7 @@ const paginationRouter = Router();
 const { getPagination } = require("../controllers/PaginationController");
 
 paginationRouter.post("/", async (req, res) => {
-  const { page, info } = req.body.body;
+  const { page, info } = req.body;
   try {
     const response = await getPagination(page, info);
     res.status(200).json(response);

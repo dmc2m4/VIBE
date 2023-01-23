@@ -8,21 +8,25 @@ import car from "../../assets/car.png";
 import heart from "../../assets/heart.png";
 import user from "../../assets/user.png";
 import Account from "../Account/Account";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { useEffect } from "react";
-
+import updateFilters from "../../redux/actions/updateFilters";
+import getPage from "../../redux/actions/getPage";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const [toggleFav, setToggleFav] = useState(false);
   const [toggleOrders, setToggleOrders] = useState(false);
   const dispatch = useDispatch();
-  const [category, setcategory] = useState({
+  const page = useSelector ((state) => state.Page)
+  const [category, setCategory] = useState({
     category: "",
   });
-  useEffect(()=>{
+  useEffect(() => {
+    dispatch(getPage(page,category));
+    console.log(category);
     dispatch(updateFilters(category))
-  },[dispatch, category])
+  }, [dispatch,category]);
   const categories = [
     "all",
     "shirts",
@@ -37,10 +41,10 @@ const Navbar = () => {
     setToggle(!toggle);
   };
   const handleChange = (e) => {
-    setcategory({
-      ...category,
-      [e.target.name]: e.target.value !== "all" ? e.target.value : null,
+    setCategory({
+     category: e.target.value 
     });
+    // dispatch(updateFilters(category))
   };
 
   const handleToggleAll = () => {

@@ -5,30 +5,21 @@ import setCurrentPage from "../../redux/actions/setCurrentPage";
 
 const Pagination = () => {
   const dispatch = useDispatch();
-  const [pages, setPages] = useState(0);
-  let allProducts = useSelector((state) => state.Filters);
-  let firstElement = Math.ceil(allProducts.length / 5);
-  function pageList(num) {
-    const arrPages = [];
-    for (let i = num; i > 0; i--) {
-      arrPages.unshift(i);
-    }
-    return arrPages;
+  const filtred = useSelector((state) => state.Filters);
+  const page = useSelector((state) => state.Page);
+  function handlePrev() {
+    dispatch(setCurrentPage(page - 5));
   }
-  function handleClick(e) {
-    setPages(e * 5);
+  function handleNext() {
+    dispatch(setCurrentPage(page + 5));
   }
   useEffect(() => {
-    dispatch(getPage(pages));
-    setCurrentPage(pages);
-  }, [dispatch, pages]);
+    dispatch(getPage(page, filtred));
+  }, [dispatch, page, filtred]);
   return (
     <div>
-      {pageList(firstElement).map((e, i) => (
-        <button value={i} key={i} onClick={(e) => handleClick(e.target.value)}>
-          {e}
-        </button>
-      ))}
+      <button onClick={handlePrev}>Prev</button>
+      <button onClick={handleNext}>Next</button>
     </div>
   );
 };
