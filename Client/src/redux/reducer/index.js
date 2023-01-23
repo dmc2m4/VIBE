@@ -4,6 +4,7 @@ import types from "../actions/types";
 
 const initialState = {
   Products: [],
+  backUpProducts: [],
   Page: 0,
   Num: 0,
   Filters: {},
@@ -36,10 +37,10 @@ export default function rootReducer(state = initialState, action) {
     };
   }
   if (action.type === types.GET_PAGE) {
-    console.log(action.payload);
     return {
       ...state,
       Products: action.payload.products.rows,
+      backUpProducts: action.payload.products.rows,
       Num: action.payload.num,
     };
   }
@@ -111,6 +112,14 @@ export default function rootReducer(state = initialState, action) {
     return {
       ...state,
       Detail: {}
+    }
+  }
+  if (action.type === types.SEARCH_PRODUCTS){
+    console.log(state.backUpProducts);
+    return {
+      ...state,
+      Products: [...state.backUpProducts.rows].filter(p => p.name.toUpperCase().includes(action.payload.toUpperCase()))
+
     }
   }
   return { ...state };
