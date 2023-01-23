@@ -42,9 +42,9 @@ const Navbar = () => {
   };
   const handleChange = (e) => {
     setCategory({
-     category: e.target.value 
+     category: e.target.value  !== "all" ? e.target.value:  null
     });
-    // dispatch(updateFilters(category))
+
   };
 
   const handleToggleAll = () => {
@@ -63,13 +63,13 @@ const Navbar = () => {
             <h2 className={style.links}>Shop</h2>
           </li>
           <li className={style.liNav}>
-            <select name='category' className={style.selectCategories}>
+            <select  name='category' className={style.selectCategories} onChange ={(e)=>handleChange(e)}>
+              <option value="categories" hidden>categories</option>
               {categories.map((category, i) => (
                 <option
                   value={category}
                   key={i}
                   className={style.titleSelect}
-                  onClick={(e) => handleChange(e)}
                 >
                   {category}
                 </option>
