@@ -1,6 +1,4 @@
 import types from "../actions/types";
-// import { GET_ALL_PRODUCTS } from "../actions/getAllChlotes";
-// import { DELETE_PRODUCT } from "../actions/deleteProducts";
 
 const initialState = {
   Products: [],
@@ -37,19 +35,10 @@ export default function rootReducer(state = initialState, action) {
     };
   }
   if (action.type === types.GET_PAGE) {
-<<<<<<< HEAD
     return {
       ...state,
       Products: action.payload.rows,
       Num: action.payload.count,
-=======
-    console.log(action.payload.allProducts);
-    return {
-      ...state,
-      Products: action.payload.products.rows,
-      backUpProducts: action.payload.allProducts,
-      Num: action.payload.num,
->>>>>>> f376394131625e24a2bdd6066b8f68bb9b87d9fe
     };
     
   }
