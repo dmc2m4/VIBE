@@ -13,17 +13,14 @@ import { useEffect } from "react";
 import updateFilters from "../../redux/actions/updateFilters";
 import getPage from "../../redux/actions/getPage";
 import { cleanPage } from "../../redux/actions/cleanPage";
+// import getPage from "../../redux/actions/getPage";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const [toggleFav, setToggleFav] = useState(false);
   const [toggleOrders, setToggleOrders] = useState(false);
   const dispatch = useDispatch();
-  const page = useSelector((state) => state.Page);
   const [category, setCategory] = useState({ category: undefined });
-  useEffect(() => {
-    dispatch(updateFilters(category));
-  }, [dispatch, category]);
   const categories = [
     "all",
     "shirts",
@@ -41,13 +38,14 @@ const Navbar = () => {
     setCategory({
       category: e.target.value !== "all" ? e.target.value : null,
     });
-    dispatch(cleanPage());
   };
 
   const handleToggleAll = () => {
     setToggle(false);
- 
   };
+  useEffect(() => {
+    // dispatch(getPage(0, category));
+  }, [category]);
   return (
     <nav className={style.container}>
       <div className={style.containerIcon} onClick={handleToggleAll}>
@@ -83,10 +81,10 @@ const Navbar = () => {
         <Searchbar />
       </div>
       <div className={style.containerImg}>
-        <li className={style.liImg} >
+        <li className={style.liImg}>
           <img src={heart} alt="fav" className={style.imgNav} />
         </li>
-        <li className={style.liImg} >
+        <li className={style.liImg}>
           <img src={car} alt="car" className={style.imgNav} />
         </li>
         <li onClick={handleToggle} className={style.liImg}>

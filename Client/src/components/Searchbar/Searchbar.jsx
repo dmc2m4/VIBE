@@ -16,8 +16,8 @@ const Searchbar = () => {
   }
 
   function findProducts() {
-    dispatch(cleanPage());
-    dispatch(getPage(page, name));
+    // dispatch(getPage(page, name));
+    // dispatch(cleanPage());
   }
 
   return (
