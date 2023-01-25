@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const {
   getAllUsers,
+  getUserById,
   postUsers,
   deleteUsers,
   putUsers,
@@ -17,6 +18,17 @@ userRouter.get("/", async (req, res) => {
     res.status(200).send(allUsers);
   } catch (error) {
     res.status(400).send(error.message);
+  }
+});
+
+userRouter.get("/:id", async(req, res) => {
+  
+  try{
+    const {id} = req.params;
+    const userId = await getUserById(id);
+    res.status(200).send(userId)
+  } catch (error){
+    res.status(400).send(error.message)
   }
 });
 

@@ -9,6 +9,11 @@ const getAllUsers = async () => {
   return allUsers
 };
 
+const getUserById = async function (id) {
+  const userId = await User.findByPk(id)
+  return userId
+}
+
 const postUsers = async ({ name, password, img, email }) => {
   const cryptPassword = bcrypt.hashSync(password, 10);
   const newUser = await User.create({
@@ -63,6 +68,7 @@ const putUsers = async (value, req) => {
 
 module.exports = {
   getAllUsers,
+  getUserById,
   postUsers,
   deleteUsers,
   putUsers,

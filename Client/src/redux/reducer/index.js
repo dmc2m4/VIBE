@@ -21,6 +21,7 @@ const initialState = {
     ],
     total: 0,
   },
+  Account: {},
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -126,6 +127,12 @@ export default function rootReducer(state = initialState, action) {
     return {
       ...state,
       backUpProducts: action.payload
+    }
+  }
+  if (action.type === types.GET_ACCOUNT){
+    return {
+      ...state,
+      Account: action.payload,
     }
   }
   return { ...state };

@@ -1,14 +1,16 @@
 import React from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { addOneToCart, clearCart, removeFromCart } from '../../redux/actions/shoppingCart.actions'
+import {
+  addOneToCart,
+  clearCart,
+  removeFromCart,
+} from "../../redux/actions/shoppingCart.actions";
 import "./ShoppingCart.css";
 
 const ShoppingCart = () => {
   const { items, total } = useSelector((state) => state.Cart);
-  const dispatch = useDispatch()
-
-
+  const dispatch = useDispatch();
 
   return (
     <div>
@@ -17,10 +19,11 @@ const ShoppingCart = () => {
       <article className="box">
         {items?.map((i) => (
           <div key={i.id}>
-          <h1>{i.name} ${i.price} Quantity: ({i.quantity})</h1>
-          <button onClick={() => dispatch(addOneToCart(i))}>+</button>
-          <button onClick={() => dispatch(removeFromCart(i))}>-</button>
-          
+            <h1>
+              {i.name} ${i.price} Quantity: ({i.quantity})
+            </h1>
+            <button onClick={() => dispatch(addOneToCart(i))}>+</button>
+            <button onClick={() => dispatch(removeFromCart(i))}>-</button>
           </div>
         ))}
       </article>

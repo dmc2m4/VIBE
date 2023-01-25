@@ -11,6 +11,7 @@ import Login from "./views/Login/Login";
 import Home from "../src/views/Home/Home";
 import DetailCard from "./components/DetailCard/DetailCard";
 import ContainerProduct from "./containers/containerProductHome/ContainerProduct";
+import SettingsAccount from "./components/SettingsAccount/SettingsAccount"
 // import Login from "./components/Login/Login";
 
 
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/shopping-cart" element={<ShoppingCart />} />
         <Route path="/productDetail/:id" element={<DetailCard/>} />
         <Route path="container" element={<ContainerProduct/>} />
+        <Route path="/settings" element={<SettingsAccount/>} />
       </Routes>
     </div>
   );
