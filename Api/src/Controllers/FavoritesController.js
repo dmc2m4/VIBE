@@ -1,45 +1,16 @@
-const { Favorites } = require("../db");
-const { User, Product } = require("../db");
+const { User, Product, Favorites } = require("../db");
 
-
-// const getFavorites = async (user) => {
-
-//     const findUser = await User.findOne({
-//         where: {
-//             email: user.email
-//         }
-//     });
-//     const findFavoriteTable = await Favorites.findOne({
-//         where: {
-//             userId: findUser.id
-//         },
-//         include: {
-//             model: Product
-//         }
-//     });
-//     return findFavoriteTable
-// }
-
-const getFavorites = async (user) => {
+const postFavorites = async (value) => {
     const findUser = await User.findOne({
         where: {
-            email: user.email
+            email: value.email
         }
     });
-    console.log(findUser);
-    // const newFavorites = await Favorites.findOrCreate({
-    //     where: {
-    //         userId: findUser.id
-    //     },
-    //     default: {
-    //         userId: findUser.id
-    //     }
-    // })
-    const newFavorites = await Favorites.findAll()
-    return newFavorites
-} 
-module.exports = {
- getFavorites,
+    const findProduct = await Product.findByPk(value.id);
 
+    await findUser.addFavorites(findProduct);
+}
+module.exports = {
+ postFavorites,
 }
 
