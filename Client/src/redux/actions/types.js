@@ -10,6 +10,7 @@ const types = {
   UPDATE_FILTERS: "UPDATE_FILTERS",
   CLEAN_PAGE: 'CLEAN_PAGE',
   CLEAN_DETAIL: 'CLEAN_DETAIL',
+  LOGIN_USER: "LOGIN_USER",
 };
 
 export default types;
