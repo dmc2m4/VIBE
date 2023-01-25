@@ -11,13 +11,15 @@ import style from "./Home.module.css";
 const Home = () => {
 
   const dispatch = useDispatch()
-  const { user, isAuthenticated } = useAuth0();
+  const { user} = useAuth0();
 
   useEffect(()=>{
     if(user){
       dispatch(loginUser(user))
     }
   },[dispatch,user])
+
+  console.log(user);
 
   return (
     <div className={style.container}>
