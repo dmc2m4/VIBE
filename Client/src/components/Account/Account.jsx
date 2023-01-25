@@ -1,26 +1,40 @@
-import React from 'react'
-import style from './Account.module.css'
-import { Link } from 'react-router-dom'
+import React from "react";
+import style from "./Account.module.css";
+import { LogOutGoogle } from "../../LogOutGoogle/LogOutGoogle";
 
-const Account = ({handleToggle}) => {
+const Account = () => {
+
+
+  const clearCacheData = () => {
+    caches.keys().then((name) => {
+      name.forEach((name) => {
+        caches.delete(name);
+      });
+    });
+  };
+
   return (
-   	<div className={style.menu} >
-		<ul>
-			<li>
-				<Link to='/'>My orders</Link> 
-			</li>
-			<li>
-				<Link to=''>My account</Link>
-			</li>
-			<li>
-			 <Link to="/createProduct" className={style.textLink} onClick={handleToggle}>Create Product </Link>
-			</li>
-			<li>
-				<a href="/">Sign out</a>
-			</li>
-		</ul>
-	</div>
-  )
-}
+    <div className={style.menu}>
+      <ul>
+        <li>
+          <a href='/' className='title'>
+            My orders
+          </a>
+        </li>
+        <li>
+          <a href='/'>My account</a>
+        </li>
+        <li
+          onClick={() => {
+            clearCacheData();
+          }}
+        >
+          {" "}
+          <LogOutGoogle />{" "}
+        </li>
+      </ul>
+    </div>
+  );
+};
 
-export default Account
+export default Account;

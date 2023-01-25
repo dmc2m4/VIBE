@@ -4,22 +4,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import loginUser from "../../redux/actions/userLogin";
 import style from "./Login.module.css";
-import axios from "axios";
 
 const Login = () => {
   const [login, setLogin] = useState({
     email: "",
-    password: ""
-  })
-  const User = useSelector(state => state.User)
-  const [error, setError] = useState({})
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+    password: "",
+  });
+  const User = useSelector((state) => state.User);
+  const [error, setError] = useState({});
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   function validations(input) {
     const regExpEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i;
     if (!regExpEmail.test(input.email)) error.email = "The email is invalid";
-    return error
+    return error;
   }
 
   function handleChange(e) {
@@ -36,14 +35,11 @@ const Login = () => {
   }
 
   async function handleSubmit() {
-    if (
-      !login.email ||
-      !login.password
-    ) {
+    if (!login.email || !login.password) {
       alert("Incomplete data");
     } else {
-      dispatch(loginUser(login))
-      navigate('/home')
+      dispatch(loginUser(login));
+      navigate("/home");
     }
   }
 
@@ -53,23 +49,23 @@ const Login = () => {
       <form className={style.containerForm} onSubmit={handleSubmit}>
         <label className={style.labelForm}>Email</label>
         <input
-          type="text"
-          id="email"
-          name="email"
+          type='text'
+          id='email'
+          name='email'
           className={style.inputLogin}
-          placeholder="example@gmail.com"
+          placeholder='example@gmail.com'
           onChange={handleChange}
         />
         <label className={style.labelForm}>Password</label>
         <input
-          type="password"
-          id="password"
-          name="password"
+          type='password'
+          id='password'
+          name='password'
           className={style.inputLogin}
-          placeholder="Enter your Password"
+          placeholder='Enter your Password'
           onChange={handleChange}
         />
-        <button type="submit" className={style.buttonLogin}>
+        <button type='submit' className={style.buttonLogin}>
           Login
         </button>
       </form>
