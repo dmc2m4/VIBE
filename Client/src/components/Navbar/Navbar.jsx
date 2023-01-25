@@ -14,6 +14,7 @@ import updateFilters from "../../redux/actions/updateFilters";
 import getPage from "../../redux/actions/getPage";
 import { cleanPage } from "../../redux/actions/cleanPage";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
@@ -49,6 +50,13 @@ const Navbar = () => {
     setToggle(false);
  
   };
+  const withouSidebarRoutes = ["/login", "/signup"];
+  const { pathname } = useLocation();
+if (withouSidebarRoutes.some((item) => pathname.includes(item))){
+  return null
+}else {
+
+  
   return (
     <nav className={style.container}>
       <div className={style.containerIcon} onClick={handleToggleAll}>
@@ -97,9 +105,9 @@ const Navbar = () => {
           <img src={user} alt="user" className={style.imgNav} />
         </li>
       </div>
-      {toggle && <Account />}
+      {toggle && <Account handleToggle={handleToggle} />}
     </nav>
-  );
+  );}
 };
 
 export default Navbar;
