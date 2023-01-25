@@ -1,11 +1,15 @@
-const { User } = require("../db.js");
+const { User,Product } = require("../db.js");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const emailController = require('./EmailController')
 
 const getAllUsers = async () => {
-  const allUsers = await User.findAll();
-  console.log(allUsers);
+  const allUsers = await User.findAll({
+    include: [{
+      model: Product,
+      as: "favorites"
+    }]
+  })
   return allUsers
 };
 

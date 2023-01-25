@@ -21,8 +21,10 @@ const Home = () => {
 
   return (
     <div className={style.container}>
-      <ContainerProduct />
-      <Pagination />
+      <div>
+        <ContainerProduct />
+        <Pagination />
+      </div>
     </div>
   );
 };

@@ -22,7 +22,7 @@ const Account = () => {
           </a>
         </li>
         <li>
-          <a href='/'>My account</a>
+          <a href='/createProduct'>My account</a>
         </li>
         <li
           onClick={() => {
