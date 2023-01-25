@@ -8,6 +8,7 @@ const Home = () => {
     <div className={style.container}>
       <ContainerProduct />
       <Pagination />
+
     </div>
   );
 };
