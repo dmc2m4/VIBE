@@ -4,7 +4,9 @@ import style from './ContainerSignUp.module.css'
 import iconVibe from '../../assets/iconVibe.png'
 
 
+
 const ContainerSignUp = () => {
+
   return (
      <div className={style.container}>
         <div className={style.containerIcon}>
