@@ -24,7 +24,6 @@ const Searchbar = () => {
     } else {
       dispatch(searchProducts(products));
       dispatch(cleanPage());
-      console.log("hola");
     }
   }
 

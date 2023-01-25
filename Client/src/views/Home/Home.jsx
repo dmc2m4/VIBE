@@ -9,7 +9,6 @@ const Home = () => {
   const product = useSelector((state) => state.Products);
   return (
     <div className={style.container}>
-      <Loading />:
       <div>
         <ContainerProduct />
         <Pagination />
