@@ -20,11 +20,13 @@ const Landing = () => {
   return (
     <div className={style.container}>
       <div className={style.containerLogo}>
+
         <Link to='home'>
           <img
             src='https://media.discordapp.net/attachments/1065781982342164480/1065864756742869072/DALLE_2023-01-20_01.52.14_-logocopia.png?width=580&height=580'
             alt=''
             className={style.logo}
+
           />
         </Link>
       </div>

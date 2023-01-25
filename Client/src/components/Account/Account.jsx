@@ -1,11 +1,9 @@
 import React from "react";
 import style from "./Account.module.css";
-import { useAuth0 } from "@auth0/auth0-react";
 import { LogOutGoogle } from "../../LogOutGoogle/LogOutGoogle";
 
 const Account = () => {
 
-	const { logout} = useAuth0();
 
   const clearCacheData = () => {
     caches.keys().then((name) => {
@@ -14,7 +12,7 @@ const Account = () => {
       });
     });
   };
-	
+
   return (
     <div className={style.menu}>
       <ul>
@@ -26,7 +24,7 @@ const Account = () => {
         <li>
           <a href='/'>My account</a>
         </li>
-				<li
+        <li
           onClick={() => {
             clearCacheData();
           }}
@@ -34,7 +32,6 @@ const Account = () => {
           {" "}
           <LogOutGoogle />{" "}
         </li>
-    
       </ul>
     </div>
   );
