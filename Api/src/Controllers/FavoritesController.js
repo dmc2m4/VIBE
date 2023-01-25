@@ -6,14 +6,9 @@ const postFavorites = async (value) => {
             email: value.email
         }
     });
-
-    // const findProduct = await Product.findByPk(value.id)
-    const findProduct = await Product.findByPk(value.id)
+    const findProduct = await Product.findByPk(value.id);
 
     await findUser.addFavorites(findProduct);
-
-    
-   
 }
 module.exports = {
  postFavorites,

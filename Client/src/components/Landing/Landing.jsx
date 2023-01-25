@@ -1,11 +1,9 @@
 import React from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
-import clothes from "../../assets/clothes.jpg";
-import Login from "../Login/Login";
+import { Link, useNavigate } from "react-router-dom";
 import style from "./Landing.module.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoginGoogle } from "../../LoginGoogle.jsx/LoginGoogle";
-import Home from "../../views/Home/Home";
+
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -14,21 +12,16 @@ const Landing = () => {
     navigate("/home");
   }
 
-  const { loginWithRedirect, user, isAuthenticated } = useAuth0();
-
- 
+  const { user, isAuthenticated } = useAuth0();
+  
   return (
     <div className={style.container}>
       <div className={style.containerLogo}>
-
-        <Link to='home'>
-          <img
-            src='https://media.discordapp.net/attachments/1065781982342164480/1065864756742869072/DALLE_2023-01-20_01.52.14_-logocopia.png?width=580&height=580'
-            alt=''
-            className={style.logo}
-
-          />
-        </Link>
+        <img
+          src='https://media.discordapp.net/attachments/1065781982342164480/1065864756742869072/DALLE_2023-01-20_01.52.14_-logocopia.png?width=580&height=580'
+          alt=''
+          className={style.logo}
+        />
       </div>
       <section className={style.sectionButton}>
         <div>
@@ -46,14 +39,17 @@ const Landing = () => {
             deals on fashion <br />
             for all!a
           </p>
-          <LoginGoogle />
-          {isAuthenticated && 
-          <div>
-            
-            <h3>Hola {user.name} como estas ?</h3>
-              <button onClick={()=>homeButtom()} >Home</button>
-          </div>}
           <p className={style.textAccount}>Do you have an acoount?</p>
+          <LoginGoogle />
+          {isAuthenticated && (
+            <div>
+              <h3>Hola {user.name} como estas ?</h3>
+              <button onClick={() => homeButtom()}>Home</button>
+            </div>
+          )}
+          <Link to='home'>
+            <button>Enter as a guest</button>
+          </Link>
         </div>
       </section>
       <section className={style.welcome}>
@@ -61,10 +57,8 @@ const Landing = () => {
         <h2>About our store</h2>
         <p>Being beyond fashion, that is our style archetype.</p>
       </section>
-    </div>)
-  //  : (
-  //   <Navigate to='/home' replace={<Home />} />
-  // );
+    </div>
+  );
 };
 
 export default Landing;
