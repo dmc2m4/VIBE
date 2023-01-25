@@ -1,11 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
+import { LoginGoogle } from "../../LoginGoogle.jsx/LoginGoogle";
 import createUser from "../../redux/actions/createUser";
 import style from "./FormSingUp.module.css";
-import GoogleLogin from 'react-google-login';
-
 
 const FormSignUp = () => {
   const dispatch = useDispatch();
@@ -54,9 +53,6 @@ const FormSignUp = () => {
       navigate("/home");
     }
   }
-  const responseGoogle = (response) => {
-    console.log(response);
-  }
 
   return (
     <div className={style.containerPrimary}>
@@ -64,53 +60,47 @@ const FormSignUp = () => {
       <form onSubmit={handleSubmit} className={style.formSignup}>
         <label className={style.labelSignup}>Username:</label>
         <input
-          type="text"
-          id="name"
-          name="name"
-          placeholder="Enter your username"
+          type='text'
+          id='name'
+          name='name'
+          placeholder='Enter your username'
           onChange={handleChange}
           className={style.inputSignup}
         />
         <label className={style.labelSignup}>Email</label>
         <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Enter your mail"
+          type='email'
+          id='email'
+          name='email'
+          placeholder='Enter your mail'
           onChange={handleChange}
           className={style.inputSignup}
         />
         <label className={style.labelSignup}>Password</label>
         <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Enter your password"
+          type='password'
+          id='password'
+          name='password'
+          placeholder='Enter your password'
           onChange={handleChange}
           className={style.inputSignup}
         />
         <label className={style.labelSignup}>Confirm Password</label>
         <input
-          type="password"
-          id="confirmPassword"
-          name="confirmPassword"
-          placeholder="Confirm your password"
+          type='password'
+          id='confirmPassword'
+          name='confirmPassword'
+          placeholder='Confirm your password'
           onChange={handleChange}
           className={style.inputSignup}
         />
         {/* <label>Accept the terms and conditions</label>
         <input type='checkbox' id='accptterms' name='acceptterms' value='si' /> */}
-        <button type="submit" className={style.buttonSignup}>
+        <button type='submit' className={style.buttonSignup}>
           Create Acount
         </button>
-        <GoogleLogin
-    clientId="588392350787-kita7pgttuvevqp5kuu8gt02ib39fi92.apps.googleusercontent.com"
-    buttonText="Login"
-    onSuccess={responseGoogle}
-    onFailure={responseGoogle}
-    cookiePolicy={'single_host_origin'}
-  />,
       </form>
+      <LoginGoogle />
     </div>
   );
 };
