@@ -2,4 +2,62 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
+    font-family: 'Kalam', cursive;
+    font-weight: bold;
+}
+
+.containerInput{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    margin-right: 2rem;
+}
+
+.containerRating{
+    display: flex;
+}
+.containerFormSecundary{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-content: center;
+}
+
+.buttonCreate{
+    width: 16rem;
+    height: 2.3rem;
+    border-radius: 4px;
+    border: none;
+    background-color: #cbc090;
+    margin-top: 1rem;
+    font-family: 'Kalam', cursive;
+    cursor: pointer;
+    font-weight: bold;
+}
+.inputForm{
+    width: 12rem;
+    height: 2.2rem;
+    font-size: 14pxpx;
+    font-weight: bold;
+    font-family: 'Kalam', cursive;
+    border-radius: 8px;
+    padding: 6px;
+    color: #89815f;
+    border-width: 1px;
+}
+.containerButton{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.labelRating{
+    margin-top: -0.3rem;
+    margin-bottom: 0.1rem;
+    
+}
+.inputRadio{
+    display: flex;
+    flex-direction: column;
+    margin-right: 1rem;
 }

@@ -37,25 +37,22 @@ const Landing = () => {
             Shop top brands, <br />
             latest styles, great <br />
             deals on fashion <br />
-            for all!a
+            for all!
           </p>
-          <p className={style.textAccount}>Do you have an acoount?</p>
-          <LoginGoogle />
-          {isAuthenticated && (
-            <div>
-              <h3>Hola {user.name} como estas ?</h3>
-              <button onClick={() => homeButtom()}>Home</button>
-            </div>
-          )}
-          <Link to='home'>
-            <button>Enter as a guest</button>
-          </Link>
+          <LoginGoogle  />
+          {isAuthenticated && 
+          <div>
+            
+            <h3 >Hey!!! <br />{user.name}</h3>
+              <button onClick={()=>homeButtom()}  className={style.buttonLanding}>Home</button>
+          </div>}
+          {!isAuthenticated && <p className={style.textAccount}>Do you have an acoount?</p>}
         </div>
       </section>
       <section className={style.welcome}>
         <h2>Welcome!</h2>
         <h2>About our store</h2>
-        <p>Being beyond fashion, that is our style archetype.</p>
+        <p>Being beyond fashion, that is our style archetype. <Link to='/home' className={style.link}>Go now →</Link></p>
       </section>
     </div>
   );

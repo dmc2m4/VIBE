@@ -23,7 +23,8 @@ const App = () => {
         <Route path="/products" element={<Products />} />
         <Route path="/shopping-cart" element={<ShoppingCart />} />
         <Route path="/productDetail/:id" element={<DetailCard/>} />
-        <Route path="container" element={<ContainerProduct/>} />
+        <Route path="carousel" element={<Carousel/>} />
+        <Route path="imagen" element={<About/>} />
       </Routes>
     </div>
   );
