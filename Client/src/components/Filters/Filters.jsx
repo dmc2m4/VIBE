@@ -34,23 +34,17 @@ const Filters = () => {
     "jackets",
     "sweatshirts",
   ];
-  const [filtreds, setFiltreds] = useState({
-    color: "",
-    size: "",
-    category: "",
-  });
+  const [filtreds, setFiltreds] = useState( {} );
   function handleChange(e) {
     setFiltreds({
       ...filtreds,
       [e.target.name]: e.target.value !== "all" ? e.target.value : null,
     });
-    console.log(filtreds);
     dispatch(cleanPage());
   }
 
   useEffect(() => {
     dispatch(updateFilters(filtreds));
-    dispatch(getPage(page, filtreds));
   }, [filtreds]);
 
   return (

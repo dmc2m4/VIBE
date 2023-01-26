@@ -4,7 +4,11 @@ const jwt = require('jsonwebtoken');
 const emailController = require('./EmailController')
 
 const getAllUsers = async () => {
-  const allUsers = await User.findAll();
+  const allUsers = await User.findAll({
+    include: {
+      model: Favorites
+    }
+  })
   console.log(allUsers);
   return allUsers
 };

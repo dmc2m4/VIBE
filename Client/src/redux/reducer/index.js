@@ -1,6 +1,4 @@
 import types from "../actions/types";
-// import { GET_ALL_PRODUCTS } from "../actions/getAllChlotes";
-// import { DELETE_PRODUCT } from "../actions/deleteProducts";
 
 const initialState = {
   Products: [],
@@ -38,14 +36,11 @@ export default function rootReducer(state = initialState, action) {
     };
   }
   if (action.type === types.GET_PAGE) {
-    console.log(action.payload.allProducts);
     return {
       ...state,
-      Products: action.payload.products.rows,
-      backUpProducts: action.payload.allProducts,
-      Num: action.payload.num,
+      Products: action.payload.rows,
+      Num: action.payload.count,
     };
-    
   }
   if (action.type === types.DELETE_PRODUCT) {
     return {
@@ -105,29 +100,17 @@ export default function rootReducer(state = initialState, action) {
       User: action.payload,
     };
   }
-  if (action.type === types.CLEAN_PAGE){
+  if (action.type === types.CLEAN_PAGE) {
     return {
       ...state,
-      Page: 0
-    }
+      Page: 0,
+    };
   }
-  if (action.type === types.CLEAN_DETAIL){
+  if (action.type === types.CLEAN_DETAIL) {
     return {
       ...state,
-      Detail: {}
-    }
-  }
-  if (action.type === types.SEARCH_PRODUCTS){
-    return {
-      ...state,
-      Products: [...state.backUpProducts].filter(p => p.name.includes(action.payload))
-    }
-  }
-  if (action.type === types.GET_ALL_CLOTHES){
-    return {
-      ...state,
-      backUpProducts: action.payload
-    }
+      Detail: {},
+    };
   }
   if (action.type === types.GET_ACCOUNT){
     return {
