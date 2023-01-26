@@ -33,13 +33,18 @@ const Filters = () => {
     "jackets",
     "sweatshirts",
   ];
-  const [filtreds, setFiltreds] = useState({});
+  // const [newFilters, setNewFiltreds] = useState({});
+  const filters = useSelector((state) => state.Filters);
   function handleChange(e) {
-    setFiltreds({
-      ...filtreds,
-      [e.target.name]: e.target.value !== "all" ? e.target.value : null,
-    });
-    dispatch(updateFilters(filtreds));
+    const newFilters = {
+      ...filters,
+      [e.target.name]: e.target.value,
+      //  !== "all"
+      //   ? e.target.value
+      //   : delete newFilters[`${e.target.name}`],
+    };
+    dispatch(updateFilters(newFilters));
+    dispatch(cleanPage());
   }
   return (
     <div className={style.container}>
@@ -49,9 +54,18 @@ const Filters = () => {
         id="color"
         onChange={handleChange}
         className={style.selectFilter}
+        // value={filters.color}
       >
+        <option value="defaultValue" disabled>
+          Color
+        </option>
         {colorList.map((color, i) => (
-          <option name="color" value={color} key={i}>
+          <option
+            name="color"
+            value={filters["color"] ? filters["color"] : color}
+            key={i}
+            selected={filters["color"] === color ? true : false}
+          >
             {color}
           </option>
         ))}
@@ -62,9 +76,18 @@ const Filters = () => {
         id="size"
         onChange={handleChange}
         className={style.selectFilter}
+        // value={filters.size}
       >
+        <option value="defaultValue" disabled>
+          Size
+        </option>
         {sizeList.map((size, i) => (
-          <option name="size" value={size} key={i}>
+          <option
+            name="size"
+            value={filters["size"] ? filters["size"] : size}
+            key={i}
+            selected={filters["size"] === size ? true : false}
+          >
             {size}
           </option>
         ))}
@@ -75,10 +98,18 @@ const Filters = () => {
         id="category"
         onChange={handleChange}
         className={style.selectFilter}
+        // value={filters.category}
       >
-        {/* {filterd.category ? <option hidden>{filterd.category}</option> : null} */}
+        <option value="defaultValue" disabled>
+          Categories
+        </option>
         {categoryList.map((category, i) => (
-          <option name="category" value={category} key={i}>
+          <option
+            name="category"
+            value={filters["category"] ? filters["category"] : category}
+            key={i}
+            selected={filters["category"] === category ? true : false}
+          >
             {category}
           </option>
         ))}

@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { cleanPage } from "../../redux/actions/cleanPage";
 import getPage from "../../redux/actions/getPage";
 import setCurrentPage from "../../redux/actions/setCurrentPage";
 import style from "./Pagination.module.css";
