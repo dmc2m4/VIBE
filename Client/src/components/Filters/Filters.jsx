@@ -1,9 +1,6 @@
 import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { cleanPage } from "../../redux/actions/cleanPage";
-import getPage from "../../redux/actions/getPage";
 import updateFilters from "../../redux/actions/updateFilters";
 import style from "./Filters.module.css";
 
@@ -33,16 +30,15 @@ const Filters = () => {
     "jackets",
     "sweatshirts",
   ];
-  // const [newFilters, setNewFiltreds] = useState({});
   const filters = useSelector((state) => state.Filters);
   function handleChange(e) {
     const newFilters = {
       ...filters,
       [e.target.name]: e.target.value,
-      //  !== "all"
-      //   ? e.target.value
-      //   : delete newFilters[`${e.target.name}`],
     };
+    if (e.target.value === "all") {
+      delete newFilters[e.target.name];
+    }
     dispatch(updateFilters(newFilters));
     dispatch(cleanPage());
   }
@@ -54,7 +50,6 @@ const Filters = () => {
         id="color"
         onChange={handleChange}
         className={style.selectFilter}
-        // value={filters.color}
       >
         <option value="defaultValue" disabled>
           Color
@@ -62,7 +57,7 @@ const Filters = () => {
         {colorList.map((color, i) => (
           <option
             name="color"
-            value={filters["color"] ? filters["color"] : color}
+            value={color}
             key={i}
             selected={filters["color"] === color ? true : false}
           >
@@ -76,7 +71,6 @@ const Filters = () => {
         id="size"
         onChange={handleChange}
         className={style.selectFilter}
-        // value={filters.size}
       >
         <option value="defaultValue" disabled>
           Size
@@ -84,7 +78,7 @@ const Filters = () => {
         {sizeList.map((size, i) => (
           <option
             name="size"
-            value={filters["size"] ? filters["size"] : size}
+            value={size}
             key={i}
             selected={filters["size"] === size ? true : false}
           >
@@ -98,7 +92,6 @@ const Filters = () => {
         id="category"
         onChange={handleChange}
         className={style.selectFilter}
-        // value={filters.category}
       >
         <option value="defaultValue" disabled>
           Categories
@@ -106,7 +99,7 @@ const Filters = () => {
         {categoryList.map((category, i) => (
           <option
             name="category"
-            value={filters["category"] ? filters["category"] : category}
+            value={category}
             key={i}
             selected={filters["category"] === category ? true : false}
           >

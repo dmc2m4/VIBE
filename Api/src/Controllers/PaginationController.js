@@ -17,7 +17,7 @@ const getPagination = async (page, info = {}) => {
       filter.season = info.season;
     }
     if (info.name) {
-      filter.name = { [Op.substring]: info.name };
+      filter.name = { [Op.iLike]: info.name };
       // filter.name = info.name;
       // console.log(filter);
     }
@@ -28,6 +28,7 @@ const getPagination = async (page, info = {}) => {
     offset: page,
     limit: 5,
   });
+  console.log(response);
   return response;
 };
 

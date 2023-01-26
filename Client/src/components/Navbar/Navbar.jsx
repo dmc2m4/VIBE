@@ -34,12 +34,12 @@ const Navbar = () => {
     setToggle(!toggle);
   };
   function handleChange(e) {
-    let newCategory = {
-      [e.target.name]:
-        e.target.value !== "all"
-          ? e.target.value
-          : delete newCategory[`${e.target.name}`],
+    const newCategory = {
+      [e.target.name]: e.target.value,
     };
+    if (e.target.value === "all") {
+      delete newCategory[e.target.name];
+    }
     dispatch(updateFilters(newCategory));
     dispatch(cleanPage());
   }
