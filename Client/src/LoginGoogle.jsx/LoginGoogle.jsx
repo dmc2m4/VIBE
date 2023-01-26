@@ -5,7 +5,6 @@ import style from './LoginGoogle.module.css'
 export const LoginGoogle = () => {
   const { loginWithRedirect, user, isAuthenticated } = useAuth0();
 
-  console.log(user);
   return (
     !isAuthenticated && (
       <button onClick={() => loginWithRedirect()} className={style.buttonLanding}>Login</button>
