@@ -76,49 +76,56 @@ const FormNewProduct = () => {
 
     return (
         <div className={style.containerForm}>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} >
+                <div className={style.containerFormSecundary}>
                 <div>
+                <div className={style.containerInput}>
                 <label>Product name</label>
                 <input
                     type="text"
                     id="name"
                     name="name"
-                    placeholder="product name"
+                    placeholder="Product name"
                     onChange={handleChange}
+                    className={style.inputForm}
                 />
                 </div>
-                <div>
-                <label>image</label>
+                <div className={style.containerInput}>
+                <label>Image</label>
                 <input
                     type="text"
                     id="img"
                     name="img"
-                    placeholder="image"
+                    placeholder="Image"
                     onChange={handleChange}
+                    className={style.inputForm}
                 />
                 </div>
-                <div>
+                <div className={style.containerInput}>
                 <label>Size</label>
                 <input
                     type="text"
                     id="size"
                     name="size"
-                    placeholder="size"
+                    placeholder="Size"
                     onChange={handleChange}
+                    className={style.inputForm}
                 />
                 </div>
-                <div>
+                <div className={style.containerInput}>
                 <label>Color</label>
                 <input
                     type="text"
                     id="color"
                     name="color"
-                    placeholder="color"
+                    placeholder="Color"
                     onChange={handleChange}
+                    className={style.inputForm}
                 />
                 </div>
-                <div>
-                    <select onChange={handleChange2} name="season">
+                <div className={style.containerInput}>
+                     <label >Season</label>
+                    <select onChange={handleChange2} name="season" className={style.inputForm}>
                         <option >Select season</option>
                         <option value="all seasons">All seasons</option>
                         <option value="summer">Summer</option>
@@ -127,8 +134,11 @@ const FormNewProduct = () => {
                         <option value="winter">Winter</option>
                     </select>
                 </div>
+                </div>
                 <div>
-                    <select onChange={handleChange3} name="category" >
+                <div className={style.containerInput}>
+                    <label>Category</label>
+                    <select onChange={handleChange3} name="category" className={style.inputForm}>
                         <option >Select category</option>
                         <option value="shirts">shirts</option>
                         <option value="t-shirts">t-shirts</option>
@@ -139,51 +149,53 @@ const FormNewProduct = () => {
                         <option value="sweatshirts">sweatshirts</option>
                     </select>
                 </div>
-                <div>
-                    <select onChange={handleChange4} name="gender">
+                <div className={style.containerInput}>
+                    <label>Gender</label>
+                    <select onChange={handleChange4} name="gender" className={style.inputForm}>
                         <option >Select gender</option>
                         <option value="male">male</option>
                         <option value="female">female</option>
                     </select>
                 </div>
-                <div>
-                <label>Cost</label>
+                <div className={style.containerInput}>
+                <label>Price</label>
                 <input
                     type="number"
                     id="cost"
                     name="cost"
-                    placeholder="cost"
+                    placeholder="Price"
                     onChange={handleChange}
+                    className={style.inputForm}
                 />
                 </div>
-                <div>
-                <label>Rating</label>
-                <div>
+                <div className={style.containerInput}>
+                <label className={style.labelRating}>Rating</label>
+                <div className={style.containerRating}>
             
-    <div>
+    <div className={style.inputRadio}>
       <input type="radio" name="rating" id="rating1"  value="1" onChange={handleChange5}/>
       <label >1</label>
     </div>
-    <div>
-      <input type="radio" id="rating2"  value="2" onChange={handleChange5}/>
+    <div className={style.inputRadio}>
+      <input type="radio" id="rating2" name="rating"  value="2" onChange={handleChange5}/>
       <label >2</label>
     </div>
-    <div>
-      <input type="radio" id="rating3"  value="3" onChange={handleChange5}/>
+    <div className={style.inputRadio}>
+      <input type="radio" id="rating3" name="rating" value="3" onChange={handleChange5}/>
       <label>3</label>
     </div>
-     <div>
-      <input type="radio" id="rating4"  value="4" onChange={handleChange5}/>
+     <div className={style.inputRadio}>
+      <input type="radio" id="rating4" name="rating" value="4" onChange={handleChange5}/>
       <label >4</label>
     </div>
-     <div>
-      <input type="radio" id="rating5"  value="5" onChange={handleChange5}/>
+     <div className={style.inputRadio}>
+      <input type="radio" id="rating5"  name="rating" value="5" onChange={handleChange5}/>
       <label >5</label>
     </div>
 
                 </div>
                 </div>
-                <div>
+                <div className={style.containerInput}>
                 <label>Stock</label>
                 <input
                     type="number"
@@ -191,9 +203,14 @@ const FormNewProduct = () => {
                     name="stock"
                     placeholder="stock"
                     onChange={handleChange}
+                    className={style.inputForm}
                 />
                 </div>
-                <button type='submit'>Create Product</button> 
+                </div>
+                </div>
+                <div className={style.containerButton}>
+                <button type='submit' className={style.buttonCreate}>Create Product</button> 
+                </div>
             </form>
         </div>
     );
