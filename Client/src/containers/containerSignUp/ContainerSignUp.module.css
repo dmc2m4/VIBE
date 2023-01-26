@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.containerIcon {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-family: 'Kalam', cursive;
+}
+
+.iconVibe {
+    width: 12rem;
+}
+
+.containerForm {
+    margin-left: 10rem;
+    margin-right: 4rem;
+    margin-bottom: 5rem;
+}

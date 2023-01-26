@@ -1,0 +1,23 @@
+.containerPrimary{
+   height: 80vh;
+   width: 100%;
+   margin-left: -4rem;
+}
+.container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    margin-top: 30px;
+    margin: auto;
+    width: 85%;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+}
+
+.containerLoading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 62%;
+}

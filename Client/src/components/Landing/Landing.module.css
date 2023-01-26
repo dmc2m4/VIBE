@@ -1,0 +1,77 @@
+.container{
+    display: grid;
+    grid-template-rows: auto 2fr 1fr;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fcfcfc;
+}
+.containerLogo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 110px;
+    background-color: #fcfcfc;
+}
+.logo{
+    height: 15rem;
+    width: 18rem;
+    margin-top: 20px;
+    background-color: #fcfcfc;
+}
+
+.sectionButton{
+    font-family: 'Kalam', cursive;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fcfcfc;
+    margin-left: -10rem;
+}
+
+.textAccount{
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.clothes{
+    width: 35rem;
+    height: 25rem;
+}
+.welcome{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #e0d8cd;
+    font-family: 'Kalam', cursive;
+}
+
+.titleLanding{
+    font-weight: bold;
+    font-size: 3rem;
+}
+.textLanding{
+    font-weight: 300;
+}
+
+.buttonLanding{
+    font-family: 'Kalam', cursive;
+    width: 10rem;
+    height: 2.3rem;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    color: white;
+    background-color: black;
+    cursor: pointer;
+}
+.textSign{
+    color: #7aa5ae;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.link{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
