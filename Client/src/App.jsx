@@ -11,6 +11,9 @@ import Login from "./views/Login/Login";
 import Home from "../src/views/Home/Home";
 import DetailCard from "./components/DetailCard/DetailCard";
 import ContainerCreateNewProduct from "./containers/containerCreateNewProduct/ContainerCreateNewProduct";
+import Carousel from './components/Carousel/Carousel'
+import ImagenHome from "./components/ImagenHome/ImagenHome";
+import About from "./views/About/About";
 // import Login from "./components/Login/Login";
 
 
@@ -28,6 +31,8 @@ const App = () => {
         <Route path="/products" element={<Products />} />
         <Route path="/shopping-cart" element={<ShoppingCart />} />
         <Route path="/productDetail/:id" element={<DetailCard/>} />
+        <Route path="carousel" element={<Carousel/>} />
+        <Route path="imagen" element={<About/>} />
       </Routes>
     </div>
   );

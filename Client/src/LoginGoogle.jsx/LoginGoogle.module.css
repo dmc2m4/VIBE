@@ -1,0 +1,10 @@
+.buttonLanding{
+    font-family: 'Kalam', cursive;
+        width: 10rem;
+        height: 2.3rem;
+        margin-top: 16px;
+        margin-bottom: 4px;
+        color: white;
+        background-color: black;
+        cursor: pointer;
+}

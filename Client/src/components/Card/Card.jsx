@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import style from "./Card.module.css"
-import car from '../../assets/car.png'
+import heart from '../../assets/heart.png'
 
 
 const Card = (props) => {
@@ -17,7 +17,7 @@ const Card = (props) => {
       </div>
       <div>
         <div className={style.containerImg}>
-        <img src={car} alt="" className={style.car} />
+        <img src={heart} alt="" className={style.car} />
         </div>
       </div>
      </div>
