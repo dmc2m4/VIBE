@@ -14,6 +14,7 @@ const getAllUsers = async () => {
 };
 
 const loginUser = async (value) => {
+  console.log(value);
   const findUser = await User.findOne({
     where: {
       email: value.email
@@ -23,7 +24,6 @@ const loginUser = async (value) => {
     const newUser = await User.create({
       name: value.name,
       email: value.email,
-      img: value.picture,
     })
     console.log(newUser);
     return newUser
