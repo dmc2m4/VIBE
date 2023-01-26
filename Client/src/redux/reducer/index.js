@@ -94,12 +94,6 @@ export default function rootReducer(state = initialState, action) {
       Detail: action.payload,
     };
   }
-  if (action.type === types.LOGIN_USER) {
-    return {
-      ...state,
-      User: action.payload,
-    };
-  }
   if (action.type === types.CLEAN_PAGE) {
     return {
       ...state,
@@ -112,11 +106,12 @@ export default function rootReducer(state = initialState, action) {
       Detail: {},
     };
   }
-  if (action.type === types.GET_ACCOUNT){
-    return {
+  if(action.type === types.LOGIN_USER){
+    return{
       ...state,
-      Account: action.payload,
+      User:action.payload
     }
   }
+  
   return { ...state };
 }

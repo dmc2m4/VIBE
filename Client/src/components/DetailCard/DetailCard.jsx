@@ -6,7 +6,7 @@ import createDetail from "../../redux/actions/createDetail";
 import { cleanDetail } from "../../redux/actions/cleanDetail";
 import style from './DetailCard.module.css'
 import heart from '../../assets/heart.png'
-import car from '../../assets/car.png'
+
 
 const DetailCard = () => {
   const detail = useSelector((state) => state.Detail);
@@ -55,7 +55,7 @@ const DetailCard = () => {
       <p className={style.rating}> <p className={style.textDetail}>Stock: </p> {detail.stock}</p>
       </div>
     <div className={style.containerButtonAdd}>
-      <button className={style.buttonAdd}>ADD TO CAR</button>
+      <button className={style.buttonAdd}>ADD TO CART</button>
       </div>
       </div>
       </div>
