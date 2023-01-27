@@ -8,7 +8,6 @@ import Products from "./components/Products/Products";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import Home from "../src/views/Home/Home";
 import DetailCard from "./components/DetailCard/DetailCard";
-import ContainerProduct from "./containers/containerProductHome/ContainerProduct";
 
 
 const App = () => {
@@ -23,8 +22,7 @@ const App = () => {
         <Route path="/products" element={<Products />} />
         <Route path="/shopping-cart" element={<ShoppingCart />} />
         <Route path="/productDetail/:id" element={<DetailCard/>} />
-        <Route path="carousel" element={<Carousel/>} />
-        <Route path="imagen" element={<About/>} />
+      
       </Routes>
     </div>
   );

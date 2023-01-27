@@ -1,28 +1,35 @@
 
 .menu {
-    width: 150px;
+    width: 250px;
     height: auto;
-    border: 1px solid black;
-    border-radius: 14px 0px 18px 11px;
-    -moz-border-radius: 34px 0px 28px 31px;
-    -webkit-border-radius: 34px 0px 28px 31px;
     padding: 20px 20px 0 20px;
     position: absolute;
     top: 80px;
-    right: 50px;
+    right: 0.1px;
     background-color: white;
-    z-index: 1000;
+    z-index: 3;
+    height: 100vh;
+    padding: 0;
+    
 }
 
 .menu ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    width: auto;
+  
+    
 }
 
 .menu ul li {
-    text-align: end;
+    display: flex;
+    justify-content: end;
+    align-items: center;
     font-family: 'Kalam', cursive;
+ 
+    width: 100%;
+    
 }
 
 .menu ul li:nth-child(1),
@@ -31,7 +38,7 @@
 }
 
 .menu ul li:last-child {
-    padding-top: 20px;
+   
     border-top: 1px solid black;
 }
 
