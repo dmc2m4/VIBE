@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { cleanPage } from "../../redux/actions/cleanPage";
+import cleanPage from "../../redux/actions/cleanPage";
 import updateFilters from "../../redux/actions/updateFilters";
 import style from "./Filters.module.css";
 
@@ -108,6 +108,7 @@ const Filters = () => {
           </option>
         ))}
       </select>
+      <span>Alphabet</span>
       <select
         name="alphabetically"
         id="alphabetically"
@@ -115,16 +116,48 @@ const Filters = () => {
         className={style.selectFilter}
       >
         <option
+          value="all"
+          selected={filters["alphabetically"] === "all" ? true : false}
+        >
+          all
+        </option>
+        <option
           value="A-Z"
-          selected={filters["alphabetically"] === alphabetically ? true : false}
+          selected={filters["alphabetically"] === "A-Z" ? true : false}
         >
           A-Z
         </option>
         <option
           value="Z-A"
-          selected={filters["alphabetically"] === alphabetically ? true : false}
+          selected={filters["alphabetically"] === "Z-A" ? true : false}
         >
           Z-A
+        </option>
+      </select>
+      <span>Price</span>
+      <select
+        name="price"
+        id="price"
+        onChange={handleChange}
+        className={style.selectFilter}
+      >
+        <option
+          value="all"
+          selected={filters["price"] === "all" ? true : false}
+        >
+          all
+        </option>
+        <option
+          value="Ascending Price"
+          selected={filters["price"] === "Ascending Price" ? true : false}
+        >
+          Ascending Price
+        </option>
+        <option
+          value="Descending Price"
+          selected={filters["price"] === "Descending Price" ? true : false}
+        >
+          Descending Price
         </option>
       </select>
     </div>
