@@ -20,7 +20,7 @@ const ShoppingCart = () => {
         {items?.map((i) => (
           <div key={i.id}>
             <h1>
-              {i.name} ${i.price} Quantity: ({i.quantity})
+              {i.name} ${i.cost} Quantity: ({i.quantity})
             </h1>
             <button onClick={() => dispatch(addOneToCart(i))}>+</button>
             <button onClick={() => dispatch(removeFromCart(i))}>-</button>

@@ -1,9 +1,15 @@
 import types from "./types";
 import axios from "axios"; 
 
+export function addToCart(product){
+    return{
+        type: types.ADD_TO_CART,
+        payload: product,
+    }
+}
 export function addOneToCart(payload){
     return {
-        type: types.ADD_TO_CART,
+        type: types.ADD_ONE_TO_CART,
         payload,
     }
 }
