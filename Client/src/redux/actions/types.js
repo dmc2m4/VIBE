@@ -11,6 +11,7 @@ const types = {
   CLEAN_PAGE: 'CLEAN_PAGE',
   CLEAN_DETAIL: 'CLEAN_DETAIL',
   LOGIN_USER: "LOGIN_USER",
+  GET_FAVORITES: "GET_FAVORITES",
 };
 
 export default types;

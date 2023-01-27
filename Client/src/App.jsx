@@ -10,6 +10,7 @@ import Home from "../src/views/Home/Home";
 import DetailCard from "./components/DetailCard/DetailCard";
 import Slider from "../src/components/Carousel/Carousel";
 import About from "./views/About/About"
+import Favorites from "./components/Favorites/Favorites";
 
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="/productDetail/:id" element={<DetailCard/>} />
         <Route path="carousel" element={<Slider/>} />
         <Route path="imagen" element={<About/>} />
+        <Route path="/favorites/:email" element={<Favorites/>} />
       </Routes>
     </div>
   );

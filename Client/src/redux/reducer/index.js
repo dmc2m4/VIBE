@@ -111,6 +111,11 @@ export default function rootReducer(state = initialState, action) {
       User:action.payload
     }
   }
-  
+  if (action.type === types.GET_FAVORITES){
+    return {
+      ...state,
+      Favorites: action.payload
+    }
+  }
   return { ...state };
 }
