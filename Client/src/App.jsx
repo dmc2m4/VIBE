@@ -12,6 +12,7 @@ import ContainerProduct from "./containers/containerProductHome/ContainerProduct
 import Slider from "./components/Carousel/Carousel";
 import About from "./views/About/About";
 // import Login from "./components/Login/Login";
+import Favorites from "./components/Favorites/Favorites";
 
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
         <Route path="/productDetail/:id" element={<DetailCard/>} />
         <Route path="carousel" element={<Slider/>} />
         <Route path="imagen" element={<About/>} />
+        <Route path="/favorites/:email" element={<Favorites/>} />
       </Routes>
     </div>
   );
