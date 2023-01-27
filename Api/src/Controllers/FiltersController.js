@@ -4,6 +4,9 @@ const { Op } = require("sequelize");
 const getFilters = async (page, info = {}) => {
   function filtered() {
     let filter = {};
+    if(info.alphabetically){
+      filter.alphabetically = info.alphabetically
+    }
     if (info.color) {
       filter.color = info.color;
     }

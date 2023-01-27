@@ -30,6 +30,7 @@ const Filters = () => {
     "jackets",
     "sweatshirts",
   ];
+
   const filters = useSelector((state) => state.Filters);
   function handleChange(e) {
     const newFilters = {
@@ -106,6 +107,25 @@ const Filters = () => {
             {category}
           </option>
         ))}
+      </select>
+      <select
+        name="alphabetically"
+        id="alphabetically"
+        onChange={handleChange}
+        className={style.selectFilter}
+      >
+        <option
+          value="A-Z"
+          selected={filters["alphabetically"] === alphabetically ? true : false}
+        >
+          A-Z
+        </option>
+        <option
+          value="Z-A"
+          selected={filters["alphabetically"] === alphabetically ? true : false}
+        >
+          Z-A
+        </option>
       </select>
     </div>
   );

@@ -4,12 +4,12 @@ import style from "./Navbar.module.css";
 import Searchbar from "../Searchbar/Searchbar";
 import Favorites from "../Favorites/Favorites";
 import iconVibe from "../../assets/iconVibe.png";
-import car from "../../assets/car.png";
 import heart from "../../assets/heart.png";
 import user from "../../assets/user.png";
 import Account from "../Account/Account";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import ShoppingSlider from "../ShoppingSlider/ShoppingSlider";
 import updateFilters from "../../redux/actions/updateFilters";
 import getPage from "../../redux/actions/getPage";
 import { cleanPage } from "../../redux/actions/cleanPage";
@@ -20,6 +20,12 @@ const Navbar = () => {
   const [toggleFav, setToggleFav] = useState(false);
   const [toggleOrders, setToggleOrders] = useState(false);
   const dispatch = useDispatch();
+  const page = useSelector((state) => state.Page);
+  const [category, setCategory] = useState({ category: undefined });
+
+  useEffect(() => {
+    dispatch(updateFilters(category));
+  }, [dispatch, category]);
   const categories = [
     "all",
     "shirts",
@@ -98,7 +104,7 @@ const Navbar = () => {
             <img src={heart} alt="fav" className={style.imgNav} />
           </li>
           <li className={style.liImg}>
-            <img src={car} alt="car" className={style.imgNav} />
+            <ShoppingSlider/>
           </li>
           <li onClick={handleToggle} className={style.liImg}>
             {" "}

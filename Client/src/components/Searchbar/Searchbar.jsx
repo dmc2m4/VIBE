@@ -4,35 +4,26 @@ import lupa from "../../assets/lupas.png";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { cleanPage } from "../../redux/actions/cleanPage";
-import updateFilters from "../../redux/actions/updateFilters";
+import getPage from "../../redux/actions/getPage";
 
 const Searchbar = () => {
-  const [search, setSearch] = useState({});
-  const filters = useSelector((state) => state.Filters);
   const dispatch = useDispatch();
-
+  const [name, setName] = useState({ name: undefined });
+  const page = useSelector((state) => state.Page);
   function handleChange(e) {
     e.preventDefault();
-    setSearch({ [e.target.name]: e.target.value });
+    setName({ name: e.target.value.toUpperCase() });
   }
 
-  function findProducts(e) {
-    const newSearch = {
-      ...filters,
-      [e.target.name]: e.target.value,
-    };
-    if (e.target.value === "") {
-      delete newSearch[e.target.name];
-    }
-    dispatch(updateFilters(search));
+  function findProducts() {
     dispatch(cleanPage());
+    dispatch(getPage(page, name));
   }
 
   return (
     <div className={style.containerSearch}>
       <input
         type="text"
-        name="name"
         className={style.search}
         onChange={handleChange}
         placeholder="Search..."
