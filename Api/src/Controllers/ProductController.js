@@ -1,6 +1,7 @@
 //[13:57, 18/1/2023] Daniel Henry: /:userId/favorites */
 
 const { Product } = require("../db.js");
+const { uploadImage } = require("../utils/cloudinary")
 
 const getAllProduct = async () => {
   const allProduct = await Product.findAll();
@@ -12,8 +13,12 @@ const getProductById = async function (id) {
   return product
 }
 
-const postProduct = async (value) => {
-  const newProduct = await Product.create(value);
+const postProduct = async ({name, img, size, color, category, gender, cost, season, stock}) => {
+  const newProduct = await Product.create({name, img, size, color, category, gender, cost, season, stock});
+ /*  if(req.files?.image){
+     const result = await uploadImage(req.files.image.tempFilePath)
+     console.log(result)
+  } */
   return newProduct;
 };
 
@@ -53,6 +58,8 @@ const putProduct = async (value, req) => {
   if (amount) update.amount = amount;
   await update.save();
 };
+
+
 
 module.exports = {
   getAllProduct,

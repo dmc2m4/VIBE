@@ -8,6 +8,7 @@ const cors = require ('cors')
 require('./db.js');
 
 const server = express();
+const fileUpload = require('express-fileupload')
 
 server.name = 'API';
 
@@ -25,5 +26,11 @@ server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   console.error(err);
   res.status(status).send(message);
 });
+
+server.use(fileUpload({     //middleware image
+  useTempFiles: true,
+  tempFileDir: '/tmp/'
+}))
+
 
 module.exports = server;
