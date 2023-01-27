@@ -8,8 +8,10 @@ import Products from "./components/Products/Products";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import Home from "../src/views/Home/Home";
 import DetailCard from "./components/DetailCard/DetailCard";
-import Slider from "../src/components/Carousel/Carousel";
-import About from "./views/About/About"
+import ContainerProduct from "./containers/containerProductHome/ContainerProduct";
+import Slider from "./components/Carousel/Carousel";
+import About from "./views/About/About";
+// import Login from "./components/Login/Login";
 
 
 const App = () => {

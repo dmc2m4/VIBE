@@ -43,7 +43,7 @@ const Landing = () => {
           {isAuthenticated && 
           <div>
             
-            <h3 >Hey!!! <br />{user.name}</h3>
+            <h3 >Hey!!! <br />{user.given_name}</h3>
               <button onClick={()=>homeButtom()}  className={style.buttonLanding}>Home</button>
           </div>}
           {!isAuthenticated && <p className={style.textAccount}>Do you have an acoount?</p>}

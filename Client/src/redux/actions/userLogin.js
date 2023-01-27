@@ -7,8 +7,9 @@ const loginUser = (user) => {
       await axios.post("http://localhost:3001/user/login", user);
       dispatch({
         type: types.LOGIN_USER,
-        payload: user,
+        payload: response,
       })
+      console.log(response)
     } catch (error) {
       return alert(error.message)
     }

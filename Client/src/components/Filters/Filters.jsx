@@ -34,11 +34,7 @@ const Filters = () => {
     "jackets",
     "sweatshirts",
   ];
-  const [filtreds, setFiltreds] = useState({
-    color: undefined,
-    size: undefined,
-    category: undefined,
-  });
+  const [filtreds, setFiltreds] = useState( {} );
   function handleChange(e) {
     setFiltreds({
       ...filtreds,
@@ -49,7 +45,6 @@ const Filters = () => {
 
   useEffect(() => {
     dispatch(updateFilters(filtreds));
-    dispatch(getPage(page, filtreds));
   }, [filtreds]);
 
   return (
