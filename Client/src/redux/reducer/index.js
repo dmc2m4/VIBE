@@ -10,15 +10,10 @@ const initialState = {
   Favorites: [],
   User: {},
   Cart: {
-    items: [
-      { id: 1, name: "Campera", price: 100, quantity: 0 },
-      { id: 2, name: "Buzo", price: 200, quantity: 0 },
-      { id: 3, name: "Zapas", price: 300, quantity: 0 },
-      { id: 4, name: "Pantalon", price: 400, quantity: 0 },
-      { id: 5, name: "Ojota", price: 500, quantity: 0 },
-    ],
+    items: [],
     total: 0,
   },
+  Account: {},
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -50,6 +45,33 @@ export default function rootReducer(state = initialState, action) {
     };
   }
   if (action.type === types.ADD_TO_CART) {
+    const result = [...state.Cart.items];
+    let num = 0;
+    result.forEach((e) => {
+      if (e.id === action.payload.id) {
+        e.quantity++;
+        num++;
+      }
+    });
+    if (num === 0) {
+      result.push({
+        id: action.payload.id,
+        name: action.payload.name,
+        cost: action.payload.cost,
+        img: action.payload.img,
+        quantity: 1,
+      });
+    }
+    return {
+      ...state,
+      Cart: {
+        items: result,
+        total: state.Cart.total + action.payload.cost,
+      },
+    };
+  }
+
+  if (action.type === types.ADD_ONE_TO_CART) {
     const itemsCopy = [...state.Cart.items];
     const index = itemsCopy.findIndex((e) => e.id === action.payload.id);
     itemsCopy[index].quantity = itemsCopy[index].quantity + 1;
@@ -57,7 +79,7 @@ export default function rootReducer(state = initialState, action) {
       ...state,
       Cart: {
         items: itemsCopy,
-        total: state.Cart.total + action.payload.price,
+        total: state.Cart.total + action.payload.cost,
       },
     };
   }
@@ -74,7 +96,7 @@ export default function rootReducer(state = initialState, action) {
         items: shouldDelete
           ? itemsCopy.filter((product) => product.id !== action.payload.id)
           : itemsCopy,
-        total: state.Cart.total - action.payload.price,
+        total: state.Cart.total - action.payload.cost,
       },
     };
   }
@@ -105,17 +127,21 @@ export default function rootReducer(state = initialState, action) {
       Detail: {},
     };
   }
-  if(action.type === types.LOGIN_USER){
-    return{
+  if (action.type === types.LOGIN_USER) {
+    return {
       ...state,
-      User:action.payload
-    }
+      User: action.payload,
+    };
   }
+<<<<<<< HEAD
   if (action.type === types.GET_FAVORITES){
     return {
       ...state,
       Favorites: action.payload
     }
   }
+=======
+
+>>>>>>> 0a111de298db1a61a114ab6ae3c00b7f8d14cad1
   return { ...state };
 }

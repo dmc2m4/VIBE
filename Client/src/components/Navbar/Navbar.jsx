@@ -3,12 +3,12 @@ import { useState } from "react";
 import style from "./Navbar.module.css";
 import Searchbar from "../Searchbar/Searchbar";
 import iconVibe from "../../assets/iconVibe.png";
-import car from "../../assets/car.png";
 import heart from "../../assets/heart.png";
 import user2 from "../../assets/user.png";
 import Account from "../Account/Account";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import ShoppingSlider from "../ShoppingSlider/ShoppingSlider";
 import updateFilters from "../../redux/actions/updateFilters";
 import { cleanPage } from "../../redux/actions/cleanPage";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -19,8 +19,11 @@ const Navbar = () => {
   const user = useSelector(state => state.User);
   const dispatch = useDispatch();
   const [category, setCategory] = useState({ category: undefined });
+<<<<<<< HEAD
   const navigate = useNavigate();
   console.log(user);
+=======
+>>>>>>> 0a111de298db1a61a114ab6ae3c00b7f8d14cad1
 
   useEffect(() => {
     dispatch(updateFilters(category));
@@ -49,20 +52,22 @@ const Navbar = () => {
 
   const handleToggleAll = () => {
     setToggle(false);
-
   };
 
+<<<<<<< HEAD
   const favButton = () => {
     dispatch(getFavorites(user.email))
     navigate(`/favorites/${user.email}`)
   }
 
   const withouSidebarRoutes = ["/login", "/signup",];
+=======
+  const withouSidebarRoutes = ["/login", "/signup"];
+>>>>>>> 0a111de298db1a61a114ab6ae3c00b7f8d14cad1
   const { pathname } = useLocation();
   if (withouSidebarRoutes.some((item) => pathname.includes(item))) {
-    return null
+    return null;
   } else {
-
     return (
       <nav className={style.container}>
         <div className={style.containerIcon} onClick={handleToggleAll}>
@@ -85,7 +90,11 @@ const Navbar = () => {
                   Categories
                 </option>
                 {categories.map((category, i) => (
-                  <option value={category} key={i} className={style.titleSelect}>
+                  <option
+                    value={category}
+                    key={i}
+                    className={style.titleSelect}
+                  >
                     {category}
                   </option>
                 ))}
@@ -100,11 +109,16 @@ const Navbar = () => {
           <Searchbar />
         </div>
         <div className={style.containerImg}>
+<<<<<<< HEAD
           <li className={style.liImg} >
             <img onClick={favButton} src={heart} alt="fav" className={style.imgNav} />
+=======
+          <li className={style.liImg}>
+            <img src={heart} alt="fav" className={style.imgNav} />
+>>>>>>> 0a111de298db1a61a114ab6ae3c00b7f8d14cad1
           </li>
-          <li className={style.liImg} >
-            <img src={car} alt="car" className={style.imgNav} />
+          <li className={style.liImg}>
+            <ShoppingSlider/>
           </li>
           <li onClick={handleToggle} className={style.liImg}>
             {" "}
@@ -115,6 +129,6 @@ const Navbar = () => {
       </nav>
     );
   }
-}
+};
 
-  export default Navbar;
+export default Navbar;

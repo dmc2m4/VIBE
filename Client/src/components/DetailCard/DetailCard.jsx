@@ -4,7 +4,9 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import createDetail from "../../redux/actions/createDetail";
 import { cleanDetail } from "../../redux/actions/cleanDetail";
+import { addToCart } from "../../redux/actions/shoppingCart.actions";
 import style from './DetailCard.module.css'
+import ShoppingCart from "../../assets/ShoppingCart.png"
 import heart from '../../assets/heart.png'
 
 
@@ -13,6 +15,10 @@ const DetailCard = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const array = [1, 2, 3, 4 ,5]
+//console.log(detail)
+  function addToCar(){
+    dispatch(addToCart(detail));
+  }
   
   useEffect(() => {
     dispatch(createDetail(id));
@@ -55,7 +61,8 @@ const DetailCard = () => {
       <p className={style.rating}> <p className={style.textDetail}>Stock: </p> {detail.stock}</p>
       </div>
     <div className={style.containerButtonAdd}>
-      <button className={style.buttonAdd}>ADD TO CAR</button>
+      <img src={ShoppingCart} alt="Img not found"/>
+      <button className={style.buttonAdd} onClick={addToCar}>ADD TO CART</button>
       </div>
       </div>
       </div>
