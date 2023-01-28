@@ -7,7 +7,7 @@ import ContainerProduct from "../../containers/containerProductHome/ContainerPro
 import loginUser from "../../redux/actions/userLogin";
 import style from "./Home.module.css";
 import Carousel from '../../components/Carousel/Carousel'
-import ImagenHome from "../../components/ImagenHome/ImagenHome";
+
 
 const Home = () => {
 
@@ -25,7 +25,6 @@ const Home = () => {
   return (
     <div className={style.container}>
       <Carousel/>
-      <ImagenHome/>
       <ContainerProduct />
       <Pagination />
       
