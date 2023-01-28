@@ -19,11 +19,8 @@ const Navbar = () => {
   const user = useSelector(state => state.User);
   const dispatch = useDispatch();
   const [category, setCategory] = useState({ category: undefined });
-<<<<<<< HEAD
   const navigate = useNavigate();
   console.log(user);
-=======
->>>>>>> 0a111de298db1a61a114ab6ae3c00b7f8d14cad1
 
   useEffect(() => {
     dispatch(updateFilters(category));
@@ -54,16 +51,12 @@ const Navbar = () => {
     setToggle(false);
   };
 
-<<<<<<< HEAD
   const favButton = () => {
     dispatch(getFavorites(user.email))
     navigate(`/favorites/${user.email}`)
   }
 
   const withouSidebarRoutes = ["/login", "/signup",];
-=======
-  const withouSidebarRoutes = ["/login", "/signup"];
->>>>>>> 0a111de298db1a61a114ab6ae3c00b7f8d14cad1
   const { pathname } = useLocation();
   if (withouSidebarRoutes.some((item) => pathname.includes(item))) {
     return null;
@@ -109,13 +102,8 @@ const Navbar = () => {
           <Searchbar />
         </div>
         <div className={style.containerImg}>
-<<<<<<< HEAD
           <li className={style.liImg} >
             <img onClick={favButton} src={heart} alt="fav" className={style.imgNav} />
-=======
-          <li className={style.liImg}>
-            <img src={heart} alt="fav" className={style.imgNav} />
->>>>>>> 0a111de298db1a61a114ab6ae3c00b7f8d14cad1
           </li>
           <li className={style.liImg}>
             <ShoppingSlider/>

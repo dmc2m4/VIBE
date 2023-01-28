@@ -133,15 +133,11 @@ export default function rootReducer(state = initialState, action) {
       User: action.payload,
     };
   }
-<<<<<<< HEAD
   if (action.type === types.GET_FAVORITES){
     return {
       ...state,
       Favorites: action.payload
     }
   }
-=======
-
->>>>>>> 0a111de298db1a61a114ab6ae3c00b7f8d14cad1
   return { ...state };
 }
