@@ -2,26 +2,25 @@ import React from "react";
 import { useState } from "react";
 import style from "./Navbar.module.css";
 import Searchbar from "../Searchbar/Searchbar";
-import Favorites from "../Favorites/Favorites";
 import iconVibe from "../../assets/iconVibe.png";
 import heart from "../../assets/heart.png";
-import user from "../../assets/user.png";
+import user2 from "../../assets/user.png";
 import Account from "../Account/Account";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import ShoppingSlider from "../ShoppingSlider/ShoppingSlider";
 import updateFilters from "../../redux/actions/updateFilters";
-import getPage from "../../redux/actions/getPage";
-import { cleanPage } from "../../redux/actions/cleanPage";
-import { Link, useLocation } from "react-router-dom";
+import cleanPage from "../../redux/actions/cleanPage";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import getFavorites from "../../redux/actions/getFavorites";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
-  const [toggleFav, setToggleFav] = useState(false);
-  const [toggleOrders, setToggleOrders] = useState(false);
+  const user = useSelector(state => state.User);
   const dispatch = useDispatch();
-  const page = useSelector((state) => state.Page);
-  const [category, setCategory] = useState({ category: undefined });
+  const [category, setCategory] = useState({});
+  const navigate = useNavigate();
+  console.log(user);
 
   useEffect(() => {
     dispatch(updateFilters(category));
@@ -36,21 +35,31 @@ const Navbar = () => {
     "jackets",
     "sweatshirts",
   ];
+
   const handleToggle = () => {
     setToggle(!toggle);
   };
-  const handleChange = (e) => {
-    setCategory({
-      category: e.target.value !== "all" ? e.target.value : null,
-    });
+  function handleChange(e) {
+    const newCategory = {
+      [e.target.name]: e.target.value,
+    };
+    if (e.target.value === "all") {
+      delete newCategory[e.target.name];
+    }
+    dispatch(updateFilters(newCategory));
     dispatch(cleanPage());
-  };
+  }
 
   const handleToggleAll = () => {
     setToggle(false);
   };
 
-  const withouSidebarRoutes = ["/login", "/signup"];
+  const favButton = () => {
+    dispatch(getFavorites(user.email))
+    navigate(`/favorites/${user.email}`)
+  }
+
+  const withouSidebarRoutes = ["/login", "/signup",];
   const { pathname } = useLocation();
   if (withouSidebarRoutes.some((item) => pathname.includes(item))) {
     return null;
@@ -71,7 +80,7 @@ const Navbar = () => {
               <select
                 name="category"
                 className={style.selectCategories}
-                onChange={(e) => handleChange(e)}
+                onChange={handleChange}
               >
                 <option value="categories" hidden>
                   Categories
@@ -96,15 +105,15 @@ const Navbar = () => {
           <Searchbar />
         </div>
         <div className={style.containerImg}>
-          <li className={style.liImg}>
-            <img src={heart} alt="fav" className={style.imgNav} />
+          <li className={style.liImg} >
+            <img onClick={favButton} src={heart} alt="fav" className={style.imgNav} />
           </li>
           <li className={style.liImg}>
             <ShoppingSlider/>
           </li>
           <li onClick={handleToggle} className={style.liImg}>
             {" "}
-            <img src={user} alt="user" className={style.imgNav} />
+            <img src={user2} alt="user" className={style.imgNav} />
           </li>
         </div>
         {toggle && <Account />}

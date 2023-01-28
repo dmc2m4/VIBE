@@ -18,6 +18,7 @@ const initialState = {
 
 export default function rootReducer(state = initialState, action) {
   if (action.type === types.UPDATE_FILTERS) {
+    console.log(action.payload)
     return {
       ...state,
       Filters: action.payload,
@@ -133,6 +134,11 @@ export default function rootReducer(state = initialState, action) {
       User: action.payload,
     };
   }
-
+  if (action.type === types.GET_FAVORITES){
+    return {
+      ...state,
+      Favorites: action.payload
+    }
+  }
   return { ...state };
 }

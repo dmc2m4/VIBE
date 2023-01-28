@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper";
-import style from './Carousel.module.css'
+import style from "./Carousel.module.css";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -13,7 +13,6 @@ import Carrousel5 from "../../assets/Carrousel5.png"
 
 const Slider = () => {
   return (
-  
       <Swiper
       
         spaceBetween={30}
@@ -44,4 +43,4 @@ const Slider = () => {
   )
 }
 
-export default Slider
+export default Slider;
