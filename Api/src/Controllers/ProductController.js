@@ -12,15 +12,6 @@ const getProductById = async function (id) {
   return product
 }
 
-const postProduct = async (value) => {
-  /* if(value.img){
-    const result = await uploadImage(value.img) 
-    //req.files.image.tempFilePat
-    console.log(result + "result desde product controller")} */
-    console.log(req.files + "req.files desde product controller")
-  const newProduct = await Product.create(value);
-  return newProduct;
-};
 
 const deleteProduct = async (value) => {
   await Product.destroy({
@@ -63,7 +54,6 @@ const putProduct = async (value, req) => {
 
 module.exports = {
   getAllProduct,
-  postProduct,
   deleteProduct,
   putProduct,
   getProductById,
