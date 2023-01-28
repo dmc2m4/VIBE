@@ -1,7 +1,6 @@
 //[13:57, 18/1/2023] Daniel Henry: /:userId/favorites */
 
 const { Product } = require("../db.js");
-const { uploadImage } = require("../utils/cloudinary")
 
 const getAllProduct = async () => {
   const allProduct = await Product.findAll();
@@ -13,12 +12,13 @@ const getProductById = async function (id) {
   return product
 }
 
-const postProduct = async ({name, img, size, color, category, gender, cost, season, stock}) => {
-  const newProduct = await Product.create({name, img, size, color, category, gender, cost, season, stock});
- /*  if(req.files?.image){
-     const result = await uploadImage(req.files.image.tempFilePath)
-     console.log(result)
-  } */
+const postProduct = async (value) => {
+  /* if(value.img){
+    const result = await uploadImage(value.img) 
+    //req.files.image.tempFilePat
+    console.log(result + "result desde product controller")} */
+    console.log(req.files + "req.files desde product controller")
+  const newProduct = await Product.create(value);
   return newProduct;
 };
 

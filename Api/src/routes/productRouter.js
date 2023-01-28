@@ -7,7 +7,7 @@ const {
   putProduct,
   getProductById,
 } = require("../Controllers/ProductController");
-const { uploadImage } = require("../utils/cloudinary")
+
 
 const productRouter = Router();
 
@@ -32,15 +32,10 @@ productRouter.get("/:id", async (req, res) => {
 });
 
 productRouter.post("/", MPP, async (req, res) => {
-  console.log(req.body)
-  try {
+/*   console.log(req.body)
+ */  try {
     const newProduct = await postProduct(req.body);
-    console.log(req.files)
-    if(req.body.image){
-      const result = await uploadImage(req.body.image)
-      // req.files.image.tempFilePat
-      console.log(result)}
-    res.status(201).json(newProduct);
+    res.status(201).send(newProduct);
   } catch (error) {
     res.status(400).send(error.message);
   }

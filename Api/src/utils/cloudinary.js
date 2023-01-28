@@ -1,4 +1,4 @@
-const cloudinary = require('cloudinary').v2
+/* const cloudinary = require('cloudinary').v2
 require('dotenv').config()
 const { API_KEY, CLOUD_NAME, API_SECRET } = process.env;
 
@@ -17,3 +17,4 @@ cloudinary.config({
 }
 
 module.exports = {uploadImage}
+ */
