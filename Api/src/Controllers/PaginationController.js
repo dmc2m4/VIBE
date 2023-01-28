@@ -1,9 +1,10 @@
 const { Product } = require("../db");
-const { Op } = require("sequelize");
+const { Sequelize, Op } = require("sequelize");
 
 const getPagination = async (page, info = {}) => {
+  let filter = {};
+
   function filtered() {
-    let filter = {};
     if (info.color) {
       filter.color = info.color;
     }
@@ -18,16 +19,33 @@ const getPagination = async (page, info = {}) => {
     }
     if (info.name) {
       filter.name = { [Op.substring]: info.name };
-      // filter.name = info.name;
-      // console.log(filter);
     }
+
     return Object.keys(filter).length > 0 ? filter : null;
   }
+  function order() {
+    if (info.alphabetically === "A-Z") {
+      return [["name", "ASC"]];
+    }
+    if (info.alphabetically === "Z-A") {
+      return [["name", "DESC"]];
+    }
+    if (info.price === "Descending Price") {
+      return [["cost", "DESC"]];
+    }
+    if (info.price === "Ascending Price") {
+      return [["cost", "ASC"]];
+    }
+    return null;
+  }
+  // console.log(order());
   const response = await Product.findAndCountAll({
     where: filtered(),
+    order: order(),
     offset: page,
     limit: 5,
   });
+  // console.log(response.rows);
   return response;
 };
 

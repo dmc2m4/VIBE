@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import ShoppingSlider from "../ShoppingSlider/ShoppingSlider";
 import updateFilters from "../../redux/actions/updateFilters";
-import { cleanPage } from "../../redux/actions/cleanPage";
+import cleanPage from "../../redux/actions/cleanPage";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import getFavorites from "../../redux/actions/getFavorites";
 
@@ -18,12 +18,9 @@ const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const user = useSelector(state => state.User);
   const dispatch = useDispatch();
-  const [category, setCategory] = useState({ category: undefined });
-<<<<<<< HEAD
+  const [category, setCategory] = useState({});
   const navigate = useNavigate();
   console.log(user);
-=======
->>>>>>> 0a111de298db1a61a114ab6ae3c00b7f8d14cad1
 
   useEffect(() => {
     dispatch(updateFilters(category));
@@ -42,28 +39,27 @@ const Navbar = () => {
   const handleToggle = () => {
     setToggle(!toggle);
   };
-
-  const handleChange = (e) => {
-    setCategory({
-      category: e.target.value !== "all" ? e.target.value : null,
-    });
+  function handleChange(e) {
+    const newCategory = {
+      [e.target.name]: e.target.value,
+    };
+    if (e.target.value === "all") {
+      delete newCategory[e.target.name];
+    }
+    dispatch(updateFilters(newCategory));
     dispatch(cleanPage());
-  };
+  }
 
   const handleToggleAll = () => {
     setToggle(false);
   };
 
-<<<<<<< HEAD
   const favButton = () => {
     dispatch(getFavorites(user.email))
     navigate(`/favorites/${user.email}`)
   }
 
   const withouSidebarRoutes = ["/login", "/signup",];
-=======
-  const withouSidebarRoutes = ["/login", "/signup"];
->>>>>>> 0a111de298db1a61a114ab6ae3c00b7f8d14cad1
   const { pathname } = useLocation();
   if (withouSidebarRoutes.some((item) => pathname.includes(item))) {
     return null;
@@ -84,7 +80,7 @@ const Navbar = () => {
               <select
                 name="category"
                 className={style.selectCategories}
-                onChange={(e) => handleChange(e)}
+                onChange={handleChange}
               >
                 <option value="categories" hidden>
                   Categories
@@ -109,13 +105,8 @@ const Navbar = () => {
           <Searchbar />
         </div>
         <div className={style.containerImg}>
-<<<<<<< HEAD
           <li className={style.liImg} >
             <img onClick={favButton} src={heart} alt="fav" className={style.imgNav} />
-=======
-          <li className={style.liImg}>
-            <img src={heart} alt="fav" className={style.imgNav} />
->>>>>>> 0a111de298db1a61a114ab6ae3c00b7f8d14cad1
           </li>
           <li className={style.liImg}>
             <ShoppingSlider/>
