@@ -106,9 +106,11 @@ productRouter.post("/", upload.array("img", 5), async (req, res) => {
     season,
     stock,
     amount,
+    img
   } = req.body;
   try {
-    console.log(req.files)
+    console.log(req.file + "soy req.file")
+    console.log(img + "soy IMG")
     const results = await Promise.all(
       req.files.map(async (file) => {
         const result = await cloudinary.v2.uploader.upload(file.path);

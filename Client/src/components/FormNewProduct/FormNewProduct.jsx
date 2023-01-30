@@ -68,7 +68,7 @@ const FormNewProduct = () => {
   const handleChange6 = (e) => {
     setNewProduct({
       ...newProduct,
-      img: [...img, e.target.img[0]],
+      img: [e.target.img],
     });
   };
 
