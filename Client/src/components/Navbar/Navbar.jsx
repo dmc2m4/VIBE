@@ -13,6 +13,7 @@ import updateFilters from "../../redux/actions/updateFilters";
 import cleanPage from "../../redux/actions/cleanPage";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import getFavorites from "../../redux/actions/getFavorites";
+import getPage from "../../redux/actions/getPage";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
@@ -59,6 +60,10 @@ const Navbar = () => {
     navigate(`/favorites/${user.email}`)
   }
 
+  const shopButton = () => {
+    dispatch(getPage());
+  }
+
   const withouSidebarRoutes = ["/login", "/signup",];
   const { pathname } = useLocation();
   if (withouSidebarRoutes.some((item) => pathname.includes(item))) {
@@ -74,7 +79,7 @@ const Navbar = () => {
         <div className={style.containerUl}>
           <ul className={style.containerLi}>
             <li className={style.liNav}>
-              <h2 className={style.links}>Shop</h2>
+              <h2 className={style.links} onClick={shopButton}>Shop</h2>
             </li>
             <li className={style.liNav}>
               <select
