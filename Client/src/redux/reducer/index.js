@@ -8,6 +8,7 @@ const initialState = {
   Filters: {},
   Detail: {},
   Favorites: [],
+  Fav: false,
   User: {},
   Cart: {
     items: [],
@@ -138,6 +139,12 @@ export default function rootReducer(state = initialState, action) {
     return {
       ...state,
       Favorites: action.payload
+    }
+  }
+  if(action.type === types.IS_FAV){
+    return {
+      ...state,
+      Fav: action.payload
     }
   }
   return { ...state };

@@ -1,10 +1,12 @@
 import { useState, React } from "react";
 import { useDispatch } from "react-redux";
+import { Navigate, useNavigate } from "react-router-dom";
 import createProdcut from "../../redux/actions/createProduct";
 import style from "./FormNewProduct.module.css";
 
 const FormNewProduct = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const [error, setError] = useState({});
   const [newProduct, setNewProduct] = useState({
     name: "",
@@ -18,6 +20,7 @@ const FormNewProduct = () => {
     season: "",
     stock: 0,
   });
+  console.log(newProduct);
 
   function handleChange(e) {
     setError(
@@ -82,6 +85,7 @@ const FormNewProduct = () => {
     }
     dispatch(createProdcut(newProduct));
     alert("Producto creado correctamente");
+    navigate("/home")
   }
 
   return (
@@ -108,7 +112,7 @@ const FormNewProduct = () => {
             <div className={style.containerInput}>
               <label>Image</label>
               <input
-                type="file"
+                type="text"
                 id="img"
                 name="img"
                 placeholder="Image"
