@@ -13,6 +13,7 @@ import updateFilters from "../../redux/actions/updateFilters";
 import cleanPage from "../../redux/actions/cleanPage";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import getFavorites from "../../redux/actions/getFavorites";
+import getPage from "../../redux/actions/setCurrentPage";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
@@ -20,10 +21,14 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const [category, setCategory] = useState({});
   const navigate = useNavigate();
-  console.log(user);
+
+ localStorage.setItem("user", JSON.stringify(user));
+    console.log(user);
 
   useEffect(() => {
     dispatch(updateFilters(category));
+    localStorage.getItem("user")
+    console.log(user);
   }, [dispatch, category]);
   const categories = [
     "all",
@@ -58,6 +63,9 @@ const Navbar = () => {
     dispatch(getFavorites(user.email))
     navigate(`/favorites/${user.email}`)
   }
+  const cleanProducts = () => {
+    dispatch(getPage())
+  }
 
   const withouSidebarRoutes = ["/login", "/signup",];
   const { pathname } = useLocation();
@@ -74,7 +82,7 @@ const Navbar = () => {
         <div className={style.containerUl}>
           <ul className={style.containerLi}>
             <li className={style.liNav}>
-              <h2 className={style.links}>Shop</h2>
+              <h2 className={style.links} onClick={()=>cleanProducts()}>Shop</h2>
             </li>
             <li className={style.liNav}>
               <select

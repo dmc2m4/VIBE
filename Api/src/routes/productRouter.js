@@ -66,6 +66,10 @@ productRouter.post("/", async (req, res) => {
     stock,
     amount,
   } = req.body;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2142cd27290f177055f502a838bc6f2730421262
   try {
     let imgUrlArray = [];
     for (let i = 0; i < req.files?.length; i++) {
