@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./Account.module.css";
 import { LogOutGoogle } from "../../LogOutGoogle/LogOutGoogle";
+import { MyAccount } from "../MyAccount/MyAccount";
 
 const Account = () => {
 
@@ -22,7 +23,7 @@ const Account = () => {
           </a>
         </li>
         <li>
-          <a href='/createProduct'>My account</a>
+          <a href='/createProduct'><MyAccount/></a>
         </li>
         <li
           onClick={() => {

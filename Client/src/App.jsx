@@ -30,6 +30,7 @@ const App = () => {
         <Route path="carousel" element={<Slider/>} />
         <Route path="imagen" element={<About/>} />
         <Route path="/favorites/:email" element={<Favorites/>} />
+        
       </Routes>
     </div>
   );

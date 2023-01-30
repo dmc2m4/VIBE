@@ -95,7 +95,7 @@ productRouter.post("/", upload.single("img"), async (req, res) => {
     stock,
     amount,
   } = req.body;
-  console.log(req.file.path + "soy path-----------------------------")
+
   try {
     cloudinary.uploader.upload(req.file.path, async function (result) {
       const newProduct = await Product.create({

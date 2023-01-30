@@ -1,8 +1,9 @@
 import { useState, React } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import createProdcut from "../../redux/actions/createProduct";
 import style from "./FormNewProduct.module.css";
-
+ 
 const FormNewProduct = () => {
   const dispatch = useDispatch();
   const [error, setError] = useState({});
@@ -18,6 +19,8 @@ const FormNewProduct = () => {
     season: "",
     stock: 0,
   });
+
+  const navigate = useNavigate();
 
   function handleChange(e) {
     setError(
@@ -82,13 +85,13 @@ const FormNewProduct = () => {
     }
     dispatch(createProdcut(newProduct));
     alert("Producto creado correctamente");
+    navigate("/home");
   }
 
   return (
     <div className={style.containerForm}>
       <form
         onSubmit={handleSubmit}
-        action="/pedidos"
         method="post"
         enctype="multipart/form-data"
       >
