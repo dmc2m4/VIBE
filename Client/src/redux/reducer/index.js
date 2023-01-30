@@ -18,6 +18,7 @@ const initialState = {
 
 export default function rootReducer(state = initialState, action) {
   if (action.type === types.UPDATE_FILTERS) {
+    console.log(action.payload)
     return {
       ...state,
       Filters: action.payload,

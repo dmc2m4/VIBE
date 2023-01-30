@@ -12,10 +12,6 @@ const getProductById = async function (id) {
   return product
 }
 
-const postProduct = async (value) => {
-  const newProduct = await Product.create(value);
-  return newProduct;
-};
 
 const deleteProduct = async (value) => {
   await Product.destroy({
@@ -54,9 +50,10 @@ const putProduct = async (value, req) => {
   await update.save();
 };
 
+
+
 module.exports = {
   getAllProduct,
-  postProduct,
   deleteProduct,
   putProduct,
   getProductById,

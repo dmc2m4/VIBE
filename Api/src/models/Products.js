@@ -1,4 +1,4 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes, STRING } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define(
@@ -18,7 +18,7 @@ module.exports = (sequelize) => {
         },
       },
       img: {
-        type: DataTypes.STRING,
+        type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false,
       },
       size: {
@@ -67,6 +67,10 @@ module.exports = (sequelize) => {
       amount: {
         type: DataTypes.INTEGER,
       },
+      isfav: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      }
       /* public: {
         type: DataTypes.BOOLEAN,
         allowNull: false,

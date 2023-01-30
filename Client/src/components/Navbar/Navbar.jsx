@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import ShoppingSlider from "../ShoppingSlider/ShoppingSlider";
 import updateFilters from "../../redux/actions/updateFilters";
-import { cleanPage } from "../../redux/actions/cleanPage";
+import cleanPage from "../../redux/actions/cleanPage";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import getFavorites from "../../redux/actions/getFavorites";
 
@@ -39,13 +39,16 @@ const Navbar = () => {
   const handleToggle = () => {
     setToggle(!toggle);
   };
-
-  const handleChange = (e) => {
-    setCategory({
-      category: e.target.value !== "all" ? e.target.value : null,
-    });
+  function handleChange(e) {
+    const newCategory = {
+      [e.target.name]: e.target.value,
+    };
+    if (e.target.value === "all") {
+      delete newCategory[e.target.name];
+    }
+    dispatch(updateFilters(newCategory));
     dispatch(cleanPage());
-  };
+  }
 
   const handleToggleAll = () => {
     setToggle(false);
@@ -77,7 +80,7 @@ const Navbar = () => {
               <select
                 name="category"
                 className={style.selectCategories}
-                onChange={(e) => handleChange(e)}
+                onChange={handleChange}
               >
                 <option value="categories" hidden>
                   Categories
