@@ -40,7 +40,7 @@ let capsEntries = entries.map((entry) => [
 ]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { User, Product, Review, Address } = sequelize.models;
+const { User, Product, Address } = sequelize.models;
 
   User.belongsToMany(Product, { through: 'users_products' });
   Product.belongsToMany(User, { through: 'users_products' });
@@ -51,13 +51,8 @@ const { User, Product, Review, Address } = sequelize.models;
   User.belongsToMany(Product, { through: 'favorites_products', as: "favorites" } );
   Product.belongsToMany(User, { through: 'favorites_products', as: "favorites" } );
 
-  User.belongsToMany(Product, { through: 'purchases'});
-  Product.belongsToMany(User, { through: 'purchases'});
-
-  User.hasMany(Review, {onDelete: 'CASCADE'});
-  Review.belongsTo(User);
-  Product.hasMany(Review,  {onDelete: 'CASCADE'});
-  Review.belongsTo(Product);
+  User.belongsToMany(Product, { through: 'purchases'})
+  Product.belongsToMany(User, { through: 'purchases'})
 
 module.exports = {
   ...sequelize.models,

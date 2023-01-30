@@ -14,7 +14,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
         set(value) {
-          this.setDataValue("name", value.toUpperCase());
+          this.setDataValue("name", value?.toUpperCase());
         },
       },
       img: {
@@ -71,6 +71,20 @@ module.exports = (sequelize) => {
         type: DataTypes.BOOLEAN,
         allowNull: false,
       }, */
+      rating: {
+        type: DataTypes.ARRAY(DataTypes.INTEGER),
+        validate: {
+          min: 1,
+          max: 5,
+          isEven(value) {
+            if (value < 1 || value > 5)
+              throw new Error("the rating must be a value between 1 and 5");
+          },
+        },
+      },
+      text: {
+        type: DataTypes.ARRAY(DataTypes.TEXT),
+      },
     },
     {
       timestamps: true,

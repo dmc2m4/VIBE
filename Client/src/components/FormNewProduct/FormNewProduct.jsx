@@ -1,6 +1,6 @@
 import { useState, React } from "react";
 import { useDispatch } from "react-redux";
-import createProdcut from "../../redux/actions/createProduct";
+import createProduct from "../../redux/actions/createProduct";
 import style from "./FormNewProduct.module.css";
 
 const FormNewProduct = () => {
@@ -8,7 +8,7 @@ const FormNewProduct = () => {
   const [error, setError] = useState({});
   const [newProduct, setNewProduct] = useState({
     name: "",
-    img: "",
+    img: [],
     size: "",
     color: "",
     category: "",
@@ -65,6 +65,13 @@ const FormNewProduct = () => {
     });
   };
 
+  const handleChange6 = (e) => {
+    setNewProduct({
+      ...newProduct,
+      img: [...img, e.target.img[0]],
+    });
+  };
+
   function handleSubmit() {
     if (
       !newProduct.name ||
@@ -80,7 +87,7 @@ const FormNewProduct = () => {
     ) {
       return alert("Por favor completar todos los campos");
     }
-    dispatch(createProdcut(newProduct));
+    dispatch(createProduct(newProduct));
     alert("Producto creado correctamente");
   }
 
@@ -112,11 +119,10 @@ const FormNewProduct = () => {
                 id="img"
                 name="img"
                 placeholder="Image"
-                onChange={handleChange}
+                onChange={handleChange6}
                 className={style.inputForm}
+                multiple
               />
-              {/* multiple="" class="inputFileHidden"
-               */}
             </div>
             <div className={style.containerInput}>
               <label>Size</label>

@@ -1,19 +1,14 @@
 const { Router } = require("express");
 const {
   getAllProduct,
-/*   postProduct,
- */  deleteProduct,
+  /*   postProduct,
+   */ deleteProduct,
   putProduct,
   getProductById,
 } = require("../Controllers/ProductController");
-
-const { Product } = require("../db")
-const multer = require("multer");
-const cloudinary = require("cloudinary");
-
-
-
-
+const cloudinary = require("../utils/cloudinary");
+const upload = require("../utils/multer");
+const { Product } = require("../db");
 
 const productRouter = Router();
 
@@ -27,16 +22,15 @@ productRouter.get("/", async (req, res) => {
 });
 
 productRouter.get("/:id", async (req, res) => {
-  console.log(req.body)
+  console.log(req.body);
   try {
-    const {id} = req.params;
+    const { id } = req.params;
     const product = await getProductById(id);
     res.status(200).send(product);
   } catch (error) {
     res.status(400).send(error.message);
   }
 });
-
 
 productRouter.delete("/delete/:id", async (req, res) => {
   const { id } = req.params;
@@ -58,31 +52,8 @@ productRouter.put("/updateProduct/:id", async (req, res) => {
     res.status(400).send(error.message);
   }
 });
-
-//ruta post
-
-//------------ middleware--------------------
-const storage = multer.diskStorage({
-  filename: function (req, file, callback) {
-    callback(null, Date.now() + file.originalname);
-  },
-});
-const imageFilter = function (req, file, cb) {
-  if (!file.originalname.match(/\.(jpg|jpeg|png)$/i)) {
-    return cb(new Error("Only image files are allowed"), false);
-  }
-  cb(null, true);
-};
-const upload = multer({ storage: storage, fileFilter: imageFilter });
-
-cloudinary.config({
-  cloud_name: process.env.CLOUD_NAME,
-  api_key: process.env.API_KEY,
-  api_secret: process.env.API_SECRET,
-});
-//--------------middleware-----------------
-//---------------ruta----------------------
-productRouter.post("/", upload.single("img"), async (req, res) => {
+/* 
+productRouter.post("/", async (req, res) => {
   const {
     name,
     img,
@@ -95,26 +66,75 @@ productRouter.post("/", upload.single("img"), async (req, res) => {
     stock,
     amount,
   } = req.body;
-  console.log(req.file.path + "soy path-----------------------------")
   try {
-    cloudinary.uploader.upload(req.file.path, async function (result) {
-      const newProduct = await Product.create({
-        name: name,
-        img: result.secure_url,
-        size: size,
-        color: color,
-        category: category,
-        gender: gender,
-        cost: cost,
-        season: season,
-        stock: stock,
-        amount: amount,
-      });
-      res.status(200).send(newProduct);
+    let imgUrlArray = [];
+    for (let i = 0; i < req.files?.length; i++) {
+        const cloudinary_image = await cloudinary.uploader.upload(req.files[i].path, {
+            folder: 'imagesVibes'
+        });
+        imgUrlArray.push(cloudinary_image.secure_url)
+    };
+    const newProduct = await Product.create({
+      name: name,
+      img: imgUrlArray,
+      size: size,
+      color: color,
+      category: category,
+      gender: gender,
+      cost: cost,
+      season: season,
+      stock: stock,
+      amount: amount,
     });
+      res.status(200).send(newProduct);
+    ;
+  } catch (error) {
+    res.status(400).send({ error: error.message });
+  }
+}); */
+
+// Ruta para subir múltiples archivos a Cloudinary
+
+productRouter.post("/", upload.array("img", 5), async (req, res) => {
+  const {
+    name,
+    size,
+    color,
+    category,
+    gender,
+    cost,
+    season,
+    stock,
+    amount,
+  } = req.body;
+  try {
+    console.log(req.files)
+    const results = await Promise.all(
+      req.files.map(async (file) => {
+        const result = await cloudinary.v2.uploader.upload(file.path);
+        return result;
+      })
+    );
+    const filtered = results.map((x) => {
+      return x.secure_url;
+    });
+
+    const newProduct = await Product.create({
+      name: name,
+      img: filtered,
+      size: size,
+      color: color,
+      category: category,
+      gender: gender,
+      cost: cost,
+      season: season,
+      stock: stock,
+      amount: amount,
+    });
+    res.status(200).send(newProduct);
   } catch (error) {
     res.status(400).send({ error: error.message });
   }
 });
-//----------------ruta-----------------------
+
 module.exports = productRouter;
