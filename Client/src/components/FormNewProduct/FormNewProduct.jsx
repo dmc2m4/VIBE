@@ -112,7 +112,7 @@ const FormNewProduct = () => {
             <div className={style.containerInput}>
               <label>Image</label>
               <input
-                type="file"
+                type="text"
                 id="img"
                 name="img"
                 placeholder="Image"
