@@ -1,6 +1,6 @@
 const { User,Product } = require("../db.js");
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+// const jwt = require('jsonwebtoken');
 const emailController = require('./EmailController')
 
 const getAllUsers = async () => {
@@ -14,21 +14,20 @@ const getAllUsers = async () => {
 };
 
 const loginUser = async (value) => {
-  console.log(value);
   const findUser = await User.findOne({
     where: {
       email: value.email
     }
   })
-  if(!findUser){
+  if(findUser){
+    return findUser
+  }else{
     const newUser = await User.create({
       name: value.name,
       email: value.email,
+      password: value.nickname,
     })
-    console.log(newUser);
     return newUser
-  }else{
-    return "usuario ya creado"
   }
 }
 

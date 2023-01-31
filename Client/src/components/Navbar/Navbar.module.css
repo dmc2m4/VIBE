@@ -70,4 +70,13 @@
     font-weight: bold;
     border: none;
     font-family: 'Kalam', cursive;
+    cursor: pointer;
+}
+
+.scrollContainer {
+  display: block;
+  width: 25px;
+  height: 25px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
 }

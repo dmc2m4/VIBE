@@ -2,14 +2,13 @@ import React from "react";
 import style from "./Searchbar.module.css";
 import lupa from "../../assets/lupas.png";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { cleanPage } from "../../redux/actions/cleanPage";
-import getPage from "../../redux/actions/getPage";
+import { useDispatch } from "react-redux";
+import cleanPage from "../../redux/actions/cleanPage";
+import updateFilters from "../../redux/actions/updateFilters";
 
 const Searchbar = () => {
   const dispatch = useDispatch();
-  const [name, setName] = useState({ name: undefined });
-  const page = useSelector((state) => state.Page);
+  const [name, setName] = useState({});
   function handleChange(e) {
     e.preventDefault();
     setName({ name: e.target.value.toUpperCase() });
@@ -17,7 +16,7 @@ const Searchbar = () => {
 
   function findProducts() {
     dispatch(cleanPage());
-    dispatch(getPage(page, name));
+    dispatch(updateFilters(name));
   }
 
   return (
