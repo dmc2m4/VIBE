@@ -1,14 +1,13 @@
-.liNav{
+.liNav {
   list-style: none;
   margin: 2rem;
 }
-.icon{
+.icon {
   width: 10rem;
   height: 3rem;
   margin-top: -0.5rem;
-
 }
-.container{
+.container {
   display: grid;
   grid-template-columns: auto 2fr 1fr auto;
   background-color: white;
@@ -16,60 +15,62 @@
   margin-top: -1rem;
   width: 100%;
 }
-.selectCategories{
+.selectCategories {
   width: 8rem;
   height: 2.5rem;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: bold;
   border: none;
-  font-family: 'Kalam', cursive;
-  background-color: transparent;
+  font-family: "Bebas Neue", cursive;
+  outline: none;
+  background-color: rgb(215, 243, 250);
+  border-radius: 5px;
 }
-.containerIcon{
+.containerIcon {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-left: 1rem;
 }
-.liImg{
+.liImg {
   list-style: none;
   cursor: pointer;
   margin-right: 8px;
 }
-.titleSelect{
+.titleSelect {
   font-size: 20px;
-    font-family: 'Kalam', cursive;
+  font-family: "Bebas Neue", cursive;
 }
 
-.containerImg{
+.containerImg {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.containerUl{
+.containerUl {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.containerLi{
+.containerLi {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
 
-.imgNav{
+.imgNav {
   width: 25px;
   height: 25px;
   margin-right: 1.5rem;
 }
 
-.links{
-  font-size: 20px;
-    font-weight: bold;
-    border: none;
-    font-family: 'Kalam', cursive;
+.links {
+  font-size: 25px;
+  font-weight: bold;
+  border: none;
+  font-family: "Bebas Neue", cursive;
 }
 
 .scrollContainer {

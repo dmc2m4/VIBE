@@ -1,0 +1,13 @@
+.dropzone {
+  display: flex;
+  background-color: rgb(61, 60, 58);
+  width: 12rem;
+  border-radius: 4px;
+  justify-content: center;
+  transition: all 0.4s ease;
+}
+
+.dropzone:hover {
+  background-color: rgb(133, 131, 129);
+  cursor: pointer;
+}
