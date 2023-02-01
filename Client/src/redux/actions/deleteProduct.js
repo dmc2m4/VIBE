@@ -1,11 +1,12 @@
 // export const DELETE_PRODUCT = "DELETE_PRODUCT";
 import types from "./types";
 import axios from "axios";
+import { API_URL } from "../../config";
 
 export const deleteProduct = (product) => {
   return async function (dispatch) {
     try {
-      await axios.delete(`proyecto-final-vibes-production.up.railway.app/product/delete/${product}`);
+      await axios.delete(`${API_URL}/product/delete/${product}`);
       dispatch({
         type: types.DELETE_PRODUCT,
         payload: product,
