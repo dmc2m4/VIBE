@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const paginationRouter = Router();
-const { getPagination } = require("../controllers/PaginationController");
+const { getPagination } = require("../Controllers/PaginationController");
 
 paginationRouter.post("/", async (req, res) => {
   const { page, info } = req.body;

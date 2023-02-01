@@ -1,7 +1,7 @@
 const { User,Product } = require("../db.js");
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 // const jwt = require('jsonwebtoken');
-const emailController = require('./EmailController')
+// const emailController = require('./EmailController')
 
 const getAllUsers = async () => {
   const allUsers = await User.findAll({
@@ -43,5 +43,5 @@ module.exports = {
   getAllUsers,
   deleteUsers,
   putUsers,
-  loginUser
+  loginUser,
 };

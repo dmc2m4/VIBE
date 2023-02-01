@@ -2,7 +2,7 @@ const { Router } = require("express");
 
 const {
     postFavorites, getFavoritesByUser, deleteFavorites
-} = require("../controllers/FavoritesController")
+} = require("../Controllers/FavoritesController")
 const favoritesRouter = Router();
 
 favoritesRouter.post(("/"), async (req, res) => {

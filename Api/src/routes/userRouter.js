@@ -4,9 +4,8 @@ const {
   deleteUsers,
   putUsers,
   loginUser
-} = require("../controllers/UserControllers");
-const PUM = require("../middlewares/PostUserMiddleware");
-const { User } = require("../db");
+} = require('../Controllers/UserControllers');
+
 
 const userRouter = Router();
 

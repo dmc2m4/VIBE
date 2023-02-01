@@ -4,7 +4,7 @@ import types from "./types";
 const loginUser = (user) => {
   return async function (dispatch) {
     try {
-      const response = await axios.post("http://localhost:3001/user/login", user);
+      const response = await axios.post("proyecto-final-vibes-production.up.railway.app/user/login", user);
       dispatch({
         type: types.LOGIN_USER,
         payload: response.data,

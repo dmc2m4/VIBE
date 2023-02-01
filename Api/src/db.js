@@ -8,6 +8,7 @@ const {
   DB_HOST,
   DB_PORT,
   DB_NAME,
+  DB_DEPLOY
 } = require("../config.js");
 const { userInfo } = require("os");
 
@@ -18,6 +19,15 @@ const sequelize = new Sequelize(
     native: false,
   }
 );
+
+// const sequelize = new Sequelize(
+//   DB_DEPLOY,
+//   {
+//     logging: false,
+//     native: false,
+//   }
+// );
+
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
