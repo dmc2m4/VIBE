@@ -8,6 +8,7 @@ paginationRouter.post("/", async (req, res) => {
     const response = await getPagination(page, info);
     res.status(200).json(response);
   } catch (error) {
+    console.log(error);
     res.status(404).send({ error: error.message });
   }
 });
