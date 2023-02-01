@@ -4,9 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "vite --host",
-    "build": "vite build",
-    "preview": "vite preview"
+    "start": "vite",
+    "build": "vite build"
   },
   "dependencies": {
     "@auth0/auth0-react": "^2.0.0",
