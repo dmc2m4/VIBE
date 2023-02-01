@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "start": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "preview": "vite preview",
+    "dev": ""
   },
   "dependencies": {
     "@auth0/auth0-react": "^2.0.0",
