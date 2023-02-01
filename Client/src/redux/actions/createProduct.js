@@ -3,7 +3,7 @@ import axios from "axios";
 const createProdcut = (product) => {
   return async function () {
     const response = await axios
-      .post("http://localhost:3001/product", product)
+      .post("proyecto-final-vibes-production.up.railway.app/product", product)
       .catch((e) => e.error);
     return response;
   };

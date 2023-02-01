@@ -4,7 +4,7 @@ import types from "./types";
 const settingsAccount = (id) => {
     return async function (dispatch) {
       await axios
-        .get(`http://localhost:3001/user/${id}`)
+        .get(`proyecto-final-vibes-production.up.railway.app/user/${id}`)
         .then((data) => {
           dispatch({ type: types.GET_ACCOUNT, payload: data.data });
         })
