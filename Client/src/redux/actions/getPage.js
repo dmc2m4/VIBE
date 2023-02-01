@@ -3,6 +3,7 @@ import axios from "axios";
 import { API_URL } from "../../config";
 
 const getPage = (page, info) => {
+  console.log(page);
   return async function (dispatch) {
     await axios
       .post(`${API_URL}/pagination`, { page: page, info: info })
