@@ -4,11 +4,12 @@ import types from "./types";
 const loginUser = (user) => {
   return async function (dispatch) {
     try {
-      await axios.post("http://localhost:3001/user/login", user);
+      const response = await axios.post("http://localhost:3001/user/login", user);
       dispatch({
         type: types.LOGIN_USER,
-        payload: user,
+        payload: response.data,
       })
+
     } catch (error) {
       return alert(error.message)
     }

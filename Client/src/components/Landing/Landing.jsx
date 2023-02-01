@@ -3,16 +3,18 @@ import { Link, useNavigate } from "react-router-dom";
 import style from "./Landing.module.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoginGoogle } from "../../LoginGoogle.jsx/LoginGoogle";
-
+import { useDispatch } from "react-redux";
+import loginUser from "../../redux/actions/userLogin";
 
 const Landing = () => {
+  const { user, isAuthenticated } = useAuth0();
   const navigate = useNavigate();
+  const dispatch = useDispatch()
 
   function homeButtom() {
+    dispatch(loginUser(user))
     navigate("/home");
   }
-
-  const { user, isAuthenticated } = useAuth0();
   
   return (
     <div className={style.container}>
@@ -43,7 +45,7 @@ const Landing = () => {
           {isAuthenticated && 
           <div>
             
-            <h3 >Hey!!! <br />{user.name}</h3>
+            <h3 >Hey!!! <br />{user.given_name}</h3>
               <button onClick={()=>homeButtom()}  className={style.buttonLanding}>Home</button>
           </div>}
           {!isAuthenticated && <p className={style.textAccount}>Do you have an acoount?</p>}
