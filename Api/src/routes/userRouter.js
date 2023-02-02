@@ -1,11 +1,13 @@
 const { Router } = require("express");
+const { createAddresses } = require("../Controllers/AddressController");
 const {
   getAllUsers,
   deleteUsers,
   putUsers,
-  loginUser
-} = require('../Controllers/UserControllers');
-
+  loginUser,
+  getUserAdresses
+} = require("../controllers/UserControllers");
+const { User } = require("../db");
 
 const userRouter = Router();
 
@@ -18,6 +20,24 @@ userRouter.get("/", async (req, res) => {
   }
 });
 
+userRouter.post("/address", async (req, res) => {
+  try{
+    const userAdresses = await getUserAdresses(req.body)
+    res.status(200).send(userAdresses)
+  }catch (error){
+    res.status(400).send(error.message);
+  }
+})
+
+userRouter.post("/address/create", async (req, res) => {
+  try{
+    await createAddresses(req.body);
+    res.status(200).send('address created')
+  }catch(error){
+    res.status(400).send(error.message);
+  }
+})
+
 userRouter.post("/login", async (req, res) => {
   try{
     const user = await loginUser(req.body);
@@ -29,7 +49,6 @@ userRouter.post("/login", async (req, res) => {
 
 userRouter.delete('/delete/:email', async (req, res)=>{
   try {
-      // console.log(req.params);
       const {email} = req.params;
       await deleteUsers(email)
       res.status(200).send('User deleted')

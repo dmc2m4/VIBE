@@ -21,8 +21,6 @@ const getFilters = async (page, info = {}) => {
     }
     if (info.name) {
       filter.name = { [Op.substring]: info.name };
-      // filter.name = info.name;
-      // console.log(filter);
     }
     return Object.keys(filter).length > 0 ? filter : null;
   }

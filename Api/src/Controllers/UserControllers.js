@@ -1,5 +1,7 @@
-const { User,Product } = require("../db.js");
-// const bcrypt = require('bcrypt');
+
+const { User,Product, Address} = require("../db.js");
+const bcrypt = require('bcrypt');
+
 // const jwt = require('jsonwebtoken');
 // const emailController = require('./EmailController')
 
@@ -11,6 +13,19 @@ const getAllUsers = async () => {
     }]
   })
   return allUsers
+};
+
+const getUserAdresses = async (value) => {
+  console.log(value);
+  const findUser = await User.findOne({
+    where: {
+      email: value.email
+    },
+    include: {
+      model: Address
+    }
+  })
+  return findUser.Addresses
 };
 
 const loginUser = async (value) => {
@@ -35,7 +50,9 @@ const deleteUsers = async function (email) {
 }
 
 const putUsers = async (value) => {
+  const user = await User.findByPk(value.id)
   
+
 };
 
 module.exports = {
@@ -43,4 +60,6 @@ module.exports = {
   deleteUsers,
   putUsers,
   loginUser,
+  getUserAdresses,
+
 };

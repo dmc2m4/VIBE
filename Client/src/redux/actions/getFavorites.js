@@ -1,6 +1,7 @@
 import axios from 'axios';
-import types from "./types";
-import { API_URL } from "../../config";
+import types from "./types"
+import {API_URL} from "../../config";
+
 
 export const getFavorites = (email) => {
   console.log(email);
