@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import createProdcut from "../../redux/actions/createProduct";
 import style from "./FormNewProduct.module.css";
-
+ 
 const FormNewProduct = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -21,6 +21,8 @@ const FormNewProduct = () => {
     stock: 0,
   });
   console.log(newProduct);
+
+  const navigate = useNavigate();
 
   function handleChange(e) {
     setError(
@@ -117,7 +119,6 @@ const FormNewProduct = () => {
     <div className={style.containerForm}>
       <form
         onSubmit={handleSubmit}
-        action="/pedidos"
         method="post"
         enctype="multipart/form-data"
       >

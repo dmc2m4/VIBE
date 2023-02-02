@@ -17,14 +17,18 @@ import getPage from "../../redux/actions/getPage";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
-  const user = useSelector(state => state.User);
+  const user = useSelector((state) => state.User);
   const dispatch = useDispatch();
   const [category, setCategory] = useState({ category: undefined });
   const navigate = useNavigate();
-  console.log(user);
+
+  //  localStorage.setItem("user", JSON.stringify(user));
+  //     console.log(user);
 
   useEffect(() => {
     dispatch(updateFilters(category));
+    // localStorage.getItem("user")
+    // console.log(user);
   }, [dispatch, category]);
   const categories = [
     "all",
@@ -56,38 +60,41 @@ const Navbar = () => {
   };
 
   const favButton = () => {
-    dispatch(getFavorites(user.email))
-    navigate(`/favorites/${user.email}`)
-  }
+    dispatch(getFavorites(user.email));
+    navigate(`/favorites/${user.email}`);
+  };
+  const cleanProducts = () => {
+    dispatch(getPage());
+  };
+
 
   const shopButton = () => {
     dispatch(getPage());
   }
 
-  const withouSidebarRoutes = ["/login", "/signup",];
-  const { pathname } = useLocation();
-  if (withouSidebarRoutes.some((item) => pathname.includes(item))) {
-    return null;
-  } else {
     return (
       <nav className={style.container}>
         <div className={style.containerIcon} onClick={handleToggleAll}>
-          <Link to="/home">
-            <img src={iconVibe} alt="" className={style.icon} />
+          <Link to='/'>
+            <img src={iconVibe} alt='' className={style.icon} />
           </Link>
         </div>
         <div className={style.containerUl}>
           <ul className={style.containerLi}>
             <li className={style.liNav}>
-              <h2 className={style.links} onClick={shopButton}>Shop</h2>
+              <Link to='/home'>
+                <h2 className={style.links} onClick={() => cleanProducts()}>
+                  Home
+                </h2>
+              </Link>
             </li>
             <li className={style.liNav}>
               <select
-                name="category"
+                name='category'
                 className={style.selectCategories}
                 onChange={handleChange}
               >
-                <option value="categories" hidden>
+                <option value='categories' hidden>
                   Categories
                 </option>
                 {categories.map((category, i) => (
@@ -102,7 +109,9 @@ const Navbar = () => {
               </select>
             </li>
             <li className={style.liNav}>
-              <h2 className={style.links}>About</h2>
+              <Link to='/about'>
+                <h2 className={style.links}>About</h2>
+              </Link>
             </li>
           </ul>
         </div>
@@ -110,21 +119,25 @@ const Navbar = () => {
           <Searchbar />
         </div>
         <div className={style.containerImg}>
-          <li className={style.liImg} >
-            <img onClick={favButton} src={heart} alt="fav" className={style.imgNav} />
+          <li className={style.liImg}>
+            <img
+              onClick={favButton}
+              src={heart}
+              alt='fav'
+              className={style.imgNav}
+            />
           </li>
           <li className={style.liImg}>
-            <ShoppingSlider/>
+            <ShoppingSlider />
           </li>
           <li onClick={handleToggle} className={style.liImg}>
             {" "}
-            <img src={user2} alt="user" className={style.imgNav} />
+            <img src={user2} alt='user' className={style.imgNav} />
           </li>
         </div>
         {toggle && <Account />}
       </nav>
     );
-  }
 };
 
 export default Navbar;
