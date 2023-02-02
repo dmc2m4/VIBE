@@ -9,23 +9,23 @@ import "swiper/css/navigation";
 const SwiperCard = ({ props }) => {
   return (
     <Swiper
-    spaceBetween={50}
-    centeredSlides={true}
-    pagination={{
-      clickable: true,
-    }}
-    navigation={{
-      nextEl: ".image-swiper-button-next",
-      prevEl: ".image-swiper-button-prev",
-      disabledClass: "swiper-button-disabled",
-    }}
-    modules={[Autoplay, Pagination, Navigation]}
-    className={style.swiper}
+      spaceBetween={50}
+      centeredSlides={true}
+      pagination={{
+        clickable: true,
+      }}
+      navigation={{
+        nextEl: ".image-swiper-button-next",
+        prevEl: ".image-swiper-button-prev",
+        disabledClass: "swiper-button-disabled",
+      }}
+      modules={[Autoplay, Pagination, Navigation]}
+      className={style.swiper}
     >
-      {props?.split(",").map((image) => {
+      {props?.split(",").map((image, i) => {
         return (
           <SwiperSlide className={style.swiperSlide}>
-            <img src={image} alt="Product Image" />
+            <img src={image} alt="Product Image" key={i} />
           </SwiperSlide>
         );
       })}

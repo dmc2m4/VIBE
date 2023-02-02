@@ -1,6 +1,6 @@
 .swiper {
     width: 100%;
-    height: 30rem;
+    height: 35rem;
     color: transparent;
 }
 
@@ -16,7 +16,7 @@
 .swiperSlide img {
     display: block;
     width: 100%;
-    height: 30rem;
+    height: 35rem;
 
 }
 .swiper-button-disabled{

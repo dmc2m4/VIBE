@@ -4,6 +4,7 @@ import createProduct from "../../redux/actions/createProduct";
 import CloudDropzone from "../Dropzone/CloudDropzone";
 import style from "./FormNewProduct.module.css";
 import cleanImages from "../../redux/actions/cleanImages";
+// import "FormNewProduct.css";
 
 const FormNewProduct = () => {
   const dispatch = useDispatch();
@@ -66,7 +67,10 @@ const FormNewProduct = () => {
           {<option hidden>{nameFormatted}</option>}
           {arr.map((element, i) => {
             return (
-              <option value={element} key={i}>
+              <option
+                value={element}
+                key={i}
+              >
                 {element}
               </option>
             );

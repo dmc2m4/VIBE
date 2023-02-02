@@ -24,7 +24,6 @@ module.exports = (sequelize) => {
       size: {
         type: DataTypes.STRING,
         allowNull: false,
-        //deberia ser un array o ver como lo conectamos con stock
       },
       color: {
         type: DataTypes.STRING,
