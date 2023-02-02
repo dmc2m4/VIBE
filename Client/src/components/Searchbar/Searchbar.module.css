@@ -1,27 +1,26 @@
-.containerSearch{
-display: flex;
- position: relative;
- margin-top: 2rem;
+.containerSearch {
+  display: flex;
+  position: relative;
+  margin-top: 2rem;
 }
 .search {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 17rem;
-    height: 30px;
-    border-radius: 30px;
-    border: none;
-    box-shadow: 3px 3px 0 0 rgb(163, 159, 159);
-    padding-left: 15px;
-    font-family: 'Kalam', cursive;
-    color: #665845;
-
-    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 17rem;
+  height: 30px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  box-shadow: 3px 3px 0 0 rgb(163, 159, 159);
+  padding-left: 15px;
+  font-family: "Kalam", cursive;
+  color: #665845;
 }
 
-.lupa{
-    position: absolute;
-    width: 30px;
-    margin-left: 14.5rem;
-    cursor: pointer;
+.lupa {
+  position: absolute;
+  width: 30px;
+  margin-left: 14.5rem;
+  cursor: pointer;
 }

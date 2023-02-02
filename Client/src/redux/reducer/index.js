@@ -25,6 +25,18 @@ export default function rootReducer(state = initialState, action) {
       Filters: action.payload,
     };
   }
+  if (action.type === types.SET_LOADING) {
+    return {
+      ...state,
+      Loading: true,
+    };
+  }
+  if (action.type === types.STOP_LOADING) {
+    return {
+      ...state,
+      Loading: false,
+    };
+  }
   if (action.type === types.SET_CURRENT_PAGE) {
     return {
       ...state,
@@ -36,6 +48,14 @@ export default function rootReducer(state = initialState, action) {
       ...state,
       Products: action.payload.rows,
       Num: action.payload.count,
+    };
+  }
+  if (action.type === types.ADD_IMAGE) {
+    return {
+      ...state,
+      Images: state.Images.length
+        ? state.Images.concat("," + action.payload)
+        : action.payload,
     };
   }
   if (action.type === types.DELETE_PRODUCT) {
@@ -135,24 +155,24 @@ export default function rootReducer(state = initialState, action) {
       User: action.payload,
     };
   }
-  if (action.type === types.GET_FAVORITES){
+  if (action.type === types.GET_FAVORITES) {
     return {
       ...state,
-      Favorites: action.payload
-    }
+      Favorites: action.payload,
+    };
   }
-  if (action.type === types.CREATE_ADDRESSES){
+  if (action.type === types.CREATE_ADRESS){
     console.log(action.payload)
     return{
       ...state,
-      Addresses: action.payload
+      Adress: action.payload
     }
   }
   if(action.type === types.IS_FAV){
     return {
       ...state,
-      Fav: action.payload
-    }
+      Fav: action.payload,
+    };
   }
   return { ...state };
 }
