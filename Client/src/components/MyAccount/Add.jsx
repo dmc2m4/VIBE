@@ -91,7 +91,9 @@ export const Add = () => {
           value={input.description}
           onChange={handleChange}
         />
-        <button type='submit'>Save</button>
+        <Link to='/myaccount/direction'>
+          <button type='submit'>Save</button>
+        </Link>
       </form>
     </div>
   );

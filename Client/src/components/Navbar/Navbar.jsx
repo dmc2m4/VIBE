@@ -22,8 +22,8 @@ const Navbar = () => {
   const [category, setCategory] = useState({ category: undefined });
   const navigate = useNavigate();
 
-  //  localStorage.setItem("user", JSON.stringify(user));
-  //     console.log(user);
+
+  console.log(user);
 
   useEffect(() => {
     dispatch(updateFilters(category));

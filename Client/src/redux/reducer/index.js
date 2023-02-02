@@ -15,11 +15,7 @@ const initialState = {
     total: 0,
   },
   Account: {},
-<<<<<<< HEAD
-  Address: [],
-=======
   Addresses: [],
->>>>>>> c89867987e6f880eb0972ff148b88fbddef0989d
 };
 
 export default function rootReducer(state = initialState, action) {
