@@ -5,7 +5,7 @@ import { API_URL } from "../../config";
 const loginUser = (user) => {
   return async function (dispatch) {
     try {
-      const response = await axios.post(`${API_URL}/user/login`, user).then(res => console.log(res)).catch(err => console.log(err););
+      const response = await axios.post(`${API_URL}/user/login`, user).then(res => console.log(res)).catch(err => console.log(err));
       dispatch({
         type: types.LOGIN_USER,
         payload: response.data,
