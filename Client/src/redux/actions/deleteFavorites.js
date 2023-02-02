@@ -1,17 +1,7 @@
-// import axios from 'axios';
-
-// const deleteFavorites = (value) => {
-//     return async function () {
-//       try {
-//          await axios.delete("http://localhost:3001/favorites", value);
-//       } catch (error) {
-//         return alert(error.message)
-//       }
-//     };
-//   };
+import {API_URL} from "../../config";
 
 export const deleteFavorites = async (value) => {
-  return await fetch(`http://localhost:3001/favorites`, {
+  return await fetch(`${API_URL}/favorites`, {
     method: 'DELETE',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(value)

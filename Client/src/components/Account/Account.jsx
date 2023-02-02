@@ -27,7 +27,9 @@ const Account = () => {
           </Link>
         </li>
         <li>
-          <a href='/createProduct'>Create Product</a>
+          <Link to='/createProduct'>
+          Create Product
+          </Link>
         </li>
         <li
           onClick={() => {

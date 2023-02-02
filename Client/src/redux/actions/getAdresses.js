@@ -1,12 +1,13 @@
 import axios from "axios";
 import types from "./types";
+import {API_URL} from "../../config"
 
 const getAddresses = (value = []) => {
   console.log(value);
   return async function (dispatch) {
     try {
       const respuesta = await axios.post(
-        "http://localhost:3001/user/address",
+        `${API_URL}/user/address`,
         value
       );
       dispatch({ type: types.CREATE_ADDRESSES, payload: respuesta.data });
