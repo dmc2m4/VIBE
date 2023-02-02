@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import createDetail from "../../redux/actions/createDetail";
 import { cleanDetail } from "../../redux/actions/cleanDetail";
-import { addToCart } from "../../redux/actions/shoppingCart.actions";
+import { addToCart } from "../../redux/actions/shoppingCart";
 import style from './DetailCard.module.css'
 import ShoppingCart from "../../assets/ShoppingCart.png"
 import heart from '../../assets/heart.png'

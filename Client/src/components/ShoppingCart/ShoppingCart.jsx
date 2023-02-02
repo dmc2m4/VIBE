@@ -5,7 +5,7 @@ import {
   addOneToCart,
   clearCart,
   removeFromCart,
-} from "../../redux/actions/shoppingCart.actions";
+} from "../../redux/actions/shoppingCart";
 import "./ShoppingCart.css";
 
 const ShoppingCart = () => {
