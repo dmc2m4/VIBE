@@ -3,7 +3,7 @@
     /* height: 30rem; */
     /* color: transparent; */
     display: flex;
-    --swiper-theme-color: black;
+    --swiper-theme-color: rgb(21, 20, 20);
     --swiper-navigation-size: 50px;
 }
 
