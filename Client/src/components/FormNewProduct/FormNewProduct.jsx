@@ -1,7 +1,7 @@
 import { useState, React } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import createProdcut from "../../redux/actions/createProduct";
+import createProduct from "../../redux/actions/createProduct";
 import style from "./FormNewProduct.module.css";
  
 const FormNewProduct = () => {
@@ -20,10 +20,7 @@ const FormNewProduct = () => {
     season: "",
     stock: 0,
   });
-  console.log(newProduct);
-
-  const navigate = useNavigate();
-
+  
   function handleChange(e) {
     setError(
       validate({
@@ -110,7 +107,7 @@ const FormNewProduct = () => {
     ) {
       return alert("Por favor completar todos los campos");
     }
-    dispatch(createProdcut(newProduct));
+    dispatch(createProduct(newProduct));
     alert("Producto creado correctamente");
     navigate("/home")
   }

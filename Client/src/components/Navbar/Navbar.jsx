@@ -75,7 +75,7 @@ const Navbar = () => {
     return (
       <nav className={style.container}>
         <div className={style.containerIcon} onClick={handleToggleAll}>
-          <Link to='/'>
+          <Link to='/home'>
             <img src={iconVibe} alt='' className={style.icon} />
           </Link>
         </div>
