@@ -1,6 +1,7 @@
 const { User, Address } = require("../db");
 
 const createAddresses = async (value) => {
+    console.log(value);
     const user = await User.findOne({
         where: {
             email: value.email

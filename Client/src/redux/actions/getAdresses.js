@@ -1,22 +1,18 @@
 import axios from "axios";
 import types from "./types";
 
-const getAddresses = (email) => {
-  console.log(email);
-  return function (dispatch) {
+const getAddresses = (value = {}) => {
+  console.log(value);
+  return async function (dispatch) {
     try {
-      return fetch
-        .get("http://localhost:3001/user/address", email)
-        .then((res) => res.json())
-        .then((data) =>
-        dispatch({ type: types.CREATE_ADDRESSES, payload: data })
-        );
+      await axios
+        .post("http://localhost:3001/user/address", value)
+        .then((res) => dispatch({ type: types.CREATE_ADDRESSES, payload: res.data }));
     } catch (error) {
       return alert(error);
     }
   };
 };
-
 export default getAddresses;
 
 // export const detailCountry = (id) => {
@@ -32,3 +28,14 @@ export default getAddresses;
 
 //   }
 // }
+
+// console.log(email);
+// return async function (dispatch) {
+//   const call = await fetch("http://localhost:3001/user/address", email)
+//     .then((res) => res.json())
+//     .then((data) =>
+//       dispatch({ type: types.CREATE_ADDRESSES, payload: data })
+//     );
+//   return call;
+// };
+// };

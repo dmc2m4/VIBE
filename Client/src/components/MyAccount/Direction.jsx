@@ -9,9 +9,9 @@ export const Direction = () => {
   const dispatch = useDispatch()
   
   useEffect(()=>{
-    dispatch(getAddresses(user.email))
+    dispatch(getAddresses(address))
   },[dispatch])
-  
+  console.log(user.email)
   console.log(address);
   return (
     <div>
