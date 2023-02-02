@@ -1,10 +1,11 @@
 import axios from "axios";
 import types from "./types";
+import { API_URL } from "../../config";
 
 const createDetail = (id) => {
   return async function (dispatch) {
     await axios
-      .get(`proyecto-final-vibes-production.up.railway.app/product/${id}`)
+      .get(`${API_URL}/product/${id}`)
       .then((data) => {
         dispatch({ type: types.PRODUCT_DETAIL, payload: data.data });
       })

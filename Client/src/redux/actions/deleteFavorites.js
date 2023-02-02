@@ -9,9 +9,10 @@
 //       }
 //     };
 //   };
+import { API_URL } from "../../config";
 
 export const deleteFavorites = async (value) => {
-  return await fetch(`proyecto-final-vibes-production.up.railway.app/favorites`, {
+  return await fetch(`${API_URL}/favorites`, {
     method: 'DELETE',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(value)

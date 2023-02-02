@@ -25,7 +25,6 @@ const loginUser = async (value) => {
     const newUser = await User.create({
       name: value.name,
       email: value.email,
-      password: value.nickname,
     })
     return newUser
   }
