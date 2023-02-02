@@ -23,6 +23,7 @@ userRouter.post("/login", async (req, res) => {
     const user = await loginUser(req.body);
     res.status(200).send(user)
   }catch(error){
+    console.log(error);
     res.status(401).send(error.message)
   }
 })
