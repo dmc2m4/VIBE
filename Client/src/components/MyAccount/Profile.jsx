@@ -1,24 +1,21 @@
 import React from "react";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import userLogin from "../../redux/actions/userLogin"
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const Profile = () => {
-  const dispatch = useDispatch();
-  const user = useSelector((state)=> state.User)
-console.log(user);
-  // useEffect(()=>{
-  //   dispatch(userLogin(user));
-  // },[dispatch,user])
+  const { user } = useAuth0();
+
+  console.log(user);
 
   return (
     <div>
-      {/* <img src={user.picture} alt={user.name} /> */}
-      <p>{user.name}</p>
-      <Link to='/profile/data'>Data</Link>
-      <Link to='/profile/history'>ShoppingHistory</Link>
-      <Link to='/profile/direction'>Direction</Link>
+      <Link to='/myaccount'>
+        <button>Back</button>
+      </Link>
+      <img src={user.picture} alt='image not found' />
+      <h4>Nickname: {user.nickname}</h4>
+      <h4>Full Name: {user.name}</h4>
+      <h4>Email: {user.email}</h4>
     </div>
   );
 };

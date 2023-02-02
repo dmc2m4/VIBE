@@ -1,14 +1,20 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { Add } from "./Add";
+
+
 
 export const Direction = () => {
+  
+const adress = useSelector((state)=> state.Adress)
+
   return (
     <div>
-      <Link to='/profile'>
+      <Link to='/myaccount'>
         <button>Back</button>
+        {adress.nameandsurname ? adress : null}
       </Link>
       <h3>Address</h3>
-      <Link to='profile/direction/add'>
+      <Link to='/myaccount/direction/add'>
         <p>Add</p>
       </Link>
     </div>

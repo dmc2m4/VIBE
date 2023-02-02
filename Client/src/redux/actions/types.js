@@ -13,6 +13,7 @@ const types = {
   CLEAN_DETAIL: 'CLEAN_DETAIL',
   LOGIN_USER: "LOGIN_USER",
   GET_FAVORITES: "GET_FAVORITES",
+  CREATE_ADRESS: "CREATE_ADRESS",
 };
 
 export default types;

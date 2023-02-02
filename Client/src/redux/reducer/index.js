@@ -14,11 +14,11 @@ const initialState = {
     total: 0,
   },
   Account: {},
+  Adress: {},
 };
 
 export default function rootReducer(state = initialState, action) {
   if (action.type === types.UPDATE_FILTERS) {
-    console.log(action.payload)
     return {
       ...state,
       Filters: action.payload,
@@ -138,6 +138,13 @@ export default function rootReducer(state = initialState, action) {
     return {
       ...state,
       Favorites: action.payload
+    }
+  }
+  if (action.type === types.CREATE_ADRESS){
+    console.log(action.payload)
+    return{
+      ...state,
+      Adress: action.payload
     }
   }
   return { ...state };

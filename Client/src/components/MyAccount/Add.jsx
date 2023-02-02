@@ -1,7 +1,8 @@
 import React from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-
+import  createAdress  from "../../redux/actions/createAdress";
 
 export const Add = () => {
   const [input, setInput] = useState({
@@ -12,18 +13,26 @@ export const Add = () => {
     flat: "",
     telephonenumber: "",
   });
+  const dispatch = useDispatch();
+
   function handleChange(e) {
     setInput({
       ...input,
       [e.target.name]: e.target.value,
     });
   }
+
+  function handleSubmit(e) {
+     e.preventDefault();
+    dispatch(createAdress(input));
+    console.log(input);
+  }
   return (
     <div>
-      <Link to="profile/direction/">
-          <button>Back</button>
+      <Link to='/myaccound/direction/'>
+        <button>Back</button>
       </Link>
-      <form onSubmit={(e) => habdleSubmit(e)}>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <input
           type='text'
           name='nameandsurname'
@@ -61,7 +70,7 @@ export const Add = () => {
         />
         <input
           type='number'
-          name='telephonecontact'
+          name='telephonenumber'
           placeholder='Telephone Contact'
           value={input.telephonenumber}
           onChange={handleChange}
