@@ -19,3 +19,6 @@ export const deleteFavorites = async (value) => {
 }
   
   export default deleteFavorites;
+
+
+ 
