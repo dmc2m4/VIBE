@@ -1,6 +1,7 @@
 import axios from "axios";
 import {API_URL} from "../../config"
 
+
 const createProduct = (product) => {
   return async function () {
     const response = await axios

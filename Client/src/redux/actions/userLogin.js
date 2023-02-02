@@ -1,6 +1,8 @@
 import axios from "axios";
 import types from "./types";
+
 import {API_URL} from "../../config"
+
 
 const loginUser = (user) => {
   return async function (dispatch) {
@@ -10,7 +12,7 @@ const loginUser = (user) => {
         type: types.LOGIN_USER,
         payload: response.data,
       })
-
+      
     } catch (error) {
       return alert(error.message)
     }

@@ -3,6 +3,7 @@ import types from "./types";
 import axios from "axios";
 import {API_URL} from "../../config";
 
+
 export const deleteProduct = (product) => {
   return async function (dispatch) {
     try {
