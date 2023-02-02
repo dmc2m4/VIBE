@@ -45,16 +45,14 @@ const Filters = () => {
   }
   return (
     <div className={style.container}>
-      <span>Colors</span>
       <select
         name="color"
         id="color"
         onChange={handleChange}
         className={style.selectFilter}
+ 
       >
-        <option value="defaultValue" disabled>
-          Color
-        </option>
+        <option disabled selected>Color</option>
         {colorList.map((color, i) => (
           <option
             name="color"
@@ -66,16 +64,15 @@ const Filters = () => {
           </option>
         ))}
       </select>
-      <span>Size</span>
+      
+
       <select
         name="size"
         id="size"
         onChange={handleChange}
         className={style.selectFilter}
       >
-        <option value="defaultValue" disabled>
-          Size
-        </option>
+       <option disabled selected>Size</option>
         {sizeList.map((size, i) => (
           <option
             name="size"
@@ -87,16 +84,14 @@ const Filters = () => {
           </option>
         ))}
       </select>
-      <span>Categories</span>
+      
       <select
         name="category"
         id="category"
         onChange={handleChange}
         className={style.selectFilter}
       >
-        <option value="defaultValue" disabled>
-          Categories
-        </option>
+        <option disabled selected>Categories</option>
         {categoryList.map((category, i) => (
           <option
             name="category"
@@ -108,18 +103,18 @@ const Filters = () => {
           </option>
         ))}
       </select>
-      <span>Alphabet</span>
       <select
         name="alphabetically"
         id="alphabetically"
         onChange={handleChange}
         className={style.selectFilter}
       >
+      <option disabled selected>Alphabet</option>
         <option
           value="all"
           selected={filters["alphabetically"] === "all" ? true : false}
         >
-          all
+          All
         </option>
         <option
           value="A-Z"
@@ -134,13 +129,14 @@ const Filters = () => {
           Z-A
         </option>
       </select>
-      <span>Price</span>
+
       <select
         name="price"
         id="price"
         onChange={handleChange}
         className={style.selectFilter}
       >
+      <option disabled selected>Price</option>
         <option
           value="all"
           selected={filters["price"] === "all" ? true : false}

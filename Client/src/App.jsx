@@ -13,6 +13,7 @@ import Slider from "./components/Carousel/Carousel";
 import About from "./views/About/About";
 // import Login from "./components/Login/Login";
 import Favorites from "./components/Favorites/Favorites";
+import Filters from "./components/Filters/Filters";
 
 
 const App = () => {
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="carousel" element={<Slider/>} />
         <Route path="imagen" element={<About/>} />
         <Route path="/favorites/:email" element={<Favorites/>} />
+        <Route path="/filters" element={<Filters/>} />
       </Routes>
     </div>
   );
