@@ -1,42 +1,37 @@
 import React, { useState } from "react";
 import Dropzone from "react-dropzone";
 import folder from "../../assets/icon-open-file-folder.png";
-import axios from "axios";
+import addImage from "../../redux/actions/addImage";
+import { useDispatch, useSelector } from "react-redux";
 import "./CloudDropzone.css";
+import setLoading from "../../redux/actions/setLoading";
+import stopLoading from "../../redux/actions/stopLoading";
+import gifLoading from "../../assets/loading.gif";
 
-const CloudDropzone = (props) => {
-  const [url, setUrl] = useState("");
-  const [loading, setLoading] = useState(false);
-  const convertBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const fileRender = new FileReader();
-      fileRender.readAsDataURL(file);
-
-      fileRender.onload = () => {
-        resolve(fileRender.result);
-      };
-
-      fileRender.onerror = (error) => {
-        reject(error);
-      };
-    });
-  };
-
+const CloudDropzone = () => {
+  const dispatch = useDispatch();
+  const loading = useSelector((state) => state.Loading);
   const uploadImage = async (files) => {
-    console.log(files)
-    const file = files[0];
-    const base64 = await convertBase64(file);
-    setLoading(true);
-    axios
-      .post("http://localhost:3001/upload-images", { image: base64 })
-      .then((res) => {
-        setUrl(res.data);
-        alert("Image upload succesfolly");
-      })
-      .then(() => setLoading(false))
-      .catch((error) => {
-        return { error: error.message };
-      });
+    try {
+      dispatch(setLoading());
+      const file = files[0];
+      const data = new FormData();
+      data.append("file", file);
+      data.append("tags", "vibes");
+      data.append("upload_preset", "images");
+      const result = await fetch(
+        "https://api.cloudinary.com/v1_1/dszbddysk/image/upload",
+        {
+          method: "POST",
+          body: data,
+        }
+      ).then((res) => res.json());
+      // console.log(result.url);
+      dispatch(addImage(result.url));
+      dispatch(stopLoading());
+    } catch (error) {
+      return { error: error.message };
+    }
   };
   return (
     <div>
@@ -44,13 +39,13 @@ const CloudDropzone = (props) => {
         className="dropzone"
         onDrop={uploadImage}
         onChange={uploadImage}
-        // value={image}
+        disabled={loading}
       >
         {({ getRootProps, getInputProps }) => (
           <section>
             <div {...getRootProps({ className: "dropzone" })}>
               <input {...getInputProps()} />
-              <img src={folder} />
+              {loading ? <img src={gifLoading} className="gif-loading" /> : <img src={folder} className="folder"/>}
             </div>
           </section>
         )}

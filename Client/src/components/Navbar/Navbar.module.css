@@ -18,12 +18,11 @@
 .selectCategories {
   width: 8rem;
   height: 2.5rem;
-  font-size: 25px;
+  font-size: 22px;
   font-weight: bold;
   border: none;
   font-family: "Bebas Neue", cursive;
   outline: none;
-  background-color: rgb(215, 243, 250);
   border-radius: 5px;
 }
 .containerIcon {
@@ -67,7 +66,7 @@
 }
 
 .links {
-  font-size: 25px;
+  font-size: 22px;
   font-weight: bold;
   border: none;
   font-family: "Bebas Neue", cursive;

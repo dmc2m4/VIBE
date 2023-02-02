@@ -1,6 +1,6 @@
 .dropzone {
   display: flex;
-  background-color: rgb(61, 60, 58);
+  background-color: #34373F;
   width: 12rem;
   border-radius: 4px;
   justify-content: center;
@@ -8,6 +8,20 @@
 }
 
 .dropzone:hover {
-  background-color: rgb(133, 131, 129);
+  /* background-color: rgb(89, 86, 84); */
   cursor: pointer;
+}
+
+.gif-loading {
+  width: 4.7rem;
+  /* height: 4rem; */
+  /* transition: all 0.1s ease; */
+  background-color: #34373F;
+}
+.gif-loading:hover {
+  background-color: #34373F;
+}
+
+.folder {
+  width: 3rem;
 }

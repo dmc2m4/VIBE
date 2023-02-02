@@ -29,7 +29,7 @@ productRouter.get("/:id", async (req, res) => {
   }
 });
 
-productRouter.post("/", MPP, async (req, res) => {
+productRouter.post("/", async (req, res) => {
   try {
     const newProduct = await postProduct(req.body);
     res.status(201).send(newProduct);

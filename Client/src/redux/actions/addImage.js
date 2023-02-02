@@ -1,12 +1,12 @@
 import types from "./types";
 
-const cleanDetail = (payload) => {
+const addImage = (payload) => {
   return function (dispatch) {
     dispatch({
-      type: types.CLEAN_DETAIL,
+      type: types.ADD_IMAGE,
       payload,
     });
   };
 };
 
-export default cleanDetail;
+export default addImage;

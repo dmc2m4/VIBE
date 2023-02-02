@@ -4,7 +4,6 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const routes = require("./routes/index.js");
 const cors = require("cors");
-const cloudinary = require("./cludinary");
 
 require("./db.js");
 
@@ -19,18 +18,11 @@ server.use(morgan("dev"));
 server.use(cors());
 server.use("/", routes);
 
-server.post("/upload-images", (req, res) => {
-  cloudinary(req.body.image, "images")
-    .then((url) => res.send(url))
-    .catch((error) => res.status(500).send(error));
-});
-
 // Error catching endware.
 server.use((err, req, res, next) => {
   // eslint-disable-line no-unused-vars
   const status = err.status || 500;
   const message = err.message || err;
-  console.error(err);
   res.status(status).send(message);
 });
 

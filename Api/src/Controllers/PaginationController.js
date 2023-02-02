@@ -38,14 +38,13 @@ const getPagination = async (page, info = {}) => {
     }
     return null;
   }
-  // console.log(order());
   const response = await Product.findAndCountAll({
     where: filtered(),
     order: order(),
     offset: page,
     limit: 5,
   });
-  // console.log(response.rows);
+
   return response;
 };
 

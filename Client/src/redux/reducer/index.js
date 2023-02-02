@@ -14,14 +14,27 @@ const initialState = {
     total: 0,
   },
   Account: {},
+  Images: "",
+  Loading: false,
 };
 
 export default function rootReducer(state = initialState, action) {
   if (action.type === types.UPDATE_FILTERS) {
-    console.log(action.payload)
     return {
       ...state,
       Filters: action.payload,
+    };
+  }
+  if (action.type === types.SET_LOADING) {
+    return {
+      ...state,
+      Loading: true,
+    };
+  }
+  if (action.type === types.STOP_LOADING) {
+    return {
+      ...state,
+      Loading: false,
     };
   }
   if (action.type === types.SET_CURRENT_PAGE) {
@@ -35,6 +48,14 @@ export default function rootReducer(state = initialState, action) {
       ...state,
       Products: action.payload.rows,
       Num: action.payload.count,
+    };
+  }
+  if (action.type === types.ADD_IMAGE) {
+    return {
+      ...state,
+      Images: state.Images.length
+        ? state.Images.concat("," + action.payload)
+        : action.payload,
     };
   }
   if (action.type === types.DELETE_PRODUCT) {
@@ -134,11 +155,11 @@ export default function rootReducer(state = initialState, action) {
       User: action.payload,
     };
   }
-  if (action.type === types.GET_FAVORITES){
+  if (action.type === types.GET_FAVORITES) {
     return {
       ...state,
-      Favorites: action.payload
-    }
+      Favorites: action.payload,
+    };
   }
   return { ...state };
 }

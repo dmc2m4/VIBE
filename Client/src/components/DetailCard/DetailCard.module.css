@@ -33,6 +33,7 @@
 
 .containerImg {
   display: flex;
+  width: 43rem;
   justify-content: center;
   align-items: center;
 }
