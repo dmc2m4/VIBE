@@ -1,25 +1,16 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper";
-import style from "./Carousel.module.css";
+import style from "./SwiperCard.module.css";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import Carrousel1 from "../../assets/Carrousel1.png";
-import Carrousel2 from "../../assets/Carrousel2.png";
-import Carrousel3 from "../../assets/Carrousel3.png";
-import Carrousel4 from "../../assets/Carrousel4.png";
-import Carrousel5 from "../../assets/Carrousel5.png";
 
-const Slider = () => {
+const SwiperCard = ({ props }) => {
   return (
     <Swiper
-      spaceBetween={30}
+      spaceBetween={50}
       centeredSlides={true}
-      autoplay={{
-        delay: 2500,
-        disableOnInteraction: false,
-      }}
       pagination={{
         clickable: true,
       }}
@@ -31,7 +22,14 @@ const Slider = () => {
       modules={[Autoplay, Pagination, Navigation]}
       className={style.swiper}
     >
-      <SwiperSlide className={style.swiperSlide}>
+      {props?.split(",").map((image, i) => {
+        return (
+          <SwiperSlide className={style.swiperSlide}>
+            <img src={image} alt="Product Image" key={i} />
+          </SwiperSlide>
+        );
+      })}
+      {/* <SwiperSlide className={style.swiperSlide}>
         <img src={Carrousel1} alt="" />
         Slider1
       </SwiperSlide>
@@ -50,9 +48,9 @@ const Slider = () => {
       <SwiperSlide className={style.swiperSlide}>
         <img src={Carrousel5} alt="" />
         Slider5
-      </SwiperSlide>
+      </SwiperSlide> */}
     </Swiper>
   );
 };
 
-export default Slider;
+export default SwiperCard;
