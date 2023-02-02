@@ -1,7 +1,6 @@
 import React from "react";
 import style from "./Account.module.css";
 import { LogOutGoogle } from "../../LogOutGoogle/LogOutGoogle";
-import { MyAccount } from "../MyAccount/MyAccount";
 import { Link } from "react-router-dom";
 
 const Account = () => {
