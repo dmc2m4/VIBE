@@ -14,7 +14,7 @@ const initialState = {
     total: 0,
   },
   Account: {},
-  Adress: {},
+  Address: [],
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -140,11 +140,11 @@ export default function rootReducer(state = initialState, action) {
       Favorites: action.payload
     }
   }
-  if (action.type === types.CREATE_ADRESS){
+  if (action.type === types.GET_ADDRESSES){
     console.log(action.payload)
     return{
       ...state,
-      Adress: action.payload
+      Address: action.payload
     }
   }
   return { ...state };

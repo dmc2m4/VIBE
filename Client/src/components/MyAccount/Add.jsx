@@ -2,16 +2,18 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import  createAdress  from "../../redux/actions/createAdress";
+import createAddresses from "../../redux/actions/createAdress";
 
 export const Add = () => {
   const [input, setInput] = useState({
-    nameandsurname: "",
-    cp: "",
+    email: "",
     street: "",
     number: "",
-    flat: "",
-    telephonenumber: "",
+    zipCode: "",
+    province: "",
+    location: "",
+    apartment: "",
+    description: "",
   });
   const dispatch = useDispatch();
 
@@ -23,34 +25,27 @@ export const Add = () => {
   }
 
   function handleSubmit(e) {
-     e.preventDefault();
-    dispatch(createAdress(input));
+    e.preventDefault();
+    dispatch(createAddresses(input));
     console.log(input);
   }
   return (
     <div>
-      <Link to='/myaccound/direction/'>
+      <Link to='/myaccount/direction'>
         <button>Back</button>
       </Link>
       <form onSubmit={(e) => handleSubmit(e)}>
         <input
           type='text'
-          name='nameandsurname'
-          placeholder='Name and surname'
-          value={input.nameandsurname}
-          onChange={handleChange}
-        />
-        <input
-          type='text'
-          name='cp'
-          placeholder='Cp'
-          value={input.cp}
+          name='email'
+          placeholder='Email'
+          value={input.email}
           onChange={handleChange}
         />
         <input
           type='text'
           name='street'
-          placeholder='Steet'
+          placeholder='Street'
           value={input.street}
           onChange={handleChange}
         />
@@ -62,17 +57,38 @@ export const Add = () => {
           onChange={handleChange}
         />
         <input
-          type='text'
-          name='flat'
-          placeholder='Flat'
-          value={input.flat}
+          type='number'
+          name='zipCode'
+          placeholder='ZipCode'
+          value={input.zipCode}
           onChange={handleChange}
         />
         <input
-          type='number'
-          name='telephonenumber'
-          placeholder='Telephone Contact'
-          value={input.telephonenumber}
+          type='text'
+          name='province'
+          placeholder='Province'
+          value={input.province}
+          onChange={handleChange}
+        />
+        <input
+          type='text'
+          name='location'
+          placeholder='Location'
+          value={input.location}
+          onChange={handleChange}
+        />
+        <input
+          type='text'
+          name='apartment'
+          placeholder='Apartment'
+          value={input.apartment}
+          onChange={handleChange}
+        />
+        <input
+          type='text'
+          name='description'
+          placeholder='Description'
+          value={input.description}
           onChange={handleChange}
         />
         <button type='submit'>Save</button>

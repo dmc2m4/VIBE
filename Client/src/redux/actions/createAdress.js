@@ -1,18 +1,15 @@
 import axios from "axios";
-import types from "./types";
 
+const createAddresses = (value) => {
+  console.log(value);
+  return async function () {
+    try{
+      await axios.post("http://localhost:3001/user/address", value)
 
-const createProdcut = (payload) => {
-  console.log(payload);
-  return async function (dispatch) {
-    const response = await axios
-      .post("http://localhost:3001/myaccount/direction/add", payload)
-      .then(data => {
-        dispatch({type : types.CREATE_ADRESS, payload: data});
-      })
-      .catch((e) => e.error);
-    return response;
+    }catch(error){
+      alert (error.message)
+    }
   };
 };
 
-export default createProdcut;
+export default createAddresses;
