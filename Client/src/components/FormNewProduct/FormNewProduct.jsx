@@ -90,6 +90,7 @@ const FormNewProduct = () => {
             "brown",
             "white",
             "yellow",
+            "grey",
           ])}
           {addSelect("season", [
             "all seasons",
@@ -120,6 +121,12 @@ const FormNewProduct = () => {
             type="submit"
             className={style.buttonCreate}
             disabled={validated === false || !currentImages ? true : false}
+            onClick={() =>
+              setNewProduct({
+                ...newProduct,
+                img: currentImages,
+              })
+            }
           >
             Create Product
           </button>
