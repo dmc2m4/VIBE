@@ -8,13 +8,18 @@ const initialState = {
   Filters: {},
   Detail: {},
   Favorites: [],
+  Fav: false,
   User: {},
   Cart: {
     items: [],
     total: 0,
   },
   Account: {},
+<<<<<<< HEAD
   Address: [],
+=======
+  Addresses: [],
+>>>>>>> c89867987e6f880eb0972ff148b88fbddef0989d
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -140,11 +145,17 @@ export default function rootReducer(state = initialState, action) {
       Favorites: action.payload
     }
   }
-  if (action.type === types.GET_ADDRESSES){
+  if (action.type === types.CREATE_ADDRESSES){
     console.log(action.payload)
     return{
       ...state,
-      Address: action.payload
+      Addresses: action.payload
+    }
+  }
+  if(action.type === types.IS_FAV){
+    return {
+      ...state,
+      Fav: action.payload
     }
   }
   return { ...state };

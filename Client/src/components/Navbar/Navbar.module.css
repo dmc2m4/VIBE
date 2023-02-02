@@ -70,6 +70,7 @@
     font-weight: bold;
     border: none;
     font-family: 'Kalam', cursive;
+    cursor: pointer;
 }
 
 .scrollContainer {

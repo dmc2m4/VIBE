@@ -13,13 +13,13 @@ import updateFilters from "../../redux/actions/updateFilters";
 import cleanPage from "../../redux/actions/cleanPage";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import getFavorites from "../../redux/actions/getFavorites";
-import getPage from "../../redux/actions/setCurrentPage";
+import getPage from "../../redux/actions/getPage";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const user = useSelector((state) => state.User);
   const dispatch = useDispatch();
-  const [category, setCategory] = useState({});
+  const [category, setCategory] = useState({ category: undefined });
   const navigate = useNavigate();
 
   //  localStorage.setItem("user", JSON.stringify(user));
@@ -67,15 +67,15 @@ const Navbar = () => {
     dispatch(getPage());
   };
 
-  const withouSidebarRoutes = ["/login", "/signup"];
-  const { pathname } = useLocation();
-  if (withouSidebarRoutes.some((item) => pathname.includes(item))) {
-    return null;
-  } else {
+
+  const shopButton = () => {
+    dispatch(getPage());
+  }
+
     return (
       <nav className={style.container}>
         <div className={style.containerIcon} onClick={handleToggleAll}>
-          <Link to='/'>
+          <Link to='/home'>
             <img src={iconVibe} alt='' className={style.icon} />
           </Link>
         </div>
@@ -138,7 +138,6 @@ const Navbar = () => {
         {toggle && <Account />}
       </nav>
     );
-  }
 };
 
 export default Navbar;

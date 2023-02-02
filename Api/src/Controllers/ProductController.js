@@ -12,6 +12,11 @@ const getProductById = async function (id) {
   return product
 }
 
+const postProduct = async (value) => {
+  console.log(value);
+  const newProduct = await Product.create(value);
+  return newProduct
+}
 
 const deleteProduct = async (value) => {
   await Product.destroy({
@@ -57,4 +62,5 @@ module.exports = {
   deleteProduct,
   putProduct,
   getProductById,
+  postProduct,
 };

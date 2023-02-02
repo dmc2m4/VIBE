@@ -1,7 +1,7 @@
 import axios from 'axios';
 import types from "./types"
 
-const getFavorites = (email) => {
+export const getFavorites = (email) => {
   console.log(email);
     return async function (dispatch) {
       try {

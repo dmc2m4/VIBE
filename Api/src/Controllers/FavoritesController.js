@@ -7,6 +7,7 @@ const postFavorites = async (value) => {
     },
   });
   const findProduct = await Product.findByPk(value.id);
+  await findProduct.update({isfav: true})
 
   await findUser.addFavorites(findProduct);
 };
@@ -34,6 +35,7 @@ const deleteFavorites = async (value) => {
         },
       });
       const findProduct = await Product.findByPk(value.id);
+      await findProduct.update({isfav: false})
     
       await findUser.removeFavorites(findProduct);
 }

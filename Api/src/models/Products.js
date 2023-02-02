@@ -18,7 +18,7 @@ module.exports = (sequelize) => {
         },
       },
       img: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.STRING,
         allowNull: false,
       },
       size: {
@@ -67,6 +67,10 @@ module.exports = (sequelize) => {
       amount: {
         type: DataTypes.INTEGER,
       },
+      isfav: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      }
       /* public: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
