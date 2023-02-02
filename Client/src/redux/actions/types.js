@@ -14,6 +14,7 @@ const types = {
   LOGIN_USER: "LOGIN_USER",
   GET_FAVORITES: "GET_FAVORITES",
   CREATE_ADRESS: "CREATE_ADRESS",
+  IS_FAV : "IS_FAV",
 };
 
 export default types;

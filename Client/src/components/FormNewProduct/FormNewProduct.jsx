@@ -6,6 +6,7 @@ import style from "./FormNewProduct.module.css";
  
 const FormNewProduct = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [error, setError] = useState({});
   const [newProduct, setNewProduct] = useState({
     name: "",
@@ -19,6 +20,7 @@ const FormNewProduct = () => {
     season: "",
     stock: 0,
   });
+  console.log(newProduct);
 
   const navigate = useNavigate();
 
@@ -68,6 +70,31 @@ const FormNewProduct = () => {
     });
   };
 
+  const handleChange6 = async (e) => {
+    try{
+      const files = e.target.files[0];
+      const data = new FormData();
+      data.append("file", files);
+      data.append("tags", "vibes");
+      data.append("upload_preset", "images");
+      const res = await fetch(
+        "https://api.cloudinary.com/v1_1/daq4avbpv/image/upload",
+        { 
+          method: "POST",
+          body: data,
+        }
+      )
+      const file = await res.json();
+      console.log(file);
+      setNewProduct({
+        ...newProduct,
+        img: file.secure_url,
+      });
+    }catch(error){
+      console.log(error);
+    }
+  }
+
   function handleSubmit() {
     if (
       !newProduct.name ||
@@ -85,7 +112,7 @@ const FormNewProduct = () => {
     }
     dispatch(createProdcut(newProduct));
     alert("Producto creado correctamente");
-    navigate("/home");
+    navigate("/home")
   }
 
   return (
@@ -113,9 +140,9 @@ const FormNewProduct = () => {
               <input
                 type="file"
                 id="img"
-                name="img"
+                name="file"
                 placeholder="Image"
-                onChange={handleChange}
+                onChange={handleChange6}
                 className={style.inputForm}
               />
               {/* multiple="" class="inputFileHidden"
