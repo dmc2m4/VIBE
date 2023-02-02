@@ -4,7 +4,6 @@ import createProduct from "../../redux/actions/createProduct";
 import CloudDropzone from "../Dropzone/CloudDropzone";
 import style from "./FormNewProduct.module.css";
 import cleanImages from "../../redux/actions/cleanImages";
-// import "FormNewProduct.css";
 
 const FormNewProduct = () => {
   const dispatch = useDispatch();
