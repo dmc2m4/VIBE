@@ -1,11 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import rami from "../../assets/rami.jpeg";
+import brian from "../../assets/brian.jpeg";
+import dani from "../../assets/daniel.jpeg";
+import tomi from "../../assets/tomas.jpeg";
+import valen from "../../assets/valen.jpeg";
+import santi from "../../assets/santi.jpeg";
+
+
 
 export const About = () => {
   return (
     <div>
       <div>
-        <img src='' alt='' />
+        <img src={rami} alt='image nt found' />
         <h4>Ramiro Soares Gache</h4>
         <p>Developer and Designer UX/UI</p>
         <p>
@@ -33,7 +41,7 @@ export const About = () => {
         </Link>
       </div>
       <div>
-        <img src='' alt='' />
+        <img src={tomi} alt='' />
         <h4>Tomas Alcaraz</h4>
         <p>Developer</p>
         <p>
@@ -58,7 +66,7 @@ export const About = () => {
         </Link> */}
       </div>
       <div>
-        <img src='' alt='' />
+        <img src={brian} alt='' />
         <h4>Brian Policani</h4>
         <p>Developer</p>
         <p>
@@ -86,7 +94,7 @@ export const About = () => {
         </Link> */}
       </div>
       <div>
-        <img src='' alt='' />
+        <img src={valen} alt='' />
         <h4>Valentino Villar</h4>
         <p>Developer</p>
         <p>
@@ -111,7 +119,7 @@ export const About = () => {
         </Link> */}
       </div>
       <div>
-        <img src='' alt='' />
+        <img src={dani} alt='' />
         <h4>Daniel Martinez</h4>
         <p>Developer</p>
         <p>
@@ -120,7 +128,7 @@ export const About = () => {
           harum optio sequi eveniet? Nulla possimus assumenda nihil quam labore!
         </p>
         <Link
-          to='https://www.linkedin.com/in/ramiro-soaresgache/'
+          to='https://www.linkedin.com/in/daniel-martinez-0b6294109/'
           target='_blank'
         >
           {" "}
@@ -139,7 +147,7 @@ export const About = () => {
         </Link> */}
       </div>
       <div>
-        <img src='' alt='' />
+        <img src={santi} alt='' />
         <h4>Santiago Teran</h4>
         <p>Developer</p>
         <p>
