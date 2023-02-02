@@ -26,9 +26,8 @@ const CloudDropzone = () => {
           body: data,
         }
       ).then((res) => res.json());
-      // console.log(result.url);
-      dispatch(addImage(result.url));
       dispatch(stopLoading());
+      dispatch(addImage(result.url));
     } catch (error) {
       return { error: error.message };
     }
