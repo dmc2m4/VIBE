@@ -17,6 +17,8 @@ const types = {
   CLEAN_IMAGES: "CLEAN_IMAGES",
   SET_LOADING: "SET_LOADING",
   STOP_LOADING: "STOP_LOADING",
+  CREATE_ADRESS: "CREATE_ADRESS",
+  IS_FAV: "IS_FAV",
 };
 
 export default types;

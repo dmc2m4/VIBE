@@ -1,27 +1,41 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import style from "./Card.module.css";
 import heart from "../../assets/heart.png";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import setFavorites from "../../redux/actions/setFavorites";
 import deleteFavorites from "../../redux/actions/deleteFavorites";
 import redHeart from "../../assets/corazon.png";
 import SwiperCard from "../SwiperCard/SwiperCard";
+import getPage from "../../redux/actions/getPage"
 
 const Card = (props) => {
-  const [fav, setFav] = useState(1);
   const dispatch = useDispatch();
+  const page = useSelector((state) => state.Page);
+  const [fav, setFav] = useState(props.isfav);
+  const filters = useSelector((state) => state.Filters);
+
+  useEffect(() => {
+    // dispatch(updateFilters(filters))
+    dispatch(getPage(page, filters));
+  }, [dispatch, fav]);
+
+  function prueba(prevData) {
+    setFav((prevData) => {
+      return !prevData;
+    });
+  }
 
   function favBotton() {
-    if (fav === 1) {
-      setFav(2);
-      dispatch(setFavorites(props));
-    } else {
-      setFav(1);
-      console.log(props);
-      dispatch(deleteFavorites(props));
-    }
+    prueba(fav);
+    dispatch(setFavorites(props));
+  }
+
+  function deleteFav() {
+    prueba(fav);
+    dispatch(deleteFavorites(props));
+    //  dispatch(getPage(page, filters));
   }
   function setImages() {
     const images = props.img.split(",");
@@ -49,7 +63,7 @@ const Card = (props) => {
         </div>
         <div>
           <div className={style.containerImg}>
-            {fav === 1 ? (
+            {props.isfav == "2" ? (
               <img
                 onClick={favBotton}
                 src={heart}
@@ -58,7 +72,7 @@ const Card = (props) => {
               />
             ) : (
               <img
-                onClick={favBotton}
+                onClick={deleteFav}
                 src={redHeart}
                 alt=""
                 className={style.car}

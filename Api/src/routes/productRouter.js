@@ -1,5 +1,4 @@
 const { Router } = require("express");
-const MPP = require("../middlewares/PostProductMiddleware");
 const {
   getAllProduct,
   postProduct,
@@ -8,7 +7,21 @@ const {
   getProductById,
 } = require("../Controllers/ProductController");
 
+// const MPP = require("../Middlewares/PostProductMiddleware")
+// const { Product } = require("../db")
+// const multer = require("multer");
+// const cloudinary = require("cloudinary");
+
 const productRouter = Router();
+
+productRouter.post("/", async (req, res)=>{
+  try{
+    const newProduct = await postProduct(req.body)
+    res.status(200).send(newProduct)
+  }catch(error){
+    res.status(400).send(error.message);
+  }
+})
 
 productRouter.get("/", async (req, res) => {
   try {
@@ -20,19 +33,11 @@ productRouter.get("/", async (req, res) => {
 });
 
 productRouter.get("/:id", async (req, res) => {
+  console.log(req.body)
   try {
-    const {id} = req.params;
+    const { id } = req.params;
     const product = await getProductById(id);
     res.status(200).send(product);
-  } catch (error) {
-    res.status(400).send(error.message);
-  }
-});
-
-productRouter.post("/", async (req, res) => {
-  try {
-    const newProduct = await postProduct(req.body);
-    res.status(201).send(newProduct);
   } catch (error) {
     res.status(400).send(error.message);
   }
@@ -59,4 +64,5 @@ productRouter.put("/updateProduct/:id", async (req, res) => {
   }
 });
 
+//----------------ruta-----------------------
 module.exports = productRouter;

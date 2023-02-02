@@ -1,6 +1,7 @@
 .liNav {
   list-style: none;
   margin: 2rem;
+  text-decoration:none;
 }
 .icon {
   width: 10rem;
