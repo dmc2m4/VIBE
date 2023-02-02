@@ -1,13 +1,15 @@
 import axios from "axios";
 import types from "./types";
 
-const getAddresses = (value = {}) => {
+const getAddresses = (value = []) => {
   console.log(value);
   return async function (dispatch) {
     try {
-      await axios
-        .post("http://localhost:3001/user/address", value)
-        .then((res) => dispatch({ type: types.CREATE_ADDRESSES, payload: res.data }));
+      const respuesta = await axios.post(
+        "http://localhost:3001/user/address",
+        value
+      );
+      dispatch({ type: types.CREATE_ADDRESSES, payload: respuesta.data });
     } catch (error) {
       return alert(error);
     }

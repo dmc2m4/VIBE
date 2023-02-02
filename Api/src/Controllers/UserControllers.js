@@ -14,6 +14,7 @@ const getAllUsers = async () => {
 };
 
 const getUserAdresses = async (value) => {
+  console.log(value);
   const findUser = await User.findOne({
     where: {
       email: value.email

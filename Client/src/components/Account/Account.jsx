@@ -22,7 +22,9 @@ const Account = () => {
           </a>
         </li>
         <li>
-          <a href='/myaccount'>My Account</a>
+          <Link to='/myaccount'>
+            My Account
+          </Link>
         </li>
         <li>
           <a href='/createProduct'>Create Product</a>
