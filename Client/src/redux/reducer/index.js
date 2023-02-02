@@ -15,6 +15,7 @@ const initialState = {
     total: 0,
   },
   Account: {},
+  Images: "",
   Addresses: [],
 };
 
@@ -56,6 +57,12 @@ export default function rootReducer(state = initialState, action) {
       Images: state.Images.length
         ? state.Images.concat("," + action.payload)
         : action.payload,
+    };
+  }
+  if (action.type === types.CLEAN_IMAGES) {
+    return {
+      ...state,
+      Images: ""
     };
   }
   if (action.type === types.DELETE_PRODUCT) {
@@ -161,14 +168,14 @@ export default function rootReducer(state = initialState, action) {
       Favorites: action.payload,
     };
   }
-  if (action.type === types.CREATE_ADRESS){
-    console.log(action.payload)
-    return{
+  if (action.type === types.CREATE_ADRESS) {
+    console.log(action.payload);
+    return {
       ...state,
-      Adress: action.payload
-    }
+      Adress: action.payload,
+    };
   }
-  if(action.type === types.IS_FAV){
+  if (action.type === types.IS_FAV) {
     return {
       ...state,
       Fav: action.payload,
