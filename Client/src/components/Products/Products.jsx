@@ -15,6 +15,7 @@ export default function Products() {
     dispatch(deleteProduct(product));
   }
 
+  console.log(products);
 
   if (products.length > 0) {
     return (
