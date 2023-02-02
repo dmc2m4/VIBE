@@ -15,6 +15,7 @@ const initialState = {
     total: 0,
   },
   Account: {},
+  Images: "",
   Addresses: [],
 };
 
@@ -56,6 +57,12 @@ export default function rootReducer(state = initialState, action) {
       Images: state.Images.length
         ? state.Images.concat("," + action.payload)
         : action.payload,
+    };
+  }
+  if (action.type === types.CLEAN_IMAGES) {
+    return {
+      ...state,
+      Images: ""
     };
   }
   if (action.type === types.DELETE_PRODUCT) {
@@ -168,7 +175,7 @@ export default function rootReducer(state = initialState, action) {
       Addresses: action.payload
     }
   }
-  if(action.type === types.IS_FAV){
+  if (action.type === types.IS_FAV) {
     return {
       ...state,
       Fav: action.payload,
