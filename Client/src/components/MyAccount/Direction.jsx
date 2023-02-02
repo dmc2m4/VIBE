@@ -22,7 +22,15 @@ export const Direction = () => {
       </Link>
       <h3>Address</h3>
       {address?.map  (a => (
-        <p>{a.street}</p>
+        <div>
+          <p>{a.street}</p>
+          <p>{a.number}</p>
+          <p>{a.zipCode}</p>
+          <p>{a.province}</p>
+          {a.location?<p>{a.location}</p>: null}
+          {a.apartment?<p>{a.apartment}</p>: null}
+          {a.description?<p>{a.description}</p>: null}
+        </div>
       ))}
       <Link to='/myaccount/direction/add'>
         <p>Add</p>
