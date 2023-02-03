@@ -8,6 +8,7 @@ import style from './ShoppingSlider.module.css'
 const ShoppingSlider = () => {
   const [cart, setCart] = useState(false);
   const product = useSelector((state) => state.Cart);
+  console.log(product)
   return (
     <div
       className={style.cartContainer}
@@ -33,9 +34,9 @@ const ShoppingSlider = () => {
                   <div className={style.name}>
                   <p>{e.name}</p>
                 </div>
-                <div>
+                <div className={style.cost}>
                   <label>Price</label>
-                  <p></p>
+                  <p>{e.cost}</p>
                 </div>
                 <div className={style.containerCat}>
                   <label>Cant.</label>
