@@ -6,7 +6,7 @@ const {
   putUsers,
   loginUser,
   getUserAdresses
-} = require("../controllers/UserControllers");
+} = require("../Controllers/UserControllers");
 const { User } = require("../db");
 
 const userRouter = Router();
