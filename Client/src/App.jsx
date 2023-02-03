@@ -14,6 +14,7 @@ import About from "./views/About/About";
 // import Login from "./components/Login/Login";
 import Favorites from "./components/Favorites/Favorites";
 import Filters from "./components/Filters/Filters";
+import ShoppingSlider from "./components/ShoppingSlider/ShoppingSlider";
 
 
 const App = () => {
@@ -31,7 +32,8 @@ const App = () => {
         <Route path="carousel" element={<Slider/>} />
         <Route path="imagen" element={<About/>} />
         <Route path="/favorites/:email" element={<Favorites/>} />
-        <Route path="/filters" element={<Filters/>} />
+        <Route path="/filters" element={<ShoppingSlider/>} />
+        
       </Routes>
     </div>
   );
