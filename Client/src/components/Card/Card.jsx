@@ -2,58 +2,50 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import style from "./Card.module.css";
 import heart from "../../assets/heart.png";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import setFavorites from "../../redux/actions/setFavorites";
 import deleteFavorites from "../../redux/actions/deleteFavorites";
 import redHeart from "../../assets/corazon.png";
 import SwiperCard from "../SwiperCard/SwiperCard";
-import getPage from "../../redux/actions/getPage"
+import getFavorites from "../../redux/actions/getFavorites";
 
 const Card = (props) => {
   const dispatch = useDispatch();
-  const page = useSelector((state) => state.Page);
-  const [fav, setFav] = useState(props.isfav);
-  const filters = useSelector((state) => state.Filters);
+  const favorites = useSelector(state => state.Favorites);
+  const user = useSelector(state => state.User)
 
-  useEffect(() => {
-    // dispatch(updateFilters(filters))
-    dispatch(getPage(page, filters));
-  }, [dispatch, fav]);
-
-  function prueba(prevData) {
-    setFav((prevData) => {
-      return !prevData;
-    });
-  }
+  const searchingFav = favorites.filter(f => f.id === props.id)
 
   function favBotton() {
-    prueba(fav);
-    dispatch(setFavorites(props));
+    dispatch(setFavorites(props))
+      .then(res => {
+        dispatch(getFavorites(user.email));
+      })
   }
 
   function deleteFav() {
-    prueba(fav);
-    dispatch(deleteFavorites(props));
-    //  dispatch(getPage(page, filters));
+    dispatch(deleteFavorites(props))
+      .then(res => {
+        dispatch(getFavorites(user.email));
+      })
   }
+
   function setImages() {
     const images = props.img.split(",");
     return images.map((element, i) => {
       return <img src={element} alt="images" key={i} className={style.img} />;
     });
   }
+
   return (
-    <div className={style.container}>
+    <div className={style.container} >
       <button
         onClick={() => props.deleteProduct(props.id)}
-        className={style.delete}
-      >
-        X
-      </button>
-      <Link to={`/productDetail/${props.id}`} className={style.link}>
-        {/* {setImages()} */}
-        {<SwiperCard props={props.img} />}
+        className={style.delete}>X</button>
+      <Link to={`/productDetail/${props.id}`}
+        className={style.link}>
+        <img src={props.img} alt=""
+          className={style.img} />
       </Link>
       <h3 className={style.title}>{props.name}</h3>
       <div className={style.containerDescription}>
@@ -63,7 +55,7 @@ const Card = (props) => {
         </div>
         <div>
           <div className={style.containerImg}>
-            {props.isfav == "2" ? (
+            {!searchingFav.length ? (
               <img
                 onClick={favBotton}
                 src={heart}

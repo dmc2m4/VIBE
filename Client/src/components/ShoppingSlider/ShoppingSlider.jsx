@@ -3,32 +3,32 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import car from "../../assets/car.png";
-import "./ShoppingSlider.css";
+import style from './ShoppingSlider.module.css'
 
 const ShoppingSlider = () => {
   const [cart, setCart] = useState(false);
   const product = useSelector((state) => state.Cart);
   return (
     <div
-      className="cart_content"
+      className={style.cartContainer}
       onClick={() => {
         setCart(!cart);
       }}
     >
-      <img src={car} alt="cary" className="shopping_img" />
+      <img src={car} alt="cary" className={style.shopping_img} />
       {cart ? (
-        <div className="cart_list">
+        <div className={style.cart_list}>
           {product.items.length ? (
             product.items.map((e, i) => {
               return (
                 <div>
                   <img
-                    className="product_img"
+                    className={style.product_img}
                     key={i}
                     src={e.img}
                     alt={e.name}
                   />
-                  <span className="product_quantity">{e.quantity}</span>
+                  <span className={style.product_quantity}>{e.quantity}</span>
                 </div>
               );
             })

@@ -31,7 +31,6 @@ export default function Products() {
               rating={product.rating}
               id={product.id}
               key={product.id}
-              isfav={product.isfav? "1": "2"}
               deleteProduct={deleteProducts}
               email={user.email}
             />

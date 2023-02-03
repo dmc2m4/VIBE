@@ -6,7 +6,7 @@ const {
   putUsers,
   loginUser,
   getUserAdresses
-} = require("../controllers/UserControllers");
+} = require("../Controllers/UserControllers");
 const { User } = require("../db");
 
 const userRouter = Router();
@@ -20,7 +20,7 @@ userRouter.get("/", async (req, res) => {
   }
 });
 
-userRouter.get("/address", async (req, res) => {
+userRouter.post("/address", async (req, res) => {
   try{
     const userAdresses = await getUserAdresses(req.body)
     res.status(200).send(userAdresses)
@@ -29,7 +29,7 @@ userRouter.get("/address", async (req, res) => {
   }
 })
 
-userRouter.post("/address", async (req, res) => {
+userRouter.post("/address/create", async (req, res) => {
   try{
     await createAddresses(req.body);
     res.status(200).send('address created')

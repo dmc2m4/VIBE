@@ -1,9 +1,11 @@
 import axios from "axios";
+import {API_URL} from "../../config"
+
 
 const createProduct = (product) => {
   return async function () {
     const response = await axios
-      .post("http://localhost:3001/product", product)
+      .post(`${API_URL}/product`, product)
       .catch((e) => e.error);
     return response;
   };

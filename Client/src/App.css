@@ -3,3 +3,7 @@
     margin: 0;
 
 }
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
