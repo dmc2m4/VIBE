@@ -44,17 +44,9 @@ const Card = (props) => {
     });
   }
   return (
-    <div className={style.container}>
-      <button
-        onClick={() => props.deleteProduct(props.id)}
-        className={style.delete}
-      >
-        X
-      </button>
-      <Link to={`/productDetail/${props.id}`} className={style.link}>
-        {/* {setImages()} */}
-        {<SwiperCard props={props.img} />}
-      </Link>
+    <div className={style.container} >
+      <button onClick={() => props.deleteProduct(props.id)} className={style.delete}></button>
+      <Link to={`/productDetail/${props.id}`} className={style.link}> <img src={props.img} alt="" className={style.img} /></Link>
       <h3 className={style.title}>{props.name}</h3>
       <div className={style.containerDescription}>
         <div>
