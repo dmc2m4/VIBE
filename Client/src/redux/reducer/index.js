@@ -39,9 +39,12 @@ export default function rootReducer(state = initialState, action) {
     };
   }
   if (action.type === types.REMOVE_IMAGE) {
+    const result = state.Images.split(",")
+      .filter((e) => e !== action.payload)
+      .join(",");
     return {
       ...state,
-      Images: state.Images.slice(0, state.Images.indexOf(",")),
+      Images: result,
     };
   }
   if (action.type === types.SET_CURRENT_PAGE) {
@@ -58,11 +61,12 @@ export default function rootReducer(state = initialState, action) {
     };
   }
   if (action.type === types.ADD_IMAGE) {
+    const newImages = state.Images.length
+      ? state.Images.concat("," + action.payload)
+      : action.payload;
     return {
       ...state,
-      Images: state.Images.length
-        ? state.Images.concat("," + action.payload)
-        : action.payload,
+      Images: newImages,
     };
   }
   if (action.type === types.CLEAN_IMAGES) {

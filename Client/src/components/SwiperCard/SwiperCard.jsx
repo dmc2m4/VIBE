@@ -25,7 +25,7 @@ const SwiperCard = ({ props }) => {
       {props?.split(",").map((image, i) => {
         return (
           <SwiperSlide className={style.swiperSlide}>
-            <img src={image} alt="Product Image" key={i} />
+            <img src={image} alt="Product Image" key={i}/>
           </SwiperSlide>
         );
       })}

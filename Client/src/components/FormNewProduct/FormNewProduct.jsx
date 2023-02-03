@@ -34,6 +34,7 @@ const FormNewProduct = () => {
   function handleSubmit(e) {
     e.preventDefault();
     if (validate) {
+      console.log(newProduct);
       dispatch(createProduct(newProduct));
       dispatch(cleanImages());
       alert("Product created successfully");
@@ -78,9 +79,14 @@ const FormNewProduct = () => {
     );
   }
 
+  function handleDelete(e) {
+    console.log(e.target.value);
+    dispatch(removeImage(e.target.value));
+  }
+
   useEffect(() => {
     validate(newProduct);
-  }, [newProduct]);
+  }, [newProduct, currentImages]);
 
   return (
     <div className={style.containerForm}>
@@ -139,14 +145,19 @@ const FormNewProduct = () => {
           </button>
         </div>
       </form>
-        <div className={style.containerImages}>
+      <div className={style.containerImages}>
         {currentImages
           ? currentImages?.split(",").map((image, i) => {
-              return (
-                <div className={style.images} value={image}>
-                  <img src={image} key={i} />
-                </div>
-              );
+              return image ? (
+                <button
+                  className={style.images}
+                  value={image}
+                  key={i}
+                  onClick={(e) => handleDelete(e)}
+                >
+                  {image ? <img src={image} key={i} /> : null}
+                </button>
+              ) : null;
             })
           : null}
       </div>
