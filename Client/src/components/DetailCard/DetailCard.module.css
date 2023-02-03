@@ -9,6 +9,7 @@
   flex-direction: column;
   width: 100%;
   height: auto;
+  margin-top: 4rem
 }
 .containerIcon {
   display: flex;
@@ -25,6 +26,7 @@
 .containerTitle {
   margin-left: 4rem;
   margin-top: -3rem;
+  margin-bottom: 5rem;
 }
 .containerProduct {
   display: grid;
@@ -36,6 +38,7 @@
   width: 43rem;
   justify-content: center;
   align-items: center;
+  
 }
 
 .containerButtonAdd {

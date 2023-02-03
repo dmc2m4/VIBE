@@ -168,12 +168,12 @@ export default function rootReducer(state = initialState, action) {
       Favorites: action.payload,
     };
   }
-  if (action.type === types.CREATE_ADRESS) {
-    console.log(action.payload);
-    return {
+  if (action.type === types.CREATE_ADDRESSES){
+    console.log(action.payload)
+    return{
       ...state,
-      Adress: action.payload,
-    };
+      Addresses: action.payload
+    }
   }
   if (action.type === types.IS_FAV) {
     return {

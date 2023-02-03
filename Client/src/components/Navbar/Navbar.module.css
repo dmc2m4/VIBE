@@ -15,6 +15,10 @@
   height: 80px;
   margin-top: -1rem;
   width: 100%;
+  position: fixed;
+  z-index: 10;
+  margin-top: -5rem;
+  border-bottom: 1px solid black;
 }
 .selectCategories {
   width: 8rem;

@@ -37,7 +37,7 @@ const CategoriesLink = () => {
           <div className={style.content}>
             <h2>WOMEN</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel odit quis, suscipit, odio provident unde porro nam laborum voluptates modi quisquam.</p>
-            <a href="#">Buy now</a>
+            <button href="#">Buy now</button>
           </div>
           <img src={womenVibe}/>
         </div>
@@ -47,7 +47,7 @@ const CategoriesLink = () => {
           <div className={style.content}>
             <h2>SHOES</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel odit quis, suscipit, odio provident unde porro nam laborum voluptates modi quisquam.</p>
-            <a href="#">Buy now</a>
+            <button href="#">Buy now</button>
           </div>
           <img src={shoesVibe}/>
         </div>
@@ -57,7 +57,7 @@ const CategoriesLink = () => {
           <div className={style.content}>
             <h2>ACCESORIES</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel odit quis, suscipit, odio provident unde porro nam laborum voluptates modi quisquam.</p>
-            <a href="#">Buy now</a>
+            <button href="#">Buy now</button>
           </div>
           <img src={mochilaVibe}/>
         </div>

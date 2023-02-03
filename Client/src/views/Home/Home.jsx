@@ -13,7 +13,6 @@ const Home = () => {
       <CategoriesLink/>
       <ContainerProduct />
       <Pagination />
-      
     </div>
   );
 };

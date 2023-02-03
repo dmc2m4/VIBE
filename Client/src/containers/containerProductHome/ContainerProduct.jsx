@@ -6,7 +6,7 @@ import style from './ContainerProduct.module.css'
 const ContainerProduct = () => {
   return (
     <div className={style.container}>
-        <Filters/>
+       <Filters/>
         <Products/>
     </div>
   )
