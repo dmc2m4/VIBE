@@ -39,17 +39,16 @@ const ShoppingSlider = () => {
                 </div>
                 <div className={style.containerCat}>
                   <label>Cant.</label>
-                  <span className={style.product_quantity} key={i}>{e.quantity}</span>
+                  <span className={style.product_quantity}>{e.quantity}</span>
                 </div>
                 </div>
               );
             })
           ) : (
-            <div><p>Empty</p></div>
+            <div className={style.empty}><p>Empty</p></div>
           )}
           <div className={style.containerTotal}> <p className={style.price}>TOTAL:</p><p className={style.price}>{product.total} $</p></div>
-         
-         <Link to="/shopping-cart" className={style.containerButton}>
+        <Link to="/shopping-cart" className={style.containerButton}>
             <button className={style.buttonCar}>GO TO CART</button>
           </Link>
         </div>
