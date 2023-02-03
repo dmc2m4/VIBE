@@ -41,7 +41,7 @@ const Card = (props) => {
     <div className={style.container} >
       <button
         onClick={() => props.deleteProduct(props.id)}
-        className={style.delete}></button>
+        className={style.delete}>X</button>
       <Link to={`/productDetail/${props.id}`}
         className={style.link}>
         <img src={props.img} alt=""
