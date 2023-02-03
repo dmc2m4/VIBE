@@ -19,6 +19,7 @@ const types = {
   STOP_LOADING: "STOP_LOADING",
   CREATE_ADDRESSES: "CREATE_ADDRESSES",
   IS_FAV: "IS_FAV",
+  REMOVE_IMAGE: "REMOVE_IMAGE",
 };
 
 export default types;
