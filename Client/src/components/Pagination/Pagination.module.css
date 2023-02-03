@@ -6,17 +6,16 @@
   margin-bottom: 5rem;
 }
 
-.buttonPa {
-  border: none;
-  border-radius: 5px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-  width: 60px;
-  height: 35px;
-  background-color: transparent;
-  color: #4d4234;
-  font-size: 16px;
-  font-weight: bold;
-  font-family: "Dosis", sans-serif;
-  cursor: pointer;
-  margin: 8px;
+.buttonPa{
+    border: none;
+    box-shadow: 2px 3px 3px 3px rgba(0, 0, 0, 0.75);
+    width: 60px;
+    height: 35px;
+    background-color: transparent;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Kalam', cursive;
+    cursor: pointer;
+    margin: 8px;
 }
