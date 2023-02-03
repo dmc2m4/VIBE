@@ -1,0 +1,25 @@
+.swiper {
+    width: 100%;
+    /* height: 30rem; */
+    /* color: transparent; */
+    display: flex;
+    --swiper-theme-color: rgb(21, 20, 20);
+    --swiper-navigation-size: 50px;
+}
+
+.swiperSlide {
+    text-align: center;
+    /* font-size: 10px; */
+    /* background: transparent; */
+    /* Center slide text vertically */
+}
+
+.swiperSlide img {
+    display: block;
+    width: 100%;
+    /* height: 10rem; */
+}
+.swiper-button-disabled{
+    display: none;
+}
+

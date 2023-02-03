@@ -10,10 +10,14 @@ import Home from "../src/views/Home/Home";
 import DetailCard from "./components/DetailCard/DetailCard";
 import ContainerProduct from "./containers/containerProductHome/ContainerProduct";
 import Slider from "./components/Carousel/Carousel";
-import About from "./views/About/About";
+import {About} from "./views/About/About";
 // import Login from "./components/Login/Login";
 import Favorites from "./components/Favorites/Favorites";
-
+import { MyAccount } from "./components/MyAccount/MyAccount";
+import {Profile} from "./components/MyAccount/Profile";
+import { Direction } from "./components/MyAccount/Direction";
+import { ShoppingHistory } from "./components/MyAccount/ShoppingHistory";
+import { Add } from "./components/MyAccount/Add";
 
 const App = () => {
   const location = useLocation()
@@ -28,8 +32,13 @@ const App = () => {
         <Route path="/shopping-cart" element={<ShoppingCart />} />
         <Route path="/productDetail/:id" element={<DetailCard/>} />
         <Route path="carousel" element={<Slider/>} />
-        <Route path="imagen" element={<About/>} />
+        <Route path="/about" element={<About/>} />
         <Route path="/favorites/:email" element={<Favorites/>} />
+        <Route path="/myaccount" element={<MyAccount/>} />
+        <Route path="/myaccount/profile" element = {<Profile/>}/>
+        <Route path="/myaccount/direction" element={<Direction/>}/>
+        <Route path="/myaccount/shoppinghistory" element={<ShoppingHistory/>}/>
+        <Route path="/myaccount/direction/add" element={<Add/>}/>
       </Routes>
     </div>
   );

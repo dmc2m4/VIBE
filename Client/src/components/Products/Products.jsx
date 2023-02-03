@@ -4,17 +4,15 @@ import { useSelector, useDispatch } from "react-redux";
 import style from "./Products.module.css";
 import { deleteProduct } from "../../redux/actions/deleteProduct";
 
-
 export default function Products() {
-  const products = useSelector((state) => state.Products);
   const dispatch = useDispatch();
-  const user = useSelector(state=> state.User)
-
+  const products = useSelector((state) => state.Products);
+  const user = useSelector((state) => state.User);
 
   function deleteProducts(product) {
     dispatch(deleteProduct(product));
   }
-  
+
   if (products.length > 0) {
     return (
       <div className={style.containerPrimary}>
@@ -33,6 +31,7 @@ export default function Products() {
               rating={product.rating}
               id={product.id}
               key={product.id}
+              isfav={product.isfav? "1": "2"}
               deleteProduct={deleteProducts}
               email={user.email}
             />

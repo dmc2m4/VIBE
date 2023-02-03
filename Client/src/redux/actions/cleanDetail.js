@@ -1,10 +1,12 @@
 import types from "./types";
 
-export function cleanDetail(payload) {
+const cleanDetail = (payload) => {
   return function (dispatch) {
-    dispatch({ 
-      type: types.CLEAN_DETAIL, 
-      payload 
+    dispatch({
+      type: types.CLEAN_DETAIL,
+      payload,
     });
   };
-}
+};
+
+export default cleanDetail;

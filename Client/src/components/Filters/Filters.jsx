@@ -15,7 +15,7 @@ const Filters = () => {
     "white",
     "brown",
     "yellow",
-    "green",
+    "grey",
     "pink",
   ];
   const sizeList = ["all", "L", "M", "S", "XS", "XL"];
@@ -43,6 +43,7 @@ const Filters = () => {
     dispatch(updateFilters(newFilters));
     dispatch(cleanPage());
   }
+  
   return (
     <div className={style.container}>
       <span>Colors</span>

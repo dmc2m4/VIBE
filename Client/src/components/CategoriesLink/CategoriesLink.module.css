@@ -1,14 +1,15 @@
-body{
+.mainDiv{
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    margin-top: 2rem;
 }
 
 .card{
     position: relative;
-    width: 600px;
+    width: 400px;
     height: 350px;
+    margin: 20px;
     border-radius: 20px;
     display: flex;
     align-items: center;
@@ -55,7 +56,7 @@ body{
 
 .card:hover img{
     left: 72%;
-    height: 500px;
+    height: 250px;
 }
 
 .card .content{
@@ -128,133 +129,6 @@ body{
 
 @media (max-width: 420px){
     .card .content{
-        padding: 20px;
-    }
-}
-
-.card2{
-    position: relative;
-    width: 600px;
-    height: 350px;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    border-radius: 20px;
-    transition: 0.5s;
-}
-
-.card2 .circle2{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-.card2 .circle2::before{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgb(0, 0, 0);
-    clip-path: circle(120px at center);
-    transition: 1s;
-}
-
-.card2:hover .circle2:before{
-    background: rgb(82, 82, 82);
-    clip-path: circle(400px at center);
-}
-
-.card2 img{
-    position: absolute;
-    bottom: 50%;
-    left: 50%;
-    transform: translate(-50%, 50%);
-    height: 300px;
-    pointer-events: none;
-    transition: 1s;
-}
-
-.card2:hover img{
-    left: 72%;
-    height: 400px;
-}
-
-.card2 .content2{
-    position: relative;
-    width: 50%;
-    padding: 20px 20px 20px 40px;
-    transition: 0,5s;
-    opacity: 0;
-    visibility: hidden;
-}
-
-.card2:hover .content2{
-    left: 0;
-    opacity: 1;
-    visibility: visible;
-}
-
-.card2 .content2 h2{
-    color: #fff;
-    text-transform: uppercase;
-    font-size: 2em;
-    line-height: 1em;
-    margin-bottom: 5px;
-}
-
-.card2 .content2 p{
-    color: #fff;
-
-}
-
-.card2 .content2 a{
-    position: relative;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 10px;
-    background: #fff;
-    color:black;
-    margin-top: 10px;
-    display: inline-block;
-    text-decoration: none;
-    font-weight: 700;
-}
-
-@media (max-width: 991px){
-    .card2{
-        width: auto;
-        max-width: 350px;
-        align-items: flex-start;
-        margin: 10px;
-    }
-    .card2 .img{
-        transition: 1s;
-    }
-    .card2:hover{
-        height: 600px;
-    }
-    .card2 .content2{
-        width: 100%;
-        left: 0;
-        padding: 30px;
-    }
-    .card2:hover img{
-        top: 10%;
-        left: 50%;
-        height: 300px;
-        
-    }
-
-}
-
-@media (max-width: 420px){
-    .card2 .content2{
         padding: 20px;
     }
 }

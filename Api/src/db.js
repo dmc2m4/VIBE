@@ -45,11 +45,11 @@ const { User, Product, Review, Address } = sequelize.models;
   User.belongsToMany(Product, { through: 'users_products' });
   Product.belongsToMany(User, { through: 'users_products' });
 
-  User.hasMany(Address, {onDelete: 'CASCADE'});
-  Address.belongsTo(User);
-
   User.belongsToMany(Product, { through: 'favorites_products', as: "favorites" } );
   Product.belongsToMany(User, { through: 'favorites_products', as: "favorites" } );
+
+  User.belongsToMany(Address, { through: 'User_Addresses'});
+  Address.belongsTo(User, { through: 'User_Addresses'});
 
   User.belongsToMany(Product, { through: 'purchases'});
   Product.belongsToMany(User, { through: 'purchases'});

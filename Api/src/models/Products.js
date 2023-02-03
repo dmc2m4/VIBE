@@ -1,4 +1,4 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes, STRING } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define(
@@ -24,7 +24,6 @@ module.exports = (sequelize) => {
       size: {
         type: DataTypes.STRING,
         allowNull: false,
-        //deberia ser un array o ver como lo conectamos con stock
       },
       color: {
         type: DataTypes.STRING,
@@ -38,12 +37,13 @@ module.exports = (sequelize) => {
           "shoes",
           "shorts",
           "jackets",
-          "sweatshirts"
+          "sweatshirts",
+          "accesories"
         ),
         allowNull: false,
       },
       gender: {
-        type: DataTypes.ENUM("male", "female"),
+        type: DataTypes.ENUM("male", "female", "unisex"),
         allowNull: false,
       },
       cost: {
@@ -67,6 +67,10 @@ module.exports = (sequelize) => {
       amount: {
         type: DataTypes.INTEGER,
       },
+      isfav: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      }
       /* public: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
