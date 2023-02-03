@@ -15,7 +15,7 @@ const Filters = () => {
     "white",
     "brown",
     "yellow",
-    "gray",
+    "grey",
     "pink",
   ];
   const sizeList = ["all", "L", "M", "S", "XS", "XL"];

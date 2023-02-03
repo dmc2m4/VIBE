@@ -18,13 +18,13 @@
   width: 80%;
   height: 250px;
 }
-.link{
+.link {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 0.5rem;
 }
-.delete{
+.delete {
   position: absolute;
   margin-left: 85%;
   margin-top: -10px;
@@ -34,25 +34,24 @@
   background-color: transparent;
   cursor: pointer;
 }
-.delete:hover{
+.delete:hover {
   color: red;
 }
 
-.containerProduct{
+.containerProduct {
   width: 200px;
   height: 300px;
 }
 
-.title{
-  font-family: 'Kalam', cursive;
+.title {
+  font-family: "Dosis", sans-serif;
   text-align: center;
   margin-bottom: 8px;
  height: 2rem;
 }
 
-.text{
-  font-family: 'Kalam', cursive;
-  
+.text {
+  font-family: "Dosis", sans-serif;
 }
 
 .containerDescription{
@@ -63,13 +62,13 @@ display: grid;
 
 }
 
-.car{
+.car {
   height: 25px;
   width: 25px;
   margin-right: 2px;
 }
 
-.containerImg{
+.containerImg {
   border-radius: 50%;
   height: 40px;
   width: 40px;
