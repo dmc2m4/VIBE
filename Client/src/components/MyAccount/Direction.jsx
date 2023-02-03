@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import {  useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import getAddresses from "../../redux/actions/getAdresses";
+import style from './Direction.module.css'
 
 export const Direction = () => {
   const address = useSelector((state) => state.Addresses);
@@ -16,7 +17,7 @@ export const Direction = () => {
   console.log(address);
   
   return (
-    <div>
+    <div className={style.container}>
       <Link to="/myaccount">
         <button>Back</button>
       </Link>

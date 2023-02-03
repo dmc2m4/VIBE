@@ -125,7 +125,7 @@ const DetailCard = () => {
             </p>
             <p className={style.rating}>
               {" "}
-              <p className={style.textDetail}>Stock: </p> {stock}
+              <p className={style.textDetail}>Stock: </p> {detail.stock}
             </p>
             <div>
               <p className={style.rating}>
