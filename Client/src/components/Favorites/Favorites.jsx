@@ -14,7 +14,7 @@ const Favorites = () => {
 
   return (
     <div>
-      {favorites.data?.map((product) => (
+      {favorites?.map((product) => (
             <Card
               name={product.name}
               img={product.img}

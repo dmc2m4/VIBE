@@ -1,6 +1,7 @@
 import axios from 'axios';
-import types from "./types";
-import { API_URL } from "../../config";
+import types from "./types"
+import {API_URL} from "../../config";
+
 
 export const getFavorites = (email) => {
   console.log(email);
@@ -9,7 +10,7 @@ export const getFavorites = (email) => {
         const fav = await axios.get(`${API_URL}/favorites/${email}`);
         dispatch({
             type: types.GET_FAVORITES,
-            payload: fav
+            payload: fav.data
         })
       } catch (error) {
         return alert(error.message)

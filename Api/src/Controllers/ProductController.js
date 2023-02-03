@@ -8,9 +8,9 @@ const getAllProduct = async () => {
 };
 
 const getProductById = async function (id) {
-  const product = await Product.findByPk(id)
-  return product
-}
+  const product = await Product.findByPk(id);
+  return product;
+};
 
 const postProduct = async (value) => {
   console.log(value);
@@ -35,7 +35,6 @@ const putProduct = async (value, req) => {
     category,
     gender,
     cost,
-    rating,
     season,
     stock,
     amount,
@@ -48,7 +47,6 @@ const putProduct = async (value, req) => {
   if (category) update.category = category;
   if (gender) update.gender = gender;
   if (cost) update.cost = cost;
-  if (rating) update.rating = rating;
   if (season) update.season = season;
   if (stock) update.stock = stock;
   if (amount) update.amount = amount;

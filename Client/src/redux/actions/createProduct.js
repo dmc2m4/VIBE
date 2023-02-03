@@ -1,7 +1,8 @@
 import axios from "axios";
-import { API_URL } from "../../config";
+import {API_URL} from "../../config"
 
-const createProdcut = (product) => {
+
+const createProduct = (product) => {
   return async function () {
     const response = await axios
       .post(`${API_URL}/product`, product)
@@ -10,4 +11,4 @@ const createProdcut = (product) => {
   };
 };
 
-export default createProdcut;
+export default createProduct;

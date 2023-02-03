@@ -1,10 +1,9 @@
 import React from "react";
 import style from "./Account.module.css";
 import { LogOutGoogle } from "../../LogOutGoogle/LogOutGoogle";
+import { Link } from "react-router-dom";
 
 const Account = () => {
-
-
   const clearCacheData = () => {
     caches.keys().then((name) => {
       name.forEach((name) => {
@@ -22,7 +21,14 @@ const Account = () => {
           </a>
         </li>
         <li>
-          <a href='/createProduct'>My account</a>
+          <Link to='/myaccount'>
+            My Account
+          </Link>
+        </li>
+        <li>
+          <Link to='/createProduct'>
+          Create Product
+          </Link>
         </li>
         <li
           onClick={() => {
