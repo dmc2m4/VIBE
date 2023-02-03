@@ -1,25 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import createProduct from "../../redux/actions/createProduct";
 import CloudDropzone from "../Dropzone/CloudDropzone";
 import style from "./FormNewProduct.module.css";
 import cleanImages from "../../redux/actions/cleanImages";
+import removeImage from "../../redux/actions/removeImage";
 
 const FormNewProduct = () => {
   const dispatch = useDispatch();
-  let currentImages = useSelector((state) => state.Images);
   const [newProduct, setNewProduct] = useState({});
   const [validated, setValidated] = useState(false);
+  let currentImages = useSelector((state) => state.Images);
 
   function handleChange(e) {
     setNewProduct({
       ...newProduct,
       [e.target.name]: e.target.value,
     });
-    isProductValid(newProduct);
   }
 
-  const isProductValid = (product) => {
+  const validate = (product) => {
     if (!product.name) return false;
     if (!product.size) return false;
     if (!product.color) return false;
@@ -29,11 +29,11 @@ const FormNewProduct = () => {
     if (!product.season) return false;
     if (!product.stock) return false;
     setValidated(true);
-    return true;
   };
+
   function handleSubmit(e) {
     e.preventDefault();
-    if (isProductValid(newProduct)) {
+    if (validate) {
       dispatch(createProduct(newProduct));
       dispatch(cleanImages());
       alert("Product created successfully");
@@ -41,6 +41,7 @@ const FormNewProduct = () => {
       alert("Please complete all fields");
     }
   }
+
   function addInput(name, type) {
     const nameFormatted = name.charAt(0).toUpperCase() + name.slice(1);
     return (
@@ -57,6 +58,7 @@ const FormNewProduct = () => {
       </div>
     );
   }
+
   function addSelect(name, arr) {
     const nameFormatted = name.charAt(0).toUpperCase() + name.slice(1);
     return (
@@ -66,10 +68,7 @@ const FormNewProduct = () => {
           {<option hidden>{nameFormatted}</option>}
           {arr.map((element, i) => {
             return (
-              <option
-                value={element}
-                key={i}
-              >
+              <option value={element} key={i}>
                 {element}
               </option>
             );
@@ -78,6 +77,11 @@ const FormNewProduct = () => {
       </div>
     );
   }
+
+  useEffect(() => {
+    validate(newProduct);
+  }, [newProduct]);
+
   return (
     <div className={style.containerForm}>
       <form onSubmit={handleSubmit}>
@@ -123,7 +127,7 @@ const FormNewProduct = () => {
           <button
             type="submit"
             className={style.buttonCreate}
-            disabled={validated === false || !currentImages ? true : false}
+            disabled={!validated || !currentImages ? true : false}
             onClick={() =>
               setNewProduct({
                 ...newProduct,
@@ -135,6 +139,17 @@ const FormNewProduct = () => {
           </button>
         </div>
       </form>
+        <div className={style.containerImages}>
+        {currentImages
+          ? currentImages?.split(",").map((image, i) => {
+              return (
+                <div className={style.images} value={image}>
+                  <img src={image} key={i} />
+                </div>
+              );
+            })
+          : null}
+      </div>
     </div>
   );
 };
