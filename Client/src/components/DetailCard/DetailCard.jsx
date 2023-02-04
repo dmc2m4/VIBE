@@ -12,10 +12,12 @@ import Navbar from "../Navbar/Navbar";
 
 const DetailCard = () => {
   const detail = useSelector((state) => state.Detail);
-  const [stock , setStock] = useState(detail.stock)
+  const [stock, setStock] = useState(detail.stock)
   const { id } = useParams();
   const dispatch = useDispatch();
   const array = [1, 2, 3, 4, 5];
+
+  console.log(detail);
 
   function addToCar() {
     dispatch(addToCart(detail));
@@ -24,7 +26,7 @@ const DetailCard = () => {
 
   useEffect(() => {
     dispatch(createDetail(id));
-    
+
     return function () {
       dispatch(cleanDetail());
     };
@@ -61,7 +63,7 @@ const DetailCard = () => {
   // }
   return (
     <div className={style.container}>
- 
+     
       <div className={style.back} >
         <Link to="/home" className={style.back}>
           <img
@@ -94,9 +96,9 @@ const DetailCard = () => {
           <SwiperCard props={detail.img} />
         </div>
         <div className={style.containerDetail}>
-        <div className={style.containerTitle}>
-        <h1 className={style.title}>{detail.name}</h1>
-      </div>
+          <div className={style.containerTitle}>
+            <h1 className={style.title}>{detail.name}</h1>
+          </div>
           <div className={style.containerText}>
             <p className={style.rating}>
               {" "}
@@ -145,6 +147,20 @@ const DetailCard = () => {
             </button>
           </div>
         </div>
+      </div>
+      <div>
+        {detail.Reviews?.map((m) => {
+          return (
+            <div>
+              <p>{m.title}</p>
+              <p>{m.rating}</p>
+              <p>{m.text}</p>
+            </div>
+          )
+        })}
+        {/* {detail.reviews?.map((m) => (
+        
+        ))} */}
       </div>
       {/* <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque

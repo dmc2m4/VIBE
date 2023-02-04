@@ -64,10 +64,12 @@ const { User, Product, Review, Address } = sequelize.models;
   User.belongsToMany(Product, { through: 'purchases'});
   Product.belongsToMany(User, { through: 'purchases'});
 
-  User.hasMany(Review, {onDelete: 'CASCADE'});
-  Review.belongsTo(User);
-  Product.hasMany(Review,  {onDelete: 'CASCADE'});
-  Review.belongsTo(Product);
+  Review.belongsTo(Product, {through: 'product_review'});
+  Product.belongsToMany(Review, {through: 'product_review'});
+
+  Review.belongsTo(User, {through: 'user_review'});
+  User.belongsToMany(Review, {through: 'user_review'});
+  
 
 module.exports = {
   ...sequelize.models,
