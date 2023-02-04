@@ -1,6 +1,6 @@
 //[13:57, 18/1/2023] Daniel Henry: /:userId/favorites */
 
-const { Product, Review } = require("../db.js");
+const { Product, Review, Comment } = require("../db.js");
 
 const getAllProduct = async () => {
   const allProduct = await Product.findAll();
@@ -9,9 +9,10 @@ const getAllProduct = async () => {
 
 const getProductById = async function (id) {
   const product = await Product.findByPk(id,{
-    include:{
-      model: Review
-    }
+    include:[
+      {model: Review},
+      {model: Comment}
+    ]
   });
   return product;
 };
