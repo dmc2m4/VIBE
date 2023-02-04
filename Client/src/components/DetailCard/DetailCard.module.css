@@ -36,9 +36,12 @@
 
 .containerImg {
   display: flex;
-  width: 43rem;
+  width: 20rem;
+  height: 20rem;
   justify-content: center;
   align-items: center;
+  margin-top: 6.5rem;
+  margin-left: 15rem;
   
 }
 
