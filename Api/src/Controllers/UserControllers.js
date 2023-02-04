@@ -35,6 +35,7 @@ const loginUser = async (value) => {
     const newUser = await User.create({
       name: value.name,
       email: value.email,
+      img: value.picture
     })
     return newUser
   }

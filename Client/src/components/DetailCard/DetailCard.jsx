@@ -16,8 +16,9 @@ const DetailCard = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const array = [1, 2, 3, 4, 5];
+  const user = useSelector(state => state.User)
 
-  console.log(detail);
+ console.log(user)
 
   function addToCar() {
     dispatch(addToCart(detail));
@@ -35,7 +36,6 @@ const DetailCard = () => {
   // const images = detail.img.split(",");
   function setImages(det) {
     const images = det.img;
-    console.log(detail);
     return (
       <div className={style.containerImg}>
         {images.split("").map((element) => {
@@ -155,6 +155,14 @@ const DetailCard = () => {
               <p>{m.title}</p>
               <p>{m.rating}</p>
               <p>{m.text}</p>
+            </div>
+          )
+        })}
+        {detail.Comments?.map((m) => {
+          return (
+            <div>
+              <p>{m.question}</p>
+              <p>{m.response? m.response: "respeusta pendiente"}</p>
             </div>
           )
         })}
