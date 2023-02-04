@@ -5,6 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { LoginGoogle } from "../../LoginGoogle.jsx/LoginGoogle";
 import { useDispatch } from "react-redux";
 import loginUser from "../../redux/actions/userLogin";
+import getFavorites from "../../redux/actions/getFavorites";
 
 const Landing = () => {
   const { user, isAuthenticated } = useAuth0();
@@ -13,6 +14,7 @@ const Landing = () => {
 
   function homeButtom() {
     dispatch(loginUser(user))
+    dispatch(getFavorites(user.email))
     navigate("/home");
   }
   

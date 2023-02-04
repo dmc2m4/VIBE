@@ -24,7 +24,6 @@ module.exports = (sequelize) => {
       size: {
         type: DataTypes.STRING,
         allowNull: false,
-        //deberia ser un array o ver como lo conectamos con stock
       },
       color: {
         type: DataTypes.STRING,
@@ -43,7 +42,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       gender: {
-        type: DataTypes.ENUM("male", "female"),
+        type: DataTypes.ENUM("male", "female", "unisex"),
         allowNull: false,
       },
       cost: {

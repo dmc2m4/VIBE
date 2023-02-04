@@ -1,52 +1,52 @@
-
 .menu {
-    width: 150px;
-    height: auto;
-    border: 1px solid black;
-    border-radius: 14px 0px 18px 11px;
-    -moz-border-radius: 34px 0px 28px 31px;
-    -webkit-border-radius: 34px 0px 28px 31px;
-    padding: 20px 20px 0 20px;
-    position: absolute;
-    top: 80px;
-    right: 50px;
-    background-color: white;
-    z-index: 1000;
+  width: 150px;
+  height: auto;
+  border: 1px solid black;
+  border-radius: 14px 0px 18px 11px;
+  -moz-border-radius: 34px 0px 28px 31px;
+  -webkit-border-radius: 34px 0px 28px 31px;
+  padding: 20px 20px 0 20px;
+  position: absolute;
+  top: 80px;
+  right: 50px;
+  background-color: white;
+  z-index: 1000;
 }
 
 .menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .menu ul li {
-    text-align: end;
-    font-family: 'Kalam', cursive;
+  text-align: end;
+  font-family: "Dosis", sans-serif;
 }
 
 .menu ul li:nth-child(1),
 .menu ul li:nth-child(2) {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .menu ul li:last-child {
-    padding-top: 20px;
-    border-top: 1px solid black;
+  padding-top: 20px;
+  border-top: 1px solid black;
 }
 
 .menu ul li:last-child a {
-    color: var(--hospital-green);
-    font-size: var(--sm);
+  color: var(--hospital-green);
+  font-size: var(--sm);
 }
 
 .menu ul li a {
-    color: black;
-    text-decoration: none;
-    margin-bottom: 1rem;
-    display: inline-block;
+  color: black;
+  text-decoration: none;
+  margin-bottom: 1rem;
+  display: inline-block;
 }
 
-.textLink{
-    font-weight: bold;
+.textLink {
+  font-weight: bold;
 }
+
