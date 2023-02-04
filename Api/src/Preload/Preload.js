@@ -1,9 +1,7 @@
 const {User} = require('../db.js')
 
 async function AdminUsers (){
-    try {
-        const user= await User.findOne()
-      if(!user){
+     
         await User.create({
         name: 'Santiago Teran',
         email: "santiagoterandc@gmail.com",
@@ -45,10 +43,7 @@ async function AdminUsers (){
         email: "16-00436@usb.ve",
         isAdmin: true,    
         });
-      }
-    } catch (error) {
-        next(error)
+      
     }
-}
 
 module.exports = AdminUsers;
