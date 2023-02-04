@@ -50,24 +50,45 @@ let capsEntries = entries.map((entry) => [
 ]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { User, Product, Review, Address } = sequelize.models;
+const { User, Product, Review, Address, Comment } = sequelize.models;
 
-  User.belongsToMany(Product, { through: 'users_products' });
-  Product.belongsToMany(User, { through: 'users_products' });
+User.belongsToMany(Product, { through: "offered_product" });
+Product.belongsToMany(User, { through: "offered_product" });
 
-  User.belongsToMany(Product, { through: 'favorites_products', as: "favorites" } );
-  Product.belongsToMany(User, { through: 'favorites_products', as: "favorites" } );
+User.belongsToMany(Product, { through: "bought_product"});
+Product.belongsToMany(User, { through: "bought_product"});
 
-  User.belongsToMany(Address, { through: 'User_Addresses'});
-  Address.belongsTo(User, { through: 'User_Addresses'});
+User.hasMany(Product/* , {
+                        foreignKey: 'UserId'
+                       } */ );
+Product.belongsTo(User);
 
-  User.belongsToMany(Product, { through: 'purchases'});
-  Product.belongsToMany(User, { through: 'purchases'});
+User.hasMany(Address, { 
+                          /* foreignKey: 'UserId', */
+                          onDelete: "CASCADE" });
+Address.belongsTo(User);
 
-  User.hasMany(Review, {onDelete: 'CASCADE'});
-  Review.belongsTo(User);
-  Product.hasMany(Review,  {onDelete: 'CASCADE'});
-  Review.belongsTo(Product);
+Product.hasMany(Review, { 
+                          /* foreignKey: 'ProductId', */
+                          onDelete: "CASCADE" });
+Review.belongsTo(Product);
+
+User.hasMany(Review, { 
+                      /* foreignKey:'UserId',  */ 
+                      onDelete: "CASCADE" 
+                    });
+Review.belongsTo(User);
+
+Product.hasMany(Comment, {
+                          /* foreignKey: 'ProductId', */
+                        });
+Comment.belongsTo(Product);
+
+User.hasMany(Comment, {
+                        /* foreignKey: 'UserId' */
+                      });
+Comment.belongsTo(User);
+
 
 module.exports = {
   ...sequelize.models,

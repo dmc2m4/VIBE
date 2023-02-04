@@ -1,5 +1,3 @@
-//[13:57, 18/1/2023] Daniel Henry: /:userId/favorites */
-
 const { Product } = require("../db.js");
 
 const getAllProduct = async () => {
