@@ -1,9 +1,4 @@
-
 const { User,Product, Address} = require("../db.js");
-const bcrypt = require('bcrypt');
-
-// const jwt = require('jsonwebtoken');
-// const emailController = require('./EmailController')
 
 const getAllUsers = async () => {
   const allUsers = await User.findAll({
@@ -40,6 +35,7 @@ const loginUser = async (value) => {
     const newUser = await User.create({
       name: value.name,
       email: value.email,
+      isAdmin: true
     })
     return newUser
   }
