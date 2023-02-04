@@ -4,7 +4,7 @@ import {
   addOneToCart,
   clearCart,
   removeFromCart,
-} from "../../redux/actions/shoppingCart.actions";
+} from "../../redux/actions/shoppingCart";
 import style from './ShoppingCart.module.css'
 
 

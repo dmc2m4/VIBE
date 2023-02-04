@@ -7,6 +7,7 @@ export function addToCart(product){
         payload: product,
     }
 }
+
 export function addOneToCart(payload){
     return {
         type: types.ADD_ONE_TO_CART,
