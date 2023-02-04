@@ -4,6 +4,7 @@ const DB_HOST = process.env.DB_HOST;
 const DB_PORT = process.env.DB_PORT;
 const DB_NAME = process.env.DB_NAME ;
 const PORT = process.env.PORT;
+const ACCESS_TOKEN = process.env.ACCESS_TOKEN;
 module.exports = {
   DB_USER,
   DB_PASSWORD,
@@ -11,4 +12,5 @@ module.exports = {
   DB_NAME,
   DB_PORT,
   PORT,
+  ACCESS_TOKEN,
 };

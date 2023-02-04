@@ -1,4 +1,5 @@
 const { Router } = require("express");
+const { payProduct } = require("../Controllers/MercadoPagoController");
 const {
   getAllProduct,
   postProduct,
@@ -63,6 +64,17 @@ productRouter.put("/updateProduct/:id", async (req, res) => {
     res.status(400).send(error.message);
   }
 });
+
+productRouter.post("/pay/:id",async (req, res) => {
+  const { id } = req.params;
+  const {items} = req.body;
+  try {
+    const result = await payProduct(id, items);
+    res.status(200).send(result )
+  } catch (error) {
+    res.status(400).send(error.message); 
+  }
+})
 
 //----------------ruta-----------------------
 module.exports = productRouter;

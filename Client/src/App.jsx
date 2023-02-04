@@ -40,6 +40,7 @@ const App = () => {
         <Route path="/myaccount/direction" element={<Direction/>}/>
         <Route path="/myaccount/shoppinghistory" element={<ShoppingHistory/>}/>
         <Route path="/myaccount/direction/add" element={<Add/>}/>
+        
       </Routes>
     </div>
   );
