@@ -1,8 +1,8 @@
 const {User} = require('../db.js')
 
-async function AdminUsers (){
-    try {
-        const user= await User.findOne()
+async function AdminUsers (next){
+  try {
+        const user = await User.findOne()
       if(!user){
         await User.create({
         name: 'Santiago Teran',
