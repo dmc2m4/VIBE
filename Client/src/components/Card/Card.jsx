@@ -13,6 +13,7 @@ const Card = (props) => {
   const dispatch = useDispatch();
   const favorites = useSelector(state => state.Favorites);
   const user = useSelector(state => state.User)
+
   const searchingFav = favorites.filter(f => f.id === props.id)
 
   function favBotton() {
@@ -38,13 +39,15 @@ const Card = (props) => {
 
   return (
     <div className={style.container} >
-      {user.isAdmin?<button
+      <button
         onClick={() => props.deleteProduct(props.id)}
-        className={style.delete}>X</button>: null}
+        className={style.delete}>X</button>
       <Link to={`/productDetail/${props.id}`}
         className={style.link}>
-        <img src={props.img} alt=""
-          className={style.img} />
+        <div className={style.img} >
+        <SwiperCard props={props.img} />
+        </div>
+       
       </Link>
       <h3 className={style.title}>{props.name}</h3>
       <div className={style.containerDescription}>

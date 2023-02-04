@@ -13,12 +13,17 @@
   grid-template-columns: auto 2fr 1fr auto;
   background-color: white;
   height: 80px;
-  margin-top: -1rem;
   width: 100%;
-  position: fixed;
   z-index: 10;
-  margin-top: -5rem;
   border-bottom: 1px solid black;
+  position: fixed;
+  margin-top: -4rem;
+
+}
+.containerNav{
+  width: 100%;
+  margin-top: -1rem;
+  
 }
 .selectCategories {
   width: 8rem;
