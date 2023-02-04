@@ -34,8 +34,7 @@ const loginUser = async (value) => {
   }else{
     const newUser = await User.create({
       name: value.name,
-      email: value.email,
-      isAdmin: true
+      email: value.email
     })
     return newUser
   }
