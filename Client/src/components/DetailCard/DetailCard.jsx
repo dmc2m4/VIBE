@@ -62,8 +62,8 @@ const DetailCard = () => {
   return (
     <div className={style.container}>
  
-      <div >
-        <Link to="/home">
+      <div className={style.back} >
+        <Link to="/home" className={style.back}>
           <img
             src="https://cdn-icons-png.flaticon.com/512/507/507257.png"
             alt="back"
@@ -125,7 +125,7 @@ const DetailCard = () => {
             </p>
             <p className={style.rating}>
               {" "}
-              <p className={style.textDetail}>Stock: </p> {stock}
+              <p className={style.textDetail}>Stock: </p> {detail.stock}
             </p>
             <div>
               <p className={style.rating}>

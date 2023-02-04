@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import createAddresses from "../../redux/actions/createAdress";
-
+import style from './Add.module.css'
 export const Add = () => {
   const navigate = useNavigate()
   const user = useSelector(state => state.User)
@@ -33,7 +33,7 @@ export const Add = () => {
    console.log(input);
   }
   return (
-    <div>
+    <div className={style.container}>
       <Link to='/myaccount/direction'>
         <button>Back</button>
       </Link>

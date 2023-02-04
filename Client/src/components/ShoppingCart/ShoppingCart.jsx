@@ -1,22 +1,22 @@
 import React from "react";
-
 import { useDispatch, useSelector } from "react-redux";
 import {
   addOneToCart,
   clearCart,
   removeFromCart,
 } from "../../redux/actions/shoppingCart";
-import "./ShoppingCart.css";
+import style from './ShoppingCart.module.css'
+
 
 const ShoppingCart = () => {
   const { items, total } = useSelector((state) => state.Cart);
   const dispatch = useDispatch();
 
   return (
-    <div>
+    <div className={style.container}>
       <h2>Shopping cart</h2>
       <h3>Products</h3>
-      <article className="box">
+      <article className="">
         {items?.map((i) => (
           <div key={i.id}>
             <img src={i.img} className="product_img"/>

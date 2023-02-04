@@ -2,7 +2,7 @@
  border: none;
   width: 100%;
   overflow: hidden;
-  height: 400px;
+  height: 450px;
   margin: auto;
   margin-bottom: 30px;
   padding: 15px;
@@ -17,6 +17,7 @@
 .img{
   width: 80%;
   height: 250px;
+  margin-bottom: 2rem;
 }
 .link {
   display: flex;
@@ -58,7 +59,7 @@
 display: grid;
  grid-template-columns: 1fr 1fr;
  margin-left: 10px;
- margin-top: 2rem;
+ 
 
 }
 

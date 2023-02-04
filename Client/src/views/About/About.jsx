@@ -6,12 +6,13 @@ import dani from "../../assets/daniel.jpeg";
 import tomi from "../../assets/tomas.jpeg";
 import valen from "../../assets/valen.jpeg";
 import santi from "../../assets/santi.jpeg";
+import style from './About.module.css'
 
 
 
 export const About = () => {
   return (
-    <div>
+    <div className={style.container}>
       <div>
         <img src={rami} alt='image nt found' />
         <h4>Ramiro Soares Gache</h4>
