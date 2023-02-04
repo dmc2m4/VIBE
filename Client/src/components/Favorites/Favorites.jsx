@@ -13,8 +13,8 @@ const Favorites = () => {
 
 
   return (
-    <div className={style.container}>
-      {favorites.data?.map((product) => (
+    <div>
+      {favorites?.map((product) => (
             <Card
               name={product.name}
               img={product.img}
