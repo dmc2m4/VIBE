@@ -1,7 +1,12 @@
 const { Router } = require("express");
-const { postComment, putComment, deleteComment, getCommentById } = require("../Controllers/CommentController");
+const {
+  postComment,
+  putComment,
+  deleteComment,
+  getCommentById,
+} = require("../Controllers/CommentController");
 const commentRouter = Router();
-const {Comment} = require('../db')
+const { Comment } = require("../db");
 
 commentRouter.post("/", async (req, res) => {
   try {
@@ -21,17 +26,18 @@ commentRouter.put("/", async (req, res) => {
   }
 });
 
-commentRouter.delete("/:id"), async (req, res) => {
-  const { id } = req.params;
+commentRouter.delete("/:id", async (req, res) => {
   // const comment =  await Comment.findByPk(id)
   // console.log(comment);
+  const { id } = req.params;
   try {
+    console.log(id);
     await deleteComment(id);
     res.status(200).send("Deleted comment successfully");
   } catch (error) {
     res.status(400).send(error.message);
   }
-}
+});
 
 commentRouter.get("/:id", async (req, res) => {
   try {

@@ -8,7 +8,7 @@ const {
   DB_HOST,
   DB_PORT,
   DB_NAME,
-  DB_DEPLOY
+  DB_DEPLOY,
 } = require("../config.js");
 const { userInfo } = require("os");
 
@@ -54,40 +54,18 @@ const { User, Product, Review, Address, Comment } = sequelize.models;
 
 Product.hasMany(Review);
 Review.belongsTo(Product);
-  Review.belongsTo(Product, {through: 'product_review'});
-  Product.belongsToMany(Review, {through: 'product_review'});
 
-  Review.belongsTo(User, {through: 'user_review'});
-  User.belongsToMany(Review, {through: 'user_review'});
-  
-  Comment.belongsTo(Product, {through: 'product_comment'});
-  Product.belongsToMany(Comment, {through: 'product_comment'});
+Comment.belongsTo(User, { through: "user_comment" });
+User.belongsToMany(Comment, { through: "user_comment" });
 
-  Comment.belongsTo(User, {through: 'user_comment'});
-  User.belongsToMany(Comment, {through: 'user_comment'});
+Comment.belongsTo(Product, { through: "product_comment" });
+Product.belongsToMany(Comment, { through: "product_comment" });
 
+Review.belongsTo(User, { through: "user_review" });
+User.belongsToMany(Review, { through: "user_review" });
 
-
-  Review.belongsTo(Product, {through: 'product_review'});
-  Product.belongsToMany(Review, {through: 'product_review'});
-
-  Review.belongsTo(User, {through: 'user_review'});
-  User.belongsToMany(Review, {through: 'user_review'});
-  
-  Comment.belongsTo(Product, {through: 'product_comment'});
-  Product.belongsToMany(Comment, {through: 'product_comment'});
-
-  Review.belongsTo(Product, {through: 'product_review'});
-  Product.belongsToMany(Review, {through: 'product_review'});
-
-  Review.belongsTo(User, {through: 'user_review'});
-  User.belongsToMany(Review, {through: 'user_review'});
-  
-  Comment.belongsTo(Product, {through: 'product_comment'});
-  Product.belongsToMany(Comment, {through: 'product_comment'});
-
-  Comment.belongsTo(User, {through: 'user_comment'});
-  User.belongsToMany(Comment, {through: 'user_comment'});
+Review.belongsTo(Product, { through: "product_review" });
+Product.belongsToMany(Review, { through: "product_review" });
 
 module.exports = {
   ...sequelize.models,

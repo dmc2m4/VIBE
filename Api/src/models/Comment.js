@@ -16,12 +16,8 @@ module.exports = (sequelize) => {
       response: {
         type: DataTypes.TEXT,
       },
-      deletedAt: {
-        type: DataTypes.DATE,
-      },
     },
     {
-      paranoid: true,
       timestamps: true,
       createdAt: true,
     }

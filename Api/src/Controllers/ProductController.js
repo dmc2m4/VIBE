@@ -16,7 +16,6 @@ const getProductById = async function (id) {
 };
 
 const postProduct = async (value) => {
-  console.log(value);
   const newProduct = await Product.create(value);
   return newProduct;
 };
@@ -24,13 +23,14 @@ const postProduct = async (value) => {
 const deleteProduct = async (value) => {
   await Product.destroy({
     where: {
-      id: value,
+      id: value.id,
     },
   });
 };
 
-const putProduct = async (value, req) => {
+const putProduct = async (req) => {
   const {
+    id,
     name,
     img,
     size,
@@ -42,7 +42,7 @@ const putProduct = async (value, req) => {
     stock,
     amount,
   } = req;
-  const update = await Product.findByPk(value);
+  const update = await Product.findByPk(id);
   if (update.deletedAt != null) {
     await Product.update({ deletedAt: null }, { where: { value } });
   }

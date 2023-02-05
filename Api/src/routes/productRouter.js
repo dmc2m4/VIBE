@@ -46,7 +46,6 @@ productRouter.get("/", async (req, res) => {
 });
 
 productRouter.get("/:id", async (req, res) => {
-  console.log(req.body);
   try {
     const { id } = req.params;
     const product = await getProductById(id);
@@ -56,25 +55,18 @@ productRouter.get("/:id", async (req, res) => {
   }
 });
 
-productRouter.delete("/delete/:id", async (req, res) => {
-  const { id } = req.params;
+productRouter.delete("/", async (req, res) => {
   try {
-    deleteProduct(id);
-    /* deleteComment(id); //ver
-    deleteReviews(id) */
+    deleteProduct(req.body);
     res.status(200).send("Deleted successfully");
   } catch (error) {
     res.status(400).send(error.message);
   }
 });
 
-productRouter.put("/updateProduct/:id", async (req, res) => {
-  const { id } = req.params;
-
+productRouter.put("/", async (req, res) => {
   try {
-    putProduct(id, req.body);
-/*     putComment(id);
- */    
+    putProduct(req.body);
     res.status(201).send("Product updated successfully");
   } catch (error) {
     res.status(400).send(error.message);

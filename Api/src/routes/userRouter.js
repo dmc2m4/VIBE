@@ -1,8 +1,6 @@
 const { Router } = require("express");
 const {
   createAddresses,
-/*   deleteAddresses,
-  putAddresses, */
 } = require("../Controllers/AddressController");
 const {
   getAllUsers,
@@ -24,7 +22,7 @@ userRouter.get("/", async (req, res) => {
   }
 });
 
-userRouter.post("/address", async (req, res) => {
+userRouter.get("/address", async (req, res) => {
   try {
     const userAdresses = await getUserAdresses(req.body);
     res.status(200).send(userAdresses);
@@ -51,38 +49,33 @@ userRouter.post("/login", async (req, res) => {
   }
 });
 
-userRouter.delete("/delete/:id", async (req, res) => {
+userRouter.delete("/", async (req, res) => {
+  const {id} = req.body
   try {
-    const { id } = req.params;
     await deleteUsers(id);
-/*     await deleteAddresses(id);
- */    res.status(200).send("User deleted");
+    res.status(200).send("User deleted");
   } catch (error) {
     res.status(400).send(error.message);
   }
 });
 
-userRouter.put("/updateUser/:id", async (req, res) => {
-  const { id } = req.params;
-
+userRouter.put("/", async (req, res) => {
+  const {id} = req.body
   try {
-    putUsers(id, req.body);
-/*     putAddresses(id);
- */    res.status(201).send("User updated successfully");
+    putUsers(id);
+    res.status(201).send("User updated successfully");
   } catch (error) {
     res.status(400).send(error.message);
   }
 });
 
-userRouter.get('/admin', async (req, res) => {
+userRouter.get("/admin", async (req, res) => {
   try {
-      const adminList = await getAdmin(req.body);
-      res.status(200).send("adminList");
-  }
-  catch (error) {
-      return res.status(500).send(error.message);
+    const adminList = await getAdmin(req.body);
+    res.status(200).send("adminList");
+  } catch (error) {
+    return res.status(500).send(error.message);
   }
 });
-
 
 module.exports = userRouter;
