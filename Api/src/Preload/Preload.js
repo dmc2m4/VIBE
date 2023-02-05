@@ -4,7 +4,6 @@ async function AdminUsers() {
     const user = await User.findAll();
     
     if (!user) {
-
         await User.create({
             name: 'Santiago Teran',
             email: "santiagoterandc@gmail.com",
