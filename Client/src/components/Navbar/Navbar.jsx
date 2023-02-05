@@ -23,12 +23,9 @@ const Navbar = () => {
   const navigate = useNavigate();
 
 
-  console.log(user);
 
   useEffect(() => {
     dispatch(updateFilters(category));
-    // localStorage.getItem("user")
-    // console.log(user);
   }, [dispatch, category]);
   const categories = [
     "all",
@@ -72,6 +69,7 @@ const Navbar = () => {
   };
 
   return (
+    <div className={style.containerNav}>
     <nav className={style.container}>
       <div className={style.containerIcon} onClick={handleToggleAll}>
         <Link to="/home">
@@ -138,6 +136,7 @@ const Navbar = () => {
       </div>
       {toggle && <Account />}
     </nav>
+    </div>
   );
 };
 

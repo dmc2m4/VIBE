@@ -8,7 +8,7 @@ import "swiper/css/navigation";
 
 const SwiperCard = ({ props }) => {
   return (
-    <Swiper
+    <Swiper key="a"
       spaceBetween={50}
       centeredSlides={true}
       pagination={{

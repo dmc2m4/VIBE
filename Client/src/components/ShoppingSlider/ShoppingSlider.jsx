@@ -18,26 +18,38 @@ const ShoppingSlider = () => {
       <img src={car} alt="cary" className={style.shopping_img} />
       {cart ? (
         <div className={style.cart_list}>
+        <h2 className={style.titleCart}>My shopping Cart</h2>
           {product.items.length ? (
             product.items.map((e, i) => {
+              
               return (
-                <div>
+                <div className={style.product}>
                   <img
                     className={style.product_img}
                     key={i}
                     src={e.img}
                     alt={e.name}
                   />
+                  <div className={style.name}>
+                  <p>{e.name}</p>
+                </div>
+                <div className={style.cost}>
+                  <label>Price</label>
+                  <p>{e.cost}</p>
+                </div>
+                <div className={style.containerCat}>
+                  <label>Cant.</label>
                   <span className={style.product_quantity}>{e.quantity}</span>
+                </div>
                 </div>
               );
             })
           ) : (
-            <div>"empty"</div>
+            <div className={style.empty}><p>Empty</p></div>
           )}
-          <div>{product.total} $</div>
-          <Link to="/shopping-cart">
-            <button>GO TO CART</button>
+          <div className={style.containerTotal}> <p className={style.price}>TOTAL:</p><p className={style.price}>{product.total} $</p></div>
+        <Link to="/shopping-cart" className={style.containerButton}>
+            <button className={style.buttonCar}>GO TO CART</button>
           </Link>
         </div>
       ) : null}

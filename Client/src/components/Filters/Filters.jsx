@@ -43,6 +43,7 @@ const Filters = () => {
     dispatch(updateFilters(newFilters));
     dispatch(cleanPage());
   }
+  
   return (
     <div className={style.container}>
       <select
