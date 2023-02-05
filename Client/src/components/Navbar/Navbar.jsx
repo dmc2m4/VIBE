@@ -23,12 +23,9 @@ const Navbar = () => {
   const navigate = useNavigate();
 
 
-  console.log(user);
 
   useEffect(() => {
     dispatch(updateFilters(category));
-    // localStorage.getItem("user")
-    // console.log(user);
   }, [dispatch, category]);
   const categories = [
     "all",

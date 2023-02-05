@@ -13,8 +13,6 @@ export const Direction = () => {
     dispatch(getAddresses(user))
   },[dispatch])
   
-  console.log(user.email);
-  console.log(address);
   
   return (
     <div className={style.container}>
