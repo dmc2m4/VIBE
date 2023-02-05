@@ -34,7 +34,10 @@ const deleteComment = async (id) => {
 };
 
 const getCommentById = async (id) => {
-  const comment =  await Comment.findByPk(id)
+  const comment =  await Comment.findByPk(id, {
+    include: {
+      model: User
+    }})
   return comment
 }
 

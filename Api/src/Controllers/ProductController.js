@@ -9,7 +9,10 @@ const getProductById = async function (id) {
   const product = await Product.findByPk(id,{
     include:[
       {model: Review},
-      {model: Comment}
+      {model: Comment, 
+      include: {
+        model: User
+      }}
     ]
   });
   return product;

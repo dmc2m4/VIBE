@@ -5,8 +5,6 @@ import style from './Profile.module.css'
 export const Profile = () => {
   const { user } = useAuth0();
 
-  console.log(user);
-
   return (
     <div className={style.container}>
       <Link to='/myaccount'>
