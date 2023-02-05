@@ -1,4 +1,4 @@
-const { User, /* Product, */ Address } = require("../db.js");
+const { User, Address } = require("../db.js");
 
 const getAllUsers = async () => {
   const allUsers = await User.findAll({
@@ -41,36 +41,48 @@ const loginUser = async (value) => {
   }
 };
 
-const deleteUsers = async (id) => {
-  await User.update({ deletedAt: new Date() }, { where: { id } });
+const destroyUsers = async (email) => {
+  await User.destroy({
+    where: {
+      email: email,
+    },
+  });
 };
 
-const putUsers = async (id) => {
-await User.update({ deletedAt: null }, { where: { id } });
-  /*   const user = await User.findByPk(value.id);
-  console.log(user);
-  if(value.name){
-    user.name = value.name
+const restoreUsers = async (email) => {
+  await User.restore({
+    where: {
+      email: email,
+    },
+  });
+};
+
+const putUsers = async (value) => {
+  let user = await User.findByPk(value.id);
+  if (value.name) {
+    user.name = value.name;
   }
-  if(value.password){
-    user.password = value.password
+/*   if (value.password) {
+    user.password = value.password;
   }
-  if(value.email){
-    user.email = value.email
+  */
+  if (value.email) {
+    user.email = value.email;
   }
-  if(value.img){
-    user.img = value.img
+  if (value.img) {
+    user.img = value.img;
   }
-  if(value.isAdmin){
-    user.isAdmin = value.isAdmin
+  if (value.isAdmin) {
+    user.isAdmin = value.isAdmin;
   }
-  await user.save(); */
+  await user.save();
 };
 
 module.exports = {
   getAllUsers,
-  deleteUsers,
-  putUsers,
+  destroyUsers,
+  restoreUsers,
   loginUser,
   getUserAdresses,
+  putUsers,
 };

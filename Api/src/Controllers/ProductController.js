@@ -20,10 +20,18 @@ const postProduct = async (value) => {
   return newProduct;
 };
 
-const deleteProduct = async (value) => {
+const destroyProduct = async (id) => {
   await Product.destroy({
     where: {
-      id: value.id,
+      id: id,
+    },
+  });
+};
+
+const restoreProduct = async (id) => {
+  await Product.restore({
+    where: {
+      id: id,
     },
   });
 };
@@ -43,9 +51,6 @@ const putProduct = async (req) => {
     amount,
   } = req;
   const update = await Product.findByPk(id);
-  if (update.deletedAt != null) {
-    await Product.update({ deletedAt: null }, { where: { value } });
-  }
   if (name) update.name = name;
   if (img) update.img = img;
   if (size) update.size = size;
@@ -61,8 +66,9 @@ const putProduct = async (req) => {
 
 module.exports = {
   getAllProduct,
-  deleteProduct,
+  destroyProduct,
   putProduct,
   getProductById,
   postProduct,
+  restoreProduct,
 };

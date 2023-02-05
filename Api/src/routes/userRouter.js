@@ -4,12 +4,12 @@ const {
 } = require("../Controllers/AddressController");
 const {
   getAllUsers,
-  deleteUsers,
-  putUsers,
+  destroyUsers,
+  restoreUsers,
   loginUser,
   getUserAdresses,
+  putUsers,
 } = require("../Controllers/UserControllers");
-const { User } = require("../db");
 
 const userRouter = Router();
 
@@ -49,25 +49,35 @@ userRouter.post("/login", async (req, res) => {
   }
 });
 
-userRouter.delete("/", async (req, res) => {
-  const {id} = req.body
+userRouter.post("/destroy", async (req, res) => {
+  const {email} = req.body
   try {
-    await deleteUsers(id);
+    await destroyUsers(email);
     res.status(200).send("User deleted");
   } catch (error) {
     res.status(400).send(error.message);
   }
 });
 
-userRouter.put("/", async (req, res) => {
-  const {id} = req.body
+userRouter.post("/restore", async (req, res) => {
+  const {email} = req.body
   try {
-    putUsers(id);
-    res.status(201).send("User updated successfully");
+    restoreUsers(email);
+    res.status(200).send("User restored successfully");
   } catch (error) {
-    res.status(400).send(error.message);
+    res.status(404).send(error.message);
   }
 });
+
+userRouter.put("/", async (req, res) => {
+  const value = req.body
+  try {
+    putUsers(value)
+    res.status(201).send("User updated successfully")
+  } catch (error) {
+    res.status(400).send(error.message)
+  }
+})
 
 userRouter.get("/admin", async (req, res) => {
   try {

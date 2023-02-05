@@ -2,7 +2,8 @@ const { Router } = require("express");
 const {
   getAllProduct,
   postProduct,
-  deleteProduct,
+  destroyProduct,
+  restoreProduct,
   putProduct,
   getProductById,
 } = require("../Controllers/ProductController");
@@ -10,11 +11,6 @@ const {
 const {
   postReview
 } = require("../Controllers/ReviewController")
-
-// const MPP = require("../Middlewares/PostProductMiddleware")
-// const { Product } = require("../db")
-// const multer = require("multer");
-// const cloudinary = require("cloudinary");
 
 const productRouter = Router();
 
@@ -55,14 +51,26 @@ productRouter.get("/:id", async (req, res) => {
   }
 });
 
-productRouter.delete("/", async (req, res) => {
+productRouter.post("/destroy", async (req, res) => {
+  const {id} = req.body
   try {
-    deleteProduct(req.body);
+    destroyProduct(id);
     res.status(200).send("Deleted successfully");
   } catch (error) {
     res.status(400).send(error.message);
   }
 });
+
+productRouter.post("/restore", async (req, res) => {
+  const {id} = req.body
+  try {
+    restoreProduct(id);
+    res.status(201).send("Product updated successfully");
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
 
 productRouter.put("/", async (req, res) => {
   try {
