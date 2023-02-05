@@ -5,10 +5,8 @@ import createDetail from "../../redux/actions/createDetail";
 import cleanDetail from "../../redux/actions/cleanDetail";
 import { addToCart } from "../../redux/actions/shoppingCart";
 import style from "./DetailCard.module.css";
-import ShoppingCart from "../../assets/ShoppingCart.png";
-import heart from "../../assets/heart.png";
 import SwiperCard from "../SwiperCard/SwiperCard";
-import Navbar from "../Navbar/Navbar";
+import CommentForm from "./CommentForm/CommentForm";
 
 const DetailCard = () => {
   const detail = useSelector((state) => state.Detail);
@@ -18,7 +16,7 @@ const DetailCard = () => {
   const array = [1, 2, 3, 4, 5];
   const user = useSelector(state => state.User)
 
- console.log(user)
+  console.log(detail)
 
   function addToCar() {
     dispatch(addToCart(detail));
@@ -27,7 +25,6 @@ const DetailCard = () => {
 
   useEffect(() => {
     dispatch(createDetail(id));
-
     return function () {
       dispatch(cleanDetail());
     };
@@ -63,7 +60,6 @@ const DetailCard = () => {
   // }
   return (
     <div className={style.container}>
-     
       <div className={style.back} >
         <Link to="/home" className={style.back}>
           <img
@@ -158,11 +154,17 @@ const DetailCard = () => {
             </div>
           )
         })}
+        <CommentForm
+        id={id}
+        email={user.email}
+        />
         {detail.Comments?.map((m) => {
           return (
             <div>
+              <img src ={m.users[0].img} alt="imagen"/>
+              <h2>{m.users[0].email}</h2>
               <p>{m.question}</p>
-              <p>{m.response? m.response: "respeusta pendiente"}</p>
+              <p>{m.response? m.response: <button>responder pregunta</button>}</p>
             </div>
           )
         })}

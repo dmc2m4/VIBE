@@ -1,6 +1,7 @@
 const { Comment, Product, User } = require("../db.js");
 
 const postComment = async (value) => {
+  console.log(value);
   const product = await Product.findByPk(value.id);
   const user = await User.findOne({ where: { email: value.email } });
   const newComment = await Comment.create({
@@ -27,7 +28,10 @@ const deleteComment = async (id) => {
 };
 
 const getCommentById = async (id) => {
-  const comment =  await Comment.findByPk(id)
+  const comment =  await Comment.findByPk(id, {
+    include: {
+      model: User
+    }})
   return comment
 }
 
