@@ -34,6 +34,10 @@ module.exports = (sequelize) => {
       deletedAt: {
         type: DataTypes.DATE,
       },
+      isAdmin: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+    }
     },
     {
       paranoid: true,

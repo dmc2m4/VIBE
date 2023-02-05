@@ -39,13 +39,15 @@ const Card = (props) => {
 
   return (
     <div className={style.container} >
-      <button
+      {user.isAdmin?<button
         onClick={() => props.deleteProduct(props.id)}
-        className={style.delete}>X</button>
+        className={style.delete}>X</button>: null}
       <Link to={`/productDetail/${props.id}`}
         className={style.link}>
-        <img src={props.img} alt=""
-          className={style.img} />
+        <div className={style.img} >
+        <SwiperCard props={props.img} />
+        </div>
+       
       </Link>
       <h3 className={style.title}>{props.name}</h3>
       <div className={style.containerDescription}>

@@ -37,7 +37,8 @@ module.exports = (sequelize) => {
           "shoes",
           "shorts",
           "jackets",
-          "sweatshirts"
+          "sweatshirts",
+          "accesories"
         ),
         allowNull: false,
       },

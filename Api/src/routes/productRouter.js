@@ -6,14 +6,11 @@ const {
   putProduct,
   getProductById,
 } = require("../Controllers/ProductController");
-/* const {
-  deleteComment,
-  putComment,
-} = require("../Controllers/CommentController"); */
-/* const = {
-  deleteReviews,
-  putReviews
-} = require("../Controllers/AddressController") */
+
+const {
+  postReview
+} = require("../Controllers/ReviewController")
+
 // const MPP = require("../Middlewares/PostProductMiddleware")
 // const { Product } = require("../db")
 // const multer = require("multer");
@@ -21,11 +18,20 @@ const {
 
 const productRouter = Router();
 
-productRouter.post("/", async (req, res) => {
-  try {
-    const newProduct = await postProduct(req.body);
-    res.status(200).send(newProduct);
-  } catch (error) {
+productRouter.post("/reviews", async (req, res)=>{
+  try{
+    const newRev = await postReview(req.body);
+    res.status(200).send(newRev)
+  }catch(error){
+    res.status(400).send(error.message);
+  }
+})
+
+productRouter.post("/", async (req, res)=>{
+  try{
+    const newProduct = await postProduct(req.body)
+    res.status(200).send(newProduct)
+  }catch(error){
     res.status(400).send(error.message);
   }
 });

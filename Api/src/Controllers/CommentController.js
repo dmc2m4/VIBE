@@ -1,33 +1,39 @@
 const { Comment, Product, User } = require("../db.js");
 
-const postComment = async (id, req) => {
-  const product = await Product.findByPk(id);
-
-  const newComment = await Comment.create(req);
-
-  const user = await User.findOne({ where: { email: req.email } });
-
-  await newComment.addComment(product)
-
-  await newComment.addComment(user)
-
+const postComment = async (value) => {
+  const product = await Product.findByPk(value.id);
+  const user = await User.findOne({ where: { email: value.email } });
+  const newComment = await Comment.create({
+    question: value.question
+  });
+  await product.addComments(newComment)
+  await user.addComments(newComment)
   return newComment;
 };
 
-const putComment = async (id, req) => {
-  const { response } = req;
-  await Comment.update({ deletedAt: null }, { where: { id } });
-  let update = await Comment.findByPk(id);
-  if (response) update.response = response;
-  await update.save();
+const putComment = async (value) => {
+  let comment = await Comment.findByPk(value.id);
+  await comment.update({
+    response: value.response
+  })
 };
 
 const deleteComment = async (id) => {
-  await Comment.destroy({ where: { id } });
+  await Comment.destroy({
+    where: {
+      id : id
+    }
+  });
 };
+
+const getCommentById = async (id) => {
+  const comment =  await Comment.findByPk(id)
+  return comment
+}
 
 module.exports = {
   postComment,
   putComment,
-  deleteComment
+  deleteComment,
+  getCommentById
 };

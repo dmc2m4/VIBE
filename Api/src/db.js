@@ -52,30 +52,42 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 const { User, Product, Review, Address, Comment } = sequelize.models;
 
-// User.belongsToMany(Product, { through: "offered_product" });
-// Product.belongsToMany(User, { through: "offered_product" });
-
-User.belongsToMany(Product, { through: Comment});
-Product.belongsToMany(User, { through: Comment});
-
-// User.hasMany(Product);
-// Product.belongsTo(User);
-
-User.hasMany(Address);
-Address.belongsTo(User);
-
 Product.hasMany(Review);
 Review.belongsTo(Product);
+  Review.belongsTo(Product, {through: 'product_review'});
+  Product.belongsToMany(Review, {through: 'product_review'});
 
-User.hasMany(Review);
-Review.belongsTo(User);
+  Review.belongsTo(User, {through: 'user_review'});
+  User.belongsToMany(Review, {through: 'user_review'});
+  
+  Comment.belongsTo(Product, {through: 'product_comment'});
+  Product.belongsToMany(Comment, {through: 'product_comment'});
 
-// Product.hasMany(Comment);
-// Comment.belongsTo(Product);
+  Comment.belongsTo(User, {through: 'user_comment'});
+  User.belongsToMany(Comment, {through: 'user_comment'});
 
-// User.hasMany(Comment);
-// Comment.belongsTo(User);
 
+
+  Review.belongsTo(Product, {through: 'product_review'});
+  Product.belongsToMany(Review, {through: 'product_review'});
+
+  Review.belongsTo(User, {through: 'user_review'});
+  User.belongsToMany(Review, {through: 'user_review'});
+  
+  Comment.belongsTo(Product, {through: 'product_comment'});
+  Product.belongsToMany(Comment, {through: 'product_comment'});
+
+  Review.belongsTo(Product, {through: 'product_review'});
+  Product.belongsToMany(Review, {through: 'product_review'});
+
+  Review.belongsTo(User, {through: 'user_review'});
+  User.belongsToMany(Review, {through: 'user_review'});
+  
+  Comment.belongsTo(Product, {through: 'product_comment'});
+  Product.belongsToMany(Comment, {through: 'product_comment'});
+
+  Comment.belongsTo(User, {through: 'user_comment'});
+  User.belongsToMany(Comment, {through: 'user_comment'});
 
 module.exports = {
   ...sequelize.models,

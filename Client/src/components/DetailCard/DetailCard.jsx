@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import createDetail from "../../redux/actions/createDetail";
 import cleanDetail from "../../redux/actions/cleanDetail";
-import { addToCart } from "../../redux/actions/shoppingCart.actions";
+import { addToCart } from "../../redux/actions/shoppingCart";
 import style from "./DetailCard.module.css";
 import ShoppingCart from "../../assets/ShoppingCart.png";
 import heart from "../../assets/heart.png";
@@ -12,10 +12,13 @@ import Navbar from "../Navbar/Navbar";
 
 const DetailCard = () => {
   const detail = useSelector((state) => state.Detail);
-  const [stock , setStock] = useState(detail.stock)
+  const [stock, setStock] = useState(detail.stock)
   const { id } = useParams();
   const dispatch = useDispatch();
   const array = [1, 2, 3, 4, 5];
+  const user = useSelector(state => state.User)
+
+ console.log(user)
 
   function addToCar() {
     dispatch(addToCart(detail));
@@ -24,7 +27,7 @@ const DetailCard = () => {
 
   useEffect(() => {
     dispatch(createDetail(id));
-    
+
     return function () {
       dispatch(cleanDetail());
     };
@@ -33,7 +36,6 @@ const DetailCard = () => {
   // const images = detail.img.split(",");
   function setImages(det) {
     const images = det.img;
-    console.log(detail);
     return (
       <div className={style.containerImg}>
         {images.split("").map((element) => {
@@ -61,9 +63,9 @@ const DetailCard = () => {
   // }
   return (
     <div className={style.container}>
- 
-      <div >
-        <Link to="/home">
+     
+      <div className={style.back} >
+        <Link to="/home" className={style.back}>
           <img
             src="https://cdn-icons-png.flaticon.com/512/507/507257.png"
             alt="back"
@@ -94,9 +96,9 @@ const DetailCard = () => {
           <SwiperCard props={detail.img} />
         </div>
         <div className={style.containerDetail}>
-        <div className={style.containerTitle}>
-        <h1 className={style.title}>{detail.name}</h1>
-      </div>
+          <div className={style.containerTitle}>
+            <h1 className={style.title}>{detail.name}</h1>
+          </div>
           <div className={style.containerText}>
             <p className={style.rating}>
               {" "}
@@ -125,7 +127,7 @@ const DetailCard = () => {
             </p>
             <p className={style.rating}>
               {" "}
-              <p className={style.textDetail}>Stock: </p> {stock}
+              <p className={style.textDetail}>Stock: </p> {detail.stock}
             </p>
             <div>
               <p className={style.rating}>
@@ -145,6 +147,28 @@ const DetailCard = () => {
             </button>
           </div>
         </div>
+      </div>
+      <div>
+        {detail.Reviews?.map((m) => {
+          return (
+            <div>
+              <p>{m.title}</p>
+              <p>{m.rating}</p>
+              <p>{m.text}</p>
+            </div>
+          )
+        })}
+        {detail.Comments?.map((m) => {
+          return (
+            <div>
+              <p>{m.question}</p>
+              <p>{m.response? m.response: "respeusta pendiente"}</p>
+            </div>
+          )
+        })}
+        {/* {detail.reviews?.map((m) => (
+        
+        ))} */}
       </div>
       {/* <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque
