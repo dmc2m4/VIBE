@@ -73,7 +73,7 @@ const { User, Product, Review, Address, Comment } = sequelize.models;
   Comment.belongsTo(Product, {through: 'product_comment'});
   Product.belongsToMany(Comment, {through: 'product_comment'});
 
-  Comment.belongsTo(User, {through: 'user_comment'});
+  Comment.belongsToMany(User, {through: 'user_comment'});
   User.belongsToMany(Comment, {through: 'user_comment'});
 
 module.exports = {

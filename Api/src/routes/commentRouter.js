@@ -23,8 +23,6 @@ commentRouter.put("/", async (req, res) => {
 
 commentRouter.delete("/:id"), async (req, res) => {
   const { id } = req.params;
-  // const comment =  await Comment.findByPk(id)
-  // console.log(comment);
   try {
     await deleteComment(id);
     res.status(200).send("Deleted comment successfully");

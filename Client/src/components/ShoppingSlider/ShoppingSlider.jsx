@@ -9,7 +9,6 @@ import SwiperCard from '../SwiperCard/SwiperCard'
 const ShoppingSlider = () => {
   const [cart, setCart] = useState(false);
   const product = useSelector((state) => state.Cart);
-  console.log(product)
   return (
     <div
       className={style.cartContainer}
@@ -24,7 +23,7 @@ const ShoppingSlider = () => {
         <h2 className={style.titleCart}>My shopping Cart</h2>
           {product.items.length ? (
             product.items.map((e, i) => {
-              console.log
+              
               return (
                 <Link to={`/productDetail/${e.id}`} className={style.link}>
                 <div className={style.product}>
