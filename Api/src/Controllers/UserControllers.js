@@ -45,13 +45,15 @@ const loginUser = async (value) => {
   }
 }
 
-const deleteUsers = async function (email) {
+const deleteUsers = async (email) => {
   await User.destroy({ where: { email } })
 }
 
 const putUsers = async (value) => {
   const user = await User.findByPk(value.id)
-  
+  if (user.deletedAt != null) {
+    await User.update({ deletedAt: null }, { where: { value } });
+  }
 
 };
 
@@ -61,5 +63,4 @@ module.exports = {
   putUsers,
   loginUser,
   getUserAdresses,
-
 };

@@ -52,42 +52,29 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 const { User, Product, Review, Address, Comment } = sequelize.models;
 
-User.belongsToMany(Product, { through: "offered_product" });
-Product.belongsToMany(User, { through: "offered_product" });
+// User.belongsToMany(Product, { through: "offered_product" });
+// Product.belongsToMany(User, { through: "offered_product" });
 
-User.belongsToMany(Product, { through: "bought_product"});
-Product.belongsToMany(User, { through: "bought_product"});
+User.belongsToMany(Product, { through: Comment});
+Product.belongsToMany(User, { through: Comment});
 
-User.hasMany(Product/* , {
-                        foreignKey: 'UserId'
-                       } */ );
-Product.belongsTo(User);
+// User.hasMany(Product);
+// Product.belongsTo(User);
 
-User.hasMany(Address, { 
-                          /* foreignKey: 'UserId', */
-                          onDelete: "CASCADE" });
+User.hasMany(Address);
 Address.belongsTo(User);
 
-Product.hasMany(Review, { 
-                          /* foreignKey: 'ProductId', */
-                          onDelete: "CASCADE" });
+Product.hasMany(Review);
 Review.belongsTo(Product);
 
-User.hasMany(Review, { 
-                      /* foreignKey:'UserId',  */ 
-                      onDelete: "CASCADE" 
-                    });
+User.hasMany(Review);
 Review.belongsTo(User);
 
-Product.hasMany(Comment, {
-                          /* foreignKey: 'ProductId', */
-                        });
-Comment.belongsTo(Product);
+// Product.hasMany(Comment);
+// Comment.belongsTo(Product);
 
-User.hasMany(Comment, {
-                        /* foreignKey: 'UserId' */
-                      });
-Comment.belongsTo(User);
+// User.hasMany(Comment);
+// Comment.belongsTo(User);
 
 
 module.exports = {

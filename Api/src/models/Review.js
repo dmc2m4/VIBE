@@ -24,6 +24,11 @@ module.exports = (sequelize) => {
     text: {
       type: DataTypes.TEXT,
       allowNull: false
-    }
+    },
+    deletedAt: {
+      type: DataTypes.DATE,
+    },
+  }, {
+    paranoid: true,
   });
 };

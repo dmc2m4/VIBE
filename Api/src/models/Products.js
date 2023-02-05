@@ -69,13 +69,17 @@ module.exports = (sequelize) => {
       isfav: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
-      }
+      },
+      deletedAt: {
+        type: DataTypes.DATE,
+      },
       /* public: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
       }, */
     },
     {
+      paranoid: true,
       timestamps: true,
       createdAt: true,
     }

@@ -18,6 +18,18 @@ const createAddresses = async (value) => {
   await user.addAddresses(address);
 };
 
+const deleteAddresses = async (value) => {
+  await Address.destroy({ where: { value } });
+}
+//aca habria que pasarle el modelo entero por parametro, xq no tienen id
+// y en este momento no se si seria para mas quilombo ponerle id a esta tabla
+
+const putAddresses = async (value) => {
+  await Address.update({ deletedAt: null }, { where: { value } });
+};
+
 module.exports = {
   createAddresses,
+  deleteAddresses,
+  putAddresses
 };

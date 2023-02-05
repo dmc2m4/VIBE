@@ -13,8 +13,8 @@ const getProductById = async function (id) {
 const postProduct = async (value) => {
   console.log(value);
   const newProduct = await Product.create(value);
-  return newProduct
-}
+  return newProduct;
+};
 
 const deleteProduct = async (value) => {
   await Product.destroy({
@@ -38,6 +38,9 @@ const putProduct = async (value, req) => {
     amount,
   } = req;
   const update = await Product.findByPk(value);
+  if (update.deletedAt != null) {
+    await Product.update({ deletedAt: null }, { where: { value } });
+  }
   if (name) update.name = name;
   if (img) update.img = img;
   if (size) update.size = size;
@@ -50,8 +53,6 @@ const putProduct = async (value, req) => {
   if (amount) update.amount = amount;
   await update.save();
 };
-
-
 
 module.exports = {
   getAllProduct,
