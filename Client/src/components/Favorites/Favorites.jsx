@@ -13,7 +13,7 @@ const Favorites = () => {
 
 
   return (
-    <div>
+    <div className={style.container}>
       {favorites?.map((product) => (
             <Card
               name={product.name}
