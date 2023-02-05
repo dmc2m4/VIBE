@@ -8,7 +8,6 @@ import style from './ShoppingSlider.module.css'
 const ShoppingSlider = () => {
   const [cart, setCart] = useState(false);
   const product = useSelector((state) => state.Cart);
-  console.log(product)
   return (
     <div
       className={style.cartContainer}
@@ -22,7 +21,7 @@ const ShoppingSlider = () => {
         <h2 className={style.titleCart}>My shopping Cart</h2>
           {product.items.length ? (
             product.items.map((e, i) => {
-              console.log
+              
               return (
                 <div className={style.product}>
                   <img

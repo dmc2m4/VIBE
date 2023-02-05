@@ -30,7 +30,6 @@ export const Add = () => {
     e.preventDefault();
     dispatch(createAddresses(input));
     navigate('/myaccount/direction')
-   console.log(input);
   }
   return (
     <div className={style.container}>

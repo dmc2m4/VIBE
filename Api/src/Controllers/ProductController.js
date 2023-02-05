@@ -21,7 +21,6 @@ const getProductById = async function (id) {
 };
 
 const postProduct = async (value) => {
-  console.log(value);
   const newProduct = await Product.create(value);
   return newProduct
 }

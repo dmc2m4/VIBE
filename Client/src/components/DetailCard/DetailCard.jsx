@@ -10,13 +10,12 @@ import CommentForm from "./CommentForm/CommentForm";
 
 const DetailCard = () => {
   const detail = useSelector((state) => state.Detail);
-  const [stock, setStock] = useState(detail.stock)
+  const [stock, setStock] = useState(detail.stock);
   const { id } = useParams();
   const dispatch = useDispatch();
   const array = [1, 2, 3, 4, 5];
-  const user = useSelector(state => state.User)
+  const user = useSelector(state => state.User);
 
-  console.log(detail)
 
   function addToCar() {
     dispatch(addToCart(detail));
