@@ -14,7 +14,7 @@ const DetailCard = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const array = [1, 2, 3, 4, 5];
-  const user = useSelector(state => state.User);
+  const user = sessionStorage.getItem("userEmail")
 
 
   function addToCar() {
@@ -154,7 +154,7 @@ const DetailCard = () => {
         })}
         <CommentForm
         id={id}
-        email={user.email}
+        email={user}
         />
         {detail.Comments?.map((m) => {
           return (

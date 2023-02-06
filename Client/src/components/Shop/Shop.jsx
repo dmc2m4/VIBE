@@ -2,7 +2,6 @@ import React from "react";
 import ContainerProduct from "../../containers/containerProductHome/ContainerProduct";
 import CategoriesLink from "../CategoriesLink/CategoriesLink";
 import Pagination from "../Pagination/Pagination";
-import filterIcon from "../../assets/filter-icon.png";
 import Footer from "../Footer/Footer";
 import "./Shop.css";
 
