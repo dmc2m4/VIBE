@@ -14,7 +14,7 @@
   background-color: white;
   height: 80px;
   width: 100%;
-  z-index: 10;
+  z-index: 1000;
   border-bottom: 1px solid black;
   position: fixed;
   margin-top: -4rem;

@@ -28,6 +28,7 @@ const DetailCard = () => {
       dispatch(cleanDetail());
     };
   }, [dispatch, id]);
+  console.log(detail)
 
   // const images = detail.img.split(",");
   function setImages(det) {
@@ -159,11 +160,16 @@ const DetailCard = () => {
         />
         {detail.Comments?.map((m) => {
           return (
-            <div>
-              <img src ={m.users[0].img} alt="imagen"/>
-              <h2>{m.users[0].email}</h2>
+            <div className={style.containerUser}>
+            <div className={style.containerEmail}>
+              <img src ={m.users[0].img} alt="imagen" className={style.imgUser}/>
+              <h2 className={style.email}>{m.users[0].email}</h2>
+              </div>
+              <div className={style.containerQuestion}>
               <p>{m.question}</p>
-              <p>{m.response? m.response: <button>responder pregunta</button>}</p>
+            
+            {m.response? m.response: <button className={style.buttonQuestion}>answer question</button>}
+            </div>
             </div>
           )
         })}

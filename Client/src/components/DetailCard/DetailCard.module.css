@@ -91,3 +91,45 @@
 .back{
   margin-top: 2rem;
 }
+
+.containerUser{
+  display: flex;
+  flex-direction: column;
+  margin-left: 13rem;
+  margin-top: 2rem;
+  justify-content: center;
+  font-family: "Bebas Neue", cursive;
+  background-color: #e2dcdc;
+  width: 50%;
+  padding: 20px;
+  border-radius: 5px;
+  padding-top: none;
+}
+.containerEmail{
+  display: flex;
+  align-items: center;
+  font-size: 0.7rem;
+  margin-bottom: 0.5rem;
+}
+.imgUser{
+  height: 2rem;
+  width: 2rem;
+}
+.email{
+  margin-left: 1rem;
+}
+.buttonQuestion{
+  width: 6rem;
+  height: 2.3rem;
+  border-radius: 4px;
+  border: none;
+  font-family: "Bebas Neue", cursive;
+  cursor: pointer;
+  color: rgb(124, 121, 121);
+  background-color: transparent;
+  margin-top: -1rem;
+  font-size: 12px;
+}
+.containerQuestion{
+  margin-left: 1rem;
+}
