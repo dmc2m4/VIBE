@@ -1,15 +1,13 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import getFavorites from "../../redux/actions/getFavorites";
+import {useSelector } from "react-redux";
 import Card from "../Card/Card"
 import style from './Favorites.module.css'
 
 
 const Favorites = () => {
   const favorites = useSelector(state => state.Favorites);
-  const user = useSelector(state => state.User)
-  console.log(favorites);
+  const user = useSelector(state => state.User);
+  
 
 
   return (

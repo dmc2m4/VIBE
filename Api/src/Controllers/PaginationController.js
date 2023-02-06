@@ -2,7 +2,6 @@ const { Product } = require("../db");
 const { Sequelize, Op } = require("sequelize");
 
 const getPagination = async (page, info = {}) => {
-  console.log(info);
   let filter = {};
 
   function filtered() {

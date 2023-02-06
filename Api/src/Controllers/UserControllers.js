@@ -13,7 +13,6 @@ const getAllUsers = async () => {
 };
 
 const getUserAdresses = async (value) => {
-  console.log(value);
   const findUser = await User.findOne({
     where: {
       email: value.email,
@@ -36,9 +35,10 @@ const loginUser = async (value) => {
   } else {
     const newUser = await User.create({
       name: value.name,
-      email: value.email
-    });
-    return newUser;
+      email: value.email,
+      img: value.picture
+    })
+    return newUser
   }
 };
 

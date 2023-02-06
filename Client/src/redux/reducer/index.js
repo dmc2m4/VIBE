@@ -179,7 +179,6 @@ export default function rootReducer(state = initialState, action) {
     };
   }
   if (action.type === types.CREATE_ADDRESSES){
-    console.log(action.payload)
     return{
       ...state,
       Addresses: action.payload
