@@ -1,26 +1,30 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import createDetail from "../../redux/actions/createDetail";
 import cleanDetail from "../../redux/actions/cleanDetail";
-import { addToCart } from "../../redux/actions/shoppingCart.actions";
+import { addToCart } from "../../redux/actions/shoppingCart";
 import style from "./DetailCard.module.css";
 import ShoppingCart from "../../assets/ShoppingCart.png";
 import heart from "../../assets/heart.png";
 import SwiperCard from "../SwiperCard/SwiperCard";
+import Navbar from "../Navbar/Navbar";
 
 const DetailCard = () => {
   const detail = useSelector((state) => state.Detail);
+  const [stock , setStock] = useState(detail.stock)
   const { id } = useParams();
   const dispatch = useDispatch();
   const array = [1, 2, 3, 4, 5];
 
   function addToCar() {
     dispatch(addToCart(detail));
+    setStock(stock - 1)
   }
 
   useEffect(() => {
     dispatch(createDetail(id));
+    
     return function () {
       dispatch(cleanDetail());
     };
@@ -57,20 +61,15 @@ const DetailCard = () => {
   // }
   return (
     <div className={style.container}>
-      <div>
-        <Link to="/home">
+ 
+      <div className={style.back} >
+        <Link to="/home" className={style.back}>
           <img
             src="https://cdn-icons-png.flaticon.com/512/507/507257.png"
             alt="back"
             className={style.icon}
           />
         </Link>
-      </div>
-      <div className={style.containerIcon}>
-        <img src={heart} alt="favorites" className={style.icon} />
-      </div>
-      <div className={style.containerTitle}>
-        <h1 className={style.title}>{detail.name}</h1>
       </div>
       <div className={style.containerProduct}>
         {/* {images.map((element) => {
@@ -95,6 +94,9 @@ const DetailCard = () => {
           <SwiperCard props={detail.img} />
         </div>
         <div className={style.containerDetail}>
+        <div className={style.containerTitle}>
+        <h1 className={style.title}>{detail.name}</h1>
+      </div>
           <div className={style.containerText}>
             <p className={style.rating}>
               {" "}
@@ -117,6 +119,14 @@ const DetailCard = () => {
               {" "}
               <p className={style.textDetail}>Gender:</p> {detail.gender}
             </p>
+            <p className={style.rating}>
+              {" "}
+              <p className={style.textDetail}>Season: </p> {detail.season}
+            </p>
+            <p className={style.rating}>
+              {" "}
+              <p className={style.textDetail}>Stock: </p> {detail.stock}
+            </p>
             <div>
               <p className={style.rating}>
                 {" "}
@@ -128,18 +138,9 @@ const DetailCard = () => {
                 ))}{" "}
               </p>
             </div>
-            <p className={style.rating}>
-              {" "}
-              <p className={style.textDetail}>Season: </p> {detail.season}
-            </p>
-            <p className={style.rating}>
-              {" "}
-              <p className={style.textDetail}>Stock: </p> {detail.stock}
-            </p>
           </div>
           <div className={style.containerButtonAdd}>
-            <img src={ShoppingCart} alt="Img not found" />
-            <button className={style.buttonAdd} onClick={addToCar}>
+            <button className={style.buttonAdd} onClick={addToCar} >
               ADD TO CART
             </button>
           </div>

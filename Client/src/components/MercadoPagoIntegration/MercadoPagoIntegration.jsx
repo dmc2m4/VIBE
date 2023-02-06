@@ -34,7 +34,7 @@ const MercadoPagoIntegration = ({ items }) => {
       const script = document.createElement("script");
       script.type = "text/javascript";
       script.src =
-        "https://www.mercadopago.cl/integrations/v1/web-payment-checkout.js";
+        "https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";
       script.setAttribute("data-preference-id", preferenceId);
       const form = document.getElementById(FORM_ID);
       form.appendChild(script);

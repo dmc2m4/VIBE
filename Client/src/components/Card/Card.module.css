@@ -1,19 +1,23 @@
-.container {
-  border: none;
-  border-radius: 10px;
-  width: 200px;
+.container{
+ border: none;
+  width: 100%;
   overflow: hidden;
-  height: 300px;
+  height: 450px;
   margin: auto;
   margin-bottom: 30px;
   padding: 15px;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
   margin: auto;
+
+  border-left: none;
+  position: relative;
+ 
 }
 
-.img {
-  width: 70%;
-  height: 150px;
+
+.img{
+  width: 80%;
+  height: 250px;
+  margin-bottom: 2rem;
 }
 .link {
   display: flex;
@@ -23,7 +27,7 @@
 }
 .delete {
   position: absolute;
-  margin-left: 162px;
+  margin-left: 85%;
   margin-top: -10px;
   border: none;
   color: gray;
@@ -44,16 +48,19 @@
   font-family: "Dosis", sans-serif;
   text-align: center;
   margin-bottom: 8px;
+ height: 2rem;
 }
 
 .text {
   font-family: "Dosis", sans-serif;
 }
 
-.containerDescription {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin-left: 10px;
+.containerDescription{
+display: grid;
+ grid-template-columns: 1fr 1fr;
+ margin-left: 10px;
+ 
+
 }
 
 .car {
@@ -66,7 +73,6 @@
   border-radius: 50%;
   height: 40px;
   width: 40px;
-
   display: flex;
   justify-content: center;
   align-items: center;

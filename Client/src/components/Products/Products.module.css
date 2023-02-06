@@ -1,24 +1,24 @@
-.containerPrimary {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+.containerPrimary{
+ width: 100%;
+ display: flex;
+ justify-content: center;
+ align-items: center;
 }
-.container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: auto;
-  margin-top: 30px;
-  margin: auto;
-  width: 85%;
-  justify-content: center;
-  align-items: center;
-  height: 75%;
+.container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    margin-top: 30px;
+    margin: auto;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
 }
 
-.containerLoading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 62%;
+.containerLoading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }

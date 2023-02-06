@@ -19,12 +19,11 @@ import { Direction } from "./components/MyAccount/Direction";
 import { ShoppingHistory } from "./components/MyAccount/ShoppingHistory";
 import { Add } from "./components/MyAccount/Add";
 
-
 const App = () => {
   const location = useLocation()
   return (
     <div className="App">
-      {location.pathname !== "/" ? <Navbar/>: null}
+      {location.pathname === "/" ? null : <Navbar/>}
       <Routes>
         <Route exact path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />

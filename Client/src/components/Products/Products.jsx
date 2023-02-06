@@ -12,6 +12,7 @@ export default function Products() {
   function deleteProducts(product) {
     dispatch(deleteProduct(product));
   }
+  console.log(products)
 
   if (products.length > 0) {
     return (
@@ -31,7 +32,6 @@ export default function Products() {
               rating={product.rating}
               id={product.id}
               key={product.id}
-              isfav={product.isfav? "1": "2"}
               deleteProduct={deleteProducts}
               email={user.email}
             />

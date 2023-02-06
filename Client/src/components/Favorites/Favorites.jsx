@@ -1,9 +1,9 @@
 import React from "react";
-import "./Favorites.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import getFavorites from "../../redux/actions/getFavorites";
 import Card from "../Card/Card"
+import style from './Favorites.module.css'
 
 
 const Favorites = () => {
@@ -14,7 +14,7 @@ const Favorites = () => {
 
   return (
     <div>
-      {favorites.data?.map((product) => (
+      {favorites?.map((product) => (
             <Card
               name={product.name}
               img={product.img}
