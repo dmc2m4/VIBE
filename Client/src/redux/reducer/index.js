@@ -38,6 +38,15 @@ export default function rootReducer(state = initialState, action) {
       Loading: false,
     };
   }
+  if (action.type === types.REMOVE_IMAGE) {
+    const result = state.Images.split(",")
+      .filter((e) => e !== action.payload)
+      .join(",");
+    return {
+      ...state,
+      Images: result,
+    };
+  }
   if (action.type === types.SET_CURRENT_PAGE) {
     return {
       ...state,
@@ -52,17 +61,18 @@ export default function rootReducer(state = initialState, action) {
     };
   }
   if (action.type === types.ADD_IMAGE) {
+    const newImages = state.Images.length
+      ? state.Images.concat("," + action.payload)
+      : action.payload;
     return {
       ...state,
-      Images: state.Images.length
-        ? state.Images.concat("," + action.payload)
-        : action.payload,
+      Images: newImages,
     };
   }
   if (action.type === types.CLEAN_IMAGES) {
     return {
       ...state,
-      Images: ""
+      Images: "",
     };
   }
   if (action.type === types.DELETE_PRODUCT) {
@@ -169,7 +179,6 @@ export default function rootReducer(state = initialState, action) {
     };
   }
   if (action.type === types.CREATE_ADDRESSES){
-    console.log(action.payload)
     return{
       ...state,
       Addresses: action.payload

@@ -8,7 +8,7 @@ import "swiper/css/navigation";
 
 const SwiperCard = ({ props }) => {
   return (
-    <Swiper
+    <Swiper key="a"
       spaceBetween={50}
       centeredSlides={true}
       pagination={{
@@ -25,7 +25,7 @@ const SwiperCard = ({ props }) => {
       {props?.split(",").map((image, i) => {
         return (
           <SwiperSlide className={style.swiperSlide}>
-            <img src={image} alt="Product Image" key={i} />
+            <img src={image} alt="Product Image" key={i}/>
           </SwiperSlide>
         );
       })}
