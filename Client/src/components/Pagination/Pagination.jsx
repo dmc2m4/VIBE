@@ -27,9 +27,18 @@ const Pagination = () => {
   }, [dispatch, page, filtred]);
   return (
     <div className={style.container}>
-      <button onClick={handlePrev} className={style.buttonPa}>
+      <button
+        onClick={handlePrev}
+        className={style.buttonPa}
+        style={page === 0 ? { visibility: "hidden" } : null}
+      >
         Prev
       </button>
+      <div className={style.pageInfo}>
+        <div>{Math.ceil(page / 5) + 1}</div>
+        <span>of</span>
+        <div>{Math.ceil(maxNum / 5)}</div>
+      </div>
       <button onClick={handleNext} className={style.buttonPa}>
         Next
       </button>

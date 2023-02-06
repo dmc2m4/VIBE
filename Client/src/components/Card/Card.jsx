@@ -61,7 +61,7 @@ const Card = (props) => {
               <img
                 onClick={favBotton}
                 src={heart}
-                alt=""
+                alt="image"
                 className={style.car}
               />
             ) : (

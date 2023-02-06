@@ -18,6 +18,9 @@ const getPagination = async (page, info = {}) => {
     if (info.season) {
       filter.season = info.season;
     }
+    if (info.gender) {
+      filter.gender = info.gender;
+    }
     if (info.name) {
       filter.name = { [Op.substring]: info.name };
     }
