@@ -12,6 +12,7 @@ const {
   getUserAdresses,
   putUsers,
 } = require("../Controllers/UserControllers");
+const getAdmin = require('../Controllers/AdminController')
 
 const userRouter = Router();
 
@@ -104,7 +105,7 @@ userRouter.put("/", async (req, res) => {
 
 userRouter.get("/admin", async (req, res) => {
   try {
-      const adminList = await getAdmin(req.body);
+      const adminList = await getAdmin();
       res.status(200).send(adminList);
   }
   catch (error) {
