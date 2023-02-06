@@ -6,6 +6,7 @@ const {
   putUsers,
   loginUser
 } = require('../Controllers/UserControllers');
+const getAdmin = require('../Controllers/AdminController.js')
 
 
 const userRouter = Router();
@@ -70,7 +71,7 @@ userRouter.put("/updateUser/:id", async (req, res) => {
 userRouter.get('/admin', async (req, res) => {
   try {
       const adminList = await getAdmin(req.body);
-      res.status(200).send("adminList");
+      res.status(200).send(adminList);
   }
   catch (error) {
       return res.status(500).send(error.message);

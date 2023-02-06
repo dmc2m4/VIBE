@@ -70,7 +70,7 @@ module.exports = (sequelize) => {
       isfav: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
-      }
+      },
       /* public: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
