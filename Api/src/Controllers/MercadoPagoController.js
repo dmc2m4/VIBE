@@ -2,17 +2,17 @@ const { mercadopago } = require("../Utils/mercadoPago");
 const {Product} = require("../db");
 
 
-const payProduct = async (id, data) => {
+const payProduct = async (data) => {
 
-  const product = await Product.findById(id);
+  //  const product = await Product.findById(id);
   let preference = {
-    transaction_amount: parseInt(product.cost * 1.15), //monto de la transacción
-    net_amount: parseInt(product.cost * 1.15 * 0.968 - 800), //monto neto que nos quedaremos
+    transaction_amount: parseInt(data.Cart.total * 1.15), //monto de la transacción
+    net_amount: parseInt(data.Cart.total * 1.15 * 0.968 - 800), //monto neto que nos quedaremos
     taxes: [
       {
         value:
-          parseInt(product.cost * 1.15) -
-          parseInt(product.cost * 1.15),
+          parseInt(data.Cart.total * 1.15) -
+          parseInt(data.Cart.total * 1.15),
         type: "IVA",
       },
     ], //impuestos
@@ -43,15 +43,25 @@ const payProduct = async (id, data) => {
       country_name: data.country_name,
     },
     additional_info: data.additional_info,
-    items: [
-      {
-        picture_url: data.picture_url,
-        title: Product.name,
-        unite_price: parseInt(Product.cost * 1.15),
-        quantity: 1,
-        description: Product.textdescription[0],
-      },
-    ],
+     items: data.Cart.items.map(e => {
+      let newItem = { 
+           picture_url: e.img,
+           title: e.name,
+           unit_price: parseInt(e.cost * 1.15),
+           quantity: 1,
+           description: e.textdescription,
+        }
+        return newItem }
+        ),
+     //[
+    //   {
+    //     picture_url: data.picture_url,
+    //     title: Product.name,
+    //     unite_price: parseInt(data.Cart.total * 1.15),
+    //     quantity: 1,
+    //     description: Product.textdescription[0],
+    //   },
+    // ],
     back_urls: {
       success: "http://localhost:5173/success",
       failure: "http://localhost:5173/failure",
@@ -59,17 +69,19 @@ const payProduct = async (id, data) => {
     },
     auto_return: "approved",
   };
-  mercadopago.preferences
+  const mp = mercadopago.preferences
     .create(preference)
     .then(function (response) {
       console.log(response);
-      res.json({
+      return({
         global: response.body.id,
       });
+
     })
     .catch(function (err) {
       console.log(err);
     });
+    return mp;
 };
 
 module.exports ={ payProduct}

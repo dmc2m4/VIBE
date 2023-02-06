@@ -39,9 +39,9 @@ const Card = (props) => {
 
   return (
     <div className={style.container} >
-      <button
+      {user.isAdmin?<button
         onClick={() => props.deleteProduct(props.id)}
-        className={style.delete}>X</button>
+        className={style.delete}>X</button>: null}
       <Link to={`/productDetail/${props.id}`}
         className={style.link}>
         <div className={style.img} >
@@ -61,7 +61,7 @@ const Card = (props) => {
               <img
                 onClick={favBotton}
                 src={heart}
-                alt=""
+                alt="image"
                 className={style.car}
               />
             ) : (

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import MercadoPagoIntegration from "../MercadoPagoIntegration/MercadoPagoIntegration";
 
 export const PurchaseForm = () => {

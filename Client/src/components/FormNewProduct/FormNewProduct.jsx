@@ -34,7 +34,6 @@ const FormNewProduct = () => {
   function handleSubmit(e) {
     e.preventDefault();
     if (validate) {
-      console.log(newProduct);
       dispatch(createProduct(newProduct));
       dispatch(cleanImages());
       alert("Product created successfully");
@@ -80,7 +79,6 @@ const FormNewProduct = () => {
   }
 
   function handleDelete(e) {
-    console.log(e.target.value);
     dispatch(removeImage(e.target.value));
   }
 
@@ -120,6 +118,7 @@ const FormNewProduct = () => {
             "shorts",
             "jackets",
             "sweatshirts",
+            "accesories",
           ])}
           {addSelect("gender", ["male", "female", "unisex"])}
           {addInput("cost", "number")}

@@ -10,36 +10,39 @@ import Home from "../src/views/Home/Home";
 import DetailCard from "./components/DetailCard/DetailCard";
 import ContainerProduct from "./containers/containerProductHome/ContainerProduct";
 import Slider from "./components/Carousel/Carousel";
-import {About} from "./views/About/About";
+import { About } from "./views/About/About";
 // import Login from "./components/Login/Login";
 import Favorites from "./components/Favorites/Favorites";
 import { MyAccount } from "./components/MyAccount/MyAccount";
-import {Profile} from "./components/MyAccount/Profile";
+import { Profile } from "./components/MyAccount/Profile";
 import { Direction } from "./components/MyAccount/Direction";
 import { ShoppingHistory } from "./components/MyAccount/ShoppingHistory";
 import { Add } from "./components/MyAccount/Add";
+import Shop from "./components/Shop/Shop";
+import ReviewForm from "./components/ReviewForm/ReviewForm";
 
 const App = () => {
-  const location = useLocation()
+  const location = useLocation();
   return (
     <div className="App">
-      {location.pathname === "/" ? null : <Navbar/>}
+      {location.pathname === "/" ? null : <Navbar />}
       <Routes>
         <Route exact path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/shop" element={<Shop />} />
         <Route path="/createProduct" element={<FormNewProduct />} />
         <Route path="/products" element={<Products />} />
         <Route path="/shopping-cart" element={<ShoppingCart />} />
-        <Route path="/productDetail/:id" element={<DetailCard/>} />
-        <Route path="carousel" element={<Slider/>} />
-        <Route path="/about" element={<About/>} />
-        <Route path="/favorites/:email" element={<Favorites/>} />
-        <Route path="/myaccount" element={<MyAccount/>} />
-        <Route path="/myaccount/profile" element = {<Profile/>}/>
+        <Route path="/productDetail/:id" element={<DetailCard />} />
+        <Route path="carousel" element={<Slider />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/favorites/:email" element={<Favorites />} />
+        <Route path="/myaccount" element={<MyAccount />} />
+        <Route path="/myaccount/profile" element={<Profile />} />
         <Route path="/myaccount/direction" element={<Direction/>}/>
         <Route path="/myaccount/shoppinghistory" element={<ShoppingHistory/>}/>
         <Route path="/myaccount/direction/add" element={<Add/>}/>
-        
+        <Route path="/createReview" element={<ReviewForm/>}/>
       </Routes>
     </div>
   );

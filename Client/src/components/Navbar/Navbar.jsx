@@ -22,13 +22,8 @@ const Navbar = () => {
   const [category, setCategory] = useState({ category: undefined });
   const navigate = useNavigate();
 
-
-  console.log(user);
-
   useEffect(() => {
     dispatch(updateFilters(category));
-    // localStorage.getItem("user")
-    // console.log(user);
   }, [dispatch, category]);
   const categories = [
     "all",
@@ -73,72 +68,63 @@ const Navbar = () => {
 
   return (
     <div className={style.containerNav}>
-    <nav className={style.container}>
-      <div className={style.containerIcon} onClick={handleToggleAll}>
-        <Link to="/home">
-          <img src={iconVibe} alt="" className={style.icon} />
-        </Link>
-      </div>
-      <div className={style.containerUl}>
-        <ul className={style.containerLi}>
-          <li className={style.liNav}>
-            <NavLink
-              to="/home"
-              style={{ textDecoration: "none", color: "black" }}
-            >
-              <h2 className={style.links} onClick={() => cleanProducts()}>
-                Home
-              </h2>
-            </NavLink>
+      <nav className={style.container}>
+        <div className={style.containerIcon} onClick={handleToggleAll}>
+          <Link to="/home">
+            <img src={iconVibe} alt="" className={style.icon} />
+          </Link>
+        </div>
+        <div className={style.containerUl}>
+          <ul className={style.containerLi}>
+            <li className={style.liNav}>
+              <NavLink
+                to="/home"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <h2 className={style.links} onClick={() => cleanProducts()}>
+                  Home
+                </h2>
+              </NavLink>
+            </li>
+            <li className={style.liNav}>
+              <NavLink
+                to="/shop"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <h2 className={style.links}>Shop</h2>
+              </NavLink>
+            </li>
+            <li className={style.liNav}>
+              <NavLink
+                to="/about"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <h2 className={style.links}>About</h2>
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <Searchbar />
+        </div>
+        <div className={style.containerImg}>
+          <li className={style.liImg}>
+            <img
+              onClick={favButton}
+              src={heart}
+              alt="fav"
+              className={style.imgNav}
+            />
           </li>
-          <li className={style.liNav}>
-            <select
-              name="category"
-              className={style.selectCategories}
-              onChange={handleChange}
-            >
-              <option value="categories" hidden>
-                Categories
-              </option>
-              {categories.map((category, i) => (
-                <option value={category} key={i} className={style.titleSelect}>
-                  {category}
-                </option>
-              ))}
-            </select>
+          <li className={style.liImg}>
+            <ShoppingSlider />
           </li>
-          <li className={style.liNav}>
-            <NavLink
-              to="/about"
-              style={{ textDecoration: "none", color: "black" }}
-            >
-              <h2 className={style.links}>About</h2>
-            </NavLink>
+          <li onClick={handleToggle} className={style.liImg}>
+            <img src={user2} alt="user" className={style.imgNav} />
           </li>
-        </ul>
-      </div>
-      <div>
-        <Searchbar />
-      </div>
-      <div className={style.containerImg}>
-        <li className={style.liImg}>
-          <img
-            onClick={favButton}
-            src={heart}
-            alt="fav"
-            className={style.imgNav}
-          />
-        </li>
-        <li className={style.liImg}>
-          <ShoppingSlider />
-        </li>
-        <li onClick={handleToggle} className={style.liImg}>
-          {" "}
-          <img src={user2} alt="user" className={style.imgNav} />
-        </li>
-      </div>
-      {toggle && <Account />}
-    </nav>
+        </div>
+        {toggle && <Account />}
+      </nav>
     </div>
   );
 };

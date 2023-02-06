@@ -1,49 +1,51 @@
-const {User} = require('../db.js')
+const { User } = require('../db.js')
 
-async function AdminUsers (){
-     
+async function AdminUsers() {
+    const user = await User.findAll();
+    
+    if (!user) {
         await User.create({
-        name: 'Santiago Teran',
-        email: "santiagoterandc@gmail.com",
-        isAdmin: true,
+            name: 'Santiago Teran',
+            email: "santiagoterandc@gmail.com",
+            isAdmin: true,
 
         });
         await User.create({
-        name: 'Daniel Martinez',
-        email: "danielmartinez2m4@gmail.com",
-        isAdmin: true,
-        
-        });
-        await User.create({
-        name: 'Tomas Alcaraz',
-        email: "tomasalejandroalcaraz@gmail.com",
-        isAdmin: true,    
-        });
+            name: 'Daniel Martinez',
+            email: "danielmartinez2m4@gmail.com",
+            isAdmin: true,
 
+        });
         await User.create({
-        name: 'Brian Policani',
-        email: "brianpolicani@gmail.com",
-        isAdmin: true,    
+            name: 'Tomas Alcaraz',
+            email: "tomasalejandroalcaraz@gmail.com",
+            isAdmin: true,
         });
 
         await User.create({
-        name: 'Valentino Villar',
-        email: "vles2345@gmail.com",
-        isAdmin: true,    
+            name: 'Brian Policani',
+            email: "brianpolicani@gmail.com",
+            isAdmin: true,
         });
 
         await User.create({
-        name: 'Ramiro Soares',
-        email: "godino290@gmail.com",
-        isAdmin: true,    
+            name: 'Valentino Villar',
+            email: "vles2345@gmail.com",
+            isAdmin: true,
         });
 
         await User.create({
-        name: 'Josue Alfonzo',
-        email: "16-00436@usb.ve",
-        isAdmin: true,    
+            name: 'Ramiro Soares',
+            email: "godino290@gmail.com",
+            isAdmin: true,
         });
-      
+
+        await User.create({
+            name: 'Josue Alfonzo',
+            email: "16-00436@usb.ve",
+            isAdmin: true,
+        });
     }
+}
 
 module.exports = AdminUsers;
