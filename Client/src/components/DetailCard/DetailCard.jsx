@@ -19,7 +19,7 @@ const DetailCard = () => {
 
   function addToCar() {
     dispatch(addToCart(detail));
-    setStock(stock - 1)
+    setStock(stock - 1);
   }
 
   useEffect(() => {
@@ -59,8 +59,8 @@ const DetailCard = () => {
   // }
   return (
     <div className={style.container}>
-      <div className={style.back} >
-        <Link to="/home" className={style.back}>
+      <div className={style.back}>
+        <Link to="/shop" className={style.back}>
           <img
             src="https://cdn-icons-png.flaticon.com/512/507/507257.png"
             alt="back"
@@ -126,10 +126,9 @@ const DetailCard = () => {
             </p>
             <div>
               <p className={style.rating}>
-                {" "}
                 <p className={style.textDetail}>Rating: </p>{" "}
-                {array.slice(0, detail.rating).map((e) => (
-                  <div className={style.rating}>
+                {array.slice(0, detail.rating).map((e, i) => (
+                  <div className={style.rating} key={i}>
                     <p>⭐</p>
                   </div>
                 ))}{" "}
@@ -137,7 +136,7 @@ const DetailCard = () => {
             </div>
           </div>
           <div className={style.containerButtonAdd}>
-            <button className={style.buttonAdd} onClick={addToCar} >
+            <button className={style.buttonAdd} onClick={addToCar}>
               ADD TO CART
             </button>
           </div>
