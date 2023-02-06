@@ -1,26 +1,29 @@
-.footerContainer{
-    margin: 0;
-    height: 200px;
-    background-color: #b2a99c;
+.footerContainer {
+  margin: 0;
+  height: 200px;
+  background-color: #bdb19f;
+  font-family: "Dosis", sans-serif;
 }
-.containerSection{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 100%;
+.containerSection {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
 }
 
-.socialImg{
-    height: 35px;
-    width: 35px;
-    margin: 1rem;
+.socialImg {
+  height: 35px;
+  width: 35px;
+  margin: 1rem;
 }
 
 .textContainer {
-    
-    align-items: center;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  align-items: center;
 }
 .textContainer p {
-    margin-bottom: 8px;
+  margin-bottom: 8px;
+}
+
+.logo {
+  width: 10rem;
 }

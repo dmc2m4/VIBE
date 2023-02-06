@@ -118,6 +118,7 @@ const FormNewProduct = () => {
             "shorts",
             "jackets",
             "sweatshirts",
+            "accesories",
           ])}
           {addSelect("gender", ["male", "female", "unisex"])}
           {addInput("cost", "number")}
