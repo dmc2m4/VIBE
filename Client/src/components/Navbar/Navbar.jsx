@@ -17,7 +17,7 @@ import getPage from "../../redux/actions/getPage";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
-  const user = useSelector((state) => state.User);
+  const user = sessionStorage.getItem("userEmail")
   const dispatch = useDispatch();
   const [category, setCategory] = useState({ category: undefined });
   const navigate = useNavigate();
@@ -57,8 +57,8 @@ const Navbar = () => {
   };
 
   const favButton = () => {
-    dispatch(getFavorites(user.email));
-    navigate(`/favorites/${user.email}`);
+    dispatch(getFavorites(user));
+    navigate(`/favorites/${user}`);
   };
   const cleanProducts = () => {
     dispatch(getPage());
