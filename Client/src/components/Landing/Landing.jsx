@@ -13,8 +13,11 @@ const Landing = () => {
   const dispatch = useDispatch()
 
   function homeButtom() {
-    dispatch(loginUser(user))
-    dispatch(getFavorites(user.email))
+    dispatch(loginUser(user)).
+    then(res => {
+      dispatch(getFavorites(user.email));
+    })
+    sessionStorage.setItem("userEmail", user.email)
     navigate("/home");
   }
   

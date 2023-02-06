@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-
+import style from './MyAccount.module.css'
 export const MyAccount = () => {
   return (
-    <div>
+    <div className={style.container}>
       <Link to='/myaccount/profile'>
         <h4>Profile</h4>
       </Link>

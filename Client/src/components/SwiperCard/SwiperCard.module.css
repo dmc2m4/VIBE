@@ -16,8 +16,8 @@
 
 .swiperSlide img {
 
-     height: 30rem; 
-     width: 25rem;
+     height: 100%; 
+     width: 100%;
 }
 .swiper-button-disabled{
     display: none;

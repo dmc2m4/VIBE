@@ -20,10 +20,12 @@
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 const {PORT} =require("./config.js")
+const AdminUsers = require('./src/Preload/Preload.js')
 
 // Syncing all the models at once.
 conn.sync({ }).then(() => {
   server.listen(PORT, () => {
+    AdminUsers();
     console.log(`%s listening at ${PORT}`); // eslint-disable-line no-console
   });
 });
