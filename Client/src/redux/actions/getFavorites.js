@@ -4,7 +4,7 @@ import {API_URL} from "../../config";
 
 
 export const getFavorites = (email) => {
-  console.log(email);
+  
     return async function (dispatch) {
       try {
         const fav = await axios.get(`${API_URL}/favorites/${email}`);
