@@ -11,7 +11,7 @@ import style from  "./ShoppingCart.module.css";
 
 const ShoppingCart = () => {
   const { items, total } = useSelector((state) => state.Cart);
-  sessionStorage.setItem('cart', itmes)
+  // sessionStorage.setItem('cart', itmes)
   const dispatch = useDispatch();
 
   return (
