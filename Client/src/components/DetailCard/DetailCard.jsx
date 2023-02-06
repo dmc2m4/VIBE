@@ -161,8 +161,8 @@ const DetailCard = () => {
         {detail.Comments?.map((m) => {
           return (
             <div>
-              <img src ={m.users[0].img} alt="imagen"/>
-              <h2>{m.users[0].email}</h2>
+              <img src ={m.users && m.users[0].img} alt="imagen"/>
+              <h2>{m.users && m.users[0].email}</h2>
               <p>{m.question}</p>
               <p>{m.response? m.response: <button>responder pregunta</button>}</p>
             </div>
