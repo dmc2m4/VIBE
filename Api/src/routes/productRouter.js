@@ -8,26 +8,34 @@ const {
   getProductById,
 } = require("../Controllers/ProductController");
 
-const {
-  postReview
-} = require("../Controllers/ReviewController")
+const { postReview, destroyReview } = require("../Controllers/ReviewController");
 
 const productRouter = Router();
 
-productRouter.post("/reviews", async (req, res)=>{
-  try{
+productRouter.post("/reviews", async (req, res) => {
+  try {
     const newRev = await postReview(req.body);
-    res.status(200).send(newRev)
-  }catch(error){
+    res.status(200).send(newRev);
+  } catch (error) {
     res.status(400).send(error.message);
   }
-})
+});
 
-productRouter.post("/", async (req, res)=>{
-  try{
-    const newProduct = await postProduct(req.body)
-    res.status(200).send(newProduct)
-  }catch(error){
+productRouter.post("/reviews/destroy", async (req, res) => {
+  const { id } = req.body;
+  try {
+    await destroyReview(id);
+    res.status(200).send("Deleted review successfully");
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
+productRouter.post("/", async (req, res) => {
+  try {
+    const newProduct = await postProduct(req.body);
+    res.status(200).send(newProduct);
+  } catch (error) {
     res.status(400).send(error.message);
   }
 });
@@ -52,7 +60,7 @@ productRouter.get("/:id", async (req, res) => {
 });
 
 productRouter.post("/destroy", async (req, res) => {
-  const {id} = req.body
+  const { id } = req.body;
   try {
     destroyProduct(id);
     res.status(200).send("Deleted successfully");
@@ -62,7 +70,7 @@ productRouter.post("/destroy", async (req, res) => {
 });
 
 productRouter.post("/restore", async (req, res) => {
-  const {id} = req.body
+  const { id } = req.body;
   try {
     restoreProduct(id);
     res.status(201).send("Product updated successfully");
@@ -70,7 +78,6 @@ productRouter.post("/restore", async (req, res) => {
     res.status(400).send(error.message);
   }
 });
-
 
 productRouter.put("/", async (req, res) => {
   try {

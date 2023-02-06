@@ -34,9 +34,9 @@ module.exports = (sequelize) => {
       deletedAt: {
         type: DataTypes.DATE,
       },
-    },
-    {
+    },{
       paranoid: true,
+      timestamps: true,
     }
   );
 };

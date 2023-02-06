@@ -52,14 +52,14 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 const { User, Product, Review, Address, Comment } = sequelize.models;
 
-Product.hasMany(Review);
-Review.belongsTo(Product);
+  User.belongsToMany(Product, { through: 'users_products' });
+  Product.belongsToMany(User, { through: 'users_products' });
 
-Comment.belongsTo(User, { through: "user_comment" });
-User.belongsToMany(Comment, { through: "user_comment" });
+  User.belongsToMany(Product, { through: 'favorites_products', as: "favorites" } );
+  Product.belongsToMany(User, { through: 'favorites_products', as: "favorites" } );
 
-Comment.belongsTo(Product, { through: "product_comment" });
-Product.belongsToMany(Comment, { through: "product_comment" });
+  User.belongsToMany(Address, { through: 'User_Addresses'});
+  Address.belongsTo(User, { through: 'User_Addresses'});
 
   User.belongsToMany(Product, { through: 'purchases'});
   Product.belongsToMany(User, { through: 'purchases'});
@@ -75,7 +75,7 @@ Product.belongsToMany(Comment, { through: "product_comment" });
 
   Comment.belongsToMany(User, {through: 'user_comment'});
   User.belongsToMany(Comment, {through: 'user_comment'});
-
+  
 module.exports = {
   ...sequelize.models,
   conn: sequelize,

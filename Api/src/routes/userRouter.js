@@ -1,6 +1,8 @@
 const { Router } = require("express");
 const {
   createAddresses,
+  destroyAddresses,
+  putAddresses,
 } = require("../Controllers/AddressController");
 const {
   getAllUsers,
@@ -13,10 +15,30 @@ const {
 
 const userRouter = Router();
 
-userRouter.get("/", async (req, res) => {
+userRouter.post("/address/destroy", async (req, res) => {
+  const { id } = req.body;
   try {
-    const allUsers = await getAllUsers();
-    res.status(200).send(allUsers);
+    await destroyAddresses(id);
+    res.status(200).send("Deleted address successfully");
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
+userRouter.put("/adress", async (req, res) => {
+  const {value} = req.body
+  try {
+    putAddresses(value);
+    res.status(201).send("Address updated successfully");
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
+userRouter.post("/address", async (req, res) => {
+  try {
+    await createAddresses(req.body);
+    res.status(200).send("address created");
   } catch (error) {
     res.status(400).send(error.message);
   }
@@ -31,14 +53,15 @@ userRouter.get("/address", async (req, res) => {
   }
 });
 
-userRouter.post("/address/create", async (req, res) => {
+userRouter.get("/", async (req, res) => {
   try {
-    await createAddresses(req.body);
-    res.status(200).send("address created");
+    const allUsers = await getAllUsers();
+    res.status(200).send(allUsers);
   } catch (error) {
     res.status(400).send(error.message);
   }
 });
+
 
 userRouter.post("/login", async (req, res) => {
   try {

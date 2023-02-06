@@ -1,4 +1,4 @@
-const { Product, Review, Comment } = require("../db.js");
+const { Product, Review, Comment, User } = require("../db.js");
 
 const getAllProduct = async () => {
   const allProduct = await Product.findAll();

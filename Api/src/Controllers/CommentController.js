@@ -1,49 +1,50 @@
 const { Comment, Product, User } = require("../db.js");
 
 const postComment = async (value) => {
-  console.log(value);
   const product = await Product.findByPk(value.id);
-  console.log(product);
   if (!product) {
     throw new Error("Product not found");
   }
   const user = await User.findOne({ where: { email: value.email } });
-  console.log(user);
   if (!user) {
     throw new Error("User not found");
   }
   const newComment = await Comment.create({
-    question: value.question
+    question: value.question,
   });
-  console.log(newComment);
-  await product.addComment(newComment)
-  await user.addComment(newComment)
+  await product.addComment(newComment);
+  await user.addComment(newComment);
   return newComment;
 };
 
 const putComment = async (value) => {
   let comment = await Comment.findByPk(value.id);
   await comment.update({
-    response: value.response
-  })
+    response: value.response,
+  });
 };
 
-const deleteComment = async (id) => {
-  const comment = await Comment.findByPk(id);
-  await comment.destroy();
+const destroyComment = async (id) => {
+  await Comment.destroy({
+    where: {
+      id: id,
+    }, //averiguar force true para reiniciar base de datos y
+       // asi borrar los que borre y sigue en base
+  });
 };
 
 const getCommentById = async (id) => {
-  const comment =  await Comment.findByPk(id, {
+  const comment = await Comment.findByPk(id, {
     include: {
-      model: User
-    }})
-  return comment
-}
+      model: User,
+    },
+  });
+  return comment;
+};
 
 module.exports = {
   postComment,
   putComment,
-  deleteComment,
-  getCommentById
+  destroyComment,
+  getCommentById,
 };
