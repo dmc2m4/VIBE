@@ -36,24 +36,54 @@ const loginUser = async (value) => {
     const newUser = await User.create({
       name: value.name,
       email: value.email,
-      img: value.picture
-    })
-    return newUser
+      img: value.picture,
+    });
+    return newUser;
   }
 };
 
-const deleteUsers = async function (email) {
-  await User.destroy({ where: { email } });
+const destroyUsers = async (email) => {
+  await User.destroy({
+    where: {
+      email: email,
+    },
+  });
+};
+
+const restoreUsers = async (email) => {
+  await User.restore({
+    where: {
+      email: email,
+    },
+  });
 };
 
 const putUsers = async (value) => {
-  const user = await User.findByPk(value.id);
+  let user = await User.findByPk(value.id);
+  if (value.name) {
+    user.name = value.name;
+  }
+/*   if (value.password) {
+    user.password = value.password;
+  }
+  */
+  if (value.email) {
+    user.email = value.email;
+  }
+  if (value.img) {
+    user.img = value.img;
+  }
+  if (value.isAdmin) {
+    user.isAdmin = value.isAdmin;
+  }
+  await user.save();
 };
 
 module.exports = {
   getAllUsers,
-  deleteUsers,
-  putUsers,
+  destroyUsers,
+  restoreUsers,
   loginUser,
   getUserAdresses,
+  putUsers,
 };

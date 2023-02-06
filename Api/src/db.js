@@ -8,7 +8,7 @@ const {
   DB_HOST,
   DB_PORT,
   DB_NAME,
-  DB_DEPLOY
+  DB_DEPLOY,
 } = require("../config.js");
 const { userInfo } = require("os");
 
@@ -77,7 +77,7 @@ const { User, Product, Review, Address, Comment } = sequelize.models;
 
   Comment.belongsToMany(User, {through: 'user_comment'});
   User.belongsToMany(Comment, {through: 'user_comment'});
-
+  
 module.exports = {
   ...sequelize.models,
   conn: sequelize,
