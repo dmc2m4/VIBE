@@ -6,14 +6,12 @@ import {
   removeFromCart,
 } from "../../redux/actions/shoppingCart";
 import { PurchaseForm } from "../PurchaseForm/PurchaseForm";
-import style from  "./ShoppingCart.module.css";
-
+import style from "./ShoppingCart.module.css";
 
 const ShoppingCart = () => {
   const { items, total } = useSelector((state) => state.Cart);
-  sessionStorage.setItem('cart', items)
+  sessionStorage.setItem("cart", items);
   const dispatch = useDispatch();
-
   return (
     <div className={style.container}>
       <h2>Shopping cart</h2>
@@ -21,11 +19,11 @@ const ShoppingCart = () => {
       <article className="article">
         {items?.map((i) => (
           <div key={i.id}>
-            <img src={i.img} className={style.productImg} />
-            <span className='product_name'>{i.name}</span>
-            <span className='product_price'>Price: ${i.cost}</span>
+            <img src={i.img?.split(",")[0]} className={style.productImg} />
+            <span className="product_name">{i.name}</span>
+            <span className="product_price">Price: ${i.cost}</span>
             <button onClick={() => dispatch(addOneToCart(i))}>+</button>
-            <span className='product_quantity'>{i.quantity}</span>
+            <span className="product_quantity">{i.quantity}</span>
             <button onClick={() => dispatch(removeFromCart(i))}>-</button>
           </div>
         ))}
