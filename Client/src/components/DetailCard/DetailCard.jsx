@@ -28,8 +28,7 @@ const DetailCard = () => {
       dispatch(cleanDetail());
     };
   }, [dispatch, id]);
-  console.log(detail)
-
+ 
   // const images = detail.img.split(",");
   function setImages(det) {
     const images = det.img;
