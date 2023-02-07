@@ -1,9 +1,6 @@
 const { mercadopago } = require("../Utils/mercadoPago");
-const {Product} = require("../db");
-
 
 const payProduct = async (data) => {
-
   //  const product = await Product.findById(id);
   let preference = {
     transaction_amount: parseInt(data.Cart.total * 1.15), //monto de la transacción
@@ -11,8 +8,7 @@ const payProduct = async (data) => {
     taxes: [
       {
         value:
-          parseInt(data.Cart.total * 1.15) -
-          parseInt(data.Cart.total * 1.15),
+          parseInt(data.Cart.total * 1.15) - parseInt(data.Cart.total * 1.15),
         type: "IVA",
       },
     ], //impuestos
@@ -43,17 +39,17 @@ const payProduct = async (data) => {
       country_name: data.country_name,
     },
     additional_info: data.additional_info,
-     items: data.Cart.items.map(e => {
-      let newItem = { 
-           picture_url: e.img,
-           title: e.name,
-           unit_price: parseInt(e.cost * 1.15),
-           quantity: 1,
-           description: e.textdescription,
-        }
-        return newItem }
-        ),
-     //[
+    items: data.Cart.items.map((e) => {
+      let newItem = {
+        picture_url: e.img,
+        title: e.name,
+        unit_price: parseInt(e.cost * 1.15),
+        quantity: 1,
+        description: e.textdescription,
+      };
+      return newItem;
+    }),
+    //[
     //   {
     //     picture_url: data.picture_url,
     //     title: Product.name,
@@ -72,16 +68,14 @@ const payProduct = async (data) => {
   const mp = mercadopago.preferences
     .create(preference)
     .then(function (response) {
-      console.log(response);
-      return({
+      return {
         global: response.body.id,
-      });
-
+      };
     })
     .catch(function (err) {
-      console.log(err);
+      return { err: err };
     });
-    return mp;
+  return mp;
 };
 
-module.exports ={ payProduct}
+module.exports = { payProduct };

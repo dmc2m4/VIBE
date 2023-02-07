@@ -30,12 +30,12 @@ export const PurchaseForm = () => {
   function handleSubmit(e) {
     e.preventDefault();
     setPay(false);
-    console.log(pay)
+    console.log(pay);
   }
 
   return (
     <div>
-      <form onSubmit={(e)=>handleSubmit(e)}>
+      <form onSubmit={(e) => handleSubmit(e)} className="payment-form">
         {addInput("name", "text")}
         {addInput("surname", "text")}
         {addInput("email", "text")}
@@ -54,7 +54,7 @@ export const PurchaseForm = () => {
         {addInput("country_name", "text")}
         <button type="submit">Request Payment</button>
       </form>
-      {(pay) ? null : <MercadoPagoIntegration items={input} />}
+      {pay ? null : <MercadoPagoIntegration items={input} />}
     </div>
   );
 };
