@@ -102,5 +102,4 @@ productRouter.post("/pay/",async (req, res) => {
   }
 })
 
-//----------------ruta-----------------------
 module.exports = productRouter;
