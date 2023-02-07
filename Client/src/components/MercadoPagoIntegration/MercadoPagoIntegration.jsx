@@ -51,3 +51,4 @@ const MercadoPagoIntegration = ({ items }) => {
 };
 
 export default MercadoPagoIntegration;
+
