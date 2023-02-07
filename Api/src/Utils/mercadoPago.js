@@ -1,11 +1,11 @@
-const mercadopago = require("mercadopago")
+const mercadopago = require("mercadopago");
 require("dotenv").config();
-const {ACCESS_TOKEN} = require("../../config.js")
+const { ACCESS_TOKEN } = require("../../config.js");
 
 mercadopago.configure({
-  access_token: ACCESS_TOKEN
-})
+  access_token: ACCESS_TOKEN,
+});
 
-module.exports ={
-  mercadopago
-}
+module.exports = {
+  mercadopago,
+};
