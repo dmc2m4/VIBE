@@ -58,7 +58,7 @@ export const About = () => {
           <div className={style.content}>
             <h2>Brian Policani</h2>
             <h4>Developer</h4>
-          <a href="https://www.linkedin.com/in/brian-policani/" className={style.linkLkdn}>
+          <a href="https://www.linkedin.com/in/brian-policani-303683252/" className={style.linkLkdn}>
             Linkedin
           </a>
           <a href="https://www.github.com/brianpolicani/" className={style.linkGthb}>
@@ -88,7 +88,7 @@ export const About = () => {
           <div className={style.content}>
             <h2>Daniel Martinez</h2>
             <h4>Developer</h4>
-          <a href="https://www.linkedin.com/in/daniel-martinez/" className={style.linkLkdn}>
+          <a href="https://www.linkedin.com/in/daniel-martinez-0b6294109/" className={style.linkLkdn}>
             Linkedin
           </a>
           <a href="https://www.github.com/dmc2m4/" className={style.linkGthb}>
