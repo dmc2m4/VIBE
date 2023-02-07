@@ -18,6 +18,39 @@ const createAddresses = async (value) => {
   await user.addAddresses(address);
 };
 
+const destroyAddresses = async (id) => {
+  await Address.destroy({
+    where: {
+      id: id,
+    },
+  });
+};
+
+const putAddresses = async (value) => {
+  const {
+    id,
+    street,
+    number,
+    zipCode,
+    province,
+    location,
+    apartment,
+    description,
+  } = value;
+  const update = await Address.findByPk(id);
+  if (street) update.street = street;
+  if (number) update.number = number;
+  if (zipCode) update.zipCode = zipCode;
+  if (province) update.province = province;
+  if (location) update.location = location;
+  if (apartment) update.apartment = apartment;
+  if (description) update.description = description;
+
+  await update.save();
+};
+
 module.exports = {
   createAddresses,
+  destroyAddresses,
+  putAddresses,
 };

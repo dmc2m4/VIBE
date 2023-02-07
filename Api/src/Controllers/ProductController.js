@@ -1,6 +1,4 @@
-//[13:57, 18/1/2023] Daniel Henry: /:userId/favorites */
-
-const { Product, Review, Comment } = require("../db.js");
+const { Product, Review, Comment, User } = require("../db.js");
 
 const getAllProduct = async () => {
   const allProduct = await Product.findAll();
@@ -11,28 +9,39 @@ const getProductById = async function (id) {
   const product = await Product.findByPk(id,{
     include:[
       {model: Review},
-      {model: Comment}
+      {model: Comment, 
+      include: {
+        model: User
+      }}
     ]
   });
   return product;
 };
 
 const postProduct = async (value) => {
-  console.log(value);
   const newProduct = await Product.create(value);
-  return newProduct
-}
+  return newProduct;
+};
 
-const deleteProduct = async (value) => {
+const destroyProduct = async (id) => {
   await Product.destroy({
     where: {
-      id: value,
+      id: id,
     },
   });
 };
 
-const putProduct = async (value, req) => {
+const restoreProduct = async (id) => {
+  await Product.restore({
+    where: {
+      id: id,
+    },
+  });
+};
+
+const putProduct = async (req) => {
   const {
+    id,
     name,
     img,
     size,
@@ -44,7 +53,7 @@ const putProduct = async (value, req) => {
     stock,
     amount,
   } = req;
-  const update = await Product.findByPk(value);
+  const update = await Product.findByPk(id);
   if (name) update.name = name;
   if (img) update.img = img;
   if (size) update.size = size;
@@ -58,12 +67,11 @@ const putProduct = async (value, req) => {
   await update.save();
 };
 
-
-
 module.exports = {
   getAllProduct,
-  deleteProduct,
+  destroyProduct,
   putProduct,
   getProductById,
   postProduct,
+  restoreProduct,
 };

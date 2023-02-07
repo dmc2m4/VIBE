@@ -11,8 +11,6 @@ const Home = () => {
     <div className={style.container}>
       <Carousel/>
       <CategoriesLink/>
-      <ContainerProduct />
-      <Pagination />
     </div>
   );
 };

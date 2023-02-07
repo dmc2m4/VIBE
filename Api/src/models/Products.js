@@ -18,7 +18,7 @@ module.exports = (sequelize) => {
         },
       },
       img: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(1000),
         allowNull: false,
       },
       size: {
@@ -69,14 +69,18 @@ module.exports = (sequelize) => {
       },
       isfav: {
         type: DataTypes.BOOLEAN,
-        defaultValue: true,
-      }
+        defaultValue: false,
+      },
+      deletedAt: {
+        type: DataTypes.DATE,
+      },
       /* public: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
       }, */
     },
     {
+      paranoid: true,
       timestamps: true,
       createdAt: true,
     }

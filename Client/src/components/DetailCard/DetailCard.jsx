@@ -5,29 +5,25 @@ import createDetail from "../../redux/actions/createDetail";
 import cleanDetail from "../../redux/actions/cleanDetail";
 import { addToCart } from "../../redux/actions/shoppingCart";
 import style from "./DetailCard.module.css";
-import ShoppingCart from "../../assets/ShoppingCart.png";
-import heart from "../../assets/heart.png";
 import SwiperCard from "../SwiperCard/SwiperCard";
-import Navbar from "../Navbar/Navbar";
+import CommentForm from "./CommentForm/CommentForm";
 
 const DetailCard = () => {
   const detail = useSelector((state) => state.Detail);
-  const [stock, setStock] = useState(detail.stock)
+  const [stock, setStock] = useState(detail.stock);
   const { id } = useParams();
   const dispatch = useDispatch();
   const array = [1, 2, 3, 4, 5];
-  const user = useSelector(state => state.User)
+  const user = sessionStorage.getItem("userEmail")
 
- console.log(user)
 
   function addToCar() {
     dispatch(addToCart(detail));
-    setStock(stock - 1)
+    setStock(stock - 1);
   }
 
   useEffect(() => {
     dispatch(createDetail(id));
-
     return function () {
       dispatch(cleanDetail());
     };
@@ -63,9 +59,8 @@ const DetailCard = () => {
   // }
   return (
     <div className={style.container}>
-     
-      <div className={style.back} >
-        <Link to="/home" className={style.back}>
+      <div className={style.back}>
+        <Link to="/shop" className={style.back}>
           <img
             src="https://cdn-icons-png.flaticon.com/512/507/507257.png"
             alt="back"
@@ -131,10 +126,9 @@ const DetailCard = () => {
             </p>
             <div>
               <p className={style.rating}>
-                {" "}
                 <p className={style.textDetail}>Rating: </p>{" "}
-                {array.slice(0, detail.rating).map((e) => (
-                  <div className={style.rating}>
+                {array.slice(0, detail.rating).map((e, i) => (
+                  <div className={style.rating} key={i}>
                     <p>⭐</p>
                   </div>
                 ))}{" "}
@@ -142,7 +136,7 @@ const DetailCard = () => {
             </div>
           </div>
           <div className={style.containerButtonAdd}>
-            <button className={style.buttonAdd} onClick={addToCar} >
+            <button className={style.buttonAdd} onClick={addToCar}>
               ADD TO CART
             </button>
           </div>
@@ -158,11 +152,17 @@ const DetailCard = () => {
             </div>
           )
         })}
+        <CommentForm
+        id={id}
+        email={user}
+        />
         {detail.Comments?.map((m) => {
           return (
             <div>
+              <img src ={m.users && m.users[0].img} alt="imagen"/>
+              <h2>{m.users && m.users[0].email}</h2>
               <p>{m.question}</p>
-              <p>{m.response? m.response: "respeusta pendiente"}</p>
+              <p>{m.response? m.response: <button>responder pregunta</button>}</p>
             </div>
           )
         })}

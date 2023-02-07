@@ -1,5 +1,6 @@
 const { Router } = require("express");
 
+
 // Importar todos los routers;
 const userRouter = require("./userRouter.js");
 const productRouter = require("./productRouter");
@@ -15,6 +16,4 @@ router.use("/product", productRouter);
 router.use("/pagination", paginationRouter);
 router.use("/favorites", favoritesRouter);
 router.use("/comment", commentRouter);
-
-
 module.exports = router;

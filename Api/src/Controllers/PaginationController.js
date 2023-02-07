@@ -2,7 +2,6 @@ const { Product } = require("../db");
 const { Sequelize, Op } = require("sequelize");
 
 const getPagination = async (page, info = {}) => {
-  console.log(info);
   let filter = {};
 
   function filtered() {
@@ -17,6 +16,9 @@ const getPagination = async (page, info = {}) => {
     }
     if (info.season) {
       filter.season = info.season;
+    }
+    if (info.gender) {
+      filter.gender = info.gender;
     }
     if (info.name) {
       filter.name = { [Op.substring]: info.name };
