@@ -1,0 +1,22 @@
+.fullcontainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 4.5rem;
+  padding-top: 4.5rem;
+}
+.container{
+width: 500px;
+height: 150px;
+padding-left: 10%;
+
+}
+
+.title{
+
+}
+
+
+.text{
+  
+}

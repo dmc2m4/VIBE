@@ -35,7 +35,7 @@ export const PurchaseForm = () => {
 
   return (
     <div>
-      <form onSubmit={(e)=>handleSubmit(e)}>
+      <form onSubmit={(e)=>handleSubmit(e)} className="payment-form">
         {addInput("name", "text")}
         {addInput("surname", "text")}
         {addInput("email", "text")}

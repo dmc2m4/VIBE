@@ -1,5 +1,4 @@
 const { mercadopago } = require("../Utils/mercadoPago");
-const {Product} = require("../db");
 
 
 const payProduct = async (data) => {
@@ -72,7 +71,7 @@ const payProduct = async (data) => {
   const mp = mercadopago.preferences
     .create(preference)
     .then(function (response) {
-      console.log(response);
+      console.log(response.body);
       return({
         global: response.body.id,
       });
@@ -81,7 +80,9 @@ const payProduct = async (data) => {
     .catch(function (err) {
       console.log(err);
     });
+    console.log(mp);
     return mp;
 };
 
 module.exports ={ payProduct}
+
