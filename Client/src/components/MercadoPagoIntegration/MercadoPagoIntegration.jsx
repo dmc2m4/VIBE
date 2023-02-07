@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 const FORM_ID = "payment-form";
+import {API_URL} from "../../config"
 
 const MercadoPagoIntegration = ({ items }) => {
   const carrito = useSelector((state) => state.Cart);
@@ -11,7 +12,7 @@ const MercadoPagoIntegration = ({ items }) => {
 
   async function getPreference() {
     const response = await axios
-      .post(`http://localhost:3001/product/pay`, items)
+      .post(`${API_URL}/product/pay`, items)
       .then((res) => {
         setPreferenceId(res.data.global);
       })
