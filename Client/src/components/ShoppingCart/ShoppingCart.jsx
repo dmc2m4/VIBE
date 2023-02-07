@@ -11,17 +11,17 @@ import style from  "./ShoppingCart.module.css";
 
 const ShoppingCart = () => {
   const { items, total } = useSelector((state) => state.Cart);
-  sessionStorage.setItem('cart', itmes)
+  sessionStorage.setItem('cart', items)
   const dispatch = useDispatch();
 
   return (
     <div className={style.container}>
       <h2>Shopping cart</h2>
       <h3>Products</h3>
-      <article className="">
+      <article className="article">
         {items?.map((i) => (
           <div key={i.id}>
-            <img src={i.img} className='product_img' />
+            <img src={i.img} className={style.productImg} />
             <span className='product_name'>{i.name}</span>
             <span className='product_price'>Price: ${i.cost}</span>
             <button onClick={() => dispatch(addOneToCart(i))}>+</button>
