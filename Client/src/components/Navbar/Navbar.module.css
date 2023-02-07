@@ -16,7 +16,7 @@
   background-color: #f5f3f4;
   height: 80px;
   width: 100%;
-  z-index: 10;
+  z-index: 1000;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   position: fixed;
   margin-top: -4rem;

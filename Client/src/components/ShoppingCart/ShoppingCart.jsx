@@ -12,7 +12,6 @@ const ShoppingCart = () => {
   const { items, total } = useSelector((state) => state.Cart);
   sessionStorage.setItem("cart", items);
   const dispatch = useDispatch();
-  console.log(items);
   return (
     <div className={style.container}>
       <h2>Shopping cart</h2>
@@ -21,8 +20,6 @@ const ShoppingCart = () => {
         {items?.map((i) => (
           <div key={i.id}>
             <img src={i.img?.split(",")[0]} className={style.productImg} />
-            {console.log(i.img)}
-            {/* {console.log(i.img.slice(0, i.img.length))} */}
             <span className="product_name">{i.name}</span>
             <span className="product_price">Price: ${i.cost}</span>
             <button onClick={() => dispatch(addOneToCart(i))}>+</button>
