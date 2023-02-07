@@ -8,7 +8,6 @@ const MercadoPagoIntegration = ({ items }) => {
   const carrito = useSelector((state) => state.Cart);
   // const { id } = useParams(); // id de producto
   const [preferenceId, setPreferenceId] = useState(null);
-  console.log(preferenceId);
   items.Cart = carrito;
   console.log(items);
 

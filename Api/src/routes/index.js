@@ -16,6 +16,4 @@ router.use("/product", productRouter);
 router.use("/pagination", paginationRouter);
 router.use("/favorites", favoritesRouter);
 router.use("/comment", commentRouter);
-
-
 module.exports = router;
