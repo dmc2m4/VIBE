@@ -1,10 +1,13 @@
+.navbar{
+    margin-top: 4rem;
+}
+
 .mainDiv{
     display: flex;
     justify-content: center;
     flex-direction: column;
     margin-top: 2rem;
     width: 100%;
-    top: 20px
 }
 
 .cardContainer{
@@ -90,18 +93,17 @@
 
 .card .content h2{
     color: #fff;
+    text-align: center;
+    font-family: "Bebas Neue", cursive;
     text-transform: uppercase;
     font-size: 2em;
     line-height: 1em;
     margin-bottom: 5px;
 }
 
-.card .content p{
-    color: #fff;
-}
-
 .card .content h4{
     color: #fff;
+    text-align: center;
     font-family:'Lucida Sans';
 }
 
@@ -116,6 +118,36 @@
     display: inline-block;
     text-decoration: none;
     font-weight: 700;
+}
+
+.card:hover .linkLkdn{
+    display: flex;  
+    color: rgb(0,113,174);
+    text-decoration: none;
+    font-family: "Bebas Neue", cursive;
+    justify-content: center;
+    margin: 10px;
+    font-size: 30px;
+}
+
+.card:hover .linkGthb{
+    display: flex;  
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-family: "Bebas Neue", cursive;
+    justify-content: center;
+    margin: 10px;
+    font-size: 30px;
+}
+
+.card:hover .linkPortfolio{
+    display: flex;  
+    color: rgb(46, 136, 94);
+    text-decoration: none;
+    font-family: "Bebas Neue", cursive;
+    justify-content: center;
+    margin: 10px;
+    font-size: 30px;
 }
 
 @media (max-width: 991px){
