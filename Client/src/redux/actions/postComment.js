@@ -6,7 +6,7 @@ const postComment = (value) => {
         try{
             await axios.post(`${API_URL}/comment`, value)
         }catch(error){
-            alert(error.message)
+            return alert(error.message)
         }
     }
 };

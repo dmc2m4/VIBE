@@ -1,4 +1,5 @@
 const { Router } = require("express");
+const getAdmin = require("../Controllers/AdminController")
 const {
   createAddresses,
   destroyAddresses,
@@ -25,8 +26,8 @@ userRouter.post("/address/destroy", async (req, res) => {
   }
 });
 
-userRouter.put("/adress", async (req, res) => {
-  const {value} = req.body
+userRouter.put("/address", async (req, res) => {
+  const value = req.body
   try {
     putAddresses(value);
     res.status(201).send("Address updated successfully");
@@ -36,8 +37,9 @@ userRouter.put("/adress", async (req, res) => {
 });
 
 userRouter.post("/address", async (req, res) => {
+  const value = req.body
   try {
-    await createAddresses(req.body);
+    await createAddresses(value);
     res.status(200).send("address created");
   } catch (error) {
     res.status(400).send(error.message);
@@ -45,8 +47,9 @@ userRouter.post("/address", async (req, res) => {
 });
 
 userRouter.get("/address", async (req, res) => {
+  const {email} = req.body
   try {
-    const userAdresses = await getUserAdresses(req.body);
+    const userAdresses = await getUserAdresses(email);
     res.status(200).send(userAdresses);
   } catch (error) {
     res.status(400).send(error.message);
@@ -64,8 +67,9 @@ userRouter.get("/", async (req, res) => {
 
 
 userRouter.post("/login", async (req, res) => {
+  const value = req.body
   try {
-    const user = await loginUser(req.body);
+    const user = await loginUser(value);
     res.status(200).send(user);
   } catch (error) {
     res.status(401).send(error.message);

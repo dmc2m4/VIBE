@@ -1,14 +1,14 @@
 import axios from "axios";
 import { API_URL } from "../../config";
 
-const setFavorites = (value) => {
+const deleteComment = (id) => {
   return async function () {
     try {
-      await axios.post(`${API_URL}/favorites`, value);
+      await axios.post(`${API_URL}/comment/destroy`, id);
     } catch (error) {
       return alert(error.message);
     }
   };
 };
 
-export default setFavorites;
+export default deleteComment;

@@ -12,10 +12,10 @@ const getAllUsers = async () => {
   return allUsers;
 };
 
-const getUserAdresses = async (value) => {
+const getUserAdresses = async (email) => {
   const findUser = await User.findOne({
     where: {
-      email: value.email,
+      email: email,
     },
     include: {
       model: Address,
@@ -25,21 +25,16 @@ const getUserAdresses = async (value) => {
 };
 
 const loginUser = async (value) => {
-  const findUser = await User.findOne({
+  const findUser = await User.findOrCreate({
     where: {
       email: value.email,
     },
-  });
-  if (findUser) {
-    return findUser;
-  } else {
-    const newUser = await User.create({
+    defaults: {
       name: value.name,
-      email: value.email,
       img: value.picture,
-    });
-    return newUser;
-  }
+    },
+  });
+  return findUser;
 };
 
 const destroyUsers = async (email) => {
@@ -63,7 +58,7 @@ const putUsers = async (value) => {
   if (value.name) {
     user.name = value.name;
   }
-/*   if (value.password) {
+  /*   if (value.password) {
     user.password = value.password;
   }
   */

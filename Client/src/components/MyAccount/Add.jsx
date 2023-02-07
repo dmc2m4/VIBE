@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import createAddresses from "../../redux/actions/createAdress";
+import createAddresses from "../../redux/actions/createAddress";
 import style from './Add.module.css'
 export const Add = () => {
   const navigate = useNavigate()

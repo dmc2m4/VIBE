@@ -6,26 +6,29 @@ const {
 const favoritesRouter = Router();
 
 favoritesRouter.post("/", async (req, res) => {
+    const value = req.body
     try {
-        await postFavorites(req.body);
-        res.status(200).send('product in favorites')
+        await postFavorites(value);
+        res.status(200).send('The product has been added to your favorites list')
     } catch (error) {
         res.status(400).send(error.message)
     }
 })
 
-favoritesRouter.get(("/:email"), async (req, res) => {
+favoritesRouter.get("/", async (req, res) => {
+    const value = req.body
     try{
-        const favorites = await getFavoritesByUser(req.params);
+        const favorites = await getFavoritesByUser(value);
         res.status(200).send(favorites)
     }catch(error){
         res.status(401).send(error.message)
     }
 })
 
-favoritesRouter.post(("/delete"), async (req, res) => {
+favoritesRouter.post("/", async (req, res) => {
+    const value = req.body
     try{
-        await deleteFavorites(req.body);
+        await deleteFavorites(value);
         res.status(200).send('Favorite deleted')
     }catch(error){
         res.status(401).send(error.message)

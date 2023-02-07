@@ -6,7 +6,7 @@ const postReview = (value) => {
         try {
             await axios.post(`${API_URL}/product/reviews`, value)
         } catch (error) {
-            alert(error.message)
+            return alert(error.message)
         }
     };
 };

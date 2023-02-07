@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import {  useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import getAddresses from "../../redux/actions/getAdresses";
 import style from './Direction.module.css'
+import getAddresses from "../../redux/actions/getAddresses";
 
 export const Direction = () => {
   const address = useSelector((state) => state.Addresses);

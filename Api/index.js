@@ -24,8 +24,8 @@ const AdminUsers = require('./src/Preload/Preload.js')
 
 // Syncing all the models at once.
 conn.sync({ }).then(() => {
-  server.listen(PORT, () => {
-    AdminUsers()
+  server.listen(PORT, async () => {
+    await AdminUsers()
     console.log(`%s listening at ${PORT}`); // eslint-disable-line no-console
   });
 });
