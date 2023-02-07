@@ -12,6 +12,7 @@ export default function Products() {
   function deleteProducts(product) {
     dispatch(deleteProduct(product));
   }
+  
 
   if (products.length > 0) {
     return (

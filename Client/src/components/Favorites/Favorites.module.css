@@ -1,3 +1,10 @@
 .container{
   margin-top: 4rem;
+
+}
+
+.card{
+  display: flex;
+  width: 15rem;
+  height: 4rem;
 }

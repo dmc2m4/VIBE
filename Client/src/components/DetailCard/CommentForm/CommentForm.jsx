@@ -1,6 +1,7 @@
 import React, { useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import postComment from "../../../redux/actions/postComment";
+import style from './CommentForm.module.css'
 
 
 const CommentForm = (props) => {
@@ -23,18 +24,20 @@ const CommentForm = (props) => {
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-            <div>
+        <div className={style.container}>
+            <form onSubmit={handleSubmit} className={style.containerForm}>
+            <div className={style.containerComment}>
+            <label className={style.text}>Ask the seller</label>
             <input 
             type="text"
             name = "question"
             id = "question"
-            placeholder="make your question"
-            onChange={handleInputChange}></input>
+            onChange={handleInputChange}
+            placeholder="Write a question..."
+            className={style.inputComment}></input>
             </div>
-            <div>
-                <button type="submit">Send question</button>
+            <div className={style.containerButton}>
+                <button type="submit" className={style.buttonComment}>Send question</button>
             </div>
             </form>
         </div>

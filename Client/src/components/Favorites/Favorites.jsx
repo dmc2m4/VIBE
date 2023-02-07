@@ -7,12 +7,13 @@ import style from './Favorites.module.css'
 const Favorites = () => {
   const favorites = useSelector(state => state.Favorites);
   const user = useSelector(state => state.User);
-  
+  console.log(favorites)
 
 
   return (
     <div className={style.container}>
       {favorites?.map((product) => (
+        <div className={style.card}>
             <Card
               name={product.name}
               img={product.img}
@@ -28,6 +29,7 @@ const Favorites = () => {
               key={product.id}
               email={user? user.email: null}
             />
+            </div>
           ))}
     </div>
   )
