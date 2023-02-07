@@ -11,7 +11,7 @@ const MercadoPagoIntegration = ({ items }) => {
 
   async function getPreference() {
     const response = await axios
-      .post(`http://localhost:3001/product/pay/`, items)
+      .post(`http://localhost:3001/product/pay`, items)
       .then((res) => {
         setPreferenceId(res.data.global);
       })
