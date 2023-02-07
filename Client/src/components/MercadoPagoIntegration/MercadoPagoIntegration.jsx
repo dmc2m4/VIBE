@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+
 const FORM_ID = "payment-form";
 
 const MercadoPagoIntegration = ({ items }) => {
@@ -9,45 +9,46 @@ const MercadoPagoIntegration = ({ items }) => {
   // const { id } = useParams(); // id de producto
   const [preferenceId, setPreferenceId] = useState(null);
   items.Cart = carrito;
-  console.log(items);
 
   async function getPreference() {
     const response = await axios
       .post(`http://localhost:3001/product/pay/`, items)
       .then((res) => {
         setPreferenceId(res.data.global);
-        console.log(res);
       })
-
       .catch((e) => e.error);
-
     return response;
   }
+
+  // const mp = new MercadoPago("APP_USR-37230271-0594-4417-8d67-733e26ef0cd9", {
+  //   locale: "es-AR",
+  // });
+  // mp.checkout({
+  //   preference: {
+  //     id: preferenceId,
+  //   },
+  //   render: {
+  //     container: ".pay-button",
+  //     label: "Pay",
+  //   },
+  // });
+
+  if (preferenceId) {
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src =
+      "https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";
+    script.setAttribute("data-preference-id", preferenceId);
+    const form = document.getElementById(FORM_ID);
+    form.appendChild(script);
+  }
+
   useEffect(() => {
-    // luego de montarse el componente, le pedimos al backend el preferenceId
-    // axios.post('/api/orders', { productId: id }).then((order) => {
-    //   setPreferenceId(order.preferenceId);
-    // });
-    const result = getPreference();
-    setPreferenceId(result);
+    getPreference();
   }, []);
-  useEffect(() => {
-    if (preferenceId) {
-      console.log(preferenceId)
-      // con el preferenceId en mano, inyectamos el script de mercadoPago
-      const script = document.createElement("script");
-      console.log(script)
-      script.type = "text/javascript";
-      script.src =
-        "https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";
-      script.setAttribute("data-preference-id", preferenceId);
-      const form = document.getElementById(FORM_ID);
-      form.appendChild(script);
-    }
-  }, [preferenceId]);
-
-  return <form id={FORM_ID} method='GET' />;
+  
+  return <form id={FORM_ID} method="GET" className="pay-button"/>;
 };
-export default MercadoPagoIntegration;
 
+export default MercadoPagoIntegration;
 
