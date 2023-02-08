@@ -28,34 +28,6 @@ const getFavoritesByUser = async (value) => {
   return user.favorites;
 };
 
-const postFavorites = async (value) => {
-  const findUser = await User.findOne({
-    where: {
-      email: value.email,
-    },
-  });
-  const findProduct = await Product.findByPk(value.id);
-  await findProduct.update({isfav: true})
-
-  await findUser.addFavorites(findProduct);
-};
-
-
-
-const postFavorites = async (value) => {
-  const findUser = await User.findOne({
-    where: {
-      email: value.email,
-    },
-  });
-  const findProduct = await Product.findByPk(value.id);
-  await findProduct.update({isfav: true})
-
-  await findUser.addFavorites(findProduct);
-};
-
-
-
 const deleteFavorites = async (value) => {
   const findUser = await User.findOne({
     where: {

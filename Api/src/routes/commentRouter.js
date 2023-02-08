@@ -9,9 +9,10 @@ const commentRouter = Router();
 
 commentRouter.post("/", async (req, res) => {
   const value = req.body
+  console.log(value);
   try {
     const newcomment = await postComment(value);
-    res.status(200).send(newcomment);
+    res.status(200).json(newcomment);
   } catch (error) {
     res.status(400).send(error.message);
   }
@@ -41,7 +42,7 @@ commentRouter.get("/:id", async (req, res) => {  //preguntar quien la hizo
   const {id} = req.params
   try {
     const comment = await getCommentById(id);
-    res.status(201).send(comment);
+    res.status(201).json(comment);
   } catch (error) {
     res.status(400).send(error.message);
   }
