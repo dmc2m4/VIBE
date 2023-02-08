@@ -22,6 +22,7 @@ import Shop from "./components/Shop/Shop";
 import ReviewForm from "./components/ReviewForm/ReviewForm";
 import FrequentQuestions from "./components/FrequentQuestions/FrequentQuestions";
 
+
 const App = () => {
   const location = useLocation();
   return (

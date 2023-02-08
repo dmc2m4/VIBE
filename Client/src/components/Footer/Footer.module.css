@@ -1,7 +1,9 @@
 .footerContainer {
   margin: 0;
   height: 150px;
-  background: #ced4da;
+  /* background: #ced4da; */
+  height: 200px;
+  background-color: #909ca1;
   font-family: "Dosis", sans-serif;
 }
 .containerSection {

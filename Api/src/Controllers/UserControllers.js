@@ -79,6 +79,19 @@ const putUsers = async (value) => {
   await user.save();
 };
 
+const getPurchasesByUser = async ({email}) =>{
+  const user = await User.findOne({
+    where: {
+      email: email
+    },
+    includes: {
+      model: Product,
+      as: 'purchases'
+    }
+  })
+  return user.purchases
+}
+
 module.exports = {
   getAllUsers,
   destroyUsers,
@@ -86,4 +99,5 @@ module.exports = {
   loginUser,
   getUserAdresses,
   putUsers,
+  getPurchasesByUser
 };

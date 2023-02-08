@@ -59,12 +59,17 @@ const FormNewProduct = () => {
     );
   }
 
-  function addSelect(name, arr) {
+  function addSelect(name, arr, dis = false) {
     const nameFormatted = name.charAt(0).toUpperCase() + name.slice(1);
     return (
       <div className={style.containerInput}>
         <label>{nameFormatted}</label>
-        <select onChange={handleChange} name={name} className={style.inputForm}>
+        <select
+          onChange={handleChange}
+          name={name}
+          className={style.inputForm}
+          disabled={dis}
+        >
           {<option hidden>{nameFormatted}</option>}
           {arr.map((element, i) => {
             return (
@@ -91,7 +96,6 @@ const FormNewProduct = () => {
       <form onSubmit={handleSubmit}>
         <div className={style.containerFormSecundary}>
           {addInput("name", "text")}
-          {addInput("size", "text")}
           {addSelect("color", [
             "red",
             "pink",
@@ -123,6 +127,26 @@ const FormNewProduct = () => {
           {addSelect("gender", ["male", "female", "unisex"])}
           {addInput("cost", "number")}
           {addInput("stock", "number")}
+          {addSelect(
+            "size",
+            newProduct.category === "shoes"
+              ? [
+                  "33",
+                  "34",
+                  "35",
+                  "36",
+                  "37",
+                  "38",
+                  "39",
+                  "40",
+                  "41",
+                  "42",
+                  "43",
+                  "44",
+                ]
+              : ["XXS", "XS", "S", "M", "L", "XL", "XXL"],
+            newProduct.category === null ? true : false
+          )}
           <div className={style.containerInput}>
             <label>Image</label>
             <CloudDropzone />

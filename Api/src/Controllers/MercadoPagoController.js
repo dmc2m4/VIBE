@@ -41,6 +41,7 @@ const payProduct = async (data) => {
     additional_info: data.additional_info,
     items: data.Cart.items.map((e) => {
       let newItem = {
+        id: e.id,
         picture_url: e.img,
         title: e.name,
         unit_price: parseInt(e.cost * 1.15),
@@ -75,7 +76,7 @@ const payProduct = async (data) => {
     .catch(function (err) {
       return { err: err };
     });
-  return mp;
-};
+    return mp;
+  };
 
 module.exports = { payProduct };
