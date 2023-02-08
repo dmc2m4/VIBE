@@ -22,7 +22,6 @@ const MercadoPagoIntegration = ({ items }) => {
       .catch((e) => e.error);
     return response;
   }
-
   if (preferenceId) {
     const script = document.createElement("script");
     script.type = "text/javascript";
@@ -37,8 +36,8 @@ const MercadoPagoIntegration = ({ items }) => {
   useEffect(() => {
     getPreference();
   }, []);
-  
-  return <form id={FORM_ID} method="GET" className="pay-button"/>;
+
+  return <form id={FORM_ID} method='GET' className='pay-button' />;
 };
 
 export default MercadoPagoIntegration;
