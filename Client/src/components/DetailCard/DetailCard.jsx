@@ -104,12 +104,12 @@ const DetailCard = () => {
         </div>
       </div>
       <div>
-        {detail.Reviews?.map((m) => {
+        {detail.Reviews?.map((m, i) => {
           return (
             <div>
-              <p>{m.title}</p>
-              <p>{m.rating}</p>
-              <p>{m.text}</p>
+              <p key={i}>{m.title}</p>
+              <p key={i}>{m.rating}</p>
+              <p key={i}>{m.text}</p>
             </div>
           );
         })}

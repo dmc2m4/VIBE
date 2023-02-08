@@ -12,6 +12,7 @@ const {
   loginUser,
   getUserAdresses,
   putUsers,
+  getPurchasesByUser
 } = require("../Controllers/UserControllers");
 
 const userRouter = Router();
@@ -114,5 +115,6 @@ userRouter.get("/admin", async (req, res) => {
       return res.status(500).send(error.message);
   }
 });
+
 
 module.exports = userRouter;
