@@ -3,8 +3,128 @@
 
 }
 
-.card{
+.container{
+  margin-top: 4rem;
+  font-family: "Bebas Neue", cursive;
+  height: 100%;
+  width: 100%;
+}
+.containerTable{
+
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+.table{
+  margin-top: 4rem;
+  width: 400px;
+  height: 400px;
+  overflow-y: auto;
+
+}
+.containerTitle{
   display: flex;
-  width: 15rem;
-  height: 4rem;
+  justify-content: start;
+  align-items: center;
+  height: 2.5rem;
+  background-color: black;
+  color: white; 
+  padding-left: 20px;
+  border-radius: 5px 5px 0px 0px;
+  margin-bottom: 4px;
+  letter-spacing: 2px;
+}
+.link{
+  text-decoration: none;
+  color: black;
+}
+  .shopping_img{
+    width: 25px;
+    height: 25px;
+    margin-right: 1.5rem;
+    margin-bottom: 0.3rem;
+  }  
+
+  .product_img{
+    width: 2.7rem;
+    height: 2.7rem;
+    margin-right: 8px;
+    margin-top: -1.3rem;
+  }
+
+  .buttonCar{
+    width: 8rem;
+    height: 2.3rem;
+    border-radius: 4px;
+    border: none;
+    background-color: black;
+    margin-top: 3rem;
+    font-family: "Dosis", sans-serif;
+    cursor: pointer;
+    color: white;
+    margin-bottom: 2rem;
+  }
+  .product{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(238, 233, 233);
+    height: 5rem;
+    padding: 4px;
+    border-radius: 8px;
+    margin-bottom: 4px;
+    font-size: 1rem;
+    width: 100%;
+    padding-left: 20px;
+  }
+  .containerCat{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+  }
+  .name{
+    width: 100%;
+    padding: 4px;
+    font-size: 1.5rem;
+    margin-left: 20px;
+  }
+
+  .containerTotal{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+
+  }
+  .price{
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+  .iconFavorite{
+    width: 1.2em;
+    height: 1.2rem;
+    cursor: pointer;
+    
+  }
+  .containerIconFavorite{
+    margin: 4px;
+    background-color: black;
+    padding: 2px;
+    height: 1.4rem;
+    border-radius: 3px;
+  }
+  .table::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+.table::-webkit-scrollbar:vertical {
+    width: 10px;
+}
+.table::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
 }

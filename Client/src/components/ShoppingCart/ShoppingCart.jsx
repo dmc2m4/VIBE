@@ -6,7 +6,10 @@ import {
   removeFromCart,
 } from "../../redux/actions/shoppingCart";
 import { PurchaseForm } from "../PurchaseForm/PurchaseForm";
+import SwiperCard from '../SwiperCard/SwiperCard'
 import style from  "./ShoppingCart.module.css";
+import trash from '../../assets/papelera-de-reciclaje.png'
+
 
 
 const ShoppingCart = () => {
@@ -16,22 +19,31 @@ const ShoppingCart = () => {
 
   return (
     <div className={style.container}>
-      <h2>Shopping cart</h2>
-      <h3>Products</h3>
+    <div className={style.containerProduct}>
+      <h1 className={style.title}>Shopping cart</h1>
+      <h2>Products</h2>
       <article className="article">
         {items?.map((i) => (
-          <div key={i.id}>
-            <img src={i.img} className={style.productImg} />
-            <span className='product_name'>{i.name}</span>
-            <span className='product_price'>Price: ${i.cost}</span>
-            <button onClick={() => dispatch(addOneToCart(i))}>+</button>
-            <span className='product_quantity'>{i.quantity}</span>
-            <button onClick={() => dispatch(removeFromCart(i))}>-</button>
+          <div className={style.column}>
+          <div key={i.id} className={style.containerPr}>
+          <div className={style.swiperCard}>
+            <SwiperCard props={i.img} />
+            </div>
+            <span className={style.productName}>{i.name}</span>
+            <span className={style.productPrice}>${i.cost * i.quantity}</span>
+            <button onClick={() => dispatch(removeFromCart(i))} className={style.quantity}>-</button>
+            <span className={style.textQuantity}>{i.quantity}</span>
+            <button onClick={() => dispatch(addOneToCart(i))} className={style.quantity}>+</button>
+            </div>
+            <div className={style.linear}></div>
           </div>
         ))}
       </article>
+      <div className={style.containerTotal}>
+      <button onClick={() => dispatch(clearCart())} className={style.containerButton}><img src={trash} alt='trash' className={style.iconTrash}/></button>
       <h1>Total: {total} USD</h1>
-      <button onClick={() => dispatch(clearCart())}>Clear</button>
+      </div>
+      </div>
       <div>
         <PurchaseForm />
       </div>
