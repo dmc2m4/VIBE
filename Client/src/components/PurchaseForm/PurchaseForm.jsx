@@ -16,6 +16,7 @@ export const PurchaseForm = () => {
           name={name}
           placeholder={nameFormatted}
           onChange={handleChange}
+          className={style.inputForm}
         />
       </div>
     );
@@ -37,23 +38,50 @@ export const PurchaseForm = () => {
   return (
     <div className={style.container}>
       <form onSubmit={(e) => handleSubmit(e)} className={style.paymentForm}>
+      <div className={style.containerForm}>
+      <div>
+      <div className={style.containerMinTitle}>
+      <h3>Dates</h3>
+      </div>
+      <div className={style.containerInputs}>
         {addInput("name", "text")}
         {addInput("surname", "text")}
+        </div>
+        <div className={style.containerInputs}>
         {addInput("email", "text")}
         {addInput("phone", "text")}
+        </div>
+        <div className={style.containerInputs}>
         {addInput("zip_code", "text")}
         {addInput("street_name", "text")}
+        </div>
+        <div className={style.containerInputs}>
         {addInput("street_number", "text")}
-        <h3>Shipments</h3>
+        </div>
+        </div>
+        <div>
+        <div className={style.containerMinTitle}>
+        <h3 className={style.minTitle}>Shipments</h3>
+        </div>
+        <div className={style.containerInputs}>
         {addInput("zip_code", "text")}
         {addInput("street_name", "text")}
+        </div>
+        <div className={style.containerInputs}>
         {addInput("street_number", "text")}
         {addInput("floor", "text")}
+        </div>
+        <div className={style.containerInputs}>
         {addInput("apartament", "text")}
         {addInput("city_name", "text")}
+        </div>
+        <div className={style.containerInputs}>
         {addInput("state_name", "text")}
         {addInput("country_name", "text")}
-        <button type="submit">Request Payment</button>
+        </div>
+        </div>
+        </div>
+        <button type="submit" className={style.buttonCar}>Request Payment</button>
       </form>
       {pay ? null : <MercadoPagoIntegration items={input} />}
     </div>
