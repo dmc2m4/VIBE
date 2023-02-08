@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import postComment from "../../../redux/actions/postComment";
+import putComment from "../../../redux/actions/putComment";
 
-const CommentForm = (props) => {
+const ResponseForm = (props) => {
   const dispatch = useDispatch();
   const [input, setInput] = useState({
-    question: "",
     response: "",
-    email: props.email,
     id: props.id,
   });
+
 
   const user = useSelector((state) => state.User);
 
@@ -21,31 +20,31 @@ const CommentForm = (props) => {
   };
 
   const handleSubmit = () => {
-    dispatch(postComment(input));
+    dispatch(putComment(input));
   };
 
   return (
     <div>
       {user?.isAdmin ? (
-        ""
-      ) : (
         <form onSubmit={handleSubmit}>
           <div>
             <input
               type="text"
-              name="question"
-              id="question"
-              placeholder="make your question"
+              name="response"
+              id="response"
+              placeholder="make your response"
               onChange={handleInputChange}
             ></input>
           </div>
           <div>
-            <button type="submit">Send question</button>
+            <button type="submit">Send response</button>
           </div>
         </form>
+      ) : (
+        ""
       )}
     </div>
   );
 };
 
-export default CommentForm;
+export default ResponseForm;

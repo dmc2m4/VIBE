@@ -8,15 +8,9 @@ export const Add = () => {
   const navigate = useNavigate()
   const user = useSelector(state => state.User)
   const [input, setInput] = useState({
-    email: user.email,
-    street: "",
-    number: "",
-    zipCode: "",
-    province: "",
-    location: "",
-    apartment: "",
-    description: "",
+    email: user.email
   });
+  
   const dispatch = useDispatch();
 
   function handleChange(e) {
@@ -29,11 +23,11 @@ export const Add = () => {
   function handleSubmit(e) {
     e.preventDefault();
     dispatch(createAddresses(input));
-    navigate('/myaccount/direction')
+    navigate('/myaccount/addresses')
   }
   return (
     <div className={style.container}>
-      <Link to='/myaccount/direction'>
+      <Link to='/myaccount/addresses'>
         <button>Back</button>
       </Link>
       <form onSubmit={(e) => handleSubmit(e)}>

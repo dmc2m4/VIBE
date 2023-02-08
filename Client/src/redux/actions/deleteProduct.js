@@ -3,16 +3,16 @@ import axios from "axios";
 import {API_URL} from "../../config";
 
 
-export const deleteProduct = (value) => {
+export const deleteProduct = (id) => {
   return async function (dispatch) {
     try {
-      await axios.post(`${API_URL}/product/destroy`, value);
+      await axios.post(`${API_URL}/product/destroy`, {id: id});
       dispatch({
         type: types.DELETE_PRODUCT,
-        payload: value,
+        payload: id,
       });
     } catch (error) {
-      return alert("the activity couldn`t be deleted"); 
+      return alert("the product couldn`t be deleted"); 
     }
   };
 };

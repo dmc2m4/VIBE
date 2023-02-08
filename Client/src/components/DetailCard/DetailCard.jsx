@@ -7,6 +7,8 @@ import { addToCart } from "../../redux/actions/shoppingCart";
 import style from "./DetailCard.module.css";
 import SwiperCard from "../SwiperCard/SwiperCard";
 import CommentForm from "./CommentForm/CommentForm";
+import ResponseForm from "./CommentForm/ResponseComment";
+import deleteComment from "../../redux/actions/deleteComment";
 
 const DetailCard = () => {
   const detail = useSelector((state) => state.Detail);
@@ -14,8 +16,8 @@ const DetailCard = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const array = [1, 2, 3, 4, 5];
-  const user = sessionStorage.getItem("userEmail")
-
+  const user = sessionStorage.getItem("userEmail");
+  const stateUser = useSelector((state) => state.User);
 
   function addToCar() {
     dispatch(addToCart(detail));
@@ -29,34 +31,11 @@ const DetailCard = () => {
     };
   }, [dispatch, id]);
 
-  // const images = detail.img.split(",");
-  function setImages(det) {
-    const images = det.img;
-    return (
-      <div className={style.containerImg}>
-        {images.split("").map((element) => {
-          return (
-            <img src={element} alt="images" className={style.productImg} />
-          );
-        })}
-      </div>
-    );
-  }
+  const handleDelete = (e) => {
+    e.preventDefault()
+    dispatch(deleteComment(e.target.value));
+  };
 
-  // function addSelect(name, arr) {
-  //   const nameFormatted = name.charAt(0).toUpperCase() + name.slice(1);
-  //   return (
-  //     <div className={style.containerInput}>
-  //       <label>{nameFormatted}</label>
-  //       <select onChange={handleChange} name={name} className={style.inputForm}>
-  //         {<option hidden>{nameFormatted}</option>}
-  //         {arr.map((element) => {
-  //           return <option value={element}>{element}</option>;
-  //         })}
-  //       </select>
-  //     </div>
-  //   );
-  // }
   return (
     <div className={style.container}>
       <div className={style.back}>
@@ -69,24 +48,6 @@ const DetailCard = () => {
         </Link>
       </div>
       <div className={style.containerProduct}>
-        {/* {images.map((element) => {
-          return (
-            <div className={style.containerImg}>
-              <img
-                src={element}
-                alt="Image Product"
-                className={style.productImg}
-              />
-            </div>
-          );
-        })} */}
-        {/* {detail.img?.split(",").map((element) => {
-          return (
-            <div className={style.containerImg}>
-              <img src={element} alt="images" className={style.productImg} />
-            </div>
-          );
-        })} */}
         <div className={style.containerImg}>
           <SwiperCard props={detail.img} />
         </div>
@@ -150,33 +111,25 @@ const DetailCard = () => {
               <p>{m.rating}</p>
               <p>{m.text}</p>
             </div>
-          )
+          );
         })}
-        <CommentForm
-        id={id}
-        email={user}
-        />
+        <CommentForm id={id} email={user} />
         {detail.Comments?.map((m) => {
           return (
             <div>
-              <img src ={m.users && m.users[0].img} alt="imagen"/>
+              {stateUser.isAdmin ? (
+                ""
+              ) : (
+                <button value={m.id} onClick={(e) => handleDelete(e)}>x</button>
+              )}
+              <img src={m.users && m.users[0].img} alt="imagen" />
               <h2>{m.users && m.users[0].email}</h2>
               <p>{m.question}</p>
-              <p>{m.response? m.response: <button>responder pregunta</button>}</p>
+              <p>{m.response ? m.response : <ResponseForm id={m.id} />}</p>
             </div>
-          )
+          );
         })}
-        {/* {detail.reviews?.map((m) => (
-        
-        ))} */}
       </div>
-      {/* <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque
-        asperiores illum ea rerum rem non quia, dolor hic dolorem nemo aut
-        deserunt odio enim dicta amet iusto vero. Aliquam, laudantium.
-      </p> */}
-      {/* <textarea name="comments" id="comments" cols="100" rows="10"></textarea>
-      <button>Add comment</button> */}
     </div>
   );
 };

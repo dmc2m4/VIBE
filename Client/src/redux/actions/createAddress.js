@@ -1,12 +1,17 @@
 import axios from "axios";
-import {API_URL} from "../../config"
+import { API_URL } from "../../config";
+import types from "./types";
 
 const createAddresses = (value) => {
-  return async function () {
-    try{
-      await axios.post(`${API_URL}/user/address`, value)
-    }catch(error){
-      return alert (error.message)
+  return async function (dispatch) {
+    try {
+      await axios.post(`${API_URL}/user/address`, value);
+      dispatch({
+        type: types.CREATE_ADDRESS,
+        payload: value,
+      });
+    } catch (error) {
+      return alert(error.message);
     }
   };
 };

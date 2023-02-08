@@ -1,5 +1,12 @@
 const { User, Product, Address } = require("../db.js");
 
+const getUser = async (value) => {
+  const getUser = await User.findOne({
+    where: { email: value },
+  });
+  return getUser;
+};
+
 const getAllUsers = async () => {
   const allUsers = await User.findAll({
     include: [
@@ -7,6 +14,7 @@ const getAllUsers = async () => {
         model: Product,
         as: "favorites",
       },
+      { model: Address },
     ],
   });
   return allUsers;
@@ -33,6 +41,12 @@ const loginUser = async (value) => {
       name: value.name,
       img: value.picture,
     },
+    include: [
+      {
+        model: Address
+      }
+      
+    ],
   });
   return findUser;
 };
@@ -81,4 +95,5 @@ module.exports = {
   loginUser,
   getUserAdresses,
   putUsers,
+  getUser,
 };
