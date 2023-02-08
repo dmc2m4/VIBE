@@ -63,8 +63,8 @@ const { User, Product, Review, Address, Comment } = sequelize.models;
   User.belongsToMany(Address, { through: 'User_Addresses'});
   Address.belongsTo(User, { through: 'User_Addresses'});
 
-  User.belongsToMany(Product, { through: 'purchases'});
-  Product.belongsToMany(User, { through: 'purchases'});
+  User.belongsToMany(Product, { through: 'purchases_products', as: "purchases"});
+  Product.belongsToMany(User, { through: 'purchases_products', as: "purchases"});
 
   Review.belongsTo(Product, {through: 'product_review'});
   Product.belongsToMany(Review, {through: 'product_review'});

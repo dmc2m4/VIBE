@@ -75,7 +75,7 @@ const payProduct = async (data) => {
     .catch(function (err) {
       return { err: err };
     });
-  return mp;
-};
+    return mp;
+  };
 
 module.exports = { payProduct };

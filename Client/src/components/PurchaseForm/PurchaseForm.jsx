@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import MercadoPagoIntegration from "../MercadoPagoIntegration/MercadoPagoIntegration";
-
+import style from './PurchaseForm.module.css'
 export const PurchaseForm = () => {
   const [input, setInput] = useState({});
   const [pay, setPay] = useState(true);
@@ -8,7 +8,7 @@ export const PurchaseForm = () => {
   function addInput(name, type) {
     const nameFormatted = name.charAt(0).toUpperCase() + name.slice(1);
     return (
-      <div>
+      <div className={style.containerInput}>
         <label>{nameFormatted}</label>
         <input
           type={type}
@@ -35,8 +35,8 @@ export const PurchaseForm = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={(e) => handleSubmit(e)} className="payment-form">
+    <div className={style.container}>
+      <form onSubmit={(e) => handleSubmit(e)} className={style.paymentForm}>
         {addInput("name", "text")}
         {addInput("surname", "text")}
         {addInput("email", "text")}

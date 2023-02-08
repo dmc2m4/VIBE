@@ -10,30 +10,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import ShoppingSlider from "../ShoppingSlider/ShoppingSlider";
 import updateFilters from "../../redux/actions/updateFilters";
-import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import getFavorites from "../../redux/actions/getFavorites";
 import getPage from "../../redux/actions/getPage";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
+  const user3 = useSelector(state => state.User)
   const user = sessionStorage.getItem("userEmail")
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  useEffect(()=>{
+    if(!user3){
+      dispatch(loginUser(user))
+    }
+  },[dispatch])
+
   const handleToggle = () => {
     setToggle(!toggle);
   };
-
-  // function handleChange(e) {
-  //   const newCategory = {
-  //     [e.target.name]: e.target.value,
-  //   };
-  //   if (e.target.value === "all") {
-  //     delete newCategory[e.target.name];
-  //   }
-  //   dispatch(updateFilters(newCategory));
-  //   dispatch(cleanPage());
-  // }
 
   const handleToggleAll = () => {
     setToggle(false);

@@ -1,18 +1,54 @@
 import React from "react";
 import {useSelector } from "react-redux";
-import Card from "../Card/Card"
 import style from './Favorites.module.css'
-
-
+import { Link } from "react-router-dom";
+import SwiperCard from "../SwiperCard/SwiperCard";
+import eyes from '../../assets/ojo.png'
+import car from '../../assets/carrito-de-compras.png'
 const Favorites = () => {
   const favorites = useSelector(state => state.Favorites);
   const user = useSelector(state => state.User);
-  console.log(favorites)
+console.log(favorites)
 
 
   return (
     <div className={style.container}>
-      {favorites?.map((product) => (
+    <div className={style.containerTable}>
+        <section className={style.table}>
+        <div className={style.containerTitle}>
+        <h3>Favorites</h3>
+        </div>
+       {favorites?.map((product) => (
+        <div className={style.link}>
+          <div className={style.product}>
+                  <div className={style.product_img}>
+                  <SwiperCard props={product.img} />
+                  </div>
+                  <div className={style.name}>
+                  <p>{product.name}</p>
+                </div>
+                <div>
+                <Link to={`/productDetail/${product.id}`} >
+                <div className={style.containerIconFavorite}>
+                  <img src={eyes} className={style.iconFavorite}/>
+                  </div>
+                  </Link>
+                  <div  className={style.containerIconFavorite}>
+                  <img src={car} className={style.iconFavorite}/>
+                  </div>
+                </div>
+                </div>
+                
+            
+               
+                </div>
+       ))}
+        </section>
+    </div>
+
+
+      
+      {/*favorites?.map((product) => (
         <div className={style.card}>
             <Card
               name={product.name}
@@ -30,7 +66,7 @@ const Favorites = () => {
               email={user? user.email: null}
             />
             </div>
-          ))}
+          ))*/}
     </div>
   )
 };
