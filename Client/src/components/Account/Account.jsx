@@ -35,6 +35,7 @@ const Account = () => {
           onClick={() => {
             clearCacheData();
             sessionStorage.removeItem('userEmail');
+            localStorage.removeItem('globalCart')
           }}
         >
           {" "}
