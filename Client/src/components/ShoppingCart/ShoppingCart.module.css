@@ -1,7 +1,78 @@
 .container{
-    margin-top: 4.4rem;
+    margin-top: 4rem;
+    font-family: "Bebas Neue", cursive;
 }
 
 .productImg {
     width: 15rem;
+}
+.containerProduct{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.title{
+  margin-top: 4rem;
+}
+.swiperCard{
+    width: 4rem;
+    height: 4rem;
+    margin-bottom: 4rem;
+    margin-right: 4rem;
+}
+.containerPr{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.productName{
+    margin-right: 4rem;
+    font-size: 1.7rem;
+    width: 300px;
+}
+.productPrice{
+    margin-right: 4rem;
+    font-size: 1.7rem;
+}
+
+.quantity{
+    background-color: black;
+    color: white;
+    border-radius: 4px;
+    margin-right: 0.5rem;
+}
+.textQuantity{
+    margin-right: 0.5rem;
+    font-size: 1.4rem;
+}
+.linear{
+    height: 2px;
+    width: 90%;
+    background-color: rgb(197, 195, 195);
+
+}
+.column{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.containerTotal{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.iconTrash{
+    width: 2rem;
+    height: 2rem;
+}
+.containerButton{
+    background-color: black;
+    border-radius: 5px;
 }
