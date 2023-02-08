@@ -11,6 +11,7 @@ const Account = () => {
       });
     });
   };
+  
 
   return (
     <div className={style.menu}>
@@ -21,7 +22,7 @@ const Account = () => {
           </a>
         </li>
         <li>
-          <Link to='/myaccount'>
+          <Link to='/myaccount' >
             My Account
           </Link>
         </li>

@@ -100,7 +100,7 @@ const Navbar = () => {
             <img src={user2} alt="user" className={style.imgNav} />
           </li>
         </div>
-        {toggle && <Account />}
+        {toggle && <Account/>}
       </nav>
     </div>
   );
