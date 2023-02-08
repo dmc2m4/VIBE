@@ -201,6 +201,15 @@ export default function rootReducer(state = initialState, action) {
       },
     };
   }
+  if (action.type === types.DELETE_COMMENT) {
+    return {
+      ...state,
+      Detail: {
+        ...state.Detail,
+        Comment: state.Detail.Comment?.filter((e) => e.id !== action.payload),
+      },
+    };
+  }
 
   return { ...state };
 }
