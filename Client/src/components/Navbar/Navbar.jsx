@@ -10,59 +10,41 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import ShoppingSlider from "../ShoppingSlider/ShoppingSlider";
 import updateFilters from "../../redux/actions/updateFilters";
-import cleanPage from "../../redux/actions/cleanPage";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import getFavorites from "../../redux/actions/getFavorites";
 import getPage from "../../redux/actions/getPage";
+import loginUser from "../../redux/actions/userLogin";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
-  const user = useSelector((state) => state.User);
+  const user = sessionStorage.getItem("userEmail")
   const dispatch = useDispatch();
-  const [category, setCategory] = useState({ category: undefined });
   const navigate = useNavigate();
-
-  useEffect(() => {
-    dispatch(updateFilters(category));
-  }, [dispatch, category]);
-  const categories = [
-    "all",
-    "shirts",
-    "t-shirts",
-    "pants",
-    "shoes",
-    "shorts",
-    "jackets",
-    "sweatshirts",
-  ];
 
   const handleToggle = () => {
     setToggle(!toggle);
   };
-  function handleChange(e) {
-    const newCategory = {
-      [e.target.name]: e.target.value,
-    };
-    if (e.target.value === "all") {
-      delete newCategory[e.target.name];
-    }
-    dispatch(updateFilters(newCategory));
-    dispatch(cleanPage());
-  }
+
+  // function handleChange(e) {
+  //   const newCategory = {
+  //     [e.target.name]: e.target.value,
+  //   };
+  //   if (e.target.value === "all") {
+  //     delete newCategory[e.target.name];
+  //   }
+  //   dispatch(updateFilters(newCategory));
+  //   dispatch(cleanPage());
+  // }
 
   const handleToggleAll = () => {
     setToggle(false);
   };
 
   const favButton = () => {
-    dispatch(getFavorites(user.email));
-    navigate(`/favorites/${user.email}`);
+    dispatch(getFavorites(user));
+    navigate(`/favorites/${user}`);
   };
   const cleanProducts = () => {
-    dispatch(getPage());
-  };
-
-  const shopButton = () => {
     dispatch(getPage());
   };
 

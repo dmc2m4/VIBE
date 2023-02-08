@@ -26,7 +26,7 @@ const App = () => {
   const location = useLocation();
   return (
     <div className="App">
-      {location.pathname === "/" ? null : <Navbar />}
+      {location.pathname === "/" ? null : <About/> &&  <FrequentQuestions/> && <Navbar/>}
       <Routes>
         <Route exact path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />

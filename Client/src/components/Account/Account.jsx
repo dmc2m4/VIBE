@@ -33,6 +33,7 @@ const Account = () => {
         <li
           onClick={() => {
             clearCacheData();
+            sessionStorage.removeItem('userEmail');
           }}
         >
           {" "}
