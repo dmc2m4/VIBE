@@ -7,7 +7,7 @@ import style from "./Filters.module.css";
 const Filters = () => {
   const dispatch = useDispatch();
   const colorList = [
-    "all",
+    "All",
     "red",
     "blue",
     "green",
@@ -18,10 +18,28 @@ const Filters = () => {
     "grey",
     "pink",
   ];
-  const sizeList = ["all", "L", "M", "S", "XS", "XL"];
-
+  function setSize() {
+    if (filters["category"] === "shoes") {
+      return [
+        "All",
+        "33",
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40",
+        "41",
+        "42",
+        "43",
+        "44",
+      ];
+    }
+    return ["All", "XXS", "XS", "S", "M", "L", "XL", "XXL"];
+  }
   const categoryList = [
-    "all",
+    "All",
     "shirts",
     "t-shirts",
     "pants",
@@ -38,7 +56,7 @@ const Filters = () => {
       ...filters,
       [e.target.name]: e.target.value,
     };
-    if (e.target.value === "all") {
+    if (e.target.value === "All") {
       delete newFilters[e.target.name];
     }
     dispatch(updateFilters(newFilters));
@@ -47,122 +65,179 @@ const Filters = () => {
 
   return (
     <div className={style.container}>
-      <select
-        name="color"
-        id="color"
-        onChange={handleChange}
-        className={style.selectFilter}
-      >
-        <option disabled selected>
-          Color
-        </option>
+        <h4>Colours</h4>
+      <div className={style.contentBox}>
         {colorList.map((color, i) => (
-          <option
-            name="color"
+          <button
+            className={style.miniColour}
             value={color}
-            key={i}
+            name="color"
+            onClick={handleChange}
             selected={filters["color"] === color ? true : false}
+            style={
+              filters["color"] === color
+                ? { border: "5px solid", borderColor: "rgb(25, 110, 86)" }
+                : null
+            }
           >
+            <span
+              key={i}
+              style={{
+                background: `${color}`,
+                height: 40,
+                width: 40,
+                borderRadius: 4,
+              }}
+            />
             {color}
-          </option>
+          </button>
         ))}
-      </select>
-      <select
+      </div>
+      <h4>Size</h4>
+      <div
         name="size"
         id="size"
         onChange={handleChange}
-        className={style.selectFilter}
+        className={style.contentBox}
       >
-        <option disabled selected>
-          Size
-        </option>
-        {sizeList.map((size, i) => (
-          <option
+        {setSize().map((size, i) => (
+          <button
             name="size"
             value={size}
             key={i}
+            onClick={handleChange}
             selected={filters["size"] === size ? true : false}
+            style={
+              filters["size"] === size
+                ? { border: "5px solid", borderColor: "rgb(25, 110, 86)" }
+                : null
+            }
+            className={style.sizeSelections}
           >
             {size}
-          </option>
+          </button>
         ))}
-      </select>
-      <select
+      </div>
+      <h4>Category</h4>
+      <div
         name="category"
         id="category"
         onChange={handleChange}
-        className={style.selectFilter}
+        className={style.contentBox}
       >
-        <option disabled selected>
-          Categories
-        </option>
         {categoryList.map((category, i) => (
-          <option
+          <button
             name="category"
             value={category}
             key={i}
+            onClick={handleChange}
             selected={filters["category"] === category ? true : false}
+            style={
+              filters["category"] === category
+                ? { border: "5px solid", borderColor: "rgb(25, 110, 86)" }
+                : null
+            }
+            className={style.selections}
           >
             {category}
-          </option>
+          </button>
         ))}
-      </select>
-      <select
+      </div>
+      <h4>Alphabetically</h4>
+      <div
         name="alphabetically"
         id="alphabetically"
+        className={style.contentBox}
         onChange={handleChange}
-        className={style.selectFilter}
       >
-        <option disabled selected>
-          Alphabet
-        </option>
-        <option
-          value="all"
-          selected={filters["alphabetically"] === "all" ? true : false}
+        <button
+          name="alphabetically"
+          value="All"
+          onClick={handleChange}
+          selected={filters["alphabetically"] === "All" ? true : false}
+          style={
+            filters["alphabetically"] === "All"
+              ? { border: "5px solid", borderColor: "rgb(25, 110, 86)" }
+              : null
+          }
+          className={style.selections}
         >
           All
-        </option>
-        <option
+        </button>
+        <button
+          name="alphabetically"
           value="A-Z"
+          onClick={handleChange}
           selected={filters["alphabetically"] === "A-Z" ? true : false}
+          style={
+            filters["alphabetically"] === "A-Z"
+              ? { border: "5px solid", borderColor: "rgb(25, 110, 86)" }
+              : null
+          }
+          className={style.selections}
         >
           A-Z
-        </option>
-        <option
+        </button>
+        <button
+          name="alphabetically"
           value="Z-A"
+          onClick={handleChange}
           selected={filters["alphabetically"] === "Z-A" ? true : false}
+          style={
+            filters["alphabetically"] === "Z-A"
+              ? { border: "5px solid", borderColor: "rgb(25, 110, 86)" }
+              : null
+          }
+          className={style.selections}
         >
           Z-A
-        </option>
-      </select>
-      <select
-        name="price"
-        id="price"
-        onChange={handleChange}
-        className={style.selectFilter}
-      >
-        <option disabled selected>
-          Price
-        </option>
-        <option
-          value="all"
-          selected={filters["price"] === "all" ? true : false}
+        </button>
+      </div>
+      <h4>Price</h4>
+      <div name="price" id="price" className={style.contentBox}>
+        <button
+          value="All"
+          name="price"
+          onClick={handleChange}
+          selected={filters["price"] === "All" ? true : false}
+          style={
+            filters["price"] === "All"
+              ? { border: "5px solid", borderColor: "rgb(25, 110, 86)" }
+              : null
+          }
+          className={style.selections}
         >
-          all
-        </option>
-        <option
+          All
+        </button>
+        <button
+          name="price"
           value="Ascending Price"
+          onClick={handleChange}
           selected={filters["price"] === "Ascending Price" ? true : false}
+          style={
+            filters["price"] === "Ascending Price"
+              ? { border: "5px solid", borderColor: "rgb(25, 110, 86)" }
+              : null
+          }
+          className={style.selections}
         >
           Ascending Price
-        </option>
-        <option
+        </button>
+        <button
+          name="price"
           value="Descending Price"
+          onClick={handleChange}
           selected={filters["price"] === "Descending Price" ? true : false}
+          style={
+            filters["price"] === "Descending Price"
+              ? { border: "5px solid", borderColor: "rgb(25, 110, 86)" }
+              : null
+          }
+          className={style.selections}
         >
           Descending Price
-        </option>
-      </select>
+        </button>
+      </div>
     </div>
   );
 };
