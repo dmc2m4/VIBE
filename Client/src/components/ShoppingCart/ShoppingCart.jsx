@@ -10,7 +10,6 @@ import style from "./ShoppingCart.module.css";
 
 const ShoppingCart = () => {
   const { items, total } = useSelector((state) => state.Cart);
-  sessionStorage.setItem("cart", items);
   const dispatch = useDispatch();
   return (
     <div className={style.container}>
