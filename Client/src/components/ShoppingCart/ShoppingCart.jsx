@@ -14,9 +14,7 @@ import trash from '../../assets/papelera-de-reciclaje.png'
 
 const ShoppingCart = () => {
   const { items, total } = useSelector((state) => state.Cart);
-  sessionStorage.setItem('cart', items)
   const dispatch = useDispatch();
-
   return (
     <div className={style.container}>
     <div className={style.containerProduct}>
