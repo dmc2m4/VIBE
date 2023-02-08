@@ -1,3 +1,4 @@
+const { API_URL } = require("../../config");
 const { mercadopago } = require("../Utils/mercadoPago");
 
 const payProduct = async (data) => {
@@ -41,6 +42,7 @@ const payProduct = async (data) => {
     additional_info: data.additional_info,
     items: data.Cart.items.map((e) => {
       let newItem = {
+        id: e.id,
         picture_url: e.img,
         title: e.name,
         unit_price: parseInt(e.cost * 1.15),
@@ -59,15 +61,16 @@ const payProduct = async (data) => {
     //   },
     // ],
     back_urls: {
-      success: "http://localhost:5173/success",
-      failure: "http://localhost:5173/failure",
-      pending: "http://localhost:5173/pending",
+      success: `${API_URL}/home?status=aproved`,
+      failure: `${API_URL}/home?status=failure`,
+      pending: `${API_URL}/home?status=pending`,
     },
     auto_return: "approved",
   };
   const mp = mercadopago.preferences
     .create(preference)
     .then(function (response) {
+      console.log(response);
       return {
         global: response.body.id,
       };
@@ -75,6 +78,7 @@ const payProduct = async (data) => {
     .catch(function (err) {
       return { err: err };
     });
+    
     return mp;
   };
 

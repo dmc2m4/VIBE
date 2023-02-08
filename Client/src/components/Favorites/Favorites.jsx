@@ -7,9 +7,7 @@ import eyes from '../../assets/ojo.png'
 import car from '../../assets/carrito-de-compras.png'
 const Favorites = () => {
   const favorites = useSelector(state => state.Favorites);
-  const user = useSelector(state => state.User);
-console.log(favorites)
-
+  const user = sessionStorage.getItem("userEmail")
 
   return (
     <div className={style.container}>
@@ -63,7 +61,7 @@ console.log(favorites)
               rating={product.rating}
               id={product.id}
               key={product.id}
-              email={user? user.email: null}
+              email={user}
             />
             </div>
           ))*/}
