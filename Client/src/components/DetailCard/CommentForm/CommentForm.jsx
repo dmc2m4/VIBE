@@ -2,8 +2,7 @@ import React, { useState} from "react";
 import { useDispatch} from "react-redux";
 import { useNavigate } from "react-router-dom";
 import postComment from "../../../redux/actions/postComment";
-import style from './CommentForm.module.css'
-
+import style from "./CommentForm.module.css";
 
 const CommentForm = (props) => {
     const dispatch = useDispatch();
@@ -14,12 +13,12 @@ const CommentForm = (props) => {
         id: props.id
     })
 
-    const handleInputChange = (e) => {
-        setInput({
-            ...input,
-            [e.target.name]: e.target.value,
-        })
-    }
+  const handleInputChange = (e) => {
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
+    });
+  };
 
     const handleSubmit = () => {
         dispatch(postComment(input)).then(res => {
@@ -27,25 +26,28 @@ const CommentForm = (props) => {
         })
     }
 
-    return (
-        <div className={style.container}>
-            <form onSubmit={handleSubmit} className={style.containerForm}>
-            <div className={style.containerComment}>
-            <label className={style.text}>Ask the seller</label>
-            <input 
+  return (
+    <div className={style.container}>
+      <form onSubmit={handleSubmit} className={style.containerForm}>
+        <div className={style.containerComment}>
+          <label className={style.text}>Ask to the seller</label>
+          <input
             type="text"
-            name = "question"
-            id = "question"
+            name="question"
+            id="question"
             onChange={handleInputChange}
-            placeholder="Write a question..."
-            className={style.inputComment}></input>
-            </div>
-            <div className={style.containerButton}>
-                <button type="submit" className={style.buttonComment}>Send question</button>
-            </div>
-            </form>
+            placeholder="Ask a question..."
+            className={style.inputComment}
+          ></input>
         </div>
-    )
-}
+        <div className={style.containerButton}>
+          <button type="submit" className={style.buttonComment}>
+            Send question
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};
 
 export default CommentForm;
