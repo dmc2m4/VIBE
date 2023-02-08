@@ -7,7 +7,7 @@ import { deleteProduct } from "../../redux/actions/deleteProduct";
 export default function Products() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.Products);
-  const user = useSelector((state) => state.User);
+  const user = sessionStorage.getItem("userEmail")
 
   function deleteProducts(product) {
     dispatch(deleteProduct(product));
@@ -33,7 +33,7 @@ export default function Products() {
               id={product.id}
               key={product.id}
               deleteProduct={deleteProducts}
-              email={user.email}
+              email={user}
             />
           ))}
         </div>
