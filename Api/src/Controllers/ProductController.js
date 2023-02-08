@@ -24,6 +24,7 @@ const postProduct = async (value) => {
 };
 
 const destroyProduct = async (id) => {
+  console.log(id);
   await Product.destroy({
     where: {
       id: id,

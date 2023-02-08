@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import car from "../../assets/car.png";
 import style from './ShoppingSlider.module.css'
+import SwiperCard from '../SwiperCard/SwiperCard'
 
 const ShoppingSlider = () => {
   const [cart, setCart] = useState(false);
@@ -17,31 +18,31 @@ const ShoppingSlider = () => {
     >
       <img src={car} alt="cary" className={style.shopping_img} />
       {cart ? (
+       
         <div className={style.cart_list}>
         <h2 className={style.titleCart}>My shopping Cart</h2>
           {product.items.length ? (
             product.items.map((e, i) => {
               
               return (
+                <Link to={`/productDetail/${e.id}`} className={style.link}>
                 <div className={style.product}>
-                  <img
-                    className={style.product_img}
-                    key={i}
-                    src={e.img}
-                    alt={e.name}
-                  />
+                  <div className={style.product_img}>
+                  <SwiperCard props={e.img} />
+                  </div>
                   <div className={style.name}>
                   <p>{e.name}</p>
                 </div>
                 <div className={style.cost}>
                   <label>Price</label>
-                  <p>{e.cost}</p>
+                  <p>{e.cost}$</p>
                 </div>
                 <div className={style.containerCat}>
                   <label>Cant.</label>
                   <span className={style.product_quantity}>{e.quantity}</span>
                 </div>
                 </div>
+                </Link>
               );
             })
           ) : (

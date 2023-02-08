@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import postComment from "../../../redux/actions/postComment";
+import style from './CommentForm.module.css'
+
 
 const CommentForm = (props) => {
   const dispatch = useDispatch();
@@ -24,28 +26,25 @@ const CommentForm = (props) => {
     dispatch(postComment(input));
   };
 
-  return (
-    <div>
-      {user?.isAdmin ? (
-        ""
-      ) : (
-        <form onSubmit={handleSubmit}>
-          <div>
-            <input
-              type="text"
-              name="question"
-              id="question"
-              placeholder="make your question"
-              onChange={handleInputChange}
-            ></input>
-          </div>
-          <div>
-            <button type="submit">Send question</button>
-          </div>
-        </form>
-      )}
-    </div>
-  );
-};
+    return (
+      <div className={style.container}>
+            <form onSubmit={handleSubmit} className={style.containerForm}>
+            <div className={style.containerComment}>
+            <label className={style.text}>Ask the seller</label>
+            <input 
+            type="text"
+            name = "question"
+            id = "question"
+            placeholder="Write a question..."
+            className={style.inputComment}></input>
+            onChange={handleInputChange}></input>
+            </div>
+            <div className={style.containerButton}>
+            <button type="submit" className={style.buttonComment}>Send question</button>
+            </div>
+            </form>
+        </div>
+    )
+}
 
 export default CommentForm;

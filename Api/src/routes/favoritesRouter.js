@@ -1,8 +1,10 @@
 const { Router } = require("express");
 
 const {
-    postFavorites, getFavoritesByUser, deleteFavorites
-} = require("../Controllers/FavoritesController")
+  postFavorites,
+  getFavoritesByUser,
+  deleteFavorites,
+} = require("../Controllers/FavoritesController");
 const favoritesRouter = Router();
 
 favoritesRouter.post("/", async (req, res) => {
@@ -35,4 +37,4 @@ favoritesRouter.post("/", async (req, res) => {
     }
 })
 
-module.exports = favoritesRouter
+module.exports = favoritesRouter;
