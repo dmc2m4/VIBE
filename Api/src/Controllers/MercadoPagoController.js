@@ -61,9 +61,9 @@ const payProduct = async (data) => {
     //   },
     // ],
     back_urls: {
-      success: `${API_URL}/home?status=aproved`,
-      failure: `${API_URL}/home?status=failure`,
-      pending: `${API_URL}/home?status=pending`,
+      success: `${API_URL}/home?status=approved`,
+      failure: `${API_URL}/`,
+      pending: `${API_URL}/`,
     },
     auto_return: "approved",
   };
