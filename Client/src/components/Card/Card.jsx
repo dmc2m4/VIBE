@@ -10,6 +10,7 @@ import SwiperCard from "../SwiperCard/SwiperCard";
 import getFavorites from "../../redux/actions/getFavorites";
 
 const Card = (props) => {
+  console.log(props)
   const dispatch = useDispatch();
   const favorites = useSelector(state => state.Favorites);
   const user2 = sessionStorage.getItem("userEmail")
@@ -39,8 +40,9 @@ const Card = (props) => {
   }
 
   return (
-    <div className={style.container} >
-      {user.isAdmin?<button
+     <div className={style.container} >
+      {props.stock?<div>
+        {user.isAdmin?<button
         onClick={() => props.deleteProduct(props.id)}
         className={style.delete}>X</button>: null}
       <Link to={`/productDetail/${props.id}`}
@@ -76,8 +78,10 @@ const Card = (props) => {
           </div>
         </div>
       </div>
+      </div>:null}
+      
     </div>
-  );
+    );
 };
 
 export default Card;
