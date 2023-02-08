@@ -7,6 +7,7 @@ const productRouter = require("./productRouter");
 const paginationRouter = require("./paginationRouter");
 const favoritesRouter = require("./favoritesRouter.js");
 const commentRouter = require("./commentRouter")
+const purchasesRouter = require("./purchasesRouter.js")
 
 const router = Router();
 
@@ -16,4 +17,5 @@ router.use("/product", productRouter);
 router.use("/pagination", paginationRouter);
 router.use("/favorites", favoritesRouter);
 router.use("/comment", commentRouter);
+router.use("/purchases", purchasesRouter);
 module.exports = router;

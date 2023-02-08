@@ -12,6 +12,7 @@ import getFavorites from "../../redux/actions/getFavorites";
 const Card = (props) => {
   const dispatch = useDispatch();
   const favorites = useSelector(state => state.Favorites);
+  const user2 = sessionStorage.getItem("userEmail")
   const user = useSelector(state => state.User)
 
   const searchingFav = favorites.filter(f => f.id === props.id)
@@ -19,14 +20,14 @@ const Card = (props) => {
   function favBotton() {
     dispatch(setFavorites(props))
       .then(res => {
-        dispatch(getFavorites(user.email));
+        dispatch(getFavorites(user2));
       })
   }
 
   function deleteFav() {
     dispatch(deleteFavorites(props))
       .then(res => {
-        dispatch(getFavorites(user.email));
+        dispatch(getFavorites(user2));
       })
   }
 
