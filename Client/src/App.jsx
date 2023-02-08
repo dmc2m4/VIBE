@@ -21,6 +21,7 @@ import { Add } from "./components/MyAccount/Add";
 import Shop from "./components/Shop/Shop";
 import ReviewForm from "./components/ReviewForm/ReviewForm";
 import FrequentQuestions from "./components/FrequentQuestions/FrequentQuestions";
+import Footer from "./components/Footer/Footer";
 
 
 const App = () => {
