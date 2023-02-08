@@ -15,7 +15,6 @@ const DetailCard = () => {
   const dispatch = useDispatch();
   const array = [1, 2, 3, 4, 5];
   const user = sessionStorage.getItem("userEmail");
-  console.log(detail)
 
   function addToCar() {
     dispatch(addToCart(detail));

@@ -1,11 +1,13 @@
 import React, { useState} from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
+import { useNavigate } from "react-router-dom";
 import postComment from "../../../redux/actions/postComment";
 import style from './CommentForm.module.css'
 
 
 const CommentForm = (props) => {
     const dispatch = useDispatch();
+    const navigate = useNavigate()
     const [input, setInput] = useState({
         question: "",
         email: props.email,
@@ -20,7 +22,9 @@ const CommentForm = (props) => {
     }
 
     const handleSubmit = () => {
-        dispatch(postComment(input))
+        dispatch(postComment(input)).then(res => {
+            navigate(`/productDetail/${props.id}`)
+        })
     }
 
     return (
