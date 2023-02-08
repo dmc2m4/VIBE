@@ -20,6 +20,7 @@ export const PurchaseForm = () => {
       </div>
     );
   }
+  
   function handleChange(e) {
     setInput({
       ...input,

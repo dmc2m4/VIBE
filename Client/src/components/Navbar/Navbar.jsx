@@ -13,7 +13,6 @@ import updateFilters from "../../redux/actions/updateFilters";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import getFavorites from "../../redux/actions/getFavorites";
 import getPage from "../../redux/actions/getPage";
-import loginUser from "../../redux/actions/userLogin";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);

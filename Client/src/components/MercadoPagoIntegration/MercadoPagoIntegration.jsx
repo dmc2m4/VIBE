@@ -6,9 +6,8 @@ import {API_URL} from "../../config"
 
 const MercadoPagoIntegration = ({ items }) => {
   const carrito = useSelector((state) => state.Cart);
-  // const { id } = useParams(); // id de producto
   const [preferenceId, setPreferenceId] = useState(null);
-  items.Cart = carrito;
+  // items.Cart = carrito;
 
   async function getPreference() {
     const response = await axios
@@ -19,19 +18,6 @@ const MercadoPagoIntegration = ({ items }) => {
       .catch((e) => e.error);
     return response;
   }
-
-  // const mp = new MercadoPago("APP_USR-37230271-0594-4417-8d67-733e26ef0cd9", {
-  //   locale: "es-AR",
-  // });
-  // mp.checkout({
-  //   preference: {
-  //     id: preferenceId,
-  //   },
-  //   render: {
-  //     container: ".pay-button",
-  //     label: "Pay",
-  //   },
-  // });
 
   if (preferenceId) {
     const script = document.createElement("script");
