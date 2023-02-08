@@ -3,22 +3,21 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 const FORM_ID = "payment-form";
 import {API_URL} from "../../config"
-import putPurchases from "../../redux/actions/putPurchases";
+// import putPurchases from "../../redux/actions/putPurchases";
 
 const MercadoPagoIntegration = ({ items }) => {
   const carrito = useSelector((state) => state.Cart);
   const [preferenceId, setPreferenceId] = useState(null);
-  const dispatch = useDispatch()
-  const user = sessionStorage.getItem("userEmail")
+  // const dispatch = useDispatch()
+  // const user = sessionStorage.getItem("userEmail")
   items.Cart = carrito;
 
   async function getPreference() {
     const response = await axios
       .post(`${API_URL}/product/pay`, items)
       .then((res) => {
-        console.log(res)
+        // console.log(res)
         setPreferenceId(res.data.global);
-        // dispatch(putPurchases(carrito.items, user))
       })
       .catch((e) => e.error);
     return response;
@@ -32,6 +31,7 @@ const MercadoPagoIntegration = ({ items }) => {
     script.setAttribute("data-preference-id", preferenceId);
     const form = document.getElementById(FORM_ID);
     form.appendChild(script);
+    // dispatch(putPurchases(carrito, user));
   }
 
   useEffect(() => {
