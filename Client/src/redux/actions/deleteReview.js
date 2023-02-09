@@ -4,7 +4,7 @@ import { API_URL } from "../../config";
 export const deleteReview = (id) => {
   return async function () {
     try {
-      await axios.post(`${API_URL}/product/reviews/destroy`, id);
+      await axios.post(`${API_URL}/product/reviews/destroy`, {id: id});
     } catch (error) {
       return alert(error.message);
     }

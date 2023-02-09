@@ -10,7 +10,7 @@ export const MyAccount = () => {
         <h4>Addresses</h4>
       </Link>
       <Link to='/myaccount/shoppinghistory'>
-        <h4>Shppping History</h4>
+        <h4>Shopping History</h4>
       </Link>
     </div>
   );

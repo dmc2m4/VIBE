@@ -14,7 +14,6 @@ export const deleteProduct = (id) => {
       });
     } catch (error) {
       return alert("the product couldn`t be deleted"); 
-      return alert("the product couldn`t be deleted"); 
     }
   };
 };

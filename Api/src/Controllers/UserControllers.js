@@ -1,12 +1,5 @@
 const { User, Product, Address } = require("../db.js");
 
-const getUser = async (value) => {
-  const getUser = await User.findOne({
-    where: { email: value },
-  });
-  return getUser;
-};
-
 const getAllUsers = async () => {
   const allUsers = await User.findAll({
     include: [
