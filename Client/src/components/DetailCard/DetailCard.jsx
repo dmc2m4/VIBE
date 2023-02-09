@@ -133,23 +133,29 @@ const DetailCard = () => {
       <div>
         {detail.Reviews?.map((m, i) => {
           return (
-            <div>
-              <p key={i}>{m.title}</p>
-              <p key={i}>{m.rating}</p>
+            <div className={style.containerReview}>
+              <h4 key={i}>{m.title}</h4>
               <p key={i}>{m.text}</p>
+              <p key={i}>Rating: {m.rating}</p>
             </div>
           );
         })}
         <CommentForm id={id} email={user} />
         {detail.Comments?.map((m) => {
           return (
-            <div>
+            <div className={style.containerUser}>
               {stateUser.isAdmin ? (
-                <button value={m.id} onClick={(e) => handleDelete(e)}>
-                  x
-                </button>
+                <div>
+                  <button
+                    value={m.id}
+                    onClick={(e) => handleDelete(e)}
+                    className={style.containerX}
+                  >
+                    X
+                  </button>
+                </div>
               ) : null}
-              <div className={style.containerUser}>
+              <div /* className={style.containerUser} */>
                 <div className={style.containerEmail}>
                   <img
                     src={m.Users && m.Users[0].img}
