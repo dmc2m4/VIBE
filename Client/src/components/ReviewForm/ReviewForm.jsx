@@ -14,8 +14,6 @@ const ReviewForm = () => {
         title: "",
         text: "",
         rating: 0,
-        // email: "danielmartinez2m4@gmail.com",
-        // id: "209038c0-a077-492a-8d89-3b421e655f8f"
         email: user,
         id: id
     })
@@ -29,7 +27,7 @@ const ReviewForm = () => {
 
     const handleSubmit = () => {
         dispatch(postReview(input));
-        navigate ("/myaccount/shoppinghistory");
+        navigate ("/myaccount/purchases");
     }
 
     return (

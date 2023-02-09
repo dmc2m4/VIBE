@@ -9,8 +9,8 @@ export const MyAccount = () => {
       <Link to='/myaccount/direction'>
         <h4>Direction</h4>
       </Link>
-      <Link to='/myaccount/shoppinghistory'>
-        <h4>Shppping History</h4>
+      <Link to='/myaccount/purchases'>
+        <h4>Shopping History</h4>
       </Link>
     </div>
   );

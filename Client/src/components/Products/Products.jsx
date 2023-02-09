@@ -19,7 +19,7 @@ export default function Products() {
       <div className={style.containerPrimary}>
         <div className={style.container}>
           {products.map((product) => (
-            product.stock?<Card
+            <Card
               name={product.name}
               img={product.img}
               size={product.size}
@@ -34,7 +34,7 @@ export default function Products() {
               key={product.id}
               deleteProduct={deleteProducts}
               email={user}
-            />:null
+            />
           ))}
         </div>
       </div>
