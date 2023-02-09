@@ -44,7 +44,7 @@ const App = () => {
         <Route path="/myaccount/direction" element={<Direction/>}/>
         <Route path="/myaccount/shoppinghistory" element={<ShoppingHistory/>}/>
         <Route path="/myaccount/direction/add" element={<Add/>}/>
-        <Route path="/createReview" element={<ReviewForm/>}/>
+        <Route path="/createReview/:id" element={<ReviewForm/>}/>
         <Route path="/frequentquestion" element={<FrequentQuestions />}/>
       </Routes>
     </div>

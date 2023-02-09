@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState} from "react";
+import { useDispatch} from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import postReview from "../../redux/actions/postReview";
 import styles from "./reviewForm.module.css"
 
 
 const ReviewForm = () => {
-    const user = useSelector(state => state.User)
+    const user = sessionStorage.getItem('userEmail');
     const {id} = useParams();
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -14,10 +14,10 @@ const ReviewForm = () => {
         title: "",
         text: "",
         rating: 0,
-        // email: user.email,
-        // id: id,
-        email: "danielmartinez2m4@gmail.com",
-        id: "869d6be0-6df0-4db8-8411-535053f41805"
+        // email: "danielmartinez2m4@gmail.com",
+        // id: "209038c0-a077-492a-8d89-3b421e655f8f"
+        email: user,
+        id: id
     })
 
     const handleInputChange = (e) => {
@@ -29,7 +29,7 @@ const ReviewForm = () => {
 
     const handleSubmit = () => {
         dispatch(postReview(input));
-        // navigate ("/purchases");
+        navigate ("/myaccount/shoppinghistory");
     }
 
     return (

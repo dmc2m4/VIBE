@@ -6,11 +6,11 @@ import style from './Direction.module.css'
 
 export const Direction = () => {
   const address = useSelector((state) => state.Addresses);
-  const user = useSelector((state) => state.User);
+  const user = sessionStorage.getItem('userEmail');
   const dispatch = useDispatch()
 
   useEffect(()=>{
-    dispatch(getAddresses(user))
+    dispatch(getAddresses({email: user}))
   },[dispatch])
   
   
