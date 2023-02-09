@@ -2,20 +2,15 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import createAddresses from "../../redux/actions/createAdress";
+import createAddresses from "../../redux/actions/createAddress";
+import getAddresses from "../../redux/actions/getAddresses";
 import style from './Add.module.css'
 export const Add = () => {
-  const navigate = useNavigate()
-  const user = useSelector(state => state.User)
+  const navigate = useNavigate();
+  const user = sessionStorage.getItem('userEmail');
+  const user2 = useSelector(state => state.User)
   const [input, setInput] = useState({
-    email: user.email,
-    street: "",
-    number: "",
-    zipCode: "",
-    province: "",
-    location: "",
-    apartment: "",
-    description: "",
+    email: user2.email,
   });
   const dispatch = useDispatch();
 
@@ -28,12 +23,19 @@ export const Add = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(createAddresses(input));
-    navigate('/myaccount/direction')
+    dispatch(createAddresses(input)).then(
+      res => {
+        dispatch(getAddresses(user))
+      }).then(
+        resp => {
+          navigate('/myaccount/addresses');
+        }
+      )
   }
+
   return (
     <div className={style.container}>
-      <Link to='/myaccount/direction'>
+      <Link to='/myaccount/addresses'>
         <button>Back</button>
       </Link>
       <form onSubmit={(e) => handleSubmit(e)}>
