@@ -42,28 +42,12 @@ const loginUser = async (value) => {
   }
 };
 
-const destroyUsers = async (email) => {
-  await User.destroy({
-    where: {
-      email: email,
-    },
-  });
-};
-
-const restoreUsers = async (email) => {
-  await User.restore({
-    where: {
-      email: email,
-    },
-  });
-};
-
 const putUsers = async (value) => {
   let user = await User.findByPk(value.id);
   if (value.name) {
     user.name = value.name;
   }
-/*   if (value.password) {
+  /*   if (value.password) {
     user.password = value.password;
   }
   */
@@ -81,8 +65,6 @@ const putUsers = async (value) => {
 
 module.exports = {
   getAllUsers,
-  destroyUsers,
-  restoreUsers,
   loginUser,
   getUserAdresses,
   putUsers,
