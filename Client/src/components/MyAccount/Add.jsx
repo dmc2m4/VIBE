@@ -3,15 +3,15 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import createAddresses from "../../redux/actions/createAddress";
+import getAddresses from "../../redux/actions/getAddresses";
 import style from './Add.module.css'
 export const Add = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const user = sessionStorage.getItem('userEmail');
   const user2 = useSelector(state => state.User)
   const [input, setInput] = useState({
     email: user2.email,
   });
-  
   const dispatch = useDispatch();
 
   function handleChange(e) {
@@ -23,15 +23,22 @@ export const Add = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(createAddresses(input));
-    navigate('/myaccount/addresses')
+    dispatch(createAddresses(input)).then(
+      res => {
+        dispatch(getAddresses(user))
+      }).then(
+        resp => {
+          navigate('/myaccount/addresses');
+        }
+      )
   }
+
   return (
     <div className={style.container}>
       <Link to='/myaccount/addresses'>
         <button>Back</button>
       </Link>
-      <form onSubmit={(e) => handleSubmit(e) }>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <input
           type='text'
           name='street'
@@ -81,7 +88,7 @@ export const Add = () => {
           value={input.description}
           onChange={handleChange}
         />
-        
+
         <button type='submit'>Save</button>
       </form>
     </div>

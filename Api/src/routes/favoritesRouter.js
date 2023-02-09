@@ -16,7 +16,6 @@ favoritesRouter.post("/", async (req, res) => {
   }
 });
 
-
 favoritesRouter.get("/:email", async (req, res) => {
   try {
     const favorites = await getFavoritesByUser(req.params);
