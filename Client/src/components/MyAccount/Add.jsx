@@ -5,20 +5,13 @@ import { Link, useNavigate } from "react-router-dom";
 import createAddresses from "../../redux/actions/createAddress";
 import getAddresses from "../../redux/actions/getAddresses";
 import style from "./Add.module.css";
-
-import getAddresses from "../../redux/actions/getAddresses";
-import style from './Add.module.css'
 export const Add = () => {
   const navigate = useNavigate();
   const user = sessionStorage.getItem("userEmail");
   const user2 = useSelector((state) => state.User);
-  const navigate = useNavigate();
-  const user = sessionStorage.getItem('userEmail');
-  const user2 = useSelector(state => state.User)
   const [input, setInput] = useState({
     email: user2.email,
   });
-
   const dispatch = useDispatch();
 
   function handleChange(e) {
@@ -30,18 +23,13 @@ export const Add = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(createAddresses(input));
-    dispatch(getAddresses(user.email));
-    console.log(user.getAddresses);
-    navigate("/myaccount/addresses");
-    dispatch(createAddresses(input)).then(
-      res => {
-        dispatch(getAddresses(user))
-      }).then(
-        resp => {
-          navigate('/myaccount/addresses');
-        }
-      )
+    dispatch(createAddresses(input))
+      .then((res) => {
+        dispatch(getAddresses(user));
+      })
+      .then((resp) => {
+        navigate("/myaccount/addresses");
+      });
   }
 
   return (
@@ -101,8 +89,6 @@ export const Add = () => {
         />
 
         <button type="submit">Save</button>
-
-        <button type='submit'>Save</button>
       </form>
     </div>
   );

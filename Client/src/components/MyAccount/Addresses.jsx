@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import style from "./Addresses.module.css";
@@ -23,7 +23,6 @@ export const Addresses = () => {
     dispatch(getAddresses(user))
   },[dispatch])
 
-
   return (
     <div className={style.container}>
       <Link to="/myaccount">
@@ -43,9 +42,9 @@ export const Addresses = () => {
           {a.description ? <p>{a.description}</p> : null}
         </div>
       ))}
-       <Link to="/myaccount/addresses/add">
-        <button>Add</button>
-      </Link> 
+      <Link to="/myaccount/addresses/add">
+        <p>Add</p>
+      </Link>
     </div>
   );
 };
