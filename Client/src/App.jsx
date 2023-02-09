@@ -8,14 +8,13 @@ import Products from "./components/Products/Products";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import Home from "../src/views/Home/Home";
 import DetailCard from "./components/DetailCard/DetailCard";
-import ContainerProduct from "./containers/containerProductHome/ContainerProduct";
 import Slider from "./components/Carousel/Carousel";
 import { About } from "./views/About/About";
 // import Login from "./components/Login/Login";
 import Favorites from "./components/Favorites/Favorites";
 import { MyAccount } from "./components/MyAccount/MyAccount";
 import { Profile } from "./components/MyAccount/Profile";
-import { Direction } from "./components/MyAccount/Direction";
+import { Addresses } from "./components/MyAccount/Addresses";
 import { Add } from "./components/MyAccount/Add";
 import Shop from "./components/Shop/Shop";
 import ReviewForm from "./components/ReviewForm/ReviewForm";
@@ -37,14 +36,14 @@ const App = () => {
         <Route path="/products" element={<Products />} />
         <Route path="/shopping-cart" element={<ShoppingCart />} />
         <Route path="/productDetail/:id" element={<DetailCard />} />
-        <Route path="carousel" element={<Slider />} />
+        <Route path="/carousel" element={<Slider />} />
         <Route path="/about" element={<About />} />
-        <Route path="/favorites/:email" element={<Favorites />} />
+        <Route path="/favorites" element={<Favorites />} />
         <Route path="/myaccount" element={<MyAccount />} />
         <Route path="/myaccount/profile" element={<Profile />} />
-        <Route path="/myaccount/direction" element={<Direction/>}/>
+        <Route path="/myaccount/addresses" element={<Addresses/>}/>
         <Route path="/myaccount/purchases" element={<PurchasesComponent/>}/>
-        <Route path="/myaccount/direction/add" element={<Add/>}/>
+        <Route path="/myaccount/addresses/add" element={<Add/>}/>
         <Route path="/createReview/:id" element={<ReviewForm/>}/>
         <Route path="/frequentquestion" element={<FrequentQuestions />}/>
       </Routes>

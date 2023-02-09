@@ -8,7 +8,7 @@ const createAddresses = async (value) => {
   });
   const address = await Address.create({
     street: value.street,
-    number: value.number,
+    number: parseInt(value.number),
     zipCode: value.zipCode,
     province: value.province,
     location: value.location,
