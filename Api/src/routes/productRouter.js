@@ -92,7 +92,8 @@ productRouter.put("/", async (req, res) => {
   }
 });
 
-productRouter.post("/pay/",async (req, res) => {
+productRouter.post("/pay",async (req, res) => {
+  console.log(req.body);
   try {
     const result = await payProduct( req.body, res);
     res.status(200).send(result)

@@ -12,6 +12,8 @@ import deleteComment from "../../redux/actions/deleteComment";
 
 const DetailCard = () => {
   const detail = useSelector((state) => state.Detail);
+  const items = useSelector(state => state.Cart);
+  localStorage.setItem("globalCart", JSON.stringify(items))
   const [stock, setStock] = useState(detail.stock);
   const { id } = useParams();
   const dispatch = useDispatch();

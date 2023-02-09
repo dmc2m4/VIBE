@@ -20,13 +20,14 @@ import { ShoppingHistory } from "./components/MyAccount/ShoppingHistory";
 import { Add } from "./components/MyAccount/Add";
 import Shop from "./components/Shop/Shop";
 import ReviewForm from "./components/ReviewForm/ReviewForm";
+import FrequentQuestions from "./components/FrequentQuestions/FrequentQuestions";
 
 
 const App = () => {
   const location = useLocation();
   return (
     <div className="App">
-      {location.pathname === "/" ? null : <About/> && <Navbar/>}
+      {location.pathname === "/" ? null : <About/> &&  <FrequentQuestions/> && <Navbar/>}
       <Routes>
         <Route exact path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
@@ -44,6 +45,7 @@ const App = () => {
         <Route path="/myaccount/shoppinghistory" element={<ShoppingHistory/>}/>
         <Route path="/myaccount/addresses/add" element={<Add/>}/>
         <Route path="/createReview" element={<ReviewForm/>}/>
+        <Route path="/frequentquestion" element={<FrequentQuestions />}/>
       </Routes>
     </div>
   );
