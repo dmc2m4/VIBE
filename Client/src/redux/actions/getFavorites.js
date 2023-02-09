@@ -7,7 +7,7 @@ export const getFavorites = (email) => {
   
     return async function (dispatch) {
       try {
-        const fav = await axios.get(`${API_URL}/favorites/${email}`);
+        const fav = await axios.get(`${API_URL}/favorites`, email);
         dispatch({
             type: types.GET_FAVORITES,
             payload: fav.data
