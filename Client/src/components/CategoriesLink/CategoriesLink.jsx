@@ -7,6 +7,7 @@ import shoesVibe from "../../assets/shoesVibe.png";
 import { useDispatch, useSelector } from "react-redux";
 import cleanPage from "../../redux/actions/cleanPage";
 import updateFilters from "../../redux/actions/updateFilters";
+import { NavLink } from "react-router-dom";
 
 const CategoriesLink = () => {
   const dispatch = useDispatch();
@@ -31,8 +32,9 @@ const CategoriesLink = () => {
         >
           <div className={style.circle}></div>
           <div className={style.content}>
-            <h2>MEN</h2>
-
+            <NavLink style={{ textDecoration: "none" }}>
+              <h2>MEN</h2>
+            </NavLink>
             <button
               name="gender"
               value="male"
@@ -53,8 +55,9 @@ const CategoriesLink = () => {
         >
           <div className={style.circle}></div>
           <div className={style.content}>
-            <h2>WOMEN</h2>
-
+            <NavLink style={{ textDecoration: "none" }}>
+              <h2>WOMEN</h2>
+            </NavLink>
             <button
               name="gender"
               value="female"
@@ -75,7 +78,9 @@ const CategoriesLink = () => {
         >
           <div className={style.circle}></div>
           <div className={style.content}>
-            <h2>SHOES</h2>
+            <NavLink style={{ textDecoration: "none" }}>
+              <h2>SHOES</h2>
+            </NavLink>
 
             <button
               name="category"
@@ -99,8 +104,9 @@ const CategoriesLink = () => {
         >
           <div className={style.circle}></div>
           <div className={style.content}>
-            <h2>ACCESORIES</h2>
-
+            <NavLink style={{ textDecoration: "none" }}>
+              <h2>ACCESORIES</h2>
+            </NavLink>
             <button
               name="category"
               value="accesories"

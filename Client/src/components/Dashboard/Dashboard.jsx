@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -8,9 +7,9 @@ import {
   switchAdmin,
   switchBan,
 } from "../../redux/actions/dashboardUsers";
-import "./Dashbord.css";
+import style from "./Dashboard.module.css";
 
-const Dashbord = () => {
+const Dashboard = () => {
   const dispatch = useDispatch();
   const [management, setManagement] = useState({});
   const [filter, setFilter] = useState("users");
@@ -18,9 +17,11 @@ const Dashbord = () => {
   const admins = useSelector((state) => state.UsersAdmin);
   const banneds = useSelector((state) => state.UsersBanned);
   const swap = useSelector((state) => state.Swap);
+
   function handleClick(user) {
     setManagement(user);
   }
+
   function applyFilter() {
     if (filter === "admins") {
       return admins;
@@ -30,13 +31,15 @@ const Dashbord = () => {
     }
     return users;
   }
+
   useEffect(() => {
     dispatch(Users());
     dispatch(filterAdmin());
     dispatch(filterBanned());
   }, [dispatch, swap]);
+
   return (
-    <div className="dashbordContainer">
+    <div className={style.dashboardContainer}>
       <div>
         <button value="users" onClick={(e) => setFilter(e.target.value)}>
           Users
@@ -50,8 +53,17 @@ const Dashbord = () => {
         <div>
           {applyFilter()?.map((user, i) => {
             return (
-              <button value={user.id} onClick={() => handleClick(user)} key={i}>
-                <img src={user.img} alt="profile picture" />
+              <button
+                value={user.id}
+                onClick={() => handleClick(user)}
+                key={i}
+                className={style.cardUser}
+              >
+                <img
+                  src={user.img}
+                  alt="profile picture"
+                  className={style.dashboardImg}
+                />
                 <h4>{user.name}</h4>
               </button>
             );
@@ -80,4 +92,4 @@ const Dashbord = () => {
   );
 };
 
-export default Dashbord;
+export default Dashboard;

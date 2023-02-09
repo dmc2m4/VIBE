@@ -20,7 +20,7 @@ import ReviewForm from "./components/ReviewForm/ReviewForm";
 import Footer from "./components/Footer/Footer";
 import FrequentQuestions from "./components/FrequentQuestions/FrequentQuestions";
 import PurchasesComponent from "./components/MyAccount/purchases";
-import Dashbord from "./components/Dashboard/Dashbord";
+import Dashbord from "./components/Dashboard/Dashboard";
 
 const App = () => {
   const location = useLocation();

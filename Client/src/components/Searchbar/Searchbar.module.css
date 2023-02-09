@@ -2,12 +2,13 @@
   display: flex;
   position: relative;
   margin-top: 2rem;
+  width: 18.4rem;
 }
 .search {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 17rem;
+  width: 15rem;
   height: 30px;
   border-radius: 30px;
   border: none;
@@ -19,8 +20,8 @@
 }
 
 .lupa {
+  margin-left: 16rem;
   position: absolute;
   width: 30px;
-  margin-left: 14.5rem;
   cursor: pointer;
 }
