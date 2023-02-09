@@ -2,3 +2,10 @@ body {
   /* background-color: #F0F0F0; */
   background-color: #e7ecef;
 }
+body::-webkit-scrollbar {
+  width: 8px; /* width of the entire scrollbar */
+}
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(60, 67, 68); /* color of the scroll thumb */
+  border-radius: 2px; /* roundness of the scroll thumb */
+}
