@@ -29,7 +29,7 @@ export const Add = () => {
         dispatch(getAddresses(user))
       }).then(
         resp => {
-          navigate('/myaccount/direction');
+          navigate('/myaccount/addresses');
         }
       )
   }
@@ -38,7 +38,7 @@ export const Add = () => {
     <div className={style.container}>
     <div className={style.containerForm}>
     <div className={style.back}>
-      <Link to='/myaccount/direction' className={style.back}>
+      <Link to='/myaccount/addresses' className={style.back}>
       <img src='https://cdn-icons-png.flaticon.com/512/507/507257.png' alt="back" className={style.iconBack}/>
       </Link>
       </div>
