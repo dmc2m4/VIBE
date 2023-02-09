@@ -18,6 +18,8 @@ const DetailCard = () => {
   const array = [1, 2, 3, 4, 5];
   const user = sessionStorage.getItem("userEmail");
 
+  console.log(detail.Reviews)
+
   function addToCar() {
     dispatch(addToCart(detail));
     setStock(stock - 1);
@@ -29,7 +31,7 @@ const DetailCard = () => {
       dispatch(cleanDetail());
     };
   }, [dispatch, id]);
- 
+
   // const images = detail.img.split(",");
   function setImages(det) {
     const images = det.img;
@@ -43,6 +45,16 @@ const DetailCard = () => {
       </div>
     );
   }
+
+  function promedioRating() {
+    var sumatoria = detail?.Reviews?.reduce(function (a, b) {
+      return a + b.rating; 
+    }, 0); 
+    var promedio = sumatoria / detail?.Reviews?.length;
+    console.log(sumatoria)
+    return Math.round(promedio);
+  }
+
 
   // function addSelect(name, arr) {
   //   const nameFormatted = name.charAt(0).toUpperCase() + name.slice(1);
@@ -128,11 +140,12 @@ const DetailCard = () => {
             <div>
               <p className={style.rating}>
                 <p className={style.textDetail}>Rating: </p>{" "}
-                {array.slice(0, detail.rating).map((e, i) => (
+                <p>{promedioRating()}</p>
+                {/* {array.slice(0, detail.rating).map((e, i) => (
                   <div className={style.rating} key={i}>
-                    <p>⭐</p>
+                  <p>⭐</p>
                   </div>
-                ))}{" "}
+                ))}{" "} */}
               </p>
             </div>
           </div>
@@ -154,21 +167,21 @@ const DetailCard = () => {
           )
         })}
         <CommentForm
-        id={id}
-        email={user}
+          id={id}
+          email={user}
         />
         {detail.Comments?.map((m) => {
           return (
             <div className={style.containerUser}>
-            <div className={style.containerEmail}>
-              <img src ={m.Users[0].img} alt="imagen" className={style.imgUser}/>
-              <h2 className={style.email}>{m.Users[0].email}</h2>
+              <div className={style.containerEmail}>
+                <img src={m.Users[0].img} alt="imagen" className={style.imgUser} />
+                <h2 className={style.email}>{m.Users[0].email}</h2>
               </div>
               <div className={style.containerQuestion}>
-              <p>{m.question}</p>
-            
-            {m.response? m.response: <button className={style.buttonQuestion}>answer question</button>}
-            </div>
+                <p>{m.question}</p>
+
+                {m.response ? m.response : <button className={style.buttonQuestion}>answer question</button>}
+              </div>
             </div>
           )
         })}

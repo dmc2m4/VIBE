@@ -20,6 +20,7 @@ const types = {
   CREATE_ADDRESSES: "CREATE_ADDRESSES",
   IS_FAV: "IS_FAV",
   REMOVE_IMAGE: "REMOVE_IMAGE",
+  GET_PURCHASES : 'GET_PURCHASES'
 };
 
 export default types;
