@@ -5,7 +5,6 @@ import style from "./Addresses.module.css";
 import getAddresses from "../../redux/actions/getAddresses";
 import deleteAddresses from "../../redux/actions/deleteAddresses";
 import setSwap from "../../redux/actions/setSwap";
-import { Add } from "./Add";
 
 export const Addresses = () => {
   const user = useSelector((state) => state.User);

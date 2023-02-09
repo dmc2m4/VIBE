@@ -231,7 +231,7 @@ export default function rootReducer(state = initialState, action) {
       ...state,
       User: {
         ...state.User,
-        Addresses: state.User.Addresses.filter((e) => e.id !== action.payload),
+        Addresses:[...state.User.Addresses].filter((e) => e.id !== action.payload),
       },
     };
   }
