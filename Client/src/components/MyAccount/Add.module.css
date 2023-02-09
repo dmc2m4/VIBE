@@ -51,8 +51,8 @@
 .form{
     margin-top: 2rem;
 }
-.inputForm {
-    width: 12rem;
+.inputFormAdd {
+    width: 6rem;
     height: 2.2rem;
     font-size: 14pxpx;
     font-weight: bold;
@@ -84,4 +84,6 @@
     justify-content: center;
     align-items: center;
   }
-  
+  .formAdd{
+    display: flex;
+  }
