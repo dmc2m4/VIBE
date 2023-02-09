@@ -5,7 +5,6 @@ import {API_URL} from "../../config";
 
 export const deleteProduct = (id) => {
   return async function (dispatch) {
-    console.log(value);
     try {
       await axios.post(`${API_URL}/product/destroy`, {id: id});
       dispatch({
