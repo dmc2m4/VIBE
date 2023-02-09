@@ -8,8 +8,15 @@ export const MyAccount = () => {
   return (
     <div className={style.container}>
       <Profile/>
-      <Link to='/myaccount/addresses'>
+      <div className={style.containerLinks}>
+    <Link to='/myaccount/direction'  className={style.link}>
+    <div className={style.containerCat}>
+      <div className={style.containerIcon}>
+        <img src={direction} alt="direction " className={style.icon}
+        />
+        </div>
         <h4>Addresses</h4>
+        </div>
       </Link>
       <Link to='/myaccount/purchases' className={style.link}>
       <div className={style.containerCat}>
@@ -19,6 +26,7 @@ export const MyAccount = () => {
         <h4>Shoppping History</h4>
         </div>
       </Link>
+      </div>
     </div>
   );
 };

@@ -11,7 +11,7 @@
 .containerIcon{
     width: 2.5rem;
     height: 2.5rem;
-    background-color: black;
+    background-color: #7f8eac;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,4 +53,10 @@
     border-radius: 5px;
     margin-right: 1rem;
     margin-left: -3.5rem;
+}
+
+.containerLinks{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
