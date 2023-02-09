@@ -22,12 +22,7 @@ const Account = () => {
         </li>
         {user.isAdmin ? (
           <li>
-            <Link to="/createProduct">Create Product</Link>
-          </li>
-        ) : null}
-        {user.isAdmin ? (
-          <li>
-            <Link to="/admin-management">Admin Dashbord</Link>
+            <Link to="/admin-dashboard">Admin Dashbord</Link>
           </li>
         ) : null}
         <li
