@@ -41,6 +41,7 @@ const Card = (props) => {
 
   return (
      <div className={style.container} >
+      
         {user.isAdmin?<button
         onClick={() => props.deleteProduct(props.id)}
         className={style.delete}>X</button>: null}
@@ -77,7 +78,6 @@ const Card = (props) => {
           </div>
         </div>
       </div>
-      
     </div>
     );
 };

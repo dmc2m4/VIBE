@@ -12,7 +12,7 @@ import Slider from "./components/Carousel/Carousel";
 import { About } from "./views/About/About";
 import Favorites from "./components/Favorites/Favorites";
 import { MyAccount } from "./components/MyAccount/MyAccount";
-import { Profile } from "./components/MyAccount/Profile";
+import  Profile  from "./components/MyAccount/Profile";
 import { Addresses } from "./components/MyAccount/Addresses";
 import { Add } from "./components/MyAccount/Add";
 import Shop from "./components/Shop/Shop";
@@ -21,6 +21,7 @@ import Footer from "./components/Footer/Footer";
 import FrequentQuestions from "./components/FrequentQuestions/FrequentQuestions";
 import PurchasesComponent from "./components/MyAccount/purchases";
 import Dashbord from "./components/Dashboard/Dashbord";
+import AdminDashboard from "./components/AdminDashboard/AdminDashboard";
 
 const App = () => {
   const location = useLocation();
@@ -48,8 +49,11 @@ const App = () => {
         <Route path="/createReview/:id" element={<ReviewForm />} />
         <Route path="/frequentquestion" element={<FrequentQuestions />} />
         <Route path="/admin-management" element={<Dashbord />} />
+        <Route path="/admin-dashboard" element={<AdminDashboard />} />
       </Routes>
-      <Footer/>
+      {location.pathname === "/frequentquestion"
+        ? null
+        : <Footer />}
     </div>
   );
 };

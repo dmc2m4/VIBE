@@ -2,6 +2,11 @@
   margin-top: 4.4rem;
 }
 
+.footer{
+position:relative;
+top: 2600px
+}
+
 .mainDiv {
   display: flex;
   justify-content: center;
@@ -19,8 +24,6 @@
   /* background-color: rgba(0, 0, 0, 0.877); */
   background-color: #e7ecef;
   /* background-color: #f5f3f4; */
-
-  
 }
 
 .card {
