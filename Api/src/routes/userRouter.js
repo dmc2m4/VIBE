@@ -2,15 +2,15 @@ const { Router } = require("express");
 const {
   createAddresses,
   destroyAddresses,
-  putAddresses,
-} = require("../Controllers/AddressController");
+/*   putAddresses,
+ */} = require("../Controllers/AddressController");
 const {
   getAllUsers,
   loginUser,
   getUserAdresses,
   putUsers,
-  getPurchasesByUser
-} = require("../Controllers/UserControllers");
+/*   getPurchasesByUser
+ */} = require("../Controllers/UserControllers");
 const {getAdmin, switchBan, switchAdmin, getBannedUsers} = require('../Controllers/AdminController')
 
 const userRouter = Router();
@@ -25,7 +25,7 @@ userRouter.post("/address/destroy", async (req, res) => {
   }
 });
 
-userRouter.put("/address", async (req, res) => {
+/* userRouter.put("/address", async (req, res) => {
   const value = req.body
   try {
     putAddresses(value);
@@ -33,7 +33,7 @@ userRouter.put("/address", async (req, res) => {
   } catch (error) {
     res.status(400).send(error.message);
   }
-});
+}); */
 
 userRouter.post("/address", async (req, res) => {
   const value = req.body
@@ -45,7 +45,7 @@ userRouter.post("/address", async (req, res) => {
   }
 });
 
-userRouter.get("/address", async (req, res) => {
+userRouter.post("/address/get", async (req, res) => {
   const {email} = req.body
   try {
     const userAdresses = await getUserAdresses(email);

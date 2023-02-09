@@ -168,7 +168,7 @@ export default function rootReducer(state = initialState, action) {
   if (action.type === types.LOGIN_USER) {
     return {
       ...state,
-      User: action.payload[0],
+      User: action.payload[0] ,
     };
   }
   if (action.type === types.GET_FAVORITES) {
