@@ -2,7 +2,8 @@
   display: flex;
   position: relative;
   margin-top: 2rem;
-  width: 18.4rem;
+  width: 17rem;
+  border-radius: 30px;
 }
 .search {
   display: flex;

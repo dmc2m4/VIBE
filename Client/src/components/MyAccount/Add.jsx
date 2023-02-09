@@ -51,14 +51,14 @@ export const Add = () => {
       <h1>Add Direction</h1>
       </div>
       <form onSubmit={(e) => handleSubmit(e)} className={style.form}>
-      <div>
+      <div className={style.formAdd}>
         <input
           type="text"
           name="street"
           placeholder="Street"
           value={input.street}
           onChange={handleChange}
-          className={style.inputForm}
+          className={style.inputFormAdd}
         />
        
         <input
@@ -67,17 +67,17 @@ export const Add = () => {
           placeholder="Number"
           value={input.number}
           onChange={handleChange}
-          className={style.inputForm}
+          className={style.inputFormAdd}
         />
         </div>
-        <div>
+        <div div className={style.formAdd}>
         <input
           type="number"
           name="zipCode"
           placeholder="ZipCode"
           value={input.zipCode}
           onChange={handleChange}
-          className={style.inputForm}
+          className={style.inputFormAdd}
         />
        
        
@@ -87,17 +87,17 @@ export const Add = () => {
           placeholder="Province"
           value={input.province}
           onChange={handleChange}
-          className={style.inputForm}
+          className={style.inputFormAdd}
         />
         </div>
-        <div>
+        <div div className={style.formAdd}>
         <input
           type="text"
           name="location"
           placeholder="Location"
           value={input.location}
           onChange={handleChange}
-          className={style.inputForm}
+          className={style.inputFormAdd}
         />
         <input
           type="text"
@@ -105,17 +105,17 @@ export const Add = () => {
           placeholder="Apartment"
           value={input.apartment}
           onChange={handleChange}
-          className={style.inputForm}
+          className={style.inputFormAdd}
         />
             </div>
-            <div>
+            <div div className={style.formAdd}>
         <input
           type="text"
           name="description"
           placeholder="Description"
           value={input.description}
           onChange={handleChange}
-          className={style.inputForm}
+          className={style.inputFormAdd}
         />
         </div>
       <div className={style.containerButton}>
