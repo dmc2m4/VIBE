@@ -8,8 +8,8 @@ import createAddress from '../../redux/actions/createAddress'
 import style from './Add.module.css'
 export const Add = () => {
   const navigate = useNavigate();
-  const user = sessionStorage.getItem('userEmail');
-  const user2 = useSelector(state => state.User)
+  const user = sessionStorage.getItem("userEmail");
+  const user2 = useSelector((state) => state.User);
   const [input, setInput] = useState({
     email: user2.email,
   });
@@ -24,21 +24,20 @@ export const Add = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(createAddress(input)).then(
-      res => {
-        dispatch(getAddresses(user))
-      }).then(
-        resp => {
-          navigate('/myaccount/direction');
-        }
-      )
+    dispatch(createAddresses(input))
+      .then((res) => {
+        dispatch(getAddresses(user));
+      })
+      .then((resp) => {
+        navigate("/myaccount/addresses");
+      });
   }
 
   return (
     <div className={style.container}>
     <div className={style.containerForm}>
     <div className={style.back}>
-      <Link to='/myaccount/direction' className={style.back}>
+      <Link to='/myaccount/addresses' className={style.back}>
       <img src='https://cdn-icons-png.flaticon.com/512/507/507257.png' alt="back" className={style.iconBack}/>
       </Link>
       </div>
@@ -51,18 +50,18 @@ export const Add = () => {
       <form onSubmit={(e) => handleSubmit(e)} className={style.form}>
       <div>
         <input
-          type='text'
-          name='street'
-          placeholder='Street'
+          type="text"
+          name="street"
+          placeholder="Street"
           value={input.street}
           onChange={handleChange}
           className={style.inputForm}
         />
        
         <input
-          type='number'
-          name='number'
-          placeholder='Number'
+          type="number"
+          name="number"
+          placeholder="Number"
           value={input.number}
           onChange={handleChange}
           className={style.inputForm}
@@ -70,9 +69,9 @@ export const Add = () => {
         </div>
         <div>
         <input
-          type='number'
-          name='zipCode'
-          placeholder='ZipCode'
+          type="number"
+          name="zipCode"
+          placeholder="ZipCode"
           value={input.zipCode}
           onChange={handleChange}
           className={style.inputForm}
@@ -80,9 +79,9 @@ export const Add = () => {
        
        
         <input
-          type='text'
-          name='province'
-          placeholder='Province'
+          type="text"
+          name="province"
+          placeholder="Province"
           value={input.province}
           onChange={handleChange}
           className={style.inputForm}
@@ -90,17 +89,17 @@ export const Add = () => {
         </div>
         <div>
         <input
-          type='text'
-          name='location'
-          placeholder='Location'
+          type="text"
+          name="location"
+          placeholder="Location"
           value={input.location}
           onChange={handleChange}
           className={style.inputForm}
         />
         <input
-          type='text'
-          name='apartment'
-          placeholder='Apartment'
+          type="text"
+          name="apartment"
+          placeholder="Apartment"
           value={input.apartment}
           onChange={handleChange}
           className={style.inputForm}
@@ -108,9 +107,9 @@ export const Add = () => {
             </div>
             <div>
         <input
-          type='text'
-          name='description'
-          placeholder='Description'
+          type="text"
+          name="description"
+          placeholder="Description"
           value={input.description}
           onChange={handleChange}
           className={style.inputForm}
