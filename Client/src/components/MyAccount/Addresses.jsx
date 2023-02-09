@@ -4,22 +4,25 @@ import { Link } from "react-router-dom";
 import style from "./Addresses.module.css";
 import getAddresses from "../../redux/actions/getAddresses";
 import deleteAddresses from "../../redux/actions/deleteAddresses";
-import setSwap from "../../redux/actions/setSwap";
+
 
 export const Addresses = () => {
-  const user = useSelector((state) => state.User);
-  const swap = useSelector((state) => state.Swap);
-  const address = useSelector((state) => state.Addresses)
+  const user = sessionStorage.getItem('userEmail')
+  const addresses = useSelector(state => state.Addresses)
   const dispatch = useDispatch();
 
   const handleDelete = (id) => {
-    dispatch(deleteAddresses(id));
-    dispatch(setSwap())
+    dispatch(deleteAddresses(id)).then(
+      res => {
+        dispatch(getAddresses(user))
+      }
+    )
   };
 
-  useEffect(() => {
-    dispatch(getAddresses(user.email));
-  }, [dispatch, user, swap, address]);
+  useEffect(()=> {
+    dispatch(getAddresses(user))
+  },[dispatch])
+
 
   return (
     <div className={style.container}>
@@ -27,10 +30,10 @@ export const Addresses = () => {
         <button>Back</button>
       </Link>
       <h3>Address</h3>
-      {console.log(user.Addresses)}
-      {user?.Addresses?.map((a, i) => (
+      {addresses?.map((a, i) => (
+        // {handleDelete(a.id)}
         <div key={i}>
-          <button onClick={() => handleDelete(a.id) }> x </button>
+          <button onClick={() =>{handleDelete(a.id)}}> x </button>
           <p>{a.street}</p>
           <p>{a.number}</p>
           <p>{a.zipCode}</p>

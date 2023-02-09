@@ -26,16 +26,6 @@ userRouter.post("/address/destroy", async (req, res) => {
   }
 });
 
-/* userRouter.put("/address", async (req, res) => {
-  const value = req.body
-  try {
-    putAddresses(value);
-    res.status(201).send("Address updated successfully");
-  } catch (error) {
-    res.status(400).send(error.message);
-  }
-}); */
-
 userRouter.post("/address", async (req, res) => {
   const value = req.body;
   try {

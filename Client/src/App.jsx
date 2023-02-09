@@ -39,7 +39,7 @@ const App = () => {
         <Route path="/productDetail/:id" element={<DetailCard />} />
         <Route path="/carousel" element={<Slider />} />
         <Route path="/about" element={<About />} />
-        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/favorites/:email" element={<Favorites />} />
         <Route path="/myaccount" element={<MyAccount />} />
         <Route path="/myaccount/profile" element={<Profile />} />
         <Route path="/myaccount/addresses" element={<Addresses />} />

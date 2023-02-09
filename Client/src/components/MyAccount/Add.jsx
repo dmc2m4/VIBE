@@ -6,10 +6,15 @@ import createAddresses from "../../redux/actions/createAddress";
 import getAddresses from "../../redux/actions/getAddresses";
 import style from "./Add.module.css";
 
+import getAddresses from "../../redux/actions/getAddresses";
+import style from './Add.module.css'
 export const Add = () => {
   const navigate = useNavigate();
   const user = sessionStorage.getItem("userEmail");
   const user2 = useSelector((state) => state.User);
+  const navigate = useNavigate();
+  const user = sessionStorage.getItem('userEmail');
+  const user2 = useSelector(state => state.User)
   const [input, setInput] = useState({
     email: user2.email,
   });
@@ -29,7 +34,16 @@ export const Add = () => {
     dispatch(getAddresses(user.email));
     console.log(user.getAddresses);
     navigate("/myaccount/addresses");
+    dispatch(createAddresses(input)).then(
+      res => {
+        dispatch(getAddresses(user))
+      }).then(
+        resp => {
+          navigate('/myaccount/addresses');
+        }
+      )
   }
+
   return (
     <div className={style.container}>
       <Link to="/myaccount/addresses">
@@ -87,6 +101,8 @@ export const Add = () => {
         />
 
         <button type="submit">Save</button>
+
+        <button type='submit'>Save</button>
       </form>
     </div>
   );
