@@ -9,6 +9,7 @@ import tomi from "../../assets/tomas.png";
 import valen from "../../assets/valen.png";
 import santi from "../../assets/santi.png";
 import josue from "../../assets/josue.png";
+import Footer from "../../components/Footer/Footer";
 import linkedin from "../../assets/linkedin.png";
 import github from "../../assets/github.png";
 import portfolio from "../../assets/portfolio.png";
@@ -188,6 +189,10 @@ export const About = () => {
           <img src={josue} alt="image not found" className={style.img} />
         </div>
       </div>
+      <div className={style.footer}>
+        <Footer />
+      </div>
+
     </div>
   );
 };
