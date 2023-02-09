@@ -3,7 +3,6 @@ import { API_URL } from "../../config";
 import types from "./types";
 
 export const deleteAddresses = (id) => {
-  console.log(id);
   return async function (dispatch) {
     try {
       await axios.post(`${API_URL}/user/address/destroy`, { id: id });
