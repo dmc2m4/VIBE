@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-
+import { Link } from "react-router-dom";
 import style from "./Home.module.css";
 import Carousel from "../../components/Carousel/Carousel";
 import CategoriesLink from "../../components/CategoriesLink/CategoriesLink";
@@ -26,7 +26,7 @@ const Home = () => {
   return (
     <div className={style.container}>
       <Carousel />
-      <CategoriesLink />
+      <Link to={"/shop"}>{<CategoriesLink />}</Link>
     </div>
   );
 };
