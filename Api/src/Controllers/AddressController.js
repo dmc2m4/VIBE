@@ -26,7 +26,7 @@ const destroyAddresses = async (id) => {
   });
 };
 
-const putAddresses = async (value) => {
+/* const putAddresses = async (value) => {
   const {
     id,
     street,
@@ -47,10 +47,10 @@ const putAddresses = async (value) => {
   if (description) update.description = description;
 
   await update.save();
-};
+}; */
 
 module.exports = {
   createAddresses,
   destroyAddresses,
-  putAddresses,
-};
+/*   putAddresses,
+ */};

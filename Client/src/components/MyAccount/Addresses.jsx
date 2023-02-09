@@ -8,17 +8,16 @@ import deleteAddresses from "../../redux/actions/deleteAddresses";
 export const Addresses = () => {
   const user = useSelector((state) => state.User);
   const dispatch = useDispatch();
-
-  const [deleted, setDeleted] = useState(false)
-
-  useEffect(() => {
-    dispatch(getAddresses(user));
-  }, [dispatch, user, deleted]);
+  const [deleted, setDeleted] = useState(false);
 
   const handleDelete = (id) => {
-    dispatch(deleteAddresses(id))
-    setDeleted(!deleted)
+    dispatch(deleteAddresses(id));
+    setDeleted(!deleted);
   };
+
+  useEffect(() => {
+    dispatch(getAddresses(user.email));
+  }, [dispatch, user, deleted]);
 
   return (
     <div className={style.container}>
