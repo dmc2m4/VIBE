@@ -4,35 +4,35 @@ import CategoriesLink from "../CategoriesLink/CategoriesLink";
 import Pagination from "../Pagination/Pagination";
 import Footer from "../Footer/Footer";
 import filterIcon from "../../assets/filter-icon.png";
-import "./Shop.css";
 import "animate.css"
 import Filters from "../Filters/Filters";
 import closeBtn from "../../assets/close-button.png";
+import style from './Shop.module.css'
 
 const Shop = () => {
   const [active, setActive] = useState(false);
   return (
     <div>
       <div
-        className="shop-container"
+        className={style.shopContainer}
         style={
           active
             ? { opacity: "0.5", pointerEvents: "none", scrollBehavior: "none" }
             : null
         }
       >
-        <div className="categories-container">
-          <div className="shop-categories">
+        <div className={style.categoriesContainer}>
+          <div className={style.shopCategories}>
             <CategoriesLink />
           </div>
         </div>
-        <div className="shop-cards">
+        <div className={style.shopCards}>
           <ContainerProduct />
         </div>
-        <div className="filter-container">
-          <button className="filter-btn" onClick={() => setActive(!active)}>
+        <div className={style.filterContainer}>
+          <button className={style.filterBtn} onClick={() => setActive(!active)}>
             FILTERS
-            <img src={filterIcon} className="filter-img" />
+            <img src={filterIcon} className={style.filterImg} />
           </button>
         </div>
         <div>
@@ -41,9 +41,9 @@ const Shop = () => {
       </div>
 
       {active ? (
-        <div className="filterBox">
+        <div className={style.filterBox}>
           <img src={closeBtn} onClick={() => setActive(!active)} />
-          <Filters className="filters" />
+          <Filters className={style.filters} />
         </div>
       ) : null}
     </div>
