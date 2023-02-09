@@ -2,7 +2,7 @@ import types from "../actions/types";
 
 const initialState = {
   Products: [],
-  backUpProducts: [],
+  Purchases: [],
   Page: 0,
   Num: 0,
   Filters: {},
@@ -189,6 +189,12 @@ export default function rootReducer(state = initialState, action) {
       ...state,
       Fav: action.payload,
     };
+  }
+  if (action.type === types.GET_PURCHASES){
+    return {
+      ...state,
+      Purchases: action.payload
+    }
   }
   return { ...state };
 }

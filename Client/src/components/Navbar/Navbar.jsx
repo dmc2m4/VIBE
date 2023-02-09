@@ -13,6 +13,7 @@ import updateFilters from "../../redux/actions/updateFilters";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import getFavorites from "../../redux/actions/getFavorites";
 import getPage from "../../redux/actions/getPage";
+import loginUser from "../../redux/actions/userLogin"
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
@@ -22,8 +23,8 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   useEffect(()=>{
-    if(!user3){
-      dispatch(loginUser(user))
+    if(!Object.values(user3).length){
+      dispatch(loginUser({email:user}))
     }
   },[dispatch])
 
@@ -100,7 +101,7 @@ const Navbar = () => {
             <img src={user2} alt="user" className={style.imgNav} />
           </li>
         </div>
-        {toggle && <Account />}
+        {toggle && <Account/>}
       </nav>
     </div>
   );

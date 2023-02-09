@@ -36,7 +36,6 @@ const Shop = () => {
         </div>
         <div>
           <Pagination />
-          <Footer />
         </div>
       </div>
 
