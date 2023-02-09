@@ -26,7 +26,6 @@ export const Addresses = () => {
     dispatch(getAddresses(user))
   },[dispatch])
 
-
   return (
     <div className={style.container}>
      <div className={style.back}>

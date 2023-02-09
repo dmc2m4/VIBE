@@ -29,5 +29,4 @@ const destroyAddresses = async (id) => {
 module.exports = {
   createAddresses,
   destroyAddresses,
-/*   putAddresses,
- */};
+};
