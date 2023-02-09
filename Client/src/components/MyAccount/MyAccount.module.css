@@ -1,4 +1,51 @@
 .container{
     margin-top: 4rem;
-    padding:100px
+    padding:100px;
+    font-family: "Bebas Neue", cursive;
+
+}
+.containerIcon{
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    margin-right: 1rem
+}
+.icon{
+    width: 1.5rem;
+    height: 1.5rem;
+   
+}
+.link{
+    text-decoration: none;
+    color: black;
+    margin-top: 8rem;
+}
+.containerCat{
+    display: flex;
+    height: 4rem;
+    width: 300px;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.containerMenu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.containerIconDic{
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    margin-right: 1rem;
+    margin-left: -3.5rem;
 }
