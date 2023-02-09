@@ -2,6 +2,7 @@ import React from "react";
 import style from "./Account.module.css";
 import { LogOutGoogle } from "../../LogOutGoogle/LogOutGoogle";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Account = () => {
   const clearCacheData = () => {
@@ -11,31 +12,34 @@ const Account = () => {
       });
     });
   };
-  
+  const user = useSelector((state) => state.User);
 
   return (
     <div className={style.menu}>
       <ul>
         <li>
-          <a href='/' className='title'>
+          <a href="/" className="title">
             My orders
           </a>
         </li>
         <li>
-          <Link to='/myaccount' >
-            My Account
-          </Link>
+          <Link to="/myaccount">My Account</Link>
         </li>
-        <li>
-          <Link to='/createProduct'>
-          Create Product
-          </Link>
-        </li>
+        {user.isAdmin ? (
+          <li>
+            <Link to="/createProduct">Create Product</Link>
+          </li>
+        ) : null}
+        {user.isAdmin ? (
+          <li>
+            <Link to="/admin-management">Admin Dashbord</Link>
+          </li>
+        ) : null}
         <li
           onClick={() => {
             clearCacheData();
-            sessionStorage.removeItem('userEmail');
-            localStorage.removeItem('globalCart')
+            sessionStorage.removeItem("userEmail");
+            localStorage.removeItem("globalCart");
           }}
         >
           {" "}

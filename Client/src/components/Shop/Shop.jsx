@@ -5,6 +5,7 @@ import Pagination from "../Pagination/Pagination";
 import Footer from "../Footer/Footer";
 import filterIcon from "../../assets/filter-icon.png";
 import "./Shop.css";
+import "animate.css"
 import Filters from "../Filters/Filters";
 import closeBtn from "../../assets/close-button.png";
 
@@ -36,7 +37,6 @@ const Shop = () => {
         </div>
         <div>
           <Pagination />
-          <Footer />
         </div>
       </div>
 
