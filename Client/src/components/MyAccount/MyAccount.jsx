@@ -9,7 +9,7 @@ export const MyAccount = () => {
       <Link to='/myaccount/addresses'>
         <h4>Addresses</h4>
       </Link>
-      <Link to='/myaccount/shoppinghistory'>
+      <Link to='/myaccount/purchases'>
         <h4>Shopping History</h4>
       </Link>
     </div>

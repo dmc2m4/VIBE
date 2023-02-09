@@ -6,7 +6,7 @@ import createAddresses from "../../redux/actions/createAddress";
 import style from './Add.module.css'
 export const Add = () => {
   const navigate = useNavigate()
-  const user = useSelector(state => state.User)
+  const user = sessionStorage.getItem('userEmail');
   const [input, setInput] = useState({
     email: user.email
   });

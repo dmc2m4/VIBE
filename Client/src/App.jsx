@@ -21,6 +21,7 @@ import { Add } from "./components/MyAccount/Add";
 import Shop from "./components/Shop/Shop";
 import ReviewForm from "./components/ReviewForm/ReviewForm";
 import FrequentQuestions from "./components/FrequentQuestions/FrequentQuestions";
+import PurchasesComponent from "./components/MyAccount/purchases";
 
 
 const App = () => {
@@ -42,9 +43,9 @@ const App = () => {
         <Route path="/myaccount" element={<MyAccount />} />
         <Route path="/myaccount/profile" element={<Profile />} />
         <Route path="/myaccount/addresses" element={<Addresses/>}/>
-        <Route path="/myaccount/shoppinghistory" element={<ShoppingHistory/>}/>
+        <Route path="/myaccount/purchases" element={<PurchasesComponent/>}/>
         <Route path="/myaccount/addresses/add" element={<Add/>}/>
-        <Route path="/createReview" element={<ReviewForm/>}/>
+        <Route path="/createReview/:id" element={<ReviewForm/>}/>
         <Route path="/frequentquestion" element={<FrequentQuestions />}/>
       </Routes>
     </div>

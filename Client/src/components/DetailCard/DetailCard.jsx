@@ -45,6 +45,17 @@ const DetailCard = () => {
     setIdcomment(e.target.value);
     setDeleted(true);
   };
+  }, [dispatch, id]);
+
+  function promedioRating() {
+    var sumatoria = detail?.Reviews?.reduce(function (a, b) {
+      return a + b.rating; 
+    }, 0); 
+    var promedio = sumatoria / detail?.Reviews?.length;
+    console.log(sumatoria)
+    return Math.round(promedio);
+  }
+
 
   return (
     <div className={style.container}>
@@ -98,11 +109,12 @@ const DetailCard = () => {
             <div>
               <p className={style.rating}>
                 <p className={style.textDetail}>Rating: </p>{" "}
-                {array.slice(0, detail.rating).map((e, i) => (
+                <p>{promedioRating()}</p>
+                {/* {array.slice(0, detail.rating).map((e, i) => (
                   <div className={style.rating} key={i}>
-                    <p>⭐</p>
+                  <p>⭐</p>
                   </div>
-                ))}{" "}
+                ))}{" "} */}
               </p>
             </div>
           </div>
