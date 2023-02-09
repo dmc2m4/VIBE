@@ -9,7 +9,7 @@ export const MyAccount = () => {
     <div className={style.container}>
       <Profile/>
       <div className={style.containerLinks}>
-    <Link to='/myaccount/direction'  className={style.link}>
+    <Link to='/myaccount/adresses'  className={style.link}>
     <div className={style.containerCat}>
       <div className={style.containerIcon}>
         <img src={direction} alt="direction " className={style.icon}
