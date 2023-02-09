@@ -21,6 +21,7 @@ import Footer from "./components/Footer/Footer";
 import FrequentQuestions from "./components/FrequentQuestions/FrequentQuestions";
 import PurchasesComponent from "./components/MyAccount/purchases";
 import Dashbord from "./components/Dashboard/Dashbord";
+import AdminDashboard from "./components/AdminDashboard/AdminDashboard";
 
 const App = () => {
   const location = useLocation();
@@ -48,6 +49,7 @@ const App = () => {
         <Route path="/createReview/:id" element={<ReviewForm />} />
         <Route path="/frequentquestion" element={<FrequentQuestions />} />
         <Route path="/admin-management" element={<Dashbord />} />
+        <Route path="/admin-dashboard" element={<AdminDashboard />} />
       </Routes>
       {location.pathname === "/frequentquestion"
         ? null
