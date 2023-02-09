@@ -3,7 +3,7 @@
     grid-template-rows: auto 2fr 1fr;
     width: 100%;
     height: 100%;
-    background-color: #fcfcfc;
+    background-color: #909ca1;
 }
 .containerLogo{
     display: flex;
@@ -12,31 +12,49 @@
     height: 110px;
     background-color: #fcfcfc;
 }
-.logo{
-    height: 15rem;
-    width: 18rem;
-    margin-top: 20px;
-    background-color: #fcfcfc;
-}
 
 .sectionButton{
     font-family: 'Kalam', cursive;    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fcfcfc;
-    margin-left: -10rem;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
 }
+
+.logo{
+    height: 8rem;
+    width: 8rem;
+    background-color: transparent;
+}
+
+.logoContainer{
+    display: flex;
+    justify-content: flex-start;
+    transform: translate(-750%, -200%);
+}
+
+.videoTag{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+
+.textContainer {
+    position: absolute;
+    top: 50%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: black;
+    padding: 20px;
+  };
 
 .textAccount{
     font-size: 0.8rem;
     text-align: center;
 }
 
-.clothes{
-    width: 35rem;
-    height: 25rem;
-}
 .welcome{
     display: flex;
     flex-direction: column;
@@ -44,6 +62,7 @@
     align-items: center;
     background-color: #909ca1;
     font-family: 'Kalam', cursive;
+    padding-top: 1rem;
 }
 
 .titleLanding{
