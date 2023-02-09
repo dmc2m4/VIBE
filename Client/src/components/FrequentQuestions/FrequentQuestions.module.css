@@ -1,14 +1,19 @@
 .navbar {
-  margin-top: 4rem;
+  margin-top: 4.5rem;
 
 }
+
+.footer{
+  margin-top: 200px;
+}
+
 .container2{
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content:space-evenly;
-  
+  justify-content:space-evenly;  
 }
+
 .h3{
   display: flex;
   flex-wrap: wrap;
@@ -18,8 +23,7 @@
   padding-top: 4.5rem;
 
 }
-.conteiner{
-}
+
 .card {
   position: relative;
   width: 500px;
