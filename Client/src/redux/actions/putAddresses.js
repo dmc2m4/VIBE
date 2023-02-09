@@ -1,14 +1,14 @@
 import axios from "axios";
 import { API_URL } from "../../config";
 
-const setFavorites = (value) => {
+const putAddresses = (value) => {
   return async function () {
     try {
-      await axios.post(`${API_URL}/favorites`, value);
+      await axios.put(`${API_URL}/user/address`, value);
     } catch (error) {
       return alert(error.message);
     }
   };
 };
 
-export default setFavorites;
+export default putAddresses;

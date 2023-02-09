@@ -13,7 +13,7 @@ const MPP = function (req, res, next) {
   if (!cost) throw new Error("Missing cost");
   if (!season) throw new Error("Missing season");
   if (!stock) throw new Error("Missing stock");
-  
+  //borrar
   next();
 }; 
 
