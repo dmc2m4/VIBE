@@ -16,7 +16,6 @@ const initialState = {
   },
   Account: {},
   Images: "",
-  Addresses: [],
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -169,7 +168,7 @@ export default function rootReducer(state = initialState, action) {
   if (action.type === types.LOGIN_USER) {
     return {
       ...state,
-      User: action.payload,
+      User: action.payload[0],
     };
   }
   if (action.type === types.GET_FAVORITES) {
@@ -177,12 +176,6 @@ export default function rootReducer(state = initialState, action) {
       ...state,
       Favorites: action.payload,
     };
-  }
-  if (action.type === types.CREATE_ADDRESSES){
-    return{
-      ...state,
-      Addresses: action.payload
-    }
   }
   if (action.type === types.IS_FAV) {
     return {
@@ -196,5 +189,33 @@ export default function rootReducer(state = initialState, action) {
       Purchases: action.payload
     }
   }
+  if (action.type === types.CREATE_ADDRESS) {
+    return {
+      ...state,
+      User: {
+        ...state.User,
+        Addresses: [...state.User.Addresses, action.payload],
+      },
+    };
+  }
+  if (action.type === types.DELETE_ADDRESS) {
+    return {
+      ...state,
+      User: {
+        ...state.User,
+        Addresses: state.User.Addresses.filter((e) => e.id !== action.payload),
+      },
+    };
+  }
+  if (action.type === types.DELETE_COMMENT) {
+    return {
+      ...state,
+      Detail: {
+        ...state.Detail,
+        Comment: state.Detail.Comment?.filter((e) => e.id !== action.payload),
+      },
+    };
+  }
+
   return { ...state };
 }
