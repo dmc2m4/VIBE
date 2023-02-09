@@ -16,11 +16,11 @@ import Favorites from "./components/Favorites/Favorites";
 import { MyAccount } from "./components/MyAccount/MyAccount";
 import { Profile } from "./components/MyAccount/Profile";
 import { Direction } from "./components/MyAccount/Direction";
-import { ShoppingHistory } from "./components/MyAccount/ShoppingHistory";
 import { Add } from "./components/MyAccount/Add";
 import Shop from "./components/Shop/Shop";
 import ReviewForm from "./components/ReviewForm/ReviewForm";
 import FrequentQuestions from "./components/FrequentQuestions/FrequentQuestions";
+import PurchasesComponent from "./components/MyAccount/purchases";
 
 
 const App = () => {
@@ -42,9 +42,9 @@ const App = () => {
         <Route path="/myaccount" element={<MyAccount />} />
         <Route path="/myaccount/profile" element={<Profile />} />
         <Route path="/myaccount/direction" element={<Direction/>}/>
-        <Route path="/myaccount/shoppinghistory" element={<ShoppingHistory/>}/>
+        <Route path="/myaccount/purchases" element={<PurchasesComponent/>}/>
         <Route path="/myaccount/direction/add" element={<Add/>}/>
-        <Route path="/createReview" element={<ReviewForm/>}/>
+        <Route path="/createReview/:id" element={<ReviewForm/>}/>
         <Route path="/frequentquestion" element={<FrequentQuestions />}/>
       </Routes>
     </div>
