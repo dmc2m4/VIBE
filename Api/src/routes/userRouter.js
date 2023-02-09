@@ -16,8 +16,9 @@ const {getAdmin, switchBan, switchAdmin, getBannedUsers} = require('../Controlle
 const userRouter = Router();
 
 userRouter.post("/address/destroy", async (req, res) => {
-  const { id } = req.body;
   try {
+    const { id } = req.body;
+    console.log(req.body);
     await destroyAddresses(id);
     res.status(200).send("Deleted address successfully");
   } catch (error) {
@@ -46,8 +47,8 @@ userRouter.post("/address", async (req, res) => {
 });
 
 userRouter.post("/address/get", async (req, res) => {
-  const {email} = req.body
   try {
+    const {email} = req.body
     const userAdresses = await getUserAdresses(email);
     res.status(200).json(userAdresses);
   } catch (error) {
@@ -65,8 +66,8 @@ userRouter.get("/", async (req, res) => {
 });
 
 userRouter.post("/login", async (req, res) => {
-  const value = req.body;
   try {
+    const value = req.body;
     const user = await loginUser(value);
     res.status(200).json(user);
   } catch (error) {
@@ -75,8 +76,8 @@ userRouter.post("/login", async (req, res) => {
 });
 
 userRouter.put("/switchAdmin", async (req, res) => {
-  const { id } = req.body;
   try {
+    const { id } = req.body;
     const user = await switchAdmin(id);
     res.status(200).send("User change status");
   } catch (error) {
@@ -85,8 +86,8 @@ userRouter.put("/switchAdmin", async (req, res) => {
 });
 
 userRouter.put("/switchBan", async (req, res) => {
-  const { id } = req.body;
   try {
+    const { id } = req.body;
     const user = await switchBan(id);
     res.status(200).send("User change status");
   } catch (error) {
@@ -95,8 +96,8 @@ userRouter.put("/switchBan", async (req, res) => {
 });
 
 userRouter.put("/", async (req, res) => {
-  const value = req.body;
   try {
+    const value = req.body;
     putUsers(value);
     res.status(201).send("User updated successfully");
   } catch (error) {

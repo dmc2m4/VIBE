@@ -223,7 +223,7 @@ export default function rootReducer(state = initialState, action) {
       User: {
         ...state.User,
         Addresses: [...state.User.Addresses, action.payload],
-      },
+      }
     };
   }
   if (action.type === types.DELETE_ADDRESS) {
