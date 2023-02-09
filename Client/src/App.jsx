@@ -17,6 +17,7 @@ import { Addresses } from "./components/MyAccount/Addresses";
 import { Add } from "./components/MyAccount/Add";
 import Shop from "./components/Shop/Shop";
 import ReviewForm from "./components/ReviewForm/ReviewForm";
+import Footer from "./components/Footer/Footer";
 import FrequentQuestions from "./components/FrequentQuestions/FrequentQuestions";
 import PurchasesComponent from "./components/MyAccount/purchases";
 import Dashbord from "./components/Dashboard/Dashbord";
@@ -48,6 +49,7 @@ const App = () => {
         <Route path="/frequentquestion" element={<FrequentQuestions />} />
         <Route path="/admin-management" element={<Dashbord />} />
       </Routes>
+      <Footer/>
     </div>
   );
 };

@@ -26,9 +26,15 @@
 .textContainer {
   align-items: center;
 }
+
 .textContainer p {
   margin-bottom: 8px;
+}
 
+.QyA{
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
 }
 
 .logo {

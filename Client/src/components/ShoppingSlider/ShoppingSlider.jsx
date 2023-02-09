@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import car from "../../assets/car.png";
 import style from './ShoppingSlider.module.css'
 import SwiperCard from '../SwiperCard/SwiperCard'
+import "animate.css"
 
 const ShoppingSlider = () => {
   const [cart, setCart] = useState(false);
