@@ -1,5 +1,4 @@
 const { Router } = require("express");
-const getAdmin = require("../Controllers/AdminController")
 const {
   createAddresses,
   destroyAddresses,

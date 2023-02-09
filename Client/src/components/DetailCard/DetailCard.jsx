@@ -51,9 +51,21 @@ const DetailCard = () => {
       return a + b.rating;
     }, 0);
     var promedio = sumatoria / detail?.Reviews?.length;
-    console.log(sumatoria);
+    console.log(detail.Reviews?.length);
+    if (detail.Reviews?.length == false) return "No references";
     return Math.round(promedio);
   }
+
+  function renderStars(n) {
+    let result = "";
+    console.log(n);
+    for (let i = 0; i < n; i++) {
+      result += "⭐";
+    }
+    return result;
+  }
+
+  let stars = promedioRating();
 
   return (
     <div className={style.container}>
@@ -107,12 +119,7 @@ const DetailCard = () => {
             <div>
               <p className={style.rating}>
                 <p className={style.textDetail}>Rating: </p>{" "}
-                <p>{promedioRating()}</p>
-                {/* {array.slice(0, detail.rating).map((e, i) => (
-                  <div className={style.rating} key={i}>
-                  <p>⭐</p>
-                  </div>
-                ))}{" "} */}
+                <p>{renderStars(stars)}</p>
               </p>
             </div>
           </div>
