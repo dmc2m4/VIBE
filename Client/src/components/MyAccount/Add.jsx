@@ -24,13 +24,16 @@ export const Add = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(createAddresses(input))
-      .then((res) => {
-        dispatch(getAddresses(user));
-      })
-      .then((resp) => {
-        navigate("/myaccount/addresses");
-      });
+
+    dispatch(createAddress(input)).then(
+      res => {
+        dispatch(getAddresses(user))
+      }).then(
+        resp => {
+          navigate('/myaccount/addresses');
+        }
+      )
+
   }
 
   return (
