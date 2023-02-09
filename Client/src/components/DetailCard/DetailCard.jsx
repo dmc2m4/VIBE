@@ -18,6 +18,8 @@ const DetailCard = () => {
   const array = [1, 2, 3, 4, 5];
   const user = sessionStorage.getItem("userEmail");
   const stateUser = useSelector((state) => state.User);
+  const [deleted, setDeleted] = useState(false);
+  const [idcomment, setIdcomment] = useState("");
 
   function addToCar() {
     dispatch(addToCart(detail));
@@ -26,14 +28,20 @@ const DetailCard = () => {
 
   useEffect(() => {
     dispatch(createDetail(id));
+    if (deleted) {
+      dispatch(deleteComment(idcomment));
+      setDeleted(false);
+      setIdcomment("");
+    }
     return function () {
       dispatch(cleanDetail());
     };
-  }, [dispatch, id]);
+  }, [dispatch, id, deleted]);
 
   const handleDelete = (e) => {
     e.preventDefault();
-    dispatch(deleteComment(e.target.value));
+    setIdcomment(e.target.value);
+    setDeleted(true);
   };
 
   return (
@@ -114,26 +122,22 @@ const DetailCard = () => {
           );
         })}
         <CommentForm id={id} email={user} />
-        {detail.Comments?.map((m) => {
+        {detail.Comments?.map( (m) => {
           return (
             <div>
-              {stateUser.isAdmin ? (
-                ""
-              ) : (
+              { stateUser.isAdmin ? (
                 <button value={m.id} onClick={(e) => handleDelete(e)}>
                   x
                 </button>
-              )}
-              <img src={m.users && m.users[0].img} alt="imagen" />
-              <h2>{m.users && m.users[0].email}</h2>
+              ) : null}
               <div className={style.containerUser}>
                 <div className={style.containerEmail}>
                   <img
-                    src={m.Users[0].img}
+                    src={m.Users && m.Users[0].img}
                     alt="imagen"
                     className={style.imgUser}
                   />
-                  <h2 className={style.email}>{m.Users[0].email}</h2>
+                  <h2 className={style.email}>{m.Users && m.Users[0].email}</h2>
                 </div>
                 <div className={style.containerQuestion}>
                   <p>{m.question}</p>
