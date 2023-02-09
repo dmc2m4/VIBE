@@ -42,8 +42,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #e0d8cd;
+    background-color: #909ca1;
     font-family: 'Kalam', cursive;
+    top: 100px;
 }
 
 .titleLanding{

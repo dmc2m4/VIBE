@@ -20,6 +20,7 @@ import { ShoppingHistory } from "./components/MyAccount/ShoppingHistory";
 import { Add } from "./components/MyAccount/Add";
 import Shop from "./components/Shop/Shop";
 import ReviewForm from "./components/ReviewForm/ReviewForm";
+import Footer from "./components/Footer/Footer";
 
 
 const App = () => {
@@ -45,6 +46,7 @@ const App = () => {
         <Route path="/myaccount/direction/add" element={<Add/>}/>
         <Route path="/createReview" element={<ReviewForm/>}/>
       </Routes>
+      <Footer/>
     </div>
   );
 };
