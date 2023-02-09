@@ -12,7 +12,7 @@ import Slider from "./components/Carousel/Carousel";
 import { About } from "./views/About/About";
 import Favorites from "./components/Favorites/Favorites";
 import { MyAccount } from "./components/MyAccount/MyAccount";
-import { Profile } from "./components/MyAccount/Profile";
+import  Profile  from "./components/MyAccount/Profile";
 import { Addresses } from "./components/MyAccount/Addresses";
 import { Add } from "./components/MyAccount/Add";
 import Shop from "./components/Shop/Shop";
@@ -49,7 +49,9 @@ const App = () => {
         <Route path="/frequentquestion" element={<FrequentQuestions />} />
         <Route path="/admin-management" element={<Dashbord />} />
       </Routes>
-      <Footer/>
+      {location.pathname === "/frequentquestion"
+        ? null
+        : <Footer />}
     </div>
   );
 };
