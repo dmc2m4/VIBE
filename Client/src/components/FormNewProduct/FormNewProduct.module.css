@@ -140,3 +140,13 @@
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
+
+.rejectedAccess {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 4.4rem;
+  font-size: 40px;
+  font-family: "Dosis", sans-serif;
+  color: darkgreen;
+}

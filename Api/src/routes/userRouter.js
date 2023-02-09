@@ -16,7 +16,7 @@ const {getAdmin, switchBan, switchAdmin, getBannedUsers} = require('../Controlle
 const userRouter = Router();
 
 userRouter.post("/address/destroy", async (req, res) => {
-  const {id} = req.body;
+  const { id } = req.body;
   try {
     await destroyAddresses(id);
     res.status(200).send("Deleted address successfully");
@@ -36,7 +36,7 @@ userRouter.post("/address/destroy", async (req, res) => {
 }); */
 
 userRouter.post("/address", async (req, res) => {
-  const value = req.body
+  const value = req.body;
   try {
     await createAddresses(value);
     res.status(200).send("address created");
@@ -65,7 +65,7 @@ userRouter.get("/", async (req, res) => {
 });
 
 userRouter.post("/login", async (req, res) => {
-  const value = req.body
+  const value = req.body;
   try {
     const user = await loginUser(value);
     res.status(200).json(user);
@@ -74,54 +74,50 @@ userRouter.post("/login", async (req, res) => {
   }
 });
 
-userRouter.put('/switchBan/:id', async (req, res) => {
-  const {id} = req.params;
+userRouter.put("/switchAdmin", async (req, res) => {
+  const { id } = req.body;
   try {
-      const user = await switchBan(id);
-      res.status(200).send("User change status");
+    const user = await switchAdmin(id);
+    res.status(200).send("User change status");
+  } catch (error) {
+    return res.status(500).send(error.message);
   }
-  catch (error) {
-      return res.status(500).send(error.message);
+});
+
+userRouter.put("/switchBan", async (req, res) => {
+  const { id } = req.body;
+  try {
+    const user = await switchBan(id);
+    res.status(200).send("User change status");
+  } catch (error) {
+    return res.status(500).send(error.message);
   }
 });
 
 userRouter.put("/", async (req, res) => {
-  const value = req.body
+  const value = req.body;
   try {
-    putUsers(value)
-    res.status(201).send("User updated successfully")
+    putUsers(value);
+    res.status(201).send("User updated successfully");
   } catch (error) {
-    res.status(400).send(error.message)
+    res.status(400).send(error.message);
   }
-})
+});
 
 userRouter.get("/admin", async (req, res) => {
   try {
-      const adminList = await getAdmin();
-      res.status(200).json(adminList);
-  }
-  catch (error) {
-      return res.status(500).send(error.message);
-  }
-});
-
-userRouter.put('/switchAdmin/:id', async (req, res) => {
-  const {id} = req.params;
-  try {
-      const user = await switchAdmin(id);
-      res.status(200).send("User change status");
-  }
-  catch (error) {
-      return res.status(500).send(error.message);
+    const adminList = await getAdmin();
+    res.status(200).json(adminList);
+  } catch (error) {
+    return res.status(500).send(error.message);
   }
 });
 
-userRouter.get('/banned', async (req, res) => {
+userRouter.get("/banned", async (req, res) => {
   try {
-      const bannedList = await getBannedUsers();
-      res.status(200).json(bannedList)
-  }
-  catch (error) {
+    const bannedList = await getBannedUsers();
+    res.status(200).json(bannedList);
+  } catch (error) {
     return res.status(500).send(error.message);
   }
 });

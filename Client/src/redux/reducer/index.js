@@ -16,9 +16,37 @@ const initialState = {
   },
   Account: {},
   Images: "",
+  AllUsers: [],
+  UsersBanned: [],
+  UsersAdmin: [],
+  Swap: false,
 };
 
 export default function rootReducer(state = initialState, action) {
+  if (action.type === types.SWAP) {
+    return {
+      ...state,
+      Swap: !state.Swap,
+    };
+  }
+  if (action.type === types.USERS) {
+    return {
+      ...state,
+      AllUsers: action.payload,
+    };
+  }
+  if (action.type === types.FILTER_ADMIN) {
+    return {
+      ...state,
+      UsersAdmin: action.payload,
+    };
+  }
+  if (action.type === types.FILTER_BANNED) {
+    return {
+      ...state,
+      UsersBanned: action.payload,
+    };
+  }
   if (action.type === types.UPDATE_FILTERS) {
     return {
       ...state,
@@ -183,11 +211,11 @@ export default function rootReducer(state = initialState, action) {
       Fav: action.payload,
     };
   }
-  if (action.type === types.GET_PURCHASES){
+  if (action.type === types.GET_PURCHASES) {
     return {
       ...state,
-      Purchases: action.payload
-    }
+      Purchases: action.payload,
+    };
   }
   if (action.type === types.CREATE_ADDRESS) {
     return {

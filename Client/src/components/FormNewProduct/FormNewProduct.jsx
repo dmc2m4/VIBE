@@ -11,6 +11,7 @@ const FormNewProduct = () => {
   const [newProduct, setNewProduct] = useState({});
   const [validated, setValidated] = useState(false);
   let currentImages = useSelector((state) => state.Images);
+  const user = useSelector((state) => state.User);
 
   function handleChange(e) {
     setNewProduct({
@@ -92,98 +93,104 @@ const FormNewProduct = () => {
   }, [newProduct, currentImages]);
 
   return (
-    <div className={style.containerForm}>
-      <form onSubmit={handleSubmit}>
-        <div className={style.containerFormSecundary}>
-          {addInput("name", "text")}
-          {addSelect("color", [
-            "red",
-            "pink",
-            "black",
-            "blue",
-            "green",
-            "brown",
-            "white",
-            "yellow",
-            "grey",
-          ])}
-          {addSelect("season", [
-            "all seasons",
-            "summer",
-            "spring",
-            "autumn",
-            "winter",
-          ])}
-          {addSelect("category", [
-            "shirts",
-            "t-shirts",
-            "pants",
-            "shoes",
-            "shorts",
-            "jackets",
-            "sweatshirts",
-            "accesories",
-          ])}
-          {addSelect("gender", ["male", "female", "unisex"])}
-          {addInput("cost", "number")}
-          {addInput("stock", "number")}
-          {addSelect(
-            "size",
-            newProduct.category === "shoes"
-              ? [
-                  "33",
-                  "34",
-                  "35",
-                  "36",
-                  "37",
-                  "38",
-                  "39",
-                  "40",
-                  "41",
-                  "42",
-                  "43",
-                  "44",
-                ]
-              : ["XXS", "XS", "S", "M", "L", "XL", "XXL"],
-            newProduct.category === null ? true : false
-          )}
-          <div className={style.containerInput}>
-            <label>Image</label>
-            <CloudDropzone />
+    <div>
+      {!user.isAdmin ? (
+        <h3 className={style.rejectedAccess}>Only admins can create products</h3>
+      ) : (
+        <div className={style.containerForm}>
+          <form onSubmit={handleSubmit}>
+            <div className={style.containerFormSecundary}>
+              {addInput("name", "text")}
+              {addSelect("color", [
+                "red",
+                "pink",
+                "black",
+                "blue",
+                "green",
+                "brown",
+                "white",
+                "yellow",
+                "grey",
+              ])}
+              {addSelect("season", [
+                "all seasons",
+                "summer",
+                "spring",
+                "autumn",
+                "winter",
+              ])}
+              {addSelect("category", [
+                "shirts",
+                "t-shirts",
+                "pants",
+                "shoes",
+                "shorts",
+                "jackets",
+                "sweatshirts",
+                "accesories",
+              ])}
+              {addSelect("gender", ["male", "female", "unisex"])}
+              {addInput("cost", "number")}
+              {addInput("stock", "number")}
+              {addSelect(
+                "size",
+                newProduct.category === "shoes"
+                  ? [
+                      "33",
+                      "34",
+                      "35",
+                      "36",
+                      "37",
+                      "38",
+                      "39",
+                      "40",
+                      "41",
+                      "42",
+                      "43",
+                      "44",
+                    ]
+                  : ["XXS", "XS", "S", "M", "L", "XL", "XXL"],
+                newProduct.category === null ? true : false
+              )}
+              <div className={style.containerInput}>
+                <label>Image</label>
+                <CloudDropzone />
+              </div>
+            </div>
+            <div className={style.containerButton}>
+              <button
+                type="submit"
+                className={style.buttonCreate}
+                disabled={!validated || !currentImages ? true : false}
+                onClick={() =>
+                  setNewProduct({
+                    ...newProduct,
+                    img: currentImages,
+                  })
+                }
+              >
+                Create Product
+              </button>
+            </div>
+          </form>
+          <div className={style.containerImages}>
+            {currentImages
+              ? currentImages?.split(",").map((image, i) => {
+                  return image ? (
+                    <button
+                      className={style.images}
+                      value={image}
+                      key={i}
+                      onClick={(e) => handleDelete(e)}
+                    >
+                      {image ? <img src={image} key={i} /> : null}
+                    </button>
+                  ) : null;
+                })
+              : null}
           </div>
         </div>
-        <div className={style.containerButton}>
-          <button
-            type="submit"
-            className={style.buttonCreate}
-            disabled={!validated || !currentImages ? true : false}
-            onClick={() =>
-              setNewProduct({
-                ...newProduct,
-                img: currentImages,
-              })
-            }
-          >
-            Create Product
-          </button>
-        </div>
-      </form>
-      <div className={style.containerImages}>
-        {currentImages
-          ? currentImages?.split(",").map((image, i) => {
-              return image ? (
-                <button
-                  className={style.images}
-                  value={image}
-                  key={i}
-                  onClick={(e) => handleDelete(e)}
-                >
-                  {image ? <img src={image} key={i} /> : null}
-                </button>
-              ) : null;
-            })
-          : null}
-      </div>
+      )}
     </div>
   );
 };
