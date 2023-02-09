@@ -26,7 +26,8 @@
 .link{
     text-decoration: none;
     color: black;
-    margin-top: 8rem;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
 }
 .containerCat{
     display: flex;

@@ -42,7 +42,7 @@ const App = () => {
         <Route path="/favorites/:email" element={<Favorites />} />
         <Route path="/myaccount" element={<MyAccount />} />
         <Route path="/myaccount/profile" element={<Profile />} />
-        <Route path="/myaccount/addresses" element={<Addresses />} />
+        <Route path="/myaccount/direction" element={<Addresses />} />
         <Route path="/myaccount/purchases" element={<PurchasesComponent />} />
         <Route path="/myaccount/addresses/add" element={<Add />} />
         <Route path="/createReview/:id" element={<ReviewForm />} />

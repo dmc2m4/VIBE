@@ -7,13 +7,33 @@ export const Profile = () => {
 
   return (
     <div className={style.container}>
-      <Link to='/myaccount'>
-        <button>Back</button>
+       <div className={style.back}>
+      <Link to='/myaccount' className={style.back}>
+      <img src='https://cdn-icons-png.flaticon.com/512/507/507257.png' alt="back" className={style.iconBack}/>
       </Link>
-      <img src={user.picture} alt='image not found' />
-      <h4>Nickname: {user.nickname}</h4>
-      <h4>Full Name: {user.name}</h4>
-      <h4>Email: {user.email}</h4>
+      </div>
+      <div className={style.containerTitle}>
+        <h1>My Profile</h1>
+      </div>
+      <div className={style.dates}>
+      <div className={style.containerText}>
+      <h2>Nickname: </h2>
+      <h3 className={style.textDate}>
+      {user.nickname}
+      </h3>
+      <h2>Full Name:</h2>
+      <h3 className={style.textDate}>
+      {user.name}
+      </h3>
+      <h2>Email:</h2>
+      <h3 className={style.textDate}>
+      {user.email}
+      </h3>
+      </div>
+      <div>
+      <img src={user.picture} alt='image not found' className={style.imgProfile} />
+      </div>
+      </div>
     </div>
   );
 };

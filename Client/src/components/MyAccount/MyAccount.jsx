@@ -23,7 +23,7 @@ export const MyAccount = () => {
         <h4>Direction</h4>
         </div>
       </Link>
-      <Link to='/myaccount/shoppinghistory' className={style.link}>
+      <Link to='/myaccount/purchases' className={style.link}>
       <div className={style.containerCat}>
       <div className={style.containerIcon}>
       <img src={list} alt="list" className={style.icon}/>
