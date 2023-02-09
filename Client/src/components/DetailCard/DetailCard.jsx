@@ -12,8 +12,8 @@ import deleteComment from "../../redux/actions/deleteComment";
 
 const DetailCard = () => {
   const detail = useSelector((state) => state.Detail);
-  const items = useSelector(state => state.Cart);
-  localStorage.setItem("globalCart", JSON.stringify(items))
+  const items = useSelector((state) => state.Cart);
+  localStorage.setItem("globalCart", JSON.stringify(items));
   const [stock, setStock] = useState(detail.stock);
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -45,17 +45,15 @@ const DetailCard = () => {
     setIdcomment(e.target.value);
     setDeleted(true);
   };
-  }, [dispatch, id]);
 
   function promedioRating() {
     var sumatoria = detail?.Reviews?.reduce(function (a, b) {
-      return a + b.rating; 
-    }, 0); 
+      return a + b.rating;
+    }, 0);
     var promedio = sumatoria / detail?.Reviews?.length;
-    console.log(sumatoria)
+    console.log(sumatoria);
     return Math.round(promedio);
   }
-
 
   return (
     <div className={style.container}>
@@ -136,10 +134,10 @@ const DetailCard = () => {
           );
         })}
         <CommentForm id={id} email={user} />
-        {detail.Comments?.map( (m) => {
+        {detail.Comments?.map((m) => {
           return (
             <div>
-              { stateUser.isAdmin ? (
+              {stateUser.isAdmin ? (
                 <button value={m.id} onClick={(e) => handleDelete(e)}>
                   x
                 </button>
