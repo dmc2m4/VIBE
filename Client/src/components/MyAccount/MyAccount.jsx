@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import user from '../../assets/user2.png'
 import list from '../../assets/files.png'
 import direction from '../../assets/direction.png'
 import style from './MyAccount.module.css'
@@ -9,7 +8,7 @@ export const MyAccount = () => {
     <div className={style.container}>
       <Profile/>
       <div className={style.containerLinks}>
-    <Link to='/myaccount/adresses'  className={style.link}>
+    <Link to='/myaccount/addresses'  className={style.link}>
     <div className={style.containerCat}>
       <div className={style.containerIcon}>
         <img src={direction} alt="direction " className={style.icon}
