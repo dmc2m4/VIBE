@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import MercadoPagoIntegration from "../MercadoPagoIntegration/MercadoPagoIntegration";
-
+import style from './PurchaseForm.module.css'
 export const PurchaseForm = () => {
   const [input, setInput] = useState({});
   const [pay, setPay] = useState(true);
@@ -8,7 +8,7 @@ export const PurchaseForm = () => {
   function addInput(name, type) {
     const nameFormatted = name.charAt(0).toUpperCase() + name.slice(1);
     return (
-      <div>
+      <div className={style.containerInput}>
         <label>{nameFormatted}</label>
         <input
           type={type}
@@ -16,10 +16,12 @@ export const PurchaseForm = () => {
           name={name}
           placeholder={nameFormatted}
           onChange={handleChange}
+          className={style.inputForm}
         />
       </div>
     );
   }
+  
   function handleChange(e) {
     setInput({
       ...input,
@@ -34,25 +36,52 @@ export const PurchaseForm = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={(e) => handleSubmit(e)} className="payment-form">
+    <div className={style.container}>
+      <form onSubmit={(e) => handleSubmit(e)} className={style.paymentForm}>
+      <div className={style.containerForm}>
+      <div>
+      <div className={style.containerMinTitle}>
+      <h3>Dates</h3>
+      </div>
+      <div className={style.containerInputs}>
         {addInput("name", "text")}
         {addInput("surname", "text")}
+        </div>
+        <div className={style.containerInputs}>
         {addInput("email", "text")}
         {addInput("phone", "text")}
+        </div>
+        <div className={style.containerInputs}>
         {addInput("zip_code", "text")}
         {addInput("street_name", "text")}
+        </div>
+        <div className={style.containerInputs}>
         {addInput("street_number", "text")}
-        <h3>Shipments</h3>
+        </div>
+        </div>
+        <div>
+        <div className={style.containerMinTitle}>
+        <h3 className={style.minTitle}>Shipments</h3>
+        </div>
+        <div className={style.containerInputs}>
         {addInput("zip_code", "text")}
         {addInput("street_name", "text")}
+        </div>
+        <div className={style.containerInputs}>
         {addInput("street_number", "text")}
         {addInput("floor", "text")}
+        </div>
+        <div className={style.containerInputs}>
         {addInput("apartament", "text")}
         {addInput("city_name", "text")}
+        </div>
+        <div className={style.containerInputs}>
         {addInput("state_name", "text")}
         {addInput("country_name", "text")}
-        <button type="submit">Request Payment</button>
+        </div>
+        </div>
+        </div>
+        <button type="submit" className={style.buttonCar}>Request Payment</button>
       </form>
       {pay ? null : <MercadoPagoIntegration items={input} />}
     </div>

@@ -7,15 +7,16 @@ const getAllUsers = async () => {
         model: Product,
         as: "favorites",
       },
+      { model: Address },
     ],
   });
   return allUsers;
 };
 
-const getUserAdresses = async (value) => {
+const getUserAdresses = async (email) => {
   const findUser = await User.findOne({
     where: {
-      email: value.email,
+      email: email,
     },
     include: {
       model: Address,
@@ -25,21 +26,22 @@ const getUserAdresses = async (value) => {
 };
 
 const loginUser = async (value) => {
-  const findUser = await User.findOne({
+  const findUser = await User.findOrCreate({
     where: {
       email: value.email,
     },
-  });
-  if (findUser) {
-    return findUser;
-  } else {
-    const newUser = await User.create({
+    defaults: {
       name: value.name,
-      email: value.email,
       img: value.picture,
-    });
-    return newUser;
-  }
+    },
+    include: [
+      {
+        model: Address
+      }
+      
+    ],
+  });
+  return findUser;
 };
 
 const putUsers = async (value) => {
@@ -63,9 +65,23 @@ const putUsers = async (value) => {
   await user.save();
 };
 
+const getPurchasesByUser = async ({email}) =>{
+  const user = await User.findOne({
+    where: {
+      email: email
+    },
+    includes: {
+      model: Product,
+      as: 'purchases'
+    }
+  })
+  return user.purchases
+}
+
 module.exports = {
   getAllUsers,
   loginUser,
   getUserAdresses,
   putUsers,
+  getPurchasesByUser
 };

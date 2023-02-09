@@ -7,15 +7,21 @@ import { addToCart } from "../../redux/actions/shoppingCart";
 import style from "./DetailCard.module.css";
 import SwiperCard from "../SwiperCard/SwiperCard";
 import CommentForm from "./CommentForm/CommentForm";
+import ResponseForm from "./CommentForm/ResponseComment";
+import deleteComment from "../../redux/actions/deleteComment";
 
 const DetailCard = () => {
   const detail = useSelector((state) => state.Detail);
+  const items = useSelector(state => state.Cart);
+  localStorage.setItem("globalCart", JSON.stringify(items))
   const [stock, setStock] = useState(detail.stock);
   const { id } = useParams();
   const dispatch = useDispatch();
   const array = [1, 2, 3, 4, 5];
   const user = sessionStorage.getItem("userEmail");
-  console.log(detail)
+  const stateUser = useSelector((state) => state.User);
+  const [deleted, setDeleted] = useState(false);
+  const [idcomment, setIdcomment] = useState("");
 
   function addToCar() {
     dispatch(addToCart(detail));
@@ -24,39 +30,32 @@ const DetailCard = () => {
 
   useEffect(() => {
     dispatch(createDetail(id));
+    if (deleted) {
+      dispatch(deleteComment(idcomment));
+      setDeleted(false);
+      setIdcomment("");
+    }
     return function () {
       dispatch(cleanDetail());
     };
-  }, [dispatch, id]);
- 
-  // const images = detail.img.split(",");
-  function setImages(det) {
-    const images = det.img;
-    return (
-      <div className={style.containerImg}>
-        {images.split("").map((element) => {
-          return (
-            <img src={element} alt="images" className={style.productImg} />
-          );
-        })}
-      </div>
-    );
+  }, [dispatch, id, deleted]);
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+    setIdcomment(e.target.value);
+    setDeleted(true);
+  };
+
+  function promedioRating() {
+    var sumatoria = detail?.Reviews?.reduce(function (a, b) {
+      return a + b.rating; 
+    }, 0); 
+    var promedio = sumatoria / detail?.Reviews?.length;
+    console.log(sumatoria)
+    return Math.round(promedio);
   }
 
-  // function addSelect(name, arr) {
-  //   const nameFormatted = name.charAt(0).toUpperCase() + name.slice(1);
-  //   return (
-  //     <div className={style.containerInput}>
-  //       <label>{nameFormatted}</label>
-  //       <select onChange={handleChange} name={name} className={style.inputForm}>
-  //         {<option hidden>{nameFormatted}</option>}
-  //         {arr.map((element) => {
-  //           return <option value={element}>{element}</option>;
-  //         })}
-  //       </select>
-  //     </div>
-  //   );
-  // }
+
   return (
     <div className={style.container}>
       <div className={style.back}>
@@ -69,24 +68,6 @@ const DetailCard = () => {
         </Link>
       </div>
       <div className={style.containerProduct}>
-        {/* {images.map((element) => {
-          return (
-            <div className={style.containerImg}>
-              <img
-                src={element}
-                alt="Image Product"
-                className={style.productImg}
-              />
-            </div>
-          );
-        })} */}
-        {/* {detail.img?.split(",").map((element) => {
-          return (
-            <div className={style.containerImg}>
-              <img src={element} alt="images" className={style.productImg} />
-            </div>
-          );
-        })} */}
         <div className={style.containerImg}>
           <SwiperCard props={detail.img} />
         </div>
@@ -127,11 +108,12 @@ const DetailCard = () => {
             <div>
               <p className={style.rating}>
                 <p className={style.textDetail}>Rating: </p>{" "}
-                {array.slice(0, detail.rating).map((e, i) => (
+                <p>{promedioRating()}</p>
+                {/* {array.slice(0, detail.rating).map((e, i) => (
                   <div className={style.rating} key={i}>
-                    <p>⭐</p>
+                  <p>⭐</p>
                   </div>
-                ))}{" "}
+                ))}{" "} */}
               </p>
             </div>
           </div>
@@ -143,45 +125,42 @@ const DetailCard = () => {
         </div>
       </div>
       <div>
-        {detail.Reviews?.map((m) => {
+        {detail.Reviews?.map((m, i) => {
           return (
             <div>
-              <p>{m.title}</p>
-              <p>{m.rating}</p>
-              <p>{m.text}</p>
+              <p key={i}>{m.title}</p>
+              <p key={i}>{m.rating}</p>
+              <p key={i}>{m.text}</p>
             </div>
-          )
+          );
         })}
-        <CommentForm
-        id={id}
-        email={user}
-        />
-        {detail.Comments?.map((m) => {
+        <CommentForm id={id} email={user} />
+        {detail.Comments?.map( (m) => {
           return (
-            <div className={style.containerUser}>
-            <div className={style.containerEmail}>
-              <img src ={m.Users[0].img} alt="imagen" className={style.imgUser}/>
-              <h2 className={style.email}>{m.Users[0].email}</h2>
+            <div>
+              { stateUser.isAdmin ? (
+                <button value={m.id} onClick={(e) => handleDelete(e)}>
+                  x
+                </button>
+              ) : null}
+              <div className={style.containerUser}>
+                <div className={style.containerEmail}>
+                  <img
+                    src={m.Users && m.Users[0].img}
+                    alt="imagen"
+                    className={style.imgUser}
+                  />
+                  <h2 className={style.email}>{m.Users && m.Users[0].email}</h2>
+                </div>
+                <div className={style.containerQuestion}>
+                  <p>{m.question}</p>
+                  <p>{m.response ? m.response : <ResponseForm id={m.id} />}</p>
+                </div>
               </div>
-              <div className={style.containerQuestion}>
-              <p>{m.question}</p>
-            
-            {m.response? m.response: <button className={style.buttonQuestion}>answer question</button>}
             </div>
-            </div>
-          )
+          );
         })}
-        {/* {detail.reviews?.map((m) => (
-        
-        ))} */}
       </div>
-      {/* <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque
-        asperiores illum ea rerum rem non quia, dolor hic dolorem nemo aut
-        deserunt odio enim dicta amet iusto vero. Aliquam, laudantium.
-      </p> */}
-      {/* <textarea name="comments" id="comments" cols="100" rows="10"></textarea>
-      <button>Add comment</button> */}
     </div>
   );
 };

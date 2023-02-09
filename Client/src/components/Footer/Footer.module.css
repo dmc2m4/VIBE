@@ -1,12 +1,15 @@
 .footerContainer {
   margin: 0;
+  height: 150px;
+  /* background: #ced4da; */
   height: 200px;
-  background-color: #bdb19f;
+  background-color: #909ca1;
   font-family: "Dosis", sans-serif;
 }
 .containerSection {
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
   height: 100%;
 }
@@ -16,14 +19,19 @@
   width: 35px;
   margin: 1rem;
 }
+.redes{
+  margin-left: 40px;
+}
 
 .textContainer {
   align-items: center;
 }
 .textContainer p {
   margin-bottom: 8px;
+
 }
 
 .logo {
-  width: 10rem;
+  width: 5rem;
+  margin-left: 30px;
 }
