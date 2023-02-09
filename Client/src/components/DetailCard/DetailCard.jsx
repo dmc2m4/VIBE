@@ -45,7 +45,6 @@ const DetailCard = () => {
     setIdcomment(e.target.value);
     setDeleted(true);
   };
-  }, [dispatch, id]);
 
   function promedioRating() {
     var sumatoria = detail?.Reviews?.reduce(function (a, b) {
