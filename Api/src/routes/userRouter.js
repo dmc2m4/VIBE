@@ -2,21 +2,16 @@ const { Router } = require("express");
 const {
   createAddresses,
   destroyAddresses,
-  putAddresses,
-} = require("../Controllers/AddressController");
+/*   putAddresses,
+ */} = require("../Controllers/AddressController");
 const {
   getAllUsers,
   loginUser,
   getUserAdresses,
   putUsers,
-  getPurchasesByUser,
-} = require("../Controllers/UserControllers");
-const {
-  getAdmin,
-  switchBan,
-  switchAdmin,
-  getBannedUsers,
-} = require("../Controllers/AdminController");
+/*   getPurchasesByUser
+ */} = require("../Controllers/UserControllers");
+const {getAdmin, switchBan, switchAdmin, getBannedUsers} = require('../Controllers/AdminController')
 
 const userRouter = Router();
 
@@ -25,16 +20,6 @@ userRouter.post("/address/destroy", async (req, res) => {
   try {
     await destroyAddresses(id);
     res.status(200).send("Deleted address successfully");
-  } catch (error) {
-    res.status(400).send(error.message);
-  }
-});
-
-userRouter.put("/address", async (req, res) => {
-  const value = req.body;
-  try {
-    putAddresses(value);
-    res.status(201).send("Address updated successfully");
   } catch (error) {
     res.status(400).send(error.message);
   }
@@ -50,8 +35,8 @@ userRouter.post("/address", async (req, res) => {
   }
 });
 
-userRouter.get("/address", async (req, res) => {
-  const { email } = req.body;
+userRouter.post("/address/get", async (req, res) => {
+  const {email} = req.body
   try {
     const userAdresses = await getUserAdresses(email);
     res.status(200).json(userAdresses);

@@ -1,19 +1,17 @@
 const { User, Product } = require("../db");
 
-const getFavoritesByUser = async ({ email }) => {
+const getFavoritesByUser = async ({email}) => {
   const user = await User.findOne({
     where: {
       email: email,
     },
-    include: [
-      {
+    include: [{
         model: Product,
-        as: "favorites",
-      },
-    ],
+        as: "favorites"
+      }]
   });
 
-  return user.favorites;
+  return user.favorites
 };
 
 const postFavorites = async (value) => {
@@ -23,12 +21,13 @@ const postFavorites = async (value) => {
     },
   });
   const findProduct = await Product.findByPk(value.id);
-  await findProduct.update({ isfav: true });
+  await findProduct.update({isfav: true})
 
   await findUser.addFavorites(findProduct);
 };
 
 const deleteFavorites = async (value) => {
+  console.log(value);
   const findUser = await User.findOne({
     where: {
       email: value.email,
