@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import user from '../../assets/user2.png'
 import list from '../../assets/files.png'
 import direction from '../../assets/direction.png'
 import style from './MyAccount.module.css'

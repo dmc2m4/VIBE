@@ -104,6 +104,7 @@
   padding: 20px;
   border-radius: 5px;
   padding-top: none;
+  position: relative;
 }
 .containerEmail{
   display: flex;
@@ -127,9 +128,30 @@
   cursor: pointer;
   color: rgb(124, 121, 121);
   background-color: transparent;
-  margin-top: -1rem;
+  /* margin-top:  */
   font-size: 12px;
 }
 .containerQuestion{
   margin-left: 1rem;
+}
+
+.containerReview {
+  display: flex;
+  flex-direction: column;
+  margin-left: 13rem;
+  margin-top: 2rem;
+  justify-content: center;
+  font-family: "Bebas Neue", cursive;
+  background-color: #c7bfbf85;
+  width: 50%;
+  padding: 20px;
+  border-radius: 5px;
+  padding-top: none;
+}
+
+.containerX {
+  width: 1.4rem;
+  position: absolute;
+  right: 20px;
+  top: 10px
 }

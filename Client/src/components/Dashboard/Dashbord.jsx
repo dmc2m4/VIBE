@@ -8,7 +8,7 @@ import {
   switchAdmin,
   switchBan,
 } from "../../redux/actions/dashboardUsers";
-import "./Dashbord.css";
+import style from './Dashbord.module.css'
 
 const Dashbord = () => {
   const dispatch = useDispatch();
@@ -36,7 +36,7 @@ const Dashbord = () => {
     dispatch(filterBanned());
   }, [dispatch, swap]);
   return (
-    <div className="dashbordContainer">
+    <div className={style.dashbordContainer}>
       <div>
         <button value="users" onClick={(e) => setFilter(e.target.value)}>
           Users

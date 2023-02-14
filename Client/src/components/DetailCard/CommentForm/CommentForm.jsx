@@ -24,56 +24,39 @@ const CommentForm = (props) => {
   };
 
   const handleSubmit = () => {
-    dispatch(postComment(input)) 
-    .then((res) => {
-      navigate(`/productDetail/${props.id}`); 
-     }) ;
+    dispatch(postComment(input)).then((res) => {
+      navigate(`/productDetail/${props.id}`);
+    });
   };
 
   return (
     <div className={style.container}>
-      {Object.entries(user).length != 0? (user.isAdmin?  ("") : (
-      <form onSubmit={handleSubmit} className={style.containerForm}>
-          <div className={style.containerComment}>
-            <label className={style.text}>Ask to the seller</label>
-            <input
-              type="text"
-              name="question"
-              id="question"
-              onChange={handleInputChange}
-              placeholder="Ask a question..."
-              className={style.inputComment}
-            ></input>
-          </div>
-          <div className={style.containerButton}>
-            <button type="submit" className={style.buttonComment}>
-              Send question
-            </button>
-          </div>
-        </form>)
-      ) : ("") 
-    }
-       
-        {/* <form onSubmit={handleSubmit} className={style.containerForm}>
-          <div className={style.containerComment}>
-            <label className={style.text}>Ask to the seller</label>
-            <input
-              type="text"
-              name="question"
-              id="question"
-              onChange={handleInputChange}
-              placeholder="Ask a question..."
-              className={style.inputComment}
-            ></input>
-          </div>
-          <div className={style.containerButton}>
-            <button type="submit" className={style.buttonComment}>
-              Send question
-            </button>
-          </div>
-        </form> */}
-      
-     
+      {Object.entries(user).length != 0 ? (
+        user.isAdmin ? (
+          ""
+        ) : (
+          <form onSubmit={handleSubmit} className={style.containerForm}>
+            <div className={style.containerComment}>
+              <label className={style.text}>Ask to the seller</label>
+              <input
+                type="text"
+                name="question"
+                id="question"
+                onChange={handleInputChange}
+                placeholder="Ask a question..."
+                className={style.inputComment}
+              ></input>
+            </div>
+            <div className={style.containerButton}>
+              <button type="submit" className={style.buttonComment}>
+                Send question
+              </button>
+            </div>
+          </form>
+        )
+      ) : (
+        ""
+      )}
     </div>
   );
 };
