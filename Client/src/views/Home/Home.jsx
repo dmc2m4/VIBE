@@ -4,7 +4,7 @@ import style from "./Home.module.css";
 import Carousel from "../../components/Carousel/Carousel";
 import CategoriesLink from "../../components/CategoriesLink/CategoriesLink";
 import { useLocation } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import putPurchases from "../../redux/actions/putPurchases";
 
 const Home = () => {

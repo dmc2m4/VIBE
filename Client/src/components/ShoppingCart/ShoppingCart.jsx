@@ -13,7 +13,9 @@ import trash from '../../assets/papelera-de-reciclaje.png'
 
 
 const ShoppingCart = () => {
-  const { items, total } = useSelector((state) => state.Cart);
+  const cart = localStorage.getItem("globalCart");
+  const items = JSON.parse(cart).items
+  const total = JSON.parse(cart).total
   const dispatch = useDispatch();
   return (
     <div className={style.container}>
