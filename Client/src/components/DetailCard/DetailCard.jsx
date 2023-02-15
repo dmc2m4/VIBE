@@ -24,7 +24,7 @@ const DetailCard = () => {
   const [idcomment, setIdcomment] = useState("");
 
   function addToCar() {
-    dispatch(addToCart(detail));
+    dispatch(addToCart(detail))
     setStock(stock - 1);
   }
 

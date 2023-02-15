@@ -1,9 +1,10 @@
 import axios from "axios";
 import types from "./types";
+import { API_URL } from "../../config";
 
 export const Users = () => {
   return async function (dispatch) {
-    const result = await axios.get("http://localhost:3001/user");
+    const result = await axios.get(`${API_URL}/user`);
 
     return dispatch({
       type: types.USERS,
@@ -14,7 +15,7 @@ export const Users = () => {
 
 export const filterAdmin = () => {
   return async function (dispatch) {
-    const result = await axios.get("http://localhost:3001/user/admin");
+    const result = await axios.get(`${API_URL}/user/admin`);
 
     return dispatch({
       type: types.FILTER_ADMIN,
@@ -25,7 +26,7 @@ export const filterAdmin = () => {
 
 export const filterBanned = () => {
   return async function (dispatch) {
-    const result = await axios.get("http://localhost:3001/user/banned");
+    const result = await axios.get(`${API_URL}/user/banned`);
 
     return dispatch({
       type: types.FILTER_BANNED,
@@ -36,7 +37,7 @@ export const filterBanned = () => {
 
 export const switchBan = (id) => {
   return async function (dispatch) {
-    const result = await axios.put("http://localhost:3001/user/switchBan", {
+    const result = await axios.put(`${API_URL}/user/switchBan`, {
       id: id,
     });
 
@@ -48,7 +49,7 @@ export const switchBan = (id) => {
 
 export const switchAdmin = (id) => {
   return async function (dispatch) {
-    const result = await axios.put("http://localhost:3001/user/switchAdmin", {
+    const result = await axios.put(`${API_URL}/user/switchAdmin`, {
       id: id,
     });
 
