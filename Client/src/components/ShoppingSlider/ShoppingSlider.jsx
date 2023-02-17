@@ -10,8 +10,9 @@ import "animate.css"
 const ShoppingSlider = () => {
   const [cart, setCart] = useState(false);
   const cart2 = localStorage.getItem("globalCart");
-  const items = JSON.parse(cart2).items
-  const total = JSON.parse(cart2).total
+  const items = cart2? JSON.parse(cart2).items : []
+  const total = cart2? JSON.parse(cart2).total : []
+  console.log(items);
   return (
     <div
       className={style.cartContainer}
