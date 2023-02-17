@@ -10,7 +10,6 @@ import SwiperCard from "../SwiperCard/SwiperCard";
 import getFavorites from "../../redux/actions/getFavorites";
 
 const Card = (props) => {
-  console.log(props)
   const dispatch = useDispatch();
   const favorites = useSelector(state => state.Favorites);
   const user2 = sessionStorage.getItem("userEmail")
