@@ -24,7 +24,7 @@ const DetailCard = () => {
   const [idcomment, setIdcomment] = useState("");
 
   function addToCar() {
-    dispatch(addToCart(detail));
+    dispatch(addToCart(detail))
     setStock(stock - 1);
   }
 
@@ -51,14 +51,13 @@ const DetailCard = () => {
       return a + b.rating;
     }, 0);
     var promedio = sumatoria / detail?.Reviews?.length;
-    console.log(detail.Reviews?.length);
+
     if (detail.Reviews?.length == false) return "No references";
     return Math.round(promedio);
   }
 
   function renderStars(n) {
     let result = "";
-    console.log(n);
     for (let i = 0; i < n; i++) {
       result += "⭐";
     }
