@@ -18,7 +18,7 @@ const userRouter = Router();
 userRouter.post("/address/destroy", async (req, res) => {
   try {
     const { id } = req.body;
-    console.log(req.body);
+
     await destroyAddresses(id);
     res.status(200).send("Deleted address successfully");
   } catch (error) {
