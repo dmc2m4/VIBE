@@ -12,6 +12,7 @@ const Home = () => {
   const cart = localStorage.getItem("globalCart");
   const user = sessionStorage.getItem("userEmail");
   const dispatch = useDispatch();
+  
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     if (params.get("status") !== null) {

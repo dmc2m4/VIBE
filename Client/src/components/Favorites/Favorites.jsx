@@ -9,6 +9,9 @@ const Favorites = () => {
   const favorites = useSelector((state) => state.Favorites);
   const user = sessionStorage.getItem("userEmail");
 
+  
+
+
   return (
     <div className={style.container}>
       <div className={style.containerTable}>
@@ -20,7 +23,7 @@ const Favorites = () => {
             <div className={style.link}>
               <div className={style.product}>
                 <div className={style.product_img}>
-                  <SwiperCard props={product.img} />
+                  <img src ={product.img.split(",")[0]}/>
                 </div>
                 <div className={style.name}>
                   <p>{product.name}</p>

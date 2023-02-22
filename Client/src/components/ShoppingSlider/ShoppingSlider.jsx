@@ -31,7 +31,7 @@ const ShoppingSlider = () => {
                 <Link to={`/productDetail/${e.id}`} className={style.link}>
                 <div className={style.product}>
                   <div className={style.product_img}>
-                  <SwiperCard props={e.img} />
+                  <img src ={e.img.split(",")[0]}/>
                   </div>
                   <div className={style.name}>
                   <p>{e.name}</p>
