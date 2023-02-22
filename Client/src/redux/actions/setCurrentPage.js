@@ -6,10 +6,4 @@ const getPage = (page) => {
   };
 };
 
-// export function clearDetail(payload) {
-//   return function (dispatch) {
-//     dispatch({ type: CLEAR_DETAIL, payload });
-//   };
-// }
-
 export default getPage;

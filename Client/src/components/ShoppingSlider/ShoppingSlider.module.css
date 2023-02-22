@@ -2,7 +2,6 @@
     display: flex;
     justify-content: center;
     font-family: "Bebas Neue", cursive;
-   
   }
   
   .cart_list {
@@ -81,7 +80,6 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-
   }
   .price{
     font-size: 1.1rem;

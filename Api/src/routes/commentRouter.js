@@ -8,17 +8,20 @@ const {
 const commentRouter = Router();
 
 commentRouter.post("/", async (req, res) => {
+  const value = req.body
+
   try {
-    const newcomment = await postComment(req.body);
-    res.status(200).send(newcomment);
+    const newcomment = await postComment(value);
+    res.status(200).json(newcomment);
   } catch (error) {
     res.status(400).send(error.message);
   }
 });
 
 commentRouter.put("/", async (req, res) => {
+  const value = req.body
   try {
-    putComment(req.body);
+    putComment(value);
     res.status(201).send("Question answered satisfactorily");
   } catch (error) {
     res.status(400).send(error.message);
@@ -35,10 +38,11 @@ commentRouter.post("/destroy", async (req, res) => {
   }
 });
 
-commentRouter.get("/:id", async (req, res) => {
+commentRouter.get("/:id", async (req, res) => {  //preguntar quien la hizo
+  const {id} = req.params
   try {
-    const comment = await getCommentById(req.params.id);
-    res.status(201).send(comment);
+    const comment = await getCommentById(id);
+    res.status(201).json(comment);
   } catch (error) {
     res.status(400).send(error.message);
   }

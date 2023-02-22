@@ -39,8 +39,9 @@ const Card = (props) => {
   }
 
   return (
-    <div className={style.container} >
-      {user.isAdmin?<button
+     <div className={style.container} >
+      
+        {user.isAdmin?<button
         onClick={() => props.deleteProduct(props.id)}
         className={style.delete}>X</button>: null}
       <Link to={`/productDetail/${props.id}`}
@@ -77,7 +78,7 @@ const Card = (props) => {
         </div>
       </div>
     </div>
-  );
+    );
 };
 
 export default Card;

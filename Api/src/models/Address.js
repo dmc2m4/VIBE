@@ -6,6 +6,12 @@ module.exports = (sequelize) => {
   sequelize.define(
     "Address",
     {
+      id: {
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
+        allowNull: false,
+        primaryKey: true,
+      },
       street: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -34,7 +40,8 @@ module.exports = (sequelize) => {
       deletedAt: {
         type: DataTypes.DATE,
       },
-    },{
+    },
+    {
       paranoid: true,
       timestamps: true,
     }

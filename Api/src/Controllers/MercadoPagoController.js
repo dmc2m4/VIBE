@@ -1,3 +1,4 @@
+const { API_URL } = require("../../config");
 const { mercadopago } = require("../Utils/mercadoPago");
 
 const payProduct = async (data) => {
@@ -60,9 +61,9 @@ const payProduct = async (data) => {
     //   },
     // ],
     back_urls: {
-      success: "http://localhost:5173/home",
-      failure: "http://localhost:5173/home",
-      pending: "http://localhost:5173/home",
+      success: `${API_URL}/home?status=approved`,
+      failure: `${API_URL}/`,
+      pending: `${API_URL}/`,
     },
     auto_return: "approved",
   };
@@ -76,6 +77,7 @@ const payProduct = async (data) => {
     .catch(function (err) {
       return { err: err };
     });
+    
     return mp;
   };
 

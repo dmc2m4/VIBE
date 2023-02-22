@@ -2,7 +2,7 @@ import types from "../actions/types";
 
 const initialState = {
   Products: [],
-  backUpProducts: [],
+  Purchases: [],
   Page: 0,
   Num: 0,
   Filters: {},
@@ -14,12 +14,40 @@ const initialState = {
     items: [],
     total: 0,
   },
+  Addresses: [],
   Account: {},
   Images: "",
-  Addresses: [],
+  AllUsers: [],
+  UsersBanned: [],
+  UsersAdmin: [],
+  Swap: false,
 };
 
 export default function rootReducer(state = initialState, action) {
+  if (action.type === types.SWAP) {
+    return {
+      ...state,
+      Swap: !state.Swap,
+    };
+  }
+  if (action.type === types.USERS) {
+    return {
+      ...state,
+      AllUsers: action.payload,
+    };
+  }
+  if (action.type === types.FILTER_ADMIN) {
+    return {
+      ...state,
+      UsersAdmin: action.payload,
+    };
+  }
+  if (action.type === types.FILTER_BANNED) {
+    return {
+      ...state,
+      UsersBanned: action.payload,
+    };
+  }
   if (action.type === types.UPDATE_FILTERS) {
     return {
       ...state,
@@ -169,7 +197,7 @@ export default function rootReducer(state = initialState, action) {
   if (action.type === types.LOGIN_USER) {
     return {
       ...state,
-      User: action.payload,
+      User: action.payload[0] ,
     };
   }
   if (action.type === types.GET_FAVORITES) {
@@ -178,17 +206,42 @@ export default function rootReducer(state = initialState, action) {
       Favorites: action.payload,
     };
   }
-  if (action.type === types.CREATE_ADDRESSES){
-    return{
-      ...state,
-      Addresses: action.payload
-    }
-  }
   if (action.type === types.IS_FAV) {
     return {
       ...state,
       Fav: action.payload,
     };
   }
+  if (action.type === types.GET_PURCHASES) {
+    return {
+      ...state,
+      Purchases: action.payload,
+    };
+  }
+  if (action.type === types.CREATE_ADDRESS) {
+    return {
+      ...state,
+      Addresses: action.payload
+    };
+  }
+  if (action.type === types.DELETE_ADDRESS) {
+    return {
+      ...state,
+      User: {
+        ...state.User,
+        Addresses:[...state.User.Addresses].filter((e) => e.id !== action.payload),
+      },
+    };
+  }
+  if (action.type === types.DELETE_COMMENT) {
+    return {
+      ...state,
+      Detail: {
+        ...state.Detail,
+        Comment: state.Detail.Comment?.filter((e) => e.id !== action.payload),
+      },
+    };
+  }
+
   return { ...state };
 }

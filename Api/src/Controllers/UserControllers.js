@@ -7,15 +7,16 @@ const getAllUsers = async () => {
         model: Product,
         as: "favorites",
       },
+      { model: Address },
     ],
   });
   return allUsers;
 };
 
-const getUserAdresses = async (value) => {
+const getUserAdresses = async (email) => {
   const findUser = await User.findOne({
     where: {
-      email: value.email,
+      email: email,
     },
     include: {
       model: Address,
@@ -25,37 +26,22 @@ const getUserAdresses = async (value) => {
 };
 
 const loginUser = async (value) => {
-  const findUser = await User.findOne({
+  const findUser = await User.findOrCreate({
     where: {
       email: value.email,
     },
-  });
-  if (findUser) {
-    return findUser;
-  } else {
-    const newUser = await User.create({
+    defaults: {
       name: value.name,
-      email: value.email,
       img: value.picture,
-    });
-    return newUser;
-  }
-};
-
-const destroyUsers = async (email) => {
-  await User.destroy({
-    where: {
-      email: email,
     },
+    include: [
+      {
+        model: Address
+      }
+      
+    ],
   });
-};
-
-const restoreUsers = async (email) => {
-  await User.restore({
-    where: {
-      email: email,
-    },
-  });
+  return findUser;
 };
 
 const putUsers = async (value) => {
@@ -63,7 +49,7 @@ const putUsers = async (value) => {
   if (value.name) {
     user.name = value.name;
   }
-/*   if (value.password) {
+  /*   if (value.password) {
     user.password = value.password;
   }
   */
@@ -94,8 +80,6 @@ const getPurchasesByUser = async ({email}) =>{
 
 module.exports = {
   getAllUsers,
-  destroyUsers,
-  restoreUsers,
   loginUser,
   getUserAdresses,
   putUsers,

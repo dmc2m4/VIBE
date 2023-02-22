@@ -18,8 +18,9 @@ export default function Products() {
     return (
       <div className={style.containerPrimary}>
         <div className={style.container}>
-          {products.map((product) => (
-            <Card
+          {products.map((product) => 
+          (product.stock !== 0? 
+              (<Card
               name={product.name}
               img={product.img}
               size={product.size}
@@ -34,8 +35,9 @@ export default function Products() {
               key={product.id}
               deleteProduct={deleteProducts}
               email={user}
-            />
-          ))}
+            />)
+            :  null)
+          )}
         </div>
       </div>
     );

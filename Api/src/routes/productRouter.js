@@ -14,8 +14,9 @@ const { postReview, destroyReview } = require("../Controllers/ReviewController")
 const productRouter = Router();
 
 productRouter.post("/reviews", async (req, res) => {
+  const value = req.body
   try {
-    const newRev = await postReview(req.body);
+    const newRev = await postReview(value);
     res.status(200).send(newRev);
   } catch (error) {
     res.status(400).send(error.message);
@@ -33,8 +34,9 @@ productRouter.post("/reviews/destroy", async (req, res) => {
 });
 
 productRouter.post("/", async (req, res) => {
+  const value = req.body
   try {
-    const newProduct = await postProduct(req.body);
+    const newProduct = await postProduct(value);
     res.status(200).send(newProduct);
   } catch (error) {
     res.status(400).send(error.message);
@@ -81,8 +83,9 @@ productRouter.post("/restore", async (req, res) => {
 });
 
 productRouter.put("/", async (req, res) => {
+  const value = req.body
   try {
-    putProduct(req.body);
+    putProduct(value);
     res.status(201).send("Product updated successfully");
   } catch (error) {
     res.status(400).send(error.message);
@@ -90,12 +93,12 @@ productRouter.put("/", async (req, res) => {
 });
 
 productRouter.post("/pay",async (req, res) => {
-  console.log(req.body);
+
   try {
     const result = await payProduct( req.body, res);
     res.status(200).send(result)
   } catch (error) {
-    console.log(error);
+    
     res.status(400).send(error.message); 
   }
 })

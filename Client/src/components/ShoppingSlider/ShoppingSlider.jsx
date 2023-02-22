@@ -5,10 +5,13 @@ import { Link } from "react-router-dom";
 import car from "../../assets/car.png";
 import style from './ShoppingSlider.module.css'
 import SwiperCard from '../SwiperCard/SwiperCard'
+import "animate.css"
 
 const ShoppingSlider = () => {
   const [cart, setCart] = useState(false);
-  const product = useSelector((state) => state.Cart);
+  const cart2 = localStorage.getItem("globalCart");
+  const items = cart2? JSON.parse(cart2).items : []
+  const total = cart2? JSON.parse(cart2).total : []
   return (
     <div
       className={style.cartContainer}
@@ -21,8 +24,8 @@ const ShoppingSlider = () => {
        
         <div className={style.cart_list}>
         <h2 className={style.titleCart}>My shopping Cart</h2>
-          {product.items.length ? (
-            product.items.map((e, i) => {
+          {items.length ? (
+            items.map((e, i) => {
               
               return (
                 <Link to={`/productDetail/${e.id}`} className={style.link}>
@@ -48,7 +51,7 @@ const ShoppingSlider = () => {
           ) : (
             <div className={style.empty}><p>Empty</p></div>
           )}
-          <div className={style.containerTotal}> <p className={style.price}>TOTAL:</p><p className={style.price}>{product.total} $</p></div>
+          <div className={style.containerTotal}> <p className={style.price}>TOTAL:</p><p className={style.price}>{total} $</p></div>
         <Link to="/shopping-cart" className={style.containerButton}>
             <button className={style.buttonCar}>GO TO CART</button>
           </Link>

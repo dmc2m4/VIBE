@@ -1,3 +1,89 @@
 .container{
- margin-top: 4rem
+ margin-top: 4rem;
+ font-family: "Bebas Neue", cursive;
+
 }
+.containerForm {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.containerTitle{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 4rems;
+}
+.back{
+    display: flex;
+    width: 90%;
+    justify-content: start;
+    margin-top: 1.5rem;
+    margin-left: 2rem;
+}
+.containerIcon{
+    background-color: black;
+    height: 4rem;
+    width: 4rem;
+    margin-right: 2rem;
+    padding-left: 8px;
+    padding-top: 8px;
+    border-radius: 5px;
+    
+}
+.icon{
+    width: 3rem;
+    height: 3rem;
+    
+}
+
+.iconBack {
+    width: 25px;
+    height: 25px;
+    margin: 16px;
+    cursor: pointer;
+    margin-left: -4rem;
+  }
+
+.form{
+    margin-top: 2rem;
+}
+.inputFormAdd {
+    width: 6rem;
+    height: 2.2rem;
+    font-size: 14pxpx;
+    font-weight: bold;
+    font-family: "Bebas Neue", cursive;
+    border-radius: 8px;
+    padding: 6px;
+    color: black;
+    border-width: 1px;
+    margin: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .button{
+    width: 10rem;
+    height: 2.3rem;
+    border-radius: 4px;
+    border: none;
+    background-color: black;
+    color: white;
+    margin-top: 1rem;
+    font-family: "Bebas Neue", cursive;
+    cursor: pointer;
+    letter-spacing: 1px;
+    margin-bottom: 4rem;
+  }
+
+  .containerButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .formAdd{
+    display: flex;
+  }

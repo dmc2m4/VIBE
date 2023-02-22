@@ -4,7 +4,7 @@ import facebook from "../../assets/facebook.png";
 import instagram from "../../assets/instagram.png";
 import logo from "../../assets/iconVibe.png";
 import style from "./Footer.module.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -17,9 +17,9 @@ const Footer = () => {
           <p>Soporte</p>
           <p>Terminos y condiciones</p>
           <p>Defensa al consumidor</p>
-          <Link to='/frequentquestion'>
+          <NavLink to='/frequentquestion' className={style.QyA}>
             <p>Preguntas Frecuentes</p>
-          </Link>
+          </NavLink>
         </section>
         <section className={style.textContainer}>
           <p>Contacto</p>
