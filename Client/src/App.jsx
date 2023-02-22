@@ -19,6 +19,7 @@ import Shop from "./components/Shop/Shop";
 import ReviewForm from "./components/ReviewForm/ReviewForm";
 import Footer from "./components/Footer/Footer";
 import FrequentQuestions from "./components/FrequentQuestions/FrequentQuestions";
+import Footer from "./components/Footer/Footer";
 import PurchasesComponent from "./components/MyAccount/purchases";
 import Dashbord from "./components/Dashboard/Dashbord";
 import AdminDashboard from "./components/AdminDashboard/AdminDashboard";
