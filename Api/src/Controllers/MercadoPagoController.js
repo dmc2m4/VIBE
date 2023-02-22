@@ -45,7 +45,7 @@ const payProduct = async (data) => {
         picture_url: e.img,
         title: e.name,
         unit_price: parseInt(e.cost * 1.15),
-        quantity: 1,
+        quantity: e.quantity,
         description: e.textdescription,
       };
       return newItem;
