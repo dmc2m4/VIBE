@@ -19,14 +19,10 @@ import Shop from "./components/Shop/Shop";
 import ReviewForm from "./components/ReviewForm/ReviewForm";
 import Footer from "./components/Footer/Footer";
 import FrequentQuestions from "./components/FrequentQuestions/FrequentQuestions";
-<<<<<<< HEAD
 import Footer from "./components/Footer/Footer";
-
-=======
 import PurchasesComponent from "./components/MyAccount/purchases";
 import Dashbord from "./components/Dashboard/Dashbord";
 import AdminDashboard from "./components/AdminDashboard/AdminDashboard";
->>>>>>> 285e085fe7630acd2462990bd0f75d9c9cacaec6
 
 const App = () => {
   const location = useLocation();
