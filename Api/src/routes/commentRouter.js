@@ -9,7 +9,7 @@ const commentRouter = Router();
 
 commentRouter.post("/", async (req, res) => {
   const value = req.body
-  console.log(value);
+
   try {
     const newcomment = await postComment(value);
     res.status(200).json(newcomment);

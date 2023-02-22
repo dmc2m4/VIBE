@@ -1,7 +1,6 @@
 const { User, Product } = require("../db");
 
 const getPurchasesByUser = async (email) => {
-  console.log(email);
   const user2 = await User.findOne({
     where: {
       email: email,
@@ -15,7 +14,7 @@ const getPurchasesByUser = async (email) => {
 };
 
 const putPurchases = async ({ items, user }) => {
-  console.log(items, user);
+  
   let user2 = await User.findOne({
     where: {
       email: user,

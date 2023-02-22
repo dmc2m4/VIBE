@@ -27,7 +27,6 @@ const postFavorites = async (value) => {
 };
 
 const deleteFavorites = async (value) => {
-  console.log(value);
   const findUser = await User.findOne({
     where: {
       email: value.email,

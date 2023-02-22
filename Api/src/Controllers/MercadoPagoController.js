@@ -70,7 +70,6 @@ const payProduct = async (data) => {
   const mp = mercadopago.preferences
     .create(preference)
     .then(function (response) {
-      console.log(response);
       return {
         global: response.body.id,
       };
