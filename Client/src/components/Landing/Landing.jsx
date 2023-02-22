@@ -13,13 +13,15 @@ const Landing = () => {
   const { user, isAuthenticated } = useAuth0();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  console.log(user);
 
   function homeButtom() {
     dispatch(loginUser(user)).then((res) => {
-      dispatch(getFavorites(user.email));
+      dispatch(getFavorites(user.email)).then((r) =>{
+        sessionStorage.setItem("userEmail", user.email);
+        navigate("/home");
+      })
     });
-    sessionStorage.setItem("userEmail", user.email);
-    navigate("/home");
   }
 
   return (

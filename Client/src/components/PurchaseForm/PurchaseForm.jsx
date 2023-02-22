@@ -32,7 +32,6 @@ export const PurchaseForm = () => {
   function handleSubmit(e) {
     e.preventDefault();
     setPay(false);
-    console.log(pay);
   }
 
   return (

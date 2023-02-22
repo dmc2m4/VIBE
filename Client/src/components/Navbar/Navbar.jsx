@@ -23,7 +23,6 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   useEffect(()=>{
-    // console.log(Object.values(user3).length);
     if(!Object.values(user3).length){
       dispatch(loginUser({email:user}))
     }

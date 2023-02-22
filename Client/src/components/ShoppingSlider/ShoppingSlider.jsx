@@ -12,7 +12,6 @@ const ShoppingSlider = () => {
   const cart2 = localStorage.getItem("globalCart");
   const items = cart2? JSON.parse(cart2).items : []
   const total = cart2? JSON.parse(cart2).total : []
-  console.log(items);
   return (
     <div
       className={style.cartContainer}
